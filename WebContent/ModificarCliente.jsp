@@ -97,7 +97,7 @@
 
   </div>
 
-  <button type="submit" class="btn btn-primary crear">Crear cliente</button>
+  <button type="submit" class="btn btn-primary crear">Aceptar</button>
 </form>
 </div>
 </body>
