@@ -3,10 +3,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-
+<style>
+.navbar{
+background-color: #D3D5D4  ;
+}
+</style>
 </head>
 <body>
- 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+ 	<nav class="navbar navbar-expand-lg navbar-light  mb-3">
  <a class="navbar-brand ml-5" href="#">Banco</a>
  <button class="navbar-toggler" type="button" data-toggle="collapse" datatarget="#navbarNav" aria-controls="navbarNav" aria-expanded="false" arialabel="Toggle navigation">
  <span class="navbar-toggler-icon"></span>
@@ -19,12 +23,20 @@
  <li class="nav-item">
  <a class="nav-link" href="#">Cuentas</a>
  </li>
- <li class="nav-item">
- <a class="nav-link" href="#">Transferencias</a>
- </li>
-  <li class="nav-item">
- <a class="nav-link" href="#">Prestamos</a>
- </li>
+ <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Transferencia</a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Mi cuenta</a>
+      <a class="dropdown-item" href="#">Terceros</a>
+    </div>
+  </li>
+ <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Prestamo</a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">Menu de pago</a>
+      <a class="dropdown-item" href="#">Nuevo prestamo</a>
+    </div>
+  </li>
  <li class="nav-item">
  <a class="nav-link" href="#">Mis datos</a>
  </li>
