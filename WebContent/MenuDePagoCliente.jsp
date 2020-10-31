@@ -2,7 +2,6 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -14,65 +13,35 @@
 <Style>
  	.table
  	{
- 	
- 	width: 100%;
-    max-width: 40%;
-    padding: 15px;
-    margin: auto;
-    margin-top:15px;
- 	}
- 	#Filtrar
- 	{
- 	
- 	width: 20%;
- 	}
- 	.Mover
- 	{
- 	
-		margin-right: 20px;
-		margin-top: 5px;
+ 	margin: 50px;
  	}
  	 
 </Style>
-</head>
 <body>
-<jsp:include page="MenuAdmin.html"></jsp:include>
-
-<div class="container Mover  ">
-<div class="row mt-5  ">
-
-      <input type="text" class="form-control" id="Filtrar">
-      <button type="submit" class="btn btn-primary ml-2 ">Buscar</button>
-    </div>
-    </div>
-
+<jsp:include page="MenuCliente.html"></jsp:include>
 <div class="container">
 <table class="table ">
   <thead class="thead-light">
     <tr>
-      <th scope="col">Nombre</th>
-      <th scope="col">Apellido</th>
-      <th scope="col">DNI</th>
-      <th scope="col">Email</th>
-      <th scope="col">Usuario</th>
-      <th scope="col">Teléfono</th>
-      <th scope="col">Eliminar</th>
-      <th scope="col">Modificar</th>
-      <th scope="col">Detalles</th>
-     
+
+      <th scope="col">Descripción</th>
+      <th scope="col">Cuotas impagas</th>
+      <th scope="col">Cuotas totales</th>
+      <th><th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Francisco</td>
-      <td>Alberto</td>
-       <td>39615232</td>
-       <td>tuemail@gmail.com</td>
-      <td>Francisco1996</td>
-      <td>01147565518</td>
-      <td><button type="submit" class="btn btn-danger ">Eliminar</button></td> 
-      <td><button type="submit" class="btn btn-primary ">Modificar</button></td> 
-      <td><button type="submit" class="btn btn-success">Detalles</button></td> 
+      <td>Falabella compra</td>
+      <td>2</td>
+      <td>6</td>
+      <td><button type="submit" class="btn btn-success boton ">Pagar</button></td>  
+    </tr>
+       <tr>
+      <td>MercadoPago compra</td>
+      <td>1</td>
+      <td>3</td>
+      <td><button type="submit" class="btn btn-success boton ">Pagar</button></td> 
     </tr>
   </tbody>
 </table>

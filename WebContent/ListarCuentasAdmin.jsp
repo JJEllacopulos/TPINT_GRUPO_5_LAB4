@@ -14,65 +14,55 @@
 <Style>
  	.table
  	{
- 	
- 	width: 100%;
-    max-width: 40%;
+ 		width: 100%;
+    max-width: 60%;
     padding: 15px;
     margin: auto;
-    margin-top:15px;
  	}
- 	#Filtrar
- 	{
- 	
- 	width: 20%;
+ 	.fila{
+ 	width: 30%;
  	}
- 	.Mover
- 	{
- 	
-		margin-right: 20px;
-		margin-top: 5px;
+ 	.boton{
+ 	width: 100%;
  	}
- 	 
 </Style>
 </head>
 <body>
 <jsp:include page="MenuAdmin.html"></jsp:include>
-
-<div class="container Mover  ">
-<div class="row mt-5  ">
-
-      <input type="text" class="form-control" id="Filtrar">
-      <button type="submit" class="btn btn-primary ml-2 ">Buscar</button>
-    </div>
-    </div>
-
+<h1 class="mt-3 text-center mb-4 text-info">Cuentas</h1>
 <div class="container">
 <table class="table ">
   <thead class="thead-light">
     <tr>
-      <th scope="col">Nombre</th>
+
+      <th scope="col">Nro de cuenta</th>
+      <th scope="col">Tipo de cuenta</th>
+      <th scope="col">Dni cliente</th>
       <th scope="col">Apellido</th>
-      <th scope="col">DNI</th>
-      <th scope="col">Email</th>
-      <th scope="col">Usuario</th>
-      <th scope="col">Teléfono</th>
-      <th scope="col">Eliminar</th>
-      <th scope="col">Modificar</th>
-      <th scope="col">Detalles</th>
-     
+      <th scope="col">Nombre</th>
+      <th class="fila" scope="col"></th>
+      <th class="fila" scope="col"></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>Francisco</td>
-      <td>Alberto</td>
-       <td>39615232</td>
-       <td>tuemail@gmail.com</td>
-      <td>Francisco1996</td>
-      <td>01147565518</td>
-      <td><button type="submit" class="btn btn-danger ">Eliminar</button></td> 
-      <td><button type="submit" class="btn btn-primary ">Modificar</button></td> 
-      <td><button type="submit" class="btn btn-success">Detalles</button></td> 
+   	  <td>754463829</td>
+      <td>Cuenta corriente</td>
+      <td>31569125</td>
+      <td>Gomez</td>
+      <td>Francisca</td>
+      <td><button type="submit" class="btn btn-danger boton ">Eliminar</button></td>
+      <td><button type="submit" class="btn btn-primary boton ">Modificar</button></td> 
+ 
+    </tr>
+        <tr>
+   	  <td>652763592</td>
+      <td>Caja de ahorro</td>
+      <td>25334709</td>
+      <td>Rodriguez</td>
+      <td>Pablo</td>
+      <td><button type="submit" class="btn btn-danger boton ">Eliminar</button></td>
+      <td><button type="submit" class="btn btn-primary boton ">Modificar</button></td> 
     </tr>
   </tbody>
 </table>
