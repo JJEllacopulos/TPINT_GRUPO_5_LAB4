@@ -2,26 +2,36 @@ package Entidad;
 
 public class TipoCuenta {
 	
-	int id;
-	String Descripcion;
+	//Campos
+	private String tipo_cuenta;
+	private String descripcion;
 	
+	//Constructores
 	public TipoCuenta() {
-		id=0;
-		Descripcion="";
+		
 	}
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getDescripcion() {
-		return Descripcion;
-	}
-	public void setDescripcion(String descripcion) {
-		Descripcion = descripcion;
+	public TipoCuenta(String tipo_cuenta, String descripcion) {
+		
+		this.tipo_cuenta = tipo_cuenta;
+		this.descripcion = descripcion;
 	}
 	
+	//Gets y sets
+	public String getTipo_cuenta() {
+		return tipo_cuenta;
+	}
 
+	public void setTipo_cuenta(String tipo_cuenta) {
+		this.tipo_cuenta = tipo_cuenta;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	
 }

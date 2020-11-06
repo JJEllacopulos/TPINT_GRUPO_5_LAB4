@@ -4,59 +4,66 @@ import java.util.Date;
 
 public class Cuenta {
 	
-	int id;
-	TipoCuenta tipoCuenta;
-	Usuario usuario;
-	Date Fecha;
-	String  Cbu;
-	Double Saldo;
+	//Campos
+	private String cbu_cuenta;
+	private String nombre_usuario;
+	private String tipo_Cuenta;
+	private Date fecha_creacion;
+	private Double saldo;
 	
+	//Constructores
 	public Cuenta() {
-		id=0;
-		tipoCuenta = new TipoCuenta();
-		usuario = new Usuario();
-		Fecha = new Date();
-		Cbu = "";
-		Saldo = 0.0;
 		
 	}
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public TipoCuenta getTipoCuenta() {
-		return tipoCuenta;
-	}
-	public void setTipoCuenta(TipoCuenta tipoCuenta) {
-		this.tipoCuenta = tipoCuenta;
-	}
-	public Usuario getUsuario() {
-		return usuario;
-	}
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-	public Date getFecha() {
-		return Fecha;
-	}
-	public void setFecha(Date fecha) {
-		Fecha = fecha;
-	}
-	public String getCbu() {
-		return Cbu;
-	}
-	public void setCbu(String cbu) {
-		Cbu = cbu;
-	}
-	public Double getSaldo() {
-		return Saldo;
-	}
-	public void setSaldo(Double saldo) {
-		Saldo = saldo;
+	public Cuenta(String cbu_cuenta, String nombre_usuario, String tipo_Cuenta, Date fecha_creacion, Double saldo) {
+		
+		this.cbu_cuenta = cbu_cuenta;
+		this.nombre_usuario = nombre_usuario;
+		this.tipo_Cuenta = tipo_Cuenta;
+		this.fecha_creacion = fecha_creacion;
+		this.saldo = saldo;
 	}
 	
+	//Gets y sets
+	public String getCbu_cuenta() {
+		return cbu_cuenta;
+	}
+
+	public void setCbu_cuenta(String cbu_cuenta) {
+		this.cbu_cuenta = cbu_cuenta;
+	}
+
+	public String getNombre_usuario() {
+		return nombre_usuario;
+	}
+
+	public void setNombre_usuario(String nombre_usuario) {
+		this.nombre_usuario = nombre_usuario;
+	}
+
+	public String getTipo_Cuenta() {
+		return tipo_Cuenta;
+	}
+
+	public void setTipo_Cuenta(String tipo_Cuenta) {
+		this.tipo_Cuenta = tipo_Cuenta;
+	}
+
+	public Date getFecha_creacion() {
+		return fecha_creacion;
+	}
+
+	public void setFecha_creacion(Date fecha_creacion) {
+		this.fecha_creacion = fecha_creacion;
+	}
+
+	public Double getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(Double saldo) {
+		this.saldo = saldo;
+	}
 
 }

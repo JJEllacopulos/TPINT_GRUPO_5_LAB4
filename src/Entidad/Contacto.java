@@ -2,33 +2,57 @@ package Entidad;
 
 public class Contacto {
 	
-	int Id;
-	String Email;
-	String Telefono;
+	//Campos
+	private int id_contacto;
+	private String nombre_usuario;
+	private String email;
+	private String telefono;
 	
+	//Constructores
 	public Contacto() {
-		Id = 0;
-		Email = "";
-		Telefono = "";
 		
 	}
-	public int getId() {
-		return Id;
+	
+	public Contacto(int id_contacto, String nombre_usuario, String email, String telefono) {
+		super();
+		this.id_contacto = id_contacto;
+		this.nombre_usuario = nombre_usuario;
+		this.email = email;
+		this.telefono = telefono;
 	}
-	public void setId(int id) {
-		Id = id;
+	
+	//Gets y sets
+
+	public int getId_contacto() {
+		return id_contacto;
 	}
+
+	public void setId_contacto(int id_contacto) {
+		this.id_contacto = id_contacto;
+	}
+
+	public String getNombre_usuario() {
+		return nombre_usuario;
+	}
+
+	public void setNombre_usuario(String nombre_usuario) {
+		this.nombre_usuario = nombre_usuario;
+	}
+
 	public String getEmail() {
-		return Email;
+		return email;
 	}
+
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
+
 	public String getTelefono() {
-		return Telefono;
+		return telefono;
 	}
+
 	public void setTelefono(String telefono) {
-		Telefono = telefono;
+		this.telefono = telefono;
 	}
 	
 }

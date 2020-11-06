@@ -2,68 +2,86 @@ package Entidad;
 
 public class Direccion {
 	
-	int id;
-	String Localidad;
-	String Provincia;
-	String Pais;
-	String Calle;
+	//Campos
+	private int id_direccion;
+	private String nombre_usuario;
+	private String altura;
+	private String calle;
+	private String localidad;
+	private String provincia;
+	private String pais;
 	
-	public Direccion(int id, String localidad, String provincia, String pais, String calle, int altura) {
-		super();
-		this.id = id;
-		Localidad = localidad;
-		Provincia = provincia;
-		Pais = pais;
-		Calle = calle;
-		Altura = altura;
-	}
-	
+	//Constructores
 	public Direccion() {
-		id = 0;
-		Localidad = "";
-		Provincia = "";
-		Pais = "";
-		Calle = "";
-		Altura = 0;
+		
 	}
-
-	int Altura;	
 	
-	public int getId() {
-		return id;
+	public Direccion(int id_direccion, String nombre_usuario, String altura, String calle, String localidad, String provincia, String pais) {
+		
+		this.id_direccion = id_direccion;
+		this.nombre_usuario = nombre_usuario;
+		this.altura = altura;
+		this.calle = calle;
+		this.localidad = localidad;
+		this.provincia = provincia;
+		this.pais = pais;
 	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getLocalidad() {
-		return Localidad;
-	}
-	public void setLocalidad(String localidad) {
-		Localidad = localidad;
-	}
-	public String getProvincia() {
-		return Provincia;
-	}
-	public void setProvincia(String provincia) {
-		Provincia = provincia;
-	}
-	public String getPais() {
-		return Pais;
-	}
-	public void setPais(String pais) {
-		Pais = pais;
-	}
-	public String getCalle() {
-		return Calle;
-	}
-	public void setCalle(String calle) {
-		Calle = calle;
-	}
-	public int getAltura() {
-		return Altura;
-	}
-	public void setAltura(int altura) {
-		Altura = altura;
+	
+	//Gets y sets
+	public int getId_direccion() {
+		return id_direccion;
 	}
 
+	public void setId_direccion(int id_direccion) {
+		this.id_direccion = id_direccion;
+	}
+
+	public String getNombre_usuario() {
+		return nombre_usuario;
+	}
+
+	public void setNombre_usuario(String nombre_usuario) {
+		this.nombre_usuario = nombre_usuario;
+	}
+
+	public String getAltura() {
+		return altura;
+	}
+
+	public void setAltura(String altura) {
+		this.altura = altura;
+	}
+
+	public String getCalle() {
+		return calle;
+	}
+
+	public void setCalle(String calle) {
+		this.calle = calle;
+	}
+
+	public String getLocalidad() {
+		return localidad;
+	}
+
+	public void setLocalidad(String localidad) {
+		this.localidad = localidad;
+	}
+
+	public String getProvincia() {
+		return provincia;
+	}
+
+	public void setProvincia(String provincia) {
+		this.provincia = provincia;
+	}
+
+	public String getPais() {
+		return pais;
+	}
+
+	public void setPais(String pais) {
+		this.pais = pais;
+	}
+	
 }
