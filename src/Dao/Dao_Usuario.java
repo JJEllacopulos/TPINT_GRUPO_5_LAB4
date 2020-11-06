@@ -33,23 +33,12 @@ public class Dao_Usuario {
 		int filas=0;
 		Connection cn = null;
 		try
-		{	String Usuario;
-		String Nombre;
-		String Apellido;
-		String Dni;
-		String Password;
-		String Cuil;
-		String Sexo;
-		String Nacionalidad;
-		Date Fecha;
-		Contacto contacto;
-		Direccion direccion;
-		TipoUsuario tipoUsuario;
+		{	
 			cn = DriverManager.getConnection(host+dbName, user,pass);
 			Statement st = cn.createStatement();
-			String query = "Insert into Usuario(nombre,apellido,dni,password,cuil,sexo,nacionalidad,fecha,idContacto,idDireccion,idTipoUsuario) values ('"+usuario.getNombre()+"','"+usuario.getApellido()+
-					"','"+usuario.getDni()+"','"+usuario.getPassword()+"', '"+ usuario.getCuil()+"','"+ usuario.getSexo()+"','"+ usuario.getNacionalidad()+"'"
-					+ "'"+usuario.getFecha()+"','"+ usuario.getContacto().getId()+"','"+ usuario.g+"')";
+			String query = "Insert into Usuario(nombre_usuario,dni_usuario,nombre_real,apellido_real,contraseña_usuario,cuil_usuario,sexo,nacionalidad,fecha_nacimiento,idContacto,idDireccion,TipoUsuario) values ('"+usuario.getUsuario()+"','"+usuario.getDni()+"','"+usuario.getNombre()+"','"+usuario.getApellido()+
+					"','"+usuario.getPassword()+"', '"+ usuario.getCuil()+"','"+ usuario.getSexo()+"','"+ usuario.getNacionalidad()+"'"
+					+ "'"+usuario.getFecha()+"','"+ usuario.getContacto().getId()+"','"+ usuario.getDireccion().getId()+"')";
 			filas=st.executeUpdate(query);
 		}
 		catch(Exception e)
@@ -94,9 +83,7 @@ public class Dao_Usuario {
 		return lista;
 	}
 	
-	
-
-	
+/*
 	public ArrayList<Usuario> obtenerUsuarios() {
 
 		try {
@@ -138,7 +125,7 @@ public class Dao_Usuario {
 		return lista;
 	}
 
-
+*/
 
 }
 

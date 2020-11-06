@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Usuario {
 	
-	int Id;
+	
 	String Usuario;
 	String Nombre;
 	String Apellido;
@@ -22,7 +22,7 @@ public class Usuario {
 			String sexo, String nacionalidad, Date fecha, Contacto contacto, Direccion direccion,
 			TipoUsuario tipoUsuario) {
 		super();
-		Id = id;
+		
 		Usuario = usuario;
 		Nombre = nombre;
 		Apellido = apellido;
@@ -38,7 +38,7 @@ public class Usuario {
 	}
 
 	public Usuario() {
-		Id = 0;
+		
 		Usuario = "";
 		Nombre = "";
 		Apellido = "";
@@ -54,12 +54,7 @@ public class Usuario {
 		
 	}
 	
-	public int getId() {
-		return Id;
-	}
-	public void setId(int id) {
-		Id = id;
-	}
+
 	public String getUsuario() {
 		return Usuario;
 	}
