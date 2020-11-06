@@ -10,19 +10,21 @@ public class Cuenta {
 	private String tipo_Cuenta;
 	private Date fecha_creacion;
 	private Double saldo;
+	private boolean estado;
 	
 	//Constructores
 	public Cuenta() {
 		
 	}
 	
-	public Cuenta(String cbu_cuenta, String nombre_usuario, String tipo_Cuenta, Date fecha_creacion, Double saldo) {
+	public Cuenta(String cbu_cuenta, String nombre_usuario, String tipo_Cuenta, Date fecha_creacion, Double saldo, boolean estado) {
 		
 		this.cbu_cuenta = cbu_cuenta;
 		this.nombre_usuario = nombre_usuario;
 		this.tipo_Cuenta = tipo_Cuenta;
 		this.fecha_creacion = fecha_creacion;
 		this.saldo = saldo;
+		this.estado = estado;
 	}
 	
 	//Gets y sets
@@ -65,5 +67,13 @@ public class Cuenta {
 	public void setSaldo(Double saldo) {
 		this.saldo = saldo;
 	}
+	
+	public Boolean getEstado() {
+		return estado;
+	}
 
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
+	}
+	
 }

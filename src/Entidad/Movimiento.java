@@ -11,6 +11,7 @@ public class Movimiento {
 	private Date fecha_creacion;
 	private String detalles;
 	private Double importe;
+	private boolean estado;
 	
 	//Constructores
 	public Movimiento() {
@@ -18,7 +19,7 @@ public class Movimiento {
 	}
 
 
-	public Movimiento(int id_movimiento, String cbu_cuenta, String tipo_movimiento, Date fecha_creacion, String detalles, Double importe) {
+	public Movimiento(int id_movimiento, String cbu_cuenta, String tipo_movimiento, Date fecha_creacion, String detalles, Double importe, boolean estado) {
 		
 		this.id_movimiento = id_movimiento;
 		this.cbu_cuenta = cbu_cuenta;
@@ -26,6 +27,7 @@ public class Movimiento {
 		this.fecha_creacion = fecha_creacion;
 		this.detalles = detalles;
 		this.importe = importe;
+		this.estado = estado;
 	}
 
 	//Gets y sets
@@ -86,6 +88,14 @@ public class Movimiento {
 
 	public void setImporte(Double importe) {
 		this.importe = importe;
+	}
+	
+	public Boolean getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
 	}
 	
 }

@@ -12,13 +12,14 @@ public class Prestamo {
 	private Date plazo_de_pago;
 	private Double pago_x_mes;
 	private int cantidad_cuotas;
+	private boolean estado;
 	
 	//Constructores
 	public Prestamo() {
 		
 	}
 
-	public Prestamo(int id_prestamo, String cbu_cuenta_deudor, Double inporte_pedido, Double inporte_con_intereses, Date plazo_de_pago, Double pago_x_mes, int cantidad_cuotas) {
+	public Prestamo(int id_prestamo, String cbu_cuenta_deudor, Double inporte_pedido, Double inporte_con_intereses, Date plazo_de_pago, Double pago_x_mes, int cantidad_cuotas, boolean estado) {
 		
 		this.id_prestamo = id_prestamo;
 		this.cbu_cuenta_deudor = cbu_cuenta_deudor;
@@ -27,6 +28,7 @@ public class Prestamo {
 		this.plazo_de_pago = plazo_de_pago;
 		this.pago_x_mes = pago_x_mes;
 		this.cantidad_cuotas = cantidad_cuotas;
+		this.estado = estado;
 	}
 	
 	//Gets y sets
@@ -86,5 +88,12 @@ public class Prestamo {
 		this.cantidad_cuotas = cantidad_cuotas;
 	}
 	
+	public Boolean getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
+	}
 	
 }

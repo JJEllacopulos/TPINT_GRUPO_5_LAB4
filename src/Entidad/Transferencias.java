@@ -8,17 +8,19 @@ public class Transferencias {
 	private int id_transferencia;
 	private int id_movimiento;
 	private String cbu_cuenta_destino;
+	private boolean estado;
 	
 	//Constructores
 	public Transferencias() {
 		
 	}
 
-	public Transferencias(int id_transferencia, int id_movimiento, String cbu_cuenta_destino) {
+	public Transferencias(int id_transferencia, int id_movimiento, String cbu_cuenta_destino, boolean estado) {
 		
 		this.id_transferencia = id_transferencia;
 		this.id_movimiento = id_movimiento;
 		this.cbu_cuenta_destino = cbu_cuenta_destino;
+		this.estado = estado;
 	}
 
 	//Gets y sets
@@ -44,6 +46,14 @@ public class Transferencias {
 
 	public void setCbu_cuenta_destino(String cbu_cuenta_destino) {
 		this.cbu_cuenta_destino = cbu_cuenta_destino;
+	}
+	
+	public Boolean getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
 	}
 	
 }

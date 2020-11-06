@@ -10,13 +10,14 @@ public class Direccion {
 	private String localidad;
 	private String provincia;
 	private String pais;
+	private boolean estado;
 	
 	//Constructores
 	public Direccion() {
 		
 	}
 	
-	public Direccion(int id_direccion, String nombre_usuario, String altura, String calle, String localidad, String provincia, String pais) {
+	public Direccion(int id_direccion, String nombre_usuario, String altura, String calle, String localidad, String provincia, String pais, boolean estado) {
 		
 		this.id_direccion = id_direccion;
 		this.nombre_usuario = nombre_usuario;
@@ -25,6 +26,7 @@ public class Direccion {
 		this.localidad = localidad;
 		this.provincia = provincia;
 		this.pais = pais;
+		this.estado = estado;
 	}
 	
 	//Gets y sets
@@ -82,6 +84,14 @@ public class Direccion {
 
 	public void setPais(String pais) {
 		this.pais = pais;
+	}
+	
+	public Boolean getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
 	}
 	
 }

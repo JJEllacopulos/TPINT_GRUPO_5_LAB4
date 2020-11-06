@@ -15,13 +15,14 @@ public class Usuario {
 	private String sexo;
 	private String nacionalidad;
 	private Date fecha_nacimiento;
+	private boolean estado;
 	
 	//Constructores
 	public Usuario() {
 		
 	}
 	
-	public Usuario(String nombre_usuario, String dni, String nombre_real, String apellido_real, String tipo_usuario, String password, String cuil, String sexo, String nacionalidad, Date fecha_nacimiento) {
+	public Usuario(String nombre_usuario, String dni, String nombre_real, String apellido_real, String tipo_usuario, String password, String cuil, String sexo, String nacionalidad, Date fecha_nacimiento, boolean estado) {
 		
 		this.nombre_usuario = nombre_usuario;
 		this.dni = dni;
@@ -33,6 +34,7 @@ public class Usuario {
 		this.sexo = sexo;
 		this.nacionalidad = nacionalidad;
 		this.fecha_nacimiento = fecha_nacimiento;
+		this.estado = estado;
 		
 	}
 	
@@ -115,6 +117,14 @@ public class Usuario {
 
 	public void setFecha_nacimiento(Date fecha_nacimiento) {
 		this.fecha_nacimiento = fecha_nacimiento;
+	}
+	
+	public Boolean getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
 	}
 	
 }

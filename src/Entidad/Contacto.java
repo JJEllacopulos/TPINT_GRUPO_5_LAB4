@@ -7,18 +7,20 @@ public class Contacto {
 	private String nombre_usuario;
 	private String email;
 	private String telefono;
+	private boolean estado;
 	
 	//Constructores
 	public Contacto() {
 		
 	}
 	
-	public Contacto(int id_contacto, String nombre_usuario, String email, String telefono) {
+	public Contacto(int id_contacto, String nombre_usuario, String email, String telefono, boolean estado) {
 		super();
 		this.id_contacto = id_contacto;
 		this.nombre_usuario = nombre_usuario;
 		this.email = email;
 		this.telefono = telefono;
+		this.estado = estado;
 	}
 	
 	//Gets y sets
@@ -53,6 +55,14 @@ public class Contacto {
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
+	}
+	
+	public Boolean getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
 	}
 	
 }
