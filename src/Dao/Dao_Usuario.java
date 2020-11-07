@@ -1,4 +1,5 @@
 package Dao;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -17,115 +18,36 @@ public class Dao_Usuario {
 	private String host = "jdbc:mysql://localhost:3306/";
 	private String user = "root";
 	private String pass = "ROOT";
-	private String dbName = "dbBanco";
+	private String dbName = "Banco";
 	
-	public int agregarUsuario(Usuario usuario)
+
+	public void SPAltaUsuario(Usuario usuario)
 	{
-		
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	
-		int filas=0;
 		Connection cn = null;
-		try
-		{	
-			cn = DriverManager.getConnection(host+dbName, user,pass);
-			Statement st = cn.createStatement();
-			String query = "Insert into Usuario(nombre_usuario,dni_usuario,nombre_real,apellido_real,contraseña_usuario,cuil_usuario,sexo,nacionalidad,fecha_nacimiento,idContacto,idDireccion,TipoUsuario) values ('"+usuario.getUsuario()+"','"+usuario.getDni()+"','"+usuario.getNombre()+"','"+usuario.getApellido()+
-					"','"+usuario.getPassword()+"', '"+ usuario.getCuil()+"','"+ usuario.getSexo()+"','"+ usuario.getNacionalidad()+"'"
-					+ "'"+usuario.getFecha()+"','"+ usuario.getContacto().getId()+"','"+ usuario.getDireccion().getId()+"')";
-			filas=st.executeUpdate(query);
-		}
-		catch(Exception e)
-		{
+		  try
+		  {
+			 cn = DriverManager.getConnection(host+dbName,user,pass);
+			 CallableStatement cst = cn.prepareCall("CALL crearUsuario(?,?,?,?,?,?,?,?,?,?,?)");
+			 cst.setString(1, usuario.getNombre_usuario());
+			 cst.setString(2, usuario.getDni());
+			 cst.setString(3, usuario.getNombre_real());
+			 cst.setString(4, usuario.getApellido_real());
+			 cst.setString(5, usuario.getTipo_usuario());
+			 cst.setString(6, usuario.getPassword());
+			 cst.setString(7, usuario.getCuil());
+			 cst.setString(8, usuario.getSexo());
+			 cst.setString(9, usuario.getNacionalidad());
+			 cst.setDate(10, (java.sql.Date) usuario.getFecha_nacimiento());
+			 cst.setBoolean(11, usuario.getEstado());
+		  }
+		  catch (Exception e) {
 			e.printStackTrace();
 		}
-		return filas;
+			
 	}
 	
-	public ArrayList<TipoUsuario> obtenerTipoUsuario() {
-
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		ArrayList<TipoUsuario> lista = new ArrayList<TipoUsuario>();
-		Connection conn = null;
-		try{
-			conn = DriverManager.getConnection(host + dbName, user, pass);
-			Statement st = conn.createStatement();
-			
-			ResultSet rs = st.executeQuery("Select idTipo,descripcion from tiposeguros");
-			
-			while(rs.next()){
-				
-				TipoUsuario tipoSeguro = new TipoUsuario();
-				tipoSeguro.setId(rs.getInt("idTipo"));
-				tipoSeguro.setDescripcion(rs.getString("descripcion"));
-				
-				lista.add(tipoSeguro);
-			}
-			conn.close();
-		}catch(Exception e){
-			e.printStackTrace();
-		}finally{
-		
-		}
-
-		return lista;
-	}
 	
-/*
-	public ArrayList<Usuario> obtenerUsuarios() {
 
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		ArrayList<Usuario> lista = new ArrayList<Usuario>();
-		Connection conn = null;
-		try{
-			conn = DriverManager.getConnection(host + dbName, user, pass);
-			Statement st = conn.createStatement();
-			
-			ResultSet rs = st.executeQuery("select s.idSeguro, s.descripcion, t.descripcion, t.idTipo, s.costoContratacion, s.costoAsegurado  from seguros as s inner join tiposeguros as t on t.idTipo = s.idTipo");
-			
-			while(rs.next()){
-				TipoUsuario tipoUsuario = new TipoUsuario();
-				Usuario usuario = new Usuario();
-				usuario.setId(rs.getInt("s.idSeguro"));
-				usuario.setDescripcion(rs.getString("s.descripcion"));
-				tipoUsuario.setDescripcion(rs.getString("t.descripcion"));
-				tipoUsuario.setId(rs.getInt("t.idTipo"));
-				seguro.setCosto_contratacion(rs.getDouble("s.costoContratacion"));
-				seguro.setCosto_asegurado(rs.getDouble("s.costoAsegurado"));
-				
-			
-				
-				lista.add(seguro);
-			}
-			conn.close();
-		}catch(Exception e){
-			e.printStackTrace();
-		}finally{
-		
-		}
-
-		return lista;
-	}
-
-*/
 
 }
 
