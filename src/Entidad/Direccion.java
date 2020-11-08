@@ -3,7 +3,6 @@ package Entidad;
 public class Direccion {
 	
 	//Campos
-	private int id_direccion;
 	private String nombre_usuario;
 	private String altura;
 	private String calle;
@@ -17,9 +16,8 @@ public class Direccion {
 		
 	}
 	
-	public Direccion(int id_direccion, String nombre_usuario, String altura, String calle, String localidad, String provincia, String pais, boolean estado) {
+	public Direccion(String nombre_usuario, String altura, String calle, String localidad, String provincia, String pais, boolean estado) {
 		
-		this.id_direccion = id_direccion;
 		this.nombre_usuario = nombre_usuario;
 		this.altura = altura;
 		this.calle = calle;
@@ -30,13 +28,6 @@ public class Direccion {
 	}
 	
 	//Gets y sets
-	public int getId_direccion() {
-		return id_direccion;
-	}
-
-	public void setId_direccion(int id_direccion) {
-		this.id_direccion = id_direccion;
-	}
 
 	public String getNombre_usuario() {
 		return nombre_usuario;

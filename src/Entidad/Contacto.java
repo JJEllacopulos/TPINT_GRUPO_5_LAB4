@@ -3,7 +3,7 @@ package Entidad;
 public class Contacto {
 	
 	//Campos
-	private int id_contacto;
+	
 	private String nombre_usuario;
 	private String email;
 	private String telefono;
@@ -14,9 +14,8 @@ public class Contacto {
 		
 	}
 	
-	public Contacto(int id_contacto, String nombre_usuario, String email, String telefono, boolean estado) {
-		super();
-		this.id_contacto = id_contacto;
+	public Contacto(String nombre_usuario, String email, String telefono, boolean estado) {
+		
 		this.nombre_usuario = nombre_usuario;
 		this.email = email;
 		this.telefono = telefono;
@@ -24,14 +23,6 @@ public class Contacto {
 	}
 	
 	//Gets y sets
-
-	public int getId_contacto() {
-		return id_contacto;
-	}
-
-	public void setId_contacto(int id_contacto) {
-		this.id_contacto = id_contacto;
-	}
 
 	public String getNombre_usuario() {
 		return nombre_usuario;
