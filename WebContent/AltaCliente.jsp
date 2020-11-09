@@ -72,6 +72,8 @@
       <label for="inputState">Sexo</label>
       <select class="form-control" name="ddlSexo">
         <option selected>Seleccionar...</option>
+        <option value=1>Femenino</option>
+        <option value=2>Masculino</option>
       </select>
     </div>
       </div>
