@@ -90,22 +90,33 @@
 
   </div>
       
-  <div class="form-group">
-    <label for="inputAddress">Dirección</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="Rivadavia 3005" name="txtDireccion">
+  <div class="form-row">
+  <div class="form-group col-md-6">
+    <label for="inputAddress">Calle</label>
+    <input type="text" class="form-control" id="inputAddress"  name="txtCalle">
+  </div>
+    <div class="form-group col-md-6">
+    <label for="inputAddress">Altura</label>
+    <input type="text" class="form-control" id="inputAddress" name="txtAltura">
+  </div>
   </div>
 
   <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputCity">Ciudad</label>
-      <input type="text" class="form-control" name="txtCiudad">
+    <div class="form-group col-md-4">
+      <label for="inputCity">Provincia</label>
+      <input type="text" class="form-control" name="txtProvincia">
     </div>
- <div class="form-group col-md-6">
+ <div class="form-group col-md-4">
       <label for="inputCity">Localidad</label>
-      <input type="text" class="form-control" id="inputLocalidad">
+      <input type="text" class="form-control" name="txtLocalidad">
+    </div>
+     <div class="form-group col-md-4">
+      <label for="inputCity">País</label>
+      <input type="text" class="form-control" name="txtPais">
     </div>
 
   </div>
+  
 	<input type="submit" class="btn btn-primary crear" value="Crear cliente" name="btnAceptar">
   
 </form>

@@ -54,6 +54,65 @@ public class Dao_Usuario {
 			
 	}
 
+	public void SPAltaDireccionUsuario(Direccion direccion)
+	{
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Connection cn = null;
+		  try
+		  {
+			 cn = DriverManager.getConnection(host+dbName, user,pass);
+			 CallableStatement cst = cn.prepareCall("CALL PRO_ingresar_direccion(?,?,?,?,?,?)");
+			 cst.setString(1, direccion.getNombre_usuario());
+			 cst.setString(2, direccion.getAltura());
+			 cst.setString(3, direccion.getCalle());
+			 cst.setString(4, direccion.getLocalidad());
+			 cst.setString(5, direccion.getProvincia());
+			 cst.setString(6, direccion.getPais());
+			 cst.execute();
+		  }
+		  catch (Exception e) {
+			e.printStackTrace();
+		}
+			
+	}
+	
+	/*
+	 	CREATE PROCEDURE PRO_ingresar_contacto(
+		
+		ing_nombre_usuario VARCHAR(25),
+		ing_email VARCHAR(50),
+		ing_telefono VARCHAR(25)
+		 */
+	public void SPAltaContactoUsuario(Contacto contacto)
+	{
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Connection cn = null;
+		  try
+		  {
+			 cn = DriverManager.getConnection(host+dbName, user,pass);
+			 CallableStatement cst = cn.prepareCall("CALL PRO_ingresar_contacto(?,?,?)");
+			 cst.setString(1, contacto.getNombre_usuario());
+			 cst.setString(2, contacto.getEmail());
+			 cst.setString(3, contacto.getTelefono());
+		
+			 cst.execute();
+		  }
+		  catch (Exception e) {
+			e.printStackTrace();
+		}
+			
+	}
+
 
 }
 

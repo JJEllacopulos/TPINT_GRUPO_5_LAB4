@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import Negocio.NegocioUsuario;
 import Entidad.Usuario;
+import Entidad.Direccion;
+import Entidad.Contacto;
 
 /**
  * Servlet implementation class servletsCliente
@@ -40,6 +42,8 @@ public class servletsCliente extends HttpServlet {
 		if(request.getParameter("btnAceptar")!=null)
 		{
 			Usuario usuario = new Usuario();
+			Direccion direccion = new Direccion();
+			Contacto contacto = new Contacto();
 			SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
 			NegocioUsuario usuarioNegocio = new NegocioUsuario();
 			String sexo;
@@ -58,11 +62,27 @@ public class servletsCliente extends HttpServlet {
 	        usuario.setTipo_usuario("user");
 	        usuario.setPassword(request.getParameter("txtPassword"));
 	        usuario.setCuil(request.getParameter("txtCuil"));
-	  
 	        usuario.setNacionalidad(request.getParameter("txtNacionalidad"));
 	        usuario.setEstado(true);
 	        
+	        contacto.setEmail(request.getParameter("txtEmail"));
+	        contacto.setNombre_usuario(usuario.getNombre_usuario());
+	        contacto.setTelefono(request.getParameter("txtTelefono"));
+	        
+	        direccion.setAltura(request.getParameter("txtAltura"));
+	        direccion.setCalle(request.getParameter("txtCalle"));
+	        direccion.setLocalidad(request.getParameter("txtLocalidad"));
+	        direccion.setNombre_usuario(usuario.getNombre_usuario());
+	        direccion.setPais(request.getParameter("txtPais"));
+	        
+	        direccion.setProvincia(request.getParameter("txtProvincia"));
+	        
+	       
 	        usuarioNegocio.SPAltaUsuario(usuario,fecha);
+	        usuarioNegocio.SPAltaDireccionUsuario(direccion);
+	        usuarioNegocio.SPAltaContactoUsuario(contacto);
+	        
+	        
 			RequestDispatcher rd = request.getRequestDispatcher("/AltaCliente.jsp");   
 	        rd.forward(request, response);   
 			 
