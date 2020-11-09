@@ -31,12 +31,12 @@
 <form class="Alta">
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputEmail4">Usuario</label>
-      <input type="text" class="form-control" id="inputEmail">
+      <label for="txtUsuario">Usuario</label>
+      <input type="text" class="form-control" id="txtUsuario">
     </div>
           <div class="form-group col-md-6">
-      <label for="inputState">Tipo de cuenta</label>
-      <select id="inputState" class="form-control">
+      <label for="tipoCuenta">Tipo de cuenta</label>
+      <select id="tipoCuenta" class="form-control">
         <option selected>Seleccionar...</option>
         <option>Opcion 1</option>
         <option>Opcion 2</option>
@@ -45,16 +45,16 @@
   </div>
     <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputEmail4">CBU</label>
-      <input type="email" class="form-control" id="inputEmail">
+      <label for="txtCBU">CBU</label>
+      <input type="text" class="form-control" id="txtCBU">
     </div>
     <div class="form-group col-md-6">
-      <label for="inputPassword4">Saldo</label>
-      <input type="text" class="form-control" id="inputPassword">
+      <label for="txtSaldo">Saldo</label>
+      <input type="text" class="form-control" id="txtSaldo">
     </div>
   </div>
 
-  <button type="submit" class="btn btn-primary crear">Crear cuenta</button>
+  <input type="submit" class="btn btn-primary crear" value="Crear cuenta" name="btnCrearCuenta">
 </form>
 </div>
 </body>

@@ -20,7 +20,6 @@ public class NegocioUsuario implements InterfaceUsuario {
 		
 	}
 
-
 	@Override
 	public void SPAltaDireccionUsuario(Direccion direccion) {
 		// TODO Auto-generated method stub
@@ -34,7 +33,7 @@ public class NegocioUsuario implements InterfaceUsuario {
 		daoUsuario.SPAltaContactoUsuario(contacto);
 	}
 
-
+	
 
 	
 
