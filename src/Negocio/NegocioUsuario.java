@@ -66,6 +66,24 @@ public class NegocioUsuario implements InterfaceUsuario {
 		return usuario;
 	}
 
+	@Override
+	public void SPEliminarUsuario(String usuarioNombre) {
+		// TODO Auto-generated method stub
+		daoUsuario.SPEliminarUsuario(usuarioNombre);
+	}
+
+	@Override
+	public void SPEliminarDireccionUsuario(String usuarioNombre) {
+		// TODO Auto-generated method stub
+		daoUsuario.SPEliminarDireccionUsuario(usuarioNombre);
+	}
+
+	@Override
+	public void SPEliminarContactoUsuario(String usuarioNombre) {
+		// TODO Auto-generated method stub
+		daoUsuario.SPEliminarContactoUsuario(usuarioNombre);
+	}
+
 	
 
 	

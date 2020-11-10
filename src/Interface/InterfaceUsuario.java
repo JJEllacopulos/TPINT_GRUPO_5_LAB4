@@ -14,5 +14,10 @@ public interface InterfaceUsuario {
 	public void SPModificarUsuario(Usuario usuario, String fecha);
 	public void SPModificarDireccionUsuario(Direccion direccion);
 	public void SPModificarContactoUsuario(Contacto contacto);
+	
 	public Usuario Obtener_usuario (String nombreUsuario);
+	
+	public void SPEliminarUsuario(String usuarioNombre);
+	public void SPEliminarDireccionUsuario(String usuarioNombre);
+	public void SPEliminarContactoUsuario(String usuarioNombre);
 }

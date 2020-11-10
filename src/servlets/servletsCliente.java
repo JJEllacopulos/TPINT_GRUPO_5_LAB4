@@ -156,6 +156,20 @@ public class servletsCliente extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/ListadoClientesAdmin.jsp");    
 	        rd.forward(request, response); 
 		}
+		
+		if(request.getParameter("btnEliminar")!=null) {
+			String nombreUsuario = request.getParameter("nombreUsuario");
+			
+			usuarioNegocio.SPEliminarDireccionUsuario(nombreUsuario);
+			usuarioNegocio.SPEliminarContactoUsuario(nombreUsuario);
+			usuarioNegocio.SPEliminarUsuario(nombreUsuario);
+			
+	        ArrayList<Usuario> lista = usuarioNegocio.Obtener_lista_usuarios();
+			request.setAttribute("listaU", lista);
+			RequestDispatcher rd = request.getRequestDispatcher("/ListadoClientesAdmin.jsp");    
+	        rd.forward(request, response); 
+			
+		}
 	}
 		
 	

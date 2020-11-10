@@ -324,7 +324,77 @@ public void SPModificarContactoUsuario(Contacto contacto)
 	}
 		
 }
+public void SPEliminarUsuario(String usuarioNombre)
+{
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	Connection cn = null;
+	  try
+	  {
+		 cn = DriverManager.getConnection(host+dbName, user,pass);
+		 CallableStatement cst = cn.prepareCall("CALL PRO_Desabilitar_usuario(?)");
+		 cst.setString(1, usuarioNombre);
 
+	
+		 cst.execute();
+	  }
+	  catch (Exception e) {
+		e.printStackTrace();
+	}
+		
+}
+
+public void SPEliminarDireccionUsuario(String usuarioNombre)
+{
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	Connection cn = null;
+	  try
+	  {
+		 cn = DriverManager.getConnection(host+dbName, user,pass);
+		 CallableStatement cst = cn.prepareCall("CALL PRO_Desabilitar_direccion(?)");
+		 cst.setString(1, usuarioNombre);
+
+	
+		 cst.execute();
+	  }
+	  catch (Exception e) {
+		e.printStackTrace();
+	}
+		
+}
+
+public void SPEliminarContactoUsuario(String usuarioNombre)
+{
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	Connection cn = null;
+	  try
+	  {
+		 cn = DriverManager.getConnection(host+dbName, user,pass);
+		 CallableStatement cst = cn.prepareCall("CALL PRO_Desabilitar_contacto(?)");
+		 cst.setString(1, usuarioNombre);
+
+	
+		 cst.execute();
+	  }
+	  catch (Exception e) {
+		e.printStackTrace();
+	}
+		
+}
 
 
 
