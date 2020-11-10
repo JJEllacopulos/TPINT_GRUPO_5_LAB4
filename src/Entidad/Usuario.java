@@ -15,6 +15,30 @@ public class Usuario {
 	private String sexo;
 	private String nacionalidad;
 	private Date fecha_nacimiento;
+	private Contacto contacto;
+	private Direccion direccion;
+	
+	
+	public Contacto getContacto() {
+		return contacto;
+	}
+
+	public void setContacto(Contacto contacto) {
+		this.contacto = contacto;
+	}
+
+	public Direccion getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion1(Direccion direccion) {
+		this.direccion = direccion;
+	}
+
+	public void setEstado(boolean estado) {
+		this.estado = estado;
+	}
+
 	private boolean estado;
 	
 	//Constructores
@@ -125,6 +149,11 @@ public class Usuario {
 
 	public void setEstado(Boolean estado) {
 		this.estado = estado;
+	}
+
+	public void setDireccion(Direccion direccion2) {
+		// TODO Auto-generated method stub
+		this.direccion = direccion;
 	}
 	
 }

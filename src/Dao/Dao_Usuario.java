@@ -112,6 +112,65 @@ public class Dao_Usuario {
 		}
 			
 	}
+	
+public ArrayList<Usuario> Obtener_lista_usuarios () {
+		
+		ArrayList<Usuario> x = new ArrayList<Usuario>();
+		Direccion direccion = new Direccion();
+		Contacto contacto = new Contacto();
+		Connection cn = null;
+		
+		try {
+			
+			cn = DriverManager.getConnection(host+dbName, user, pass);
+			CallableStatement st = cn.prepareCall("CALL PRO_ingresar_contacto()");
+			
+			
+			ResultSet resultado = st.executeQuery();
+			/*  
+ nombre_usuario, dni_usuario, nombre_real, apellido_real, contraseña_usuario, cuil_usuario, sexo, nacionalidad, fecha_nacimiento,
+calle, altura, localidad, provincia, pais,
+email, telefono
+			 */
+			while(resultado.next()){
+				
+				Usuario aux = new Usuario();
+				aux.setNombre_usuario(resultado.getString("nombre_usuario"));
+				aux.setDni(resultado.getString("dni_usuario"));
+				aux.setNombre_real(resultado.getString("nombre_real"));
+				aux.setApellido_real(resultado.getString("apellido_real"));
+				aux.setPassword(resultado.getString("contraseña_usuario"));
+				aux.setCuil(resultado.getString("cuil_usuario"));
+				aux.setSexo(resultado.getString("sexo"));
+				aux.setNacionalidad(resultado.getString("nacionalidad"));
+				aux.setFecha_nacimiento(resultado.getDate("fecha_nacimiento"));
+				direccion.setAltura(resultado.getString("altura"));
+				direccion.setCalle(resultado.getString("calle"));
+				direccion.setLocalidad(resultado.getString("localidad"));
+				direccion.setProvincia(resultado.getString("provincia"));
+				direccion.setPais(resultado.getString("pais"));
+				contacto.setEmail(resultado.getString("email"));
+				contacto.setTelefono(resultado.getString("telefono"));
+				
+				aux.setDireccion(direccion); 
+				aux.setContacto(contacto); 
+				
+				x.add(aux);
+				
+			}
+			
+		}
+		catch(Exception e) {
+			
+			e.printStackTrace();
+			
+		}
+		
+		return x;
+		
+	}
+
+
 
 
 }
