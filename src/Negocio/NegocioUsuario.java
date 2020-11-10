@@ -65,6 +65,12 @@ public class NegocioUsuario implements InterfaceUsuario {
 		// TODO Auto-generated method stub
 		return usuario;
 	}
+	
+	@Override
+	public boolean Verificar_usuario(String nombreUsuario, String contraseñaUsuario) {
+		
+		return daoUsuario.Confirmar_usuario(nombreUsuario, contraseñaUsuario);
+	}
 
 	@Override
 	public void SPEliminarUsuario(String usuarioNombre) {

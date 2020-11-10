@@ -238,6 +238,47 @@ public Usuario Obtener_usuario (String nombreUsuario) {
 		
 	}
 
+public boolean Confirmar_usuario (String nombreUsuario, String contraseñaUsuario) {
+	
+	
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	boolean aux;
+		Direccion direccion = new Direccion();
+		Contacto contacto = new Contacto();
+		Connection cn = null;
+		
+		try {
+			
+			cn = DriverManager.getConnection(host+dbName, user,pass);
+			CallableStatement st = cn.prepareCall("CALL PRO_Confirmar_usuario(?,?)");
+			 st.setString(1, nombreUsuario);
+			 st.setString(2, contraseñaUsuario);
+			 
+			
+			ResultSet resultado = st.executeQuery();
+
+			while(resultado.next()){
+				
+				aux = resultado.getBoolean("resultado");
+				
+			}
+				
+			
+		}
+		catch(Exception e) {
+			
+			e.printStackTrace();
+			
+		}
+		
+		return aux;
+		
+	}
 
 
 public void SPModificarUsuario(Usuario usuario, String fecha)
