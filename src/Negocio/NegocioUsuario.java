@@ -33,6 +33,12 @@ public class NegocioUsuario implements InterfaceUsuario {
 		daoUsuario.SPAltaContactoUsuario(contacto);
 	}
 
+	@Override
+	public ArrayList<Usuario> Obtener_lista_usuarios() {
+		ArrayList<Usuario> lista = daoUsuario.Obtener_lista_usuarios();
+		return lista;
+	}
+
 	
 
 	

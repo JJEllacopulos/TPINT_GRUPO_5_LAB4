@@ -115,15 +115,22 @@ public class Dao_Usuario {
 	
 public ArrayList<Usuario> Obtener_lista_usuarios () {
 		
-		ArrayList<Usuario> x = new ArrayList<Usuario>();
+		
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	ArrayList<Usuario> x = new ArrayList<Usuario>();
 		Direccion direccion = new Direccion();
 		Contacto contacto = new Contacto();
 		Connection cn = null;
 		
 		try {
 			
-			cn = DriverManager.getConnection(host+dbName, user, pass);
-			CallableStatement st = cn.prepareCall("CALL PRO_ingresar_contacto()");
+			cn = DriverManager.getConnection(host+dbName, user,pass);
+			CallableStatement st = cn.prepareCall("CALL PRO_Listar_usuario_full");
 			
 			
 			ResultSet resultado = st.executeQuery();
@@ -169,6 +176,40 @@ email, telefono
 		return x;
 		
 	}
+
+
+public void SPModificarUsuario(Usuario usuario, String fecha)
+{
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	Connection cn = null;
+	  try
+	  {
+		 cn = DriverManager.getConnection(host+dbName, user,pass);
+		 CallableStatement cst = cn.prepareCall("CALL PRO_ingresar_datos_usuario(?,?,?,?,?,?,?,?,?,?,?)");
+		 cst.setString(1, usuario.getNombre_usuario());
+		 cst.setString(2, usuario.getDni());
+		 cst.setString(3, usuario.getNombre_real());
+		 cst.setString(4, usuario.getApellido_real());
+		 cst.setString(5, usuario.getTipo_usuario());
+		 cst.setString(6, usuario.getPassword());
+		 cst.setString(7, usuario.getCuil());
+		 cst.setString(8, usuario.getSexo());
+		 cst.setString(9, usuario.getNacionalidad());
+		 cst.setDate(10, java.sql.Date.valueOf(fecha));
+		 cst.setBoolean(11, usuario.getEstado());
+		 cst.execute();
+	  }
+	  catch (Exception e) {
+		e.printStackTrace();
+	}
+		
+}
+
 
 
 

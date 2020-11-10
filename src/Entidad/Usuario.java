@@ -151,7 +151,7 @@ public class Usuario {
 		this.estado = estado;
 	}
 
-	public void setDireccion(Direccion direccion2) {
+	public void setDireccion(Direccion direccion) {
 		// TODO Auto-generated method stub
 		this.direccion = direccion;
 	}

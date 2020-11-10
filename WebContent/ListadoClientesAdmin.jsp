@@ -1,3 +1,5 @@
+<%@page import="Entidad.Usuario"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -35,8 +37,10 @@
  	 
 </Style>
 </head>
+
 <body>
 <jsp:include page="MenuAdmin.html"></jsp:include>
+
 
 <div class="container Mover  ">
 <div class="row mt-5  ">
@@ -45,17 +49,26 @@
       <button type="submit" class="btn btn-primary ml-2 ">Buscar</button>
     </div>
     </div>
+    
+    	
+<%
+ArrayList<Usuario> listaU = new ArrayList<Usuario>();
+Usuario usuario = new Usuario();
+listaU = (ArrayList<Usuario>)request.getAttribute("listaU");
+
+		%>
 
 <div class="container">
 <table class="table ">
   <thead class="thead-light">
     <tr>
+      <th scope="col">Usuario</th>
       <th scope="col">Nombre</th>
       <th scope="col">Apellido</th>
       <th scope="col">DNI</th>
       <th scope="col">Email</th>
-      <th scope="col">Usuario</th>
       <th scope="col">Teléfono</th>
+      <th scope="col">Provincia</th>
       <th scope="col">Eliminar</th>
       <th scope="col">Modificar</th>
       <th scope="col">Detalles</th>
@@ -63,17 +76,24 @@
     </tr>
   </thead>
   <tbody>
+    <%  if(listaU!=null){
+  		 for(Usuario e : listaU)
+		{
+%>
     <tr>
-      <td>Francisco</td>
-      <td>Alberto</td>
-       <td>39615232</td>
-       <td>tuemail@gmail.com</td>
-      <td>Francisco1996</td>
-      <td>01147565518</td>
+      <td><%=e.getNombre_usuario() %></td>
+      <td><%=e.getNombre_real() %></td>
+      <td><%=e.getApellido_real()%></td>
+      <td><%=e.getDni()%></td>
+      <td><%=e.getContacto().getEmail()%></td>
+      <td><%=e.getContacto().getTelefono()%></td>
+      <td><%=e.getDireccion().getProvincia()%></td>
+    
       <td><button type="submit" class="btn btn-danger ">Eliminar</button></td> 
       <td><button type="submit" class="btn btn-primary ">Modificar</button></td> 
       <td><button type="submit" class="btn btn-success">Detalles</button></td> 
     </tr>
+    <%  } }%>	
   </tbody>
 </table>
 </div>

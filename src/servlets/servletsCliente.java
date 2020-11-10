@@ -37,15 +37,27 @@ public class servletsCliente extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		Usuario usuario = new Usuario();
+		NegocioUsuario usuarioNegocio = new NegocioUsuario();
 		
+		if(request.getParameter("Param1")!=null) {
+						
+						   
+		    ArrayList<Usuario> lista = usuarioNegocio.Obtener_lista_usuarios();
+		    
+			request.setAttribute("listaU", lista);
+						
+			RequestDispatcher rd = request.getRequestDispatcher("/ListadoClientesAdmin.jsp");   
+	        rd.forward(request, response);
+			
+		}
 		
 		if(request.getParameter("btnAceptar")!=null)
 		{
-			Usuario usuario = new Usuario();
+			
 			Direccion direccion = new Direccion();
 			Contacto contacto = new Contacto();
 			SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
-			NegocioUsuario usuarioNegocio = new NegocioUsuario();
 			String sexo;
 			String fecha  = request.getParameter("txtFechaNacimiento");
 		
