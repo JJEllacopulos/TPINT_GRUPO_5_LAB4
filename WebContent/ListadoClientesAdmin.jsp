@@ -80,8 +80,10 @@ listaU = (ArrayList<Usuario>)request.getAttribute("listaU");
   		 for(Usuario e : listaU)
 		{
 %>
+
     <tr>
-      <td><%=e.getNombre_usuario() %></td>
+      <form action="servletsCliente" method="get">
+      <td><%=e.getNombre_usuario() %> <input type="hidden" name="nombreUsuario" value="<%=e.getNombre_usuario() %>"></td>
       <td><%=e.getNombre_real() %></td>
       <td><%=e.getApellido_real()%></td>
       <td><%=e.getDni()%></td>
@@ -89,10 +91,12 @@ listaU = (ArrayList<Usuario>)request.getAttribute("listaU");
       <td><%=e.getContacto().getTelefono()%></td>
       <td><%=e.getDireccion().getProvincia()%></td>
     
-      <td><button type="submit" class="btn btn-danger ">Eliminar</button></td> 
-      <td><button type="submit" class="btn btn-primary ">Modificar</button></td> 
-      <td><button type="submit" class="btn btn-success">Detalles</button></td> 
+      <td><button type="submit" class="btn btn-danger" name="btnEliminar">Eliminar</button></td> 
+      <td><button type="submit" class="btn btn-primary" name="btnModificar">Modificar</button></td> 
+      <td><button type="submit" class="btn btn-success" name="btnModificar">Detalles</button></td> 
+      </form>
     </tr>
+    
     <%  } }%>	
   </tbody>
 </table>

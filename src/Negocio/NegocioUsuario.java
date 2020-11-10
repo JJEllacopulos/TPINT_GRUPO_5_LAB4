@@ -39,6 +39,33 @@ public class NegocioUsuario implements InterfaceUsuario {
 		return lista;
 	}
 
+	@Override
+	public void SPModificarUsuario(Usuario usuario, String fecha) {
+		// TODO Auto-generated method stub
+		daoUsuario.SPModificarUsuario(usuario, fecha);
+	}
+
+	@Override
+	public void SPModificarDireccionUsuario(Direccion direccion) {
+		// TODO Auto-generated method stub
+		daoUsuario.SPModificarDireccionUsuario(direccion);
+	}
+
+	@Override
+	public void SPModificarContactoUsuario(Contacto contacto) {
+		// TODO Auto-generated method stub
+		daoUsuario.SPModificarContactoUsuario(contacto);
+	}
+
+	@Override
+	public Usuario Obtener_usuario(String nombreUsuario) {
+	Usuario usuario = new Usuario();
+		usuario = daoUsuario.Obtener_usuario(nombreUsuario);
+		
+		// TODO Auto-generated method stub
+		return usuario;
+	}
+
 	
 
 	

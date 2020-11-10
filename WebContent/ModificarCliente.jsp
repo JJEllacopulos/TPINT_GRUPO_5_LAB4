@@ -1,3 +1,4 @@
+<%@page import="Entidad.Usuario"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -28,76 +29,121 @@
 <title>Modificar de cliente</title>
 </head>
 <body>
+
 <jsp:include page="MenuAdmin.html"></jsp:include>
+<%
+
+Usuario usuario = new Usuario();
+usuario = (Usuario)request.getAttribute("usuario");
+
+		%>
 <div class="container">
 <h1 class="mt-3 text-center mb-1 text-info">Modificar cliente</h1>
 <form class="Alta">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Usuario</label>
-      <input type="text" class="form-control" id="inputEmail"readonly>
+      <input type="text" class="form-control" value="<%=usuario.getNombre_usuario()%>" name="txtUsuario" readonly>
     </div>
-    <div class="form-group col-md-6">
+     <div class="form-group col-md-6">
       <label for="inputPassword4">Password</label>
-      <input type="password" class="form-control" id="inputPassword">
+      <input type="password" class="form-control" value="<%=usuario.getPassword()%>" name="txtPassword">
     </div>
   </div>
     <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="inputEmail">
+      <input type="email" class="form-control" value="<%=usuario.getContacto().getEmail()%>" name="txtEmail">
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">Teléfono</label>
-      <input type="text" class="form-control" id="inputPassword">
+      <input type="text" class="form-control" value="<%=usuario.getContacto().getTelefono()%>" name="txtTelefono">
     </div>
   </div>
     <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Cuil</label>
-      <input type="text" class="form-control" id="inputEmail">
+      <input type="text" class="form-control" value="<%=usuario.getCuil()%>" name="txtCuil">
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">Dni</label>
-      <input type="text" class="form-control" id="inputPassword">
+      <input type="text" class="form-control" value="<%=usuario.getDni()%>" name="txtDni">
     </div>
   </div>
     <div class="form-row">
     <div class="form-group col-md-4">
       <label for="inputEmail4">Nombre</label>
-      <input type="text" class="form-control" id="inputnombre">
+      <input type="text" class="form-control" value="<%=usuario.getNombre_real()%>" name="txtNombre">
     </div>
     <div class="form-group col-md-4">
       <label for="inputPassword4">Apellido</label>
-      <input type="text" class="form-control" id="inputApellido">
+      <input type="text" class="form-control" value="<%=usuario.getApellido_real()%>" name="txtApellido">
         </div>
-          <div class="form-group col-md-4">
+        <%if(usuario.getSexo()=="F") {%>
+			          <div class="form-group col-md-4">
       <label for="inputState">Sexo</label>
-      <select id="inputState" class="form-control">
-        <option selected>Seleccionar...</option>
-        <option>Femenino</option>
-        <option>Masculino</option>
+      <select class="form-control" name="ddlSexo">
+      
+        <option selected value=1>Femenino</option>
+        <option value=2>Masculino</option>
       </select>
     </div>
+		<% }
+		else {%>
+	          <div class="form-group col-md-4">
+<label for="inputState">Sexo</label>
+<select class="form-control" name="ddlSexo">
+
+<option value=1>Femenino</option>
+<option selected value=2>Masculino</option>
+</select>
+</div>
+			
+	<%	} %>
+        
+
       </div>
-  <div class="form-group">
-    <label for="inputAddress">Dirección</label>
-    <input type="text" class="form-control" id="inputAddress" placeholder="Rivadavia 3005">
+      
+        <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">Fecha de nacimiento</label>
+      <input type="date" class="form-control" value="<%=usuario.getFecha_nacimiento()%>" name="txtFechaNacimiento">
+    </div>
+ <div class="form-group col-md-6">
+      <label for="inputCity">Nacionalidad</label>
+      <input type="text" class="form-control" value="<%=usuario.getNacionalidad()%>" name="txtNacionalidad">
+    </div>
+
+  </div>
+      
+  <div class="form-row">
+  <div class="form-group col-md-6">
+    <label for="inputAddress">Calle</label>
+    <input type="text" class="form-control" id="inputAddress" value="<%=usuario.getDireccion().getCalle()%>"  name="txtCalle">
+  </div>
+    <div class="form-group col-md-6">
+    <label for="inputAddress">Altura</label>
+    <input type="text" class="form-control" id="inputAddress" value="<%=usuario.getDireccion().getAltura()%>" name="txtAltura">
+  </div>
   </div>
 
   <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputCity">Ciudad</label>
-      <input type="text" class="form-control" id="inputCity">
+    <div class="form-group col-md-4">
+      <label for="inputCity">Provincia</label>
+      <input type="text" class="form-control" value="<%=usuario.getDireccion().getProvincia()%>" name="txtProvincia">
     </div>
- <div class="form-group col-md-6">
+ <div class="form-group col-md-4">
       <label for="inputCity">Localidad</label>
-      <input type="text" class="form-control" id="inputCity">
+      <input type="text" class="form-control" value="<%=usuario.getDireccion().getLocalidad()%>" name="txtLocalidad">
+    </div>
+     <div class="form-group col-md-4">
+      <label for="inputCity">País</label>
+      <input type="text" class="form-control" value="<%=usuario.getDireccion().getPais()%>" name="txtPais">
     </div>
 
   </div>
-
-  <button type="submit" class="btn btn-primary crear">Aceptar</button>
+  
+	<input type="submit" class="btn btn-primary crear" value="Modificar" name="btnModificarUsuario">
 </form>
 </div>
 </body>
