@@ -1,3 +1,5 @@
+<%@page import="Entidad.Cuenta"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -41,16 +43,29 @@
     </tr>
   </thead>
   <tbody>
+    
+  <%
+ArrayList<Cuenta> listaC = new ArrayList<Cuenta>();
+Cuenta cuenta = new Cuenta();
+listaC = (ArrayList<Cuenta>)request.getAttribute("listaC");
+
+		%>
+    
+    <%  if(listaC!=null){
+  		 for(Cuenta e : listaC)
+		{
+%>
+
     <tr>
-      <td>Cuenta corriente</td>
-      <td class="text-success"><b>$20000</b></td>
-      <td><button type="submit" class="btn btn-primary boton ">Ver movimientos</button></td> 
-    </tr>
-        <tr>
-      <td>Caja de ahorro</td>
-      <td class="text-success"><b>$15575</b></td>
-      <td><button type="submit" class="btn btn-primary boton ">Ver movimientos</button></td> 
-    </tr>
+      <form action="servletsCuentas" method="get">
+      <td><%=e.getTipo_Cuenta() %></td>
+      <td><%= e.getSaldo() %></td>
+   <td><button type="submit" class="btn btn-primary boton " name="btnVerMovimientos">Ver movimientos</button></td> 
+   
+    
+    <%  } }%>
+       
+    
   </tbody>
 </table>
 </div>
