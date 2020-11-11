@@ -27,8 +27,7 @@
 </head>
 <body>
 <div class="container">
-<form class="form-signin" action="ServletLogin" method="post">
-
+<form action="ServletsLogin" method="post">
 
   <div class="form-label-group">
     <input type="text"  name= "txtName" class="form-control" placeholder="Email address" required="" autofocus="">
@@ -45,7 +44,7 @@
       <input type="checkbox" value="remember-me"> Remember me
     </label>
   </div>
-  <button name = "btnAceptar" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+ <input type="submit" class="btn btn-primary crear" value="Aceptar" name="btnAceptar">
   <p class="mt-5 mb-3 text-muted text-center">© 2017-2020</p>
 </form>
 </div>

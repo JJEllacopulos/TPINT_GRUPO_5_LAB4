@@ -247,7 +247,7 @@ public boolean Confirmar_usuario (String nombreUsuario, String contraseñaUsuario
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	boolean aux;
+	boolean aux = false;
 		Direccion direccion = new Direccion();
 		Contacto contacto = new Contacto();
 		Connection cn = null;
