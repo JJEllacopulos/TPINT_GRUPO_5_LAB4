@@ -92,6 +92,21 @@ public class servletsCuentas extends HttpServlet {
 	        rd.forward(request, response);
 		}
 		
+		if(request.getParameter("btnEliminar")!=null) {
+		//String cbuCuenta;
+		//cbuCuenta = request.getParameter("cbuCuenta");
+			
+		if (request.getParameter("cbuCuenta")!=null)
+			
+			cuentaNegocio.Eliminar_cuenta(request.getParameter("cbuCuenta"));
+			
+			ArrayList<Cuenta> lista = cuentaNegocio.Obtener_todasLasCuentas ();
+			request.setAttribute("listaC", lista);
+				
+				RequestDispatcher rd = request.getRequestDispatcher("/ModificarCuenta.jsp");   
+		        rd.forward(request, response);
+		}
+		
 		
 	}
 

@@ -44,5 +44,13 @@ public class NegocioCuentas implements InterfaceCuentas {
 		return cuenta;
 	}
 
+	@Override
+	public Cuenta Eliminar_cuenta(String cbuCuenta) {
+		// TODO Auto-generated method stub
+		Cuenta cuenta = new Cuenta();
+		cuenta = daoCuentas.Obtener_cuenta(cbuCuenta);
+		return cuenta;
+	}
+	
 
 }

@@ -139,7 +139,7 @@ public ArrayList<Cuenta> Obtener_todasLasCuentas () {
 			try {
 				
 				cn = DriverManager.getConnection(host+dbName, user,pass);
-				CallableStatement st = cn.prepareCall("CALL PRO_ObtenerTodasLasCuentas");
+				CallableStatement st = cn.prepareCall("CALL PRO_Listar_cuenta");
 							
 				ResultSet resultado = st.executeQuery();
 				/*  
@@ -185,7 +185,7 @@ public Cuenta Obtener_cuenta(String cbuCuenta) {
 		try {
 			
 			cn = DriverManager.getConnection(host+dbName, user,pass);
-			CallableStatement st = cn.prepareCall("CALL PRO_Obtener_Cuentas(?)");
+			CallableStatement st = cn.prepareCall("CALL PRO_Buscar_cuenta(?)");
 			 st.setString(1, cbuCuenta);
 			 
 			
@@ -214,5 +214,28 @@ public Cuenta Obtener_cuenta(String cbuCuenta) {
 		return aux;
 		
 	}
+
+public void SPEliminarCuenta(String CBUcuenta)
+{
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	Connection cn = null;
+	  try
+	  {
+		 cn = DriverManager.getConnection(host+dbName, user,pass);
+		 CallableStatement cst = cn.prepareCall("CALL PRO_Desabilitar_cuenta(?)");
+		 cst.setString(1, CBUcuenta);
+	
+		 cst.execute();
+	  }
+	  catch (Exception e) {
+		e.printStackTrace();
+	}
+		
+}
 	
 }
