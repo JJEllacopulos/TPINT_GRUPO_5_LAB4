@@ -1,3 +1,4 @@
+<%@page import="Entidad.Cuenta"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -26,13 +27,20 @@
 </head>
 <body>
 <jsp:include page="MenuAdmin.html"></jsp:include>
+
+<%
+
+Cuenta cuenta = new Cuenta();
+cuenta = (Cuenta)request.getAttribute("cuenta");
+
+		%>
 <div class="container">
 <h1 class="mt-3 text-center mb-1 text-info">Modificar cuenta</h1>
 <form class="Alta">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Usuario</label>
-      <input type="text" class="form-control" id="inputEmail">
+      <input type="text" class="form-control" value="<%=cuenta.getNombre_usuario()%>" name="txtUsuario">
     </div>
           <div class="form-group col-md-6">
       <label for="inputState">Tipo de cuenta</label>
@@ -45,16 +53,16 @@
   </div>
     <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputEmail4">CBU</label>
-      <input type="email" class="form-control" id="inputEmail">
+      <label >CBU</label>
+      <input type="text" class="form-control" value="<%=cuenta.getCbu_cuenta()%>" name="txtCbu">
     </div>
     <div class="form-group col-md-6">
-      <label for="inputPassword4">Saldo límite</label>
-      <input type="text" class="form-control" id="inputPassword">
+      <label>Saldo límite</label>
+      <input type="text" class="form-control" value="<%=cuenta.getSaldo()%>">
     </div>
   </div>
 
-  <button type="submit" class="btn btn-success crear">Confirmar</button>
+  <input type="submit" name="btnModificarCuenta" value="Modificar" class="btn btn-success crear">
 </form>
 </div>
 </body>

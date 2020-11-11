@@ -82,6 +82,31 @@ public class servletsCuentas extends HttpServlet {
 			
 		}
 		
+		if(request.getParameter("btnModificarCuenta")!=null) {
+			String cbuCuenta;
+		cbuCuenta = request.getParameter("cbuCuenta");
+		
+		cuenta	= cuentaNegocio.Obtener_cuenta(cbuCuenta);
+			request.setAttribute("cuenta", cuenta);
+			RequestDispatcher rd = request.getRequestDispatcher("/ModificarCuenta.jsp");   
+	        rd.forward(request, response);
+		}
+		
+		if(request.getParameter("btnEliminar")!=null) {
+		//String cbuCuenta;
+		//cbuCuenta = request.getParameter("cbuCuenta");
+			
+		if (request.getParameter("cbuCuenta")!=null)
+			
+			cuentaNegocio.Eliminar_cuenta(request.getParameter("cbuCuenta"));
+			
+			ArrayList<Cuenta> lista = cuentaNegocio.Obtener_todasLasCuentas ();
+			request.setAttribute("listaC", lista);
+				
+				RequestDispatcher rd = request.getRequestDispatcher("/ModificarCuenta.jsp");   
+		        rd.forward(request, response);
+		}
+		
 		
 	}
 

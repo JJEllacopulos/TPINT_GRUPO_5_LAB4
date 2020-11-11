@@ -62,14 +62,14 @@ listaC = (ArrayList<Cuenta>)request.getAttribute("listaC");
 %>
 
     <tr>
-      <form action="servletsCuentas" method="get">
-       <td><%= e.getCbu_cuenta() %></td>
+      <form action="servletsCliente" method="get">
+      <td><%=e.getNombre_usuario() %> </td>
+      <td><%= e.getCbu_cuenta() %><input type="hidden" name="cbuCuenta" value="<%=e.getCbu_cuenta() %>"></td>
       <td><%=e.getTipo_Cuenta() %></td>
-       <td><%= e.getNombre_usuario() %></td>
-   <td><button type="submit" class="btn btn-danger boton " name="btnEliminar">Eliminar</button></td> 
-   <td><button type="submit" class="btn btn-danger boton " name="btnModificar">Modificar</button></td> 
+      <td><input type="submit" class="btn btn-danger boton" value="Eliminar" name="btnEliminar"></td> 
+   <td><input type="submit" class="btn btn-danger boton" value="Modificar" name="btnModificarCuenta"></td> 
    
-    
+    </form>
     <%  } }%>
  
     </tr>
