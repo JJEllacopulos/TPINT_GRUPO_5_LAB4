@@ -8,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import Negocio.NegocioUsuario;
+import Entidad.Usuario;
 
 /**
  * Servlet implementation class ServletsLogin
@@ -40,13 +42,34 @@ public class ServletsLogin extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 		
-		Boolean a = false;
+		Boolean flag = false;
 		NegocioUsuario n_usuario = new NegocioUsuario();
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp"); ;
+		
+		Usuario e_usuario = new Usuario();
+		
 		if(request.getParameter("btnAceptar")!=null){
 			
-			a = n_usuario.Verificar_usuario(request.getParameter("txtName"), request.getParameter("txtpass"));
+			flag = n_usuario.Verificar_usuario(request.getParameter("txtName"), request.getParameter("txtpass"));
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp");   
+			if (flag) {
+				
+				e_usuario = n_usuario.Obtener_usuario(request.getParameter("txtName"));
+				
+				//Si es administrador:
+				if(e_usuario.getTipo_usuario() == "ADMIN") {
+					rd = request.getRequestDispatcher("/MenuAdmin.html"); 
+				}
+				//Si es cliente:
+				else if(e_usuario.getTipo_usuario() == "USUAR") {
+					rd = request.getRequestDispatcher("/MenuCliente.html"); 
+				}
+				
+				
+			}
+			
+			
 	        rd.forward(request, response);
 			
 		}
