@@ -69,10 +69,10 @@ public class servletsCuentas extends HttpServlet {
 	        rd.forward(request, response);
 			
 		}
-		/*
-		if(request.getParameter("")!=null) {
+		
+		if(request.getParameter("Param3")!=null) {
 			   
-			//request.getParameter("CBU");
+			
 		    ArrayList<Cuenta> lista = cuentaNegocio.Obtener_todasLasCuentas ();
 		    
 			request.setAttribute("listaC", lista);
@@ -82,7 +82,7 @@ public class servletsCuentas extends HttpServlet {
 			
 		}
 		
-		*/
+		
 	}
 
 	/**

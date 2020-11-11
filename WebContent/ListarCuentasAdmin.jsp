@@ -1,3 +1,5 @@
+<%@page import="Entidad.Cuenta"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -46,24 +48,32 @@
   </thead>
   <tbody>
     <tr>
-   	  <td>754463829</td>
-      <td>Cuenta corriente</td>
-      <td>31569125</td>
-      <td>Gomez</td>
-      <td>Francisca</td>
-      <td><button type="submit" class="btn btn-danger boton ">Eliminar</button></td>
-      <td><button type="submit" class="btn btn-primary boton ">Modificar</button></td> 
+ 
+  <%
+ArrayList<Cuenta> listaC = new ArrayList<Cuenta>();
+Cuenta cuenta = new Cuenta();
+listaC = (ArrayList<Cuenta>)request.getAttribute("listaC");
+
+		%>
+    
+    <%  if(listaC!=null){
+  		 for(Cuenta e : listaC)
+		{
+%>
+
+    <tr>
+      <form action="servletsCuentas" method="get">
+       <td><%= e.getCbu_cuenta() %></td>
+      <td><%=e.getTipo_Cuenta() %></td>
+       <td><%= e.getNombre_usuario() %></td>
+   <td><button type="submit" class="btn btn-danger boton " name="btnEliminar">Eliminar</button></td> 
+   <td><button type="submit" class="btn btn-danger boton " name="btnModificar">Modificar</button></td> 
+   
+    
+    <%  } }%>
  
     </tr>
-        <tr>
-   	  <td>652763592</td>
-      <td>Caja de ahorro</td>
-      <td>25334709</td>
-      <td>Rodriguez</td>
-      <td>Pablo</td>
-      <td><button type="submit" class="btn btn-danger boton ">Eliminar</button></td>
-      <td><button type="submit" class="btn btn-primary boton ">Modificar</button></td> 
-    </tr>
+       
   </tbody>
 </table>
 </div>

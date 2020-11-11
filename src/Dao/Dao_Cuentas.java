@@ -111,7 +111,7 @@ public ArrayList<Cuenta> Obtener_todasLasCuentas () {
 			try {
 				
 				cn = DriverManager.getConnection(host+dbName, user,pass);
-				CallableStatement st = cn.prepareCall("CALL PRO_Obtener_Cuentas");
+				CallableStatement st = cn.prepareCall("CALL PRO_ObtenerTodasLasCuentas");
 							
 				ResultSet resultado = st.executeQuery();
 				/*  
