@@ -27,7 +27,7 @@
 </head>
 <body>
 <div class="container">
-<form action="ServletsLogin" method="post">
+<form method="post" action="ServletsLogin">
 
   <div class="form-label-group">
     <input type="text"  name= "txtName" class="form-control" placeholder="Email address" required="" autofocus="">
