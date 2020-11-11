@@ -1,4 +1,5 @@
-<%@page import="Negocio.NegocioUsuario"%>
+
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -26,16 +27,16 @@
 </head>
 <body>
 <div class="container">
-<form class="form-signin">
+<form class="form-signin" action="ServletLogin" method="post">
 
 
   <div class="form-label-group">
-    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+    <input type="text"  name= "txtName" class="form-control" placeholder="Email address" required="" autofocus="">
     <label for="inputEmail">Email address</label>
   </div>
 
   <div class="form-label-group">
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+    <input type="password"  name= "txtpass" class="form-control" placeholder="Password" required="">
     <label for="inputPassword">Password</label>
   </div>
 
@@ -44,19 +45,14 @@
       <input type="checkbox" value="remember-me"> Remember me
     </label>
   </div>
-  <button id="boton"   class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  <button name = "btnAceptar" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
   <p class="mt-5 mb-3 text-muted text-center">© 2017-2020</p>
 </form>
 </div>
 
 <%
 	
-	NegocioUsuario n_usuario = new NegocioUsuario();
-	if(request.getParameter("boton")!=null){
-		
-		n_usuario.Verificar_usuario(request.getParameter("inputEmail"), request.getParameter("inputPassword"));
-		
-	}
+	
 
 %>
 
