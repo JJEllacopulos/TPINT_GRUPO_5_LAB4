@@ -69,7 +69,7 @@ public class servletsCuentas extends HttpServlet {
 	        rd.forward(request, response);
 			
 		}
-		
+		/*
 		if(request.getParameter("")!=null) {
 			   
 			//request.getParameter("CBU");
@@ -82,7 +82,7 @@ public class servletsCuentas extends HttpServlet {
 			
 		}
 		
-		
+		*/
 	}
 
 	/**
