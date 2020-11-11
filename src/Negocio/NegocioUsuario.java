@@ -12,7 +12,10 @@ public class NegocioUsuario implements InterfaceUsuario {
 
 	private Dao_Usuario daoUsuario = new Dao_Usuario();
 	
-	
+	public NegocioUsuario() {
+		
+	}
+
 	@Override
 	public void SPAltaUsuario(Usuario usuario, String fecha) {
 		// TODO Auto-generated method stub

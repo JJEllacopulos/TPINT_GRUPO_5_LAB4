@@ -1,3 +1,4 @@
+<%@page import="Negocio.NegocioUsuario"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -50,10 +51,10 @@
 
 <%
 	
-	NegocioUsuario n_usuario = new NegocioUsuario
-	if(request.getAttribute("boton")!=null){
+	NegocioUsuario n_usuario = new NegocioUsuario();
+	if(request.getParameter("boton")!=null){
 		
-		
+		n_usuario.Verificar_usuario(request.getParameter("inputEmail"), request.getParameter("inputPassword"));
 		
 	}
 
