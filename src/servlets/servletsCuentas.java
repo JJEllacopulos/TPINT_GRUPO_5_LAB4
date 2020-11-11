@@ -82,6 +82,16 @@ public class servletsCuentas extends HttpServlet {
 			
 		}
 		
+		if(request.getParameter("btnModificarCuenta")!=null) {
+			String cbuCuenta;
+		cbuCuenta = request.getParameter("cbuCuenta");
+		
+		cuenta	= cuentaNegocio.Obtener_cuenta(cbuCuenta);
+			request.setAttribute("cuenta", cuenta);
+			RequestDispatcher rd = request.getRequestDispatcher("/ModificarCuenta.jsp");   
+	        rd.forward(request, response);
+		}
+		
 		
 	}
 
