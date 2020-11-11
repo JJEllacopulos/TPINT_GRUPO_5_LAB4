@@ -264,7 +264,9 @@ public boolean Confirmar_usuario (String nombreUsuario, String contraseñaUsuario
 
 			while(resultado.next()){
 				
-				aux = resultado.getBoolean("resultado");
+				if(resultado.getInt("resultado") == 1){
+					aux = true;
+				}
 				
 			}
 				

@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Negocio.NegocioUsuario;
 import Entidad.Usuario;
@@ -49,6 +50,8 @@ public class ServletsLogin extends HttpServlet {
 		
 		Usuario e_usuario = new Usuario();
 		
+		HttpSession session = request.getSession();
+		
 		if(request.getParameter("btnAceptar")!=null){
 			
 			flag = n_usuario.Verificar_usuario(request.getParameter("txtName"), request.getParameter("txtpass"));
@@ -66,7 +69,7 @@ public class ServletsLogin extends HttpServlet {
 					rd = request.getRequestDispatcher("/MenuCliente.html"); 
 				}
 				
-				
+				session.setAttribute("Usuario_ingresado", e_usuario);
 			}
 			
 			
