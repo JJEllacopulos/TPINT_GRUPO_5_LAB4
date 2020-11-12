@@ -43,43 +43,43 @@ public class ServletsLogin extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 		
-		Boolean flag = false;
 		NegocioUsuario n_usuario = new NegocioUsuario();
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp");
 		
 		Usuario e_usuario = new Usuario();
-		
+
 		HttpSession session = request.getSession();
 		
-		String txtname = request.getParameter("txtName");
-		String txtpass = request.getParameter("txtpass");
+		//String txtname = request.getParameter("txtName");
+		//String txtpass = request.getParameter("txtpass");
 		
 		if(request.getParameter("btnAceptar")!=null){
+			String txtname = request.getParameter("txtName");
+			String txtpass = request.getParameter("txtpass");
+			e_usuario = n_usuario.Obtener_usuario(txtname);
 			
-			flag = n_usuario.Verificar_usuario(txtname, txtpass);
-			
-			if (flag) {
+			if(e_usuario != null) {
 				
-				e_usuario = n_usuario.Obtener_usuario(txtname);
-				
-				
-				//Si es administrador:
-				if("ADMIN".equals(e_usuario.getTipo_usuario())) {
-					rd = request.getRequestDispatcher("/AltaCliente.jsp"); 
+				if(e_usuario.getPassword() == txtpass) {
+					
+					if(e_usuario.getTipo_usuario() == "user") {
+						
+						rd = request.getRequestDispatcher("/AltaCliente.jsp"); 
+						
+					}else if(e_usuario.getTipo_usuario() == "ADMIN") {
+						
+						rd = request.getRequestDispatcher("/ModificarCuenta.jsp");
+						
+					}
+					
 				}
-				//Si es cliente:
-				else if("USUAR".equals(e_usuario.getTipo_usuario())) {
-					rd = request.getRequestDispatcher("/ModificarCuenta.jsp"); 
-				}
 				
-				
-				session.setAttribute("Usuario_ingresado", e_usuario);
 			}
 			
-	        rd.forward(request, response);
-			
 		}
+		
+		rd.forward(request, response);
 		
 	}
 
