@@ -16,17 +16,7 @@
  	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <Style>
- 	.Alta{
- 	width: 100%;
-    max-width: 600px;
-    padding: 15px;
-    margin: auto;
- 	    }
- 	 .crear{
- 	  	width: 100%;
- 
-    margin: auto;
- 	 }
+
 </Style>
 <title>Alta de cuenta</title>
 </head>
@@ -34,58 +24,50 @@
 <jsp:include page="MenuAdmin.html"></jsp:include>
 <%
 
-Usuario usuario = new Usuario();
+/*Usuario usuario = new Usuario();
 usuario = (Usuario)session.getAttribute("userSession");
 if(!usuario.getTipo_usuario().equals("ADMIN")){
 	RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp");
 	rd.forward(request, response);
 }
+*/
 %>
 <div class="container">
-<h1 class="mt-3 text-center mb-1 text-info">Alta de cuenta</h1>
 <form action="servletsCuentas" method="get" class="Alta">
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="txtUsuario">Usuario</label>
-      <input type="text" class="form-control" name="txtUsuario">
+
+ <div class="form-row mt-4">
+    <div class="col-6">
+    <input type="text" class="form-control" name="txtUsuario" placeholder="Nombre de usuario">
     </div>
-          <div class="form-group col-md-6">
- <label>Tipo de cuenta</label>
-<select name="ddl_tipo_cuenta" class="form-control" name="ddlTipoCuenta">
+    <div class="col-6">
+      <select name="ddl_tipo_cuenta" class="form-control" name="ddlTipoCuenta">
 <option selected>Seleccionar...</option>
 	 <%
-	 
 	 NegocioCuentas cuentaNegocio = new NegocioCuentas();
 		 	ArrayList<TipoCuenta> listaTipoCuenta =  new ArrayList<TipoCuenta>();
 		listaTipoCuenta =  cuentaNegocio.Obtener_TipoCuentas();
 		
 		 if(listaTipoCuenta!=null)
 		 for(TipoCuenta e : listaTipoCuenta)
-		{
-		
-		
+		{		
 	%>	
 	<option value="<%=e.getTipo_cuenta()%>"><%=e.getDescripcion()%></option>
 		<%  } %>
 		
 		
 		</select>
-  </div>
     </div>
-    <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="txtCBU">CBU</label>
-
-      <input type="text" class="form-control" name="txtCBU">
-
+      </div>
+       <div class="form-row mt-4">
+    <div class="col-6">
+    <input type="text" class="form-control" name="txtSaldo" placeholder="Saldo">
     </div>
-    <div class="form-group col-md-6">
-      <label for="txtSaldo">Saldo</label>
-      <input type="text" class="form-control" name="txtSaldo">
+    <div class="col-6">
+      
+      <input type="submit"  class="btn btn-success" value="Confirmar" name="btnCrearCuenta">
+	
     </div>
-  </div>
-
-  <input type="submit" class="btn btn-primary crear" value="Crear cuenta" name="btnCrearCuenta">
+      </div>
 </form>
 </div>
 </body>
