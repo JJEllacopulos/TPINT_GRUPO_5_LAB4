@@ -1,3 +1,4 @@
+<%@page import="Entidad.Usuario"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -26,6 +27,10 @@
 </head>
 <body>
 <jsp:include page="MenuAdmin.html"></jsp:include>
+<%
+
+
+		%>
 <div class="container">
 <h1 class="mt-3 text-center mb-1 text-info">Alta de cuenta</h1>
 <form action="servletsCuentas" method="get" class="Alta">
@@ -46,7 +51,11 @@
     <div class="form-row">
     <div class="form-group col-md-6">
       <label for="txtCBU">CBU</label>
+
       <input type="text" class="form-control" name="txtCBU">
+
+      <input type="text"   class="form-control" id="txtCBU">
+
     </div>
     <div class="form-group col-md-6">
       <label for="txtSaldo">Saldo</label>

@@ -219,6 +219,7 @@ public Usuario Obtener_usuario (String nombreUsuario) {
 				direccion.setPais(resultado.getString("pais"));
 				contacto.setEmail(resultado.getString("email"));
 				contacto.setTelefono(resultado.getString("telefono"));
+				aux.setTipo_usuario(resultado.getString("tipo_usuario"));
 				
 				aux.setDireccion(direccion); 
 				aux.setContacto(contacto); 

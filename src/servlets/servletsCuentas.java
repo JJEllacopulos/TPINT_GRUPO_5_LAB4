@@ -1,7 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -47,10 +46,10 @@ public class servletsCuentas extends HttpServlet {
 		if(request.getParameter("btnCrearCuenta")!=null) {
 			double a = 50;
 			Date myDate = new Date();
-			new SimpleDateFormat("yyyy-MM-dd").format(myDate);
-		    			
+				
 			cuenta.setCbu_cuenta(request.getParameter("txtCBU"));
 			cuenta.setNombre_usuario(request.getParameter("txtUsuario"));
+
 			cuenta.setTipo_Cuenta("ca");  //request.getParameter("txtUsuario")
 			cuenta.setSaldo(Double.parseDouble(request.getParameter("txtSaldo"))); //
 			cuenta.setFecha_creacion(new SimpleDateFormat("yyyy-MM-dd").format(myDate));  
@@ -62,6 +61,13 @@ public class servletsCuentas extends HttpServlet {
 			request.setAttribute("listaC", lista);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/ListarCuentasAdmin.jsp");   
+	cuenta.setTipo_Cuenta(request.getParameter("txtUsuario"));
+			//cuenta.setSaldo(request.getParameter("txtSaldo"));
+			//cuenta.setFecha_creacion(new SimpleDateFormat("yyyy-MM-dd").format(myDate));
+			cuenta.setEstado(true);
+				
+			RequestDispatcher rd = request.getRequestDispatcher("/AltaCuenta.jsp");   
+
 	        rd.forward(request, response);
 		}
 		

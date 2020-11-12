@@ -1,3 +1,6 @@
+<%@page import="Entidad.Usuario"%>
+<%@page import="javax.servlet.http.HttpSession"%>
+<%@page import="javax.servlet.RequestDispatcher"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -26,6 +29,16 @@
 </head>
 <body>
 <jsp:include page="MenuAdmin.html"></jsp:include>
+<%
+
+Usuario usuario = new Usuario();
+usuario = (Usuario)session.getAttribute("userSession");
+if(!usuario.getTipo_usuario().equals("ADMIN")){
+	RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp");
+	rd.forward(request, response);
+}
+%>
+
 <div class="container">
 <h1 class="mt-3 text-center mb-1 text-info">Alta de cliente</h1>
 <form action="servletsCliente" method="get" class="Alta">
