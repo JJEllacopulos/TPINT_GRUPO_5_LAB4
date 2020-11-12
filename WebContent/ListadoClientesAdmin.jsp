@@ -1,6 +1,7 @@
 <%@page import="Entidad.Usuario"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="javax.servlet.http.HttpSession"%>
+<%@page import="javax.servlet.RequestDispatcher"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -41,7 +42,15 @@
 
 <body>
 <jsp:include page="MenuAdmin.html"></jsp:include>
+<%
 
+Usuario usuario = new Usuario();
+usuario = (Usuario)session.getAttribute("userSession");
+if(!usuario.getTipo_usuario().equals("ADMIN")){
+	RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp");
+	rd.forward(request, response);
+}
+%>
 
 <div class="container Mover  ">
 <div class="row mt-5  ">
@@ -54,7 +63,7 @@
     	
 <%
 ArrayList<Usuario> listaU = new ArrayList<Usuario>();
-Usuario usuario = new Usuario();
+
 listaU = (ArrayList<Usuario>)request.getAttribute("listaU");
 
 		%>

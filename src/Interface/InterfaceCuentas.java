@@ -2,6 +2,7 @@ package Interface;
 import java.util.ArrayList;
 import Dao.Dao_Cuentas;
 import Entidad.Cuenta;
+import Entidad.TipoCuenta;
 
 
 
@@ -13,4 +14,5 @@ public interface InterfaceCuentas {
 	public ArrayList<Cuenta> Obtener_todasLasCuentas () ;
 	public Cuenta Obtener_cuenta(String cbuCuenta);
 	public void Eliminar_cuenta(String cbuCuenta);
+	public ArrayList<TipoCuenta> Obtener_TipoCuentas();
 }

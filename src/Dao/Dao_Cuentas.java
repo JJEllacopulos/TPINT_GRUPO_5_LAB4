@@ -10,6 +10,7 @@ import java.util.Date;
 
 import Entidad.Contacto;
 import Entidad.Cuenta;
+import Entidad.TipoCuenta;
 import Entidad.Direccion;
 import Entidad.Usuario;
 
@@ -37,7 +38,7 @@ public class Dao_Cuentas {
 			 CallableStatement cst = cn.prepareCall("CALL PRO_ingresar_cuenta(?,?,?,?,?,?)");
 			 cst.setString(1, cuenta.getCbu_cuenta() ); 
 			 cst.setString(2,  cuenta.getNombre_usuario());
-			 cst.setString(3, "ca" );//cuenta.getTipo_Cuenta()
+			 cst.setString(3, cuenta.getTipo_Cuenta() );//cuenta.getTipo_Cuenta()
 			 cst.setString(4, cuenta.getFecha_creacion()); 
 			 cst.setString(5, cuenta.getSaldo().toString() ); 
 			 cst.setBoolean(6, true); 
@@ -62,13 +63,13 @@ public class Dao_Cuentas {
 		  try
 		  {
 			 cn = DriverManager.getConnection(host+dbName, user,pass);
-			 CallableStatement cst = cn.prepareCall("CALL PRO_Alterar_cuenta(?,?,?,?,?,?)");
+			 CallableStatement cst = cn.prepareCall("CALL PRO_Alterar_cuenta(?,?,?,?,?)");
 			 cst.setString(1, cuenta.getCbu_cuenta());
 			 cst.setString(2, cuenta.getNombre_usuario());
 			 cst.setString(3, cuenta.getTipo_Cuenta());
 			 cst.setString(4, cuenta.getFecha_creacion().toString());
 			 cst.setString(5, cuenta.getSaldo().toString());
-			 cst.setString(6, cuenta.getEstado().toString());
+		
 
 			 cst.execute();
 		  }
@@ -239,5 +240,48 @@ public void SPEliminarCuenta(String CBUcuenta)
 	}
 		
 }
+
+public ArrayList<TipoCuenta> Obtener_TipoCuentas() {
+	
+	
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	ArrayList<TipoCuenta> x = new ArrayList<TipoCuenta>();
+		
+		Connection cn = null;
+		
+		try {
+			
+			cn = DriverManager.getConnection(host+dbName, user,pass);
+			CallableStatement st = cn.prepareCall("CALL PRO_Listar_TipoCuenta");
+						
+			ResultSet resultado = st.executeQuery();
+			/*  
+ c.cbu_cuenta, c.nombre_usuario, c.tipo_cuenta, c.fecha_creacion, c.saldo, c.estado 
+			 */
+			while(resultado.next()){
+				
+				TipoCuenta aux = new TipoCuenta();
+				aux.setTipo_cuenta(resultado.getString("tipo_cuenta"));
+				aux.setDescripcion(resultado.getString("descripcion"));
+
+				
+				x.add(aux);
+				
+			}
+			
+		}
+		catch(Exception e) {
+			
+			e.printStackTrace();
+			
+		}
+		
+		return x;	
+	}
 	
 }

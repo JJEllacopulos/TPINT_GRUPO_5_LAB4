@@ -45,9 +45,7 @@ cuenta = (Cuenta)request.getAttribute("cuenta");
           <div class="form-group col-md-6">
       <label for="inputState">Tipo de cuenta</label>
       <select id="inputState" class="form-control">
-        <option selected>Seleccionar...</option>
-        <option>Opcion 1</option>
-        <option>Opcion 2</option>
+        <option selected><%=cuenta.getTipo_Cuenta()%></option>
       </select>
     </div>
   </div>
@@ -62,7 +60,7 @@ cuenta = (Cuenta)request.getAttribute("cuenta");
     </div>
   </div>
 
-  <input type="submit" name="btnModificarCuenta" value="Modificar" class="btn btn-success crear">
+  <input type="submit" name="btnAceptarModificar" value="Modificar" class="btn btn-success crear">
 </form>
 </div>
 </body>

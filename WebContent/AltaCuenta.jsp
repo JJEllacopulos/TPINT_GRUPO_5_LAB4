@@ -1,4 +1,9 @@
 <%@page import="Entidad.Usuario"%>
+<%@page import="Entidad.TipoCuenta"%>
+<%@page import="Negocio.NegocioCuentas"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="javax.servlet.http.HttpSession"%>
+<%@page import="javax.servlet.RequestDispatcher"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -29,8 +34,13 @@
 <jsp:include page="MenuAdmin.html"></jsp:include>
 <%
 
-
-		%>
+Usuario usuario = new Usuario();
+usuario = (Usuario)session.getAttribute("userSession");
+if(!usuario.getTipo_usuario().equals("ADMIN")){
+	RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp");
+	rd.forward(request, response);
+}
+%>
 <div class="container">
 <h1 class="mt-3 text-center mb-1 text-info">Alta de cuenta</h1>
 <form action="servletsCuentas" method="get" class="Alta">
@@ -40,14 +50,28 @@
       <input type="text" class="form-control" name="txtUsuario">
     </div>
           <div class="form-group col-md-6">
-      <label for="tipoCuenta">Tipo de cuenta</label>
-      <select id="tipoCuenta" class="form-control">
-        <option selected>Seleccionar...</option>
-        <option>Opcion 1</option>
-        <option>Opcion 2</option>
-      </select>
-    </div>
+ <label>Tipo de cuenta</label>
+<select name="ddl_tipo_cuenta" class="form-control" name="ddlTipoCuenta">
+<option selected>Seleccionar...</option>
+	 <%
+	 
+	 NegocioCuentas cuentaNegocio = new NegocioCuentas();
+		 	ArrayList<TipoCuenta> listaTipoCuenta =  new ArrayList<TipoCuenta>();
+		listaTipoCuenta =  cuentaNegocio.Obtener_TipoCuentas();
+		
+		 if(listaTipoCuenta!=null)
+		 for(TipoCuenta e : listaTipoCuenta)
+		{
+		
+		
+	%>	
+	<option value="<%=e.getTipo_cuenta()%>"><%=e.getDescripcion()%></option>
+		<%  } %>
+		
+		
+		</select>
   </div>
+    </div>
     <div class="form-row">
     <div class="form-group col-md-6">
       <label for="txtCBU">CBU</label>

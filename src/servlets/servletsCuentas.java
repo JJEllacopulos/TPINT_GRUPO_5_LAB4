@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import Entidad.Cuenta;
+import Entidad.TipoCuenta;
 import Entidad.Usuario;
 import Negocio.NegocioCuentas;
 import Negocio.NegocioUsuario;
@@ -46,10 +47,10 @@ public class servletsCuentas extends HttpServlet {
 		if(request.getParameter("btnCrearCuenta")!=null) {
 			double a = 50;
 			Date myDate = new Date();
-				
+			String tipoCuenta = request.getParameter("ddl_tipo_cuenta");
 			cuenta.setCbu_cuenta(request.getParameter("txtCBU"));
 			cuenta.setNombre_usuario(request.getParameter("txtUsuario"));
-			cuenta.setTipo_Cuenta("ca");  //request.getParameter("txtUsuario")
+			cuenta.setTipo_Cuenta(tipoCuenta);
 			cuenta.setSaldo(Double.parseDouble(request.getParameter("txtSaldo"))); //
 			cuenta.setFecha_creacion(new SimpleDateFormat("yyyy-MM-dd").format(myDate));  
 			 
@@ -85,7 +86,7 @@ public class servletsCuentas extends HttpServlet {
 		if(request.getParameter("Param3")!=null) {
 			
 			ArrayList<Cuenta> lista = cuentaNegocio.Obtener_todasLasCuentas();
-		    
+		   
 			request.setAttribute("listaC", lista);
 						
 			RequestDispatcher rd = request.getRequestDispatcher("/ListarCuentasAdmin.jsp");   
@@ -117,6 +118,28 @@ public class servletsCuentas extends HttpServlet {
 				RequestDispatcher rd = request.getRequestDispatcher("/ListarCuentasAdmin.jsp");   
 		        rd.forward(request, response);
 		}	
+		
+		if(request.getParameter("btnAceptarModificar")!=null) {
+			
+			double a = 50;
+				Date myDate = new Date();
+				String tipoCuenta = request.getParameter("ddl_tipo_cuenta");
+				cuenta.setCbu_cuenta(request.getParameter("txtCBU"));
+				cuenta.setNombre_usuario(request.getParameter("txtUsuario"));
+				cuenta.setTipo_Cuenta(tipoCuenta);
+				cuenta.setSaldo(a); //
+				cuenta.setFecha_creacion(new SimpleDateFormat("yyyy-MM-dd").format(myDate));  
+				 
+				cuentaNegocio.SPModificarCuenta(cuenta);
+				
+				ArrayList<Cuenta> lista = cuentaNegocio.Obtener_todasLasCuentas();  
+				request.setAttribute("listaC", lista);
+				
+				RequestDispatcher rd = request.getRequestDispatcher("/ListarCuentasAdmin.jsp");   
+				cuenta.setTipo_Cuenta(request.getParameter("txtUsuario"));
+		        rd.forward(request, response);
+			
+			}
 		
 	}
 

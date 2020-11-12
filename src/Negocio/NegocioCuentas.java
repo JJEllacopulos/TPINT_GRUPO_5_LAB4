@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import Dao.Dao_Cuentas;
 import Entidad.Cuenta;
+import Entidad.TipoCuenta;
 import Entidad.Usuario;
 import Interface.InterfaceCuentas;
 
@@ -49,6 +50,14 @@ public class NegocioCuentas implements InterfaceCuentas {
 		// TODO Auto-generated method stub
 	    daoCuentas.SPEliminarCuenta(cbuCuenta);
 		
+	}
+
+	@Override
+	public ArrayList<TipoCuenta> Obtener_TipoCuentas() {
+		// TODO Auto-generated method stub
+		ArrayList<TipoCuenta> listaTipoCuenta = new ArrayList<TipoCuenta>();
+		listaTipoCuenta = daoCuentas.Obtener_TipoCuentas();
+		return listaTipoCuenta;
 	}
 	
 
