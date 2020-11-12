@@ -73,7 +73,7 @@ public class servletsCuentas extends HttpServlet {
 		if(request.getParameter("Param3")!=null) {
 			   
 			
-		    ArrayList<Cuenta> lista = cuentaNegocio.Obtener_todasLasCuentas ();
+		    ArrayList<Cuenta> lista = cuentaNegocio.Obtener_todasLasCuentas();
 		    
 			request.setAttribute("listaC", lista);
 						
