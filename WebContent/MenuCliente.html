@@ -2,49 +2,31 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
-<style>
-.navbar{
-background-color: #D3D5D4  ;
-}
-</style>
+<title>Menu Cliente</title>
+
 </head>
 <body>
- 	<nav class="navbar navbar-expand-lg navbar-light  mb-3">
- <a class="navbar-brand ml-5" href="#">Banco</a>
- <button class="navbar-toggler" type="button" data-toggle="collapse" datatarget="#navbarNav" aria-controls="navbarNav" aria-expanded="false" arialabel="Toggle navigation">
- <span class="navbar-toggler-icon"></span>
- </button>
- <div class="collapse navbar-collapse" id="navbarNav">
- <ul class="navbar-nav ml-auto mr-5">
- <li class="nav-item active cuentas">
- <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
- </li>
- <li class="nav-item">
- <a class="nav-link" href="servletsCuentas?Param2=1">Cuentas</a>
- </li>
- <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Transferencia</a>
+ <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <a class="navbar-brand text-white" href="#">Cliente</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse">
+    <div class="navbar-nav">
+      <a class="nav-link active ml-5 text-white" href="#">Inicio <span class="sr-only">(current)</span></a>
+      <a class="nav-link text-white" href="servletsCuentas?Param2=1">Cuentas</a>
+       <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Transferencia</a>
     <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Mi cuenta</a>
-      <a class="dropdown-item" href="#">Terceros</a>
+    <a class="dropdown-item" href="#">A Terceros</a>
+     <a class="dropdown-item " href="#">Cuenta</a>
+      
     </div>
   </li>
- <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Prestamo</a>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Menu de pago</a>
-      <a class="dropdown-item" href="#">Nuevo prestamo</a>
+      <a class="nav-link text-white" href="#"> Mi Perfil</a>
+      <a class="nav-link text-white" href="#">Cerrar Sesión</a>
     </div>
-  </li>
- <li class="nav-item">
- <a class="nav-link" href="#">Mis datos</a>
- </li>
-  <li class="nav-item ">
- <a class="nav-link " href="#">Cerrar sesión</a>
- </li>
- </ul>
- </div>
+  </div>
 </nav>
 </body>
 </html>
