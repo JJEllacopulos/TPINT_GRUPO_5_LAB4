@@ -54,8 +54,6 @@
 
       <input type="text" class="form-control" name="txtCBU">
 
-      <input type="text"   class="form-control" id="txtCBU">
-
     </div>
     <div class="form-group col-md-6">
       <label for="txtSaldo">Saldo</label>

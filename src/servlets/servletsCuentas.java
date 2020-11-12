@@ -49,7 +49,6 @@ public class servletsCuentas extends HttpServlet {
 				
 			cuenta.setCbu_cuenta(request.getParameter("txtCBU"));
 			cuenta.setNombre_usuario(request.getParameter("txtUsuario"));
-
 			cuenta.setTipo_Cuenta("ca");  //request.getParameter("txtUsuario")
 			cuenta.setSaldo(Double.parseDouble(request.getParameter("txtSaldo"))); //
 			cuenta.setFecha_creacion(new SimpleDateFormat("yyyy-MM-dd").format(myDate));  
@@ -61,12 +60,12 @@ public class servletsCuentas extends HttpServlet {
 			request.setAttribute("listaC", lista);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/ListarCuentasAdmin.jsp");   
-	cuenta.setTipo_Cuenta(request.getParameter("txtUsuario"));
+			cuenta.setTipo_Cuenta(request.getParameter("txtUsuario"));
 			//cuenta.setSaldo(request.getParameter("txtSaldo"));
 			//cuenta.setFecha_creacion(new SimpleDateFormat("yyyy-MM-dd").format(myDate));
-			cuenta.setEstado(true);
+			//cuenta.setEstado(true);
 				
-			RequestDispatcher rd = request.getRequestDispatcher("/AltaCuenta.jsp");   
+			//RequestDispatcher rd = request.getRequestDispatcher("/AltaCuenta.jsp");   
 
 	        rd.forward(request, response);
 		}
