@@ -28,11 +28,11 @@
 <jsp:include page="MenuAdmin.html"></jsp:include>
 <div class="container">
 <h1 class="mt-3 text-center mb-1 text-info">Alta de cuenta</h1>
-<form class="Alta">
+<form action="servletsCuentas" method="get" class="Alta">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="txtUsuario">Usuario</label>
-      <input type="text" class="form-control" id="txtUsuario">
+      <input type="text" class="form-control" name="txtUsuario">
     </div>
           <div class="form-group col-md-6">
       <label for="tipoCuenta">Tipo de cuenta</label>
@@ -46,11 +46,11 @@
     <div class="form-row">
     <div class="form-group col-md-6">
       <label for="txtCBU">CBU</label>
-      <input type="text" class="form-control" id="txtCBU">
+      <input type="text" class="form-control" name="txtCBU">
     </div>
     <div class="form-group col-md-6">
       <label for="txtSaldo">Saldo</label>
-      <input type="text" class="form-control" id="txtSaldo">
+      <input type="text" class="form-control" name="txtSaldo">
     </div>
   </div>
 

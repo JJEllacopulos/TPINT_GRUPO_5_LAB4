@@ -69,7 +69,7 @@ listaC = (ArrayList<Cuenta>)request.getAttribute("listaC");
     <td><%= e.getEstado() %> </td>
       
       <td><input type="submit" class="btn btn-danger boton" value="Eliminar" name="btnEliminarCuenta"></td> 
-   <td><input type="submit" class="btn btn-danger boton" value="Modificar" name="btnModificarCuenta"></td> 
+   <td><input type="submit" class= "btn btn-primary" value="Modificar" name="btnModificarCuenta"></td> 
    
     </form>
     <% } } }%>

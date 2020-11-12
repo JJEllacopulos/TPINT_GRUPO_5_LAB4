@@ -33,13 +33,13 @@ public class Dao_Cuentas {
 		  try
 		  {
 			 cn = DriverManager.getConnection(host+dbName, user,pass);
-			 CallableStatement cst = cn.prepareCall("CALL PRO_ingresar_cuenta(?,?,?,?,?)");
-			 cst.setString(1, cuenta.getCbu_cuenta());
-			 cst.setString(2, cuenta.getNombre_usuario() );
-			 cst.setString(3, cuenta.getTipo_Cuenta());
-			 cst.setString(4, cuenta.getFecha_creacion().toString()); 
-			 cst.setString(5, cuenta.getSaldo().toString()); 
-			 cst.setString(6, cuenta.getEstado().toString()); 
+			 CallableStatement cst = cn.prepareCall("CALL PRO_ingresar_cuenta(?,?,?,?,?,?)");
+			 cst.setString(1, cuenta.getCbu_cuenta() ); 
+			 cst.setString(2,  cuenta.getNombre_usuario());
+			 cst.setString(3, "ca" );//cuenta.getTipo_Cuenta()
+			 cst.setString(4, cuenta.getFecha_creacion()); 
+			 cst.setString(5, cuenta.getSaldo().toString() ); 
+			 cst.setBoolean(6, true); 
 
 			 cst.execute();
 		  }
@@ -105,7 +105,7 @@ public class Dao_Cuentas {
 					aux.setCbu_cuenta(resultado.getString("cbu_cuenta"));
 					aux.setNombre_usuario(resultado.getString("nombre_usuario"));
 					aux.setTipo_Cuenta(resultado.getString("tipo_cuenta"));
-					aux.setFecha_creacion(resultado.getDate("fecha_creacion"));
+					aux.setFecha_creacion(resultado.getString("fecha_creacion"));
 					aux.setSaldo(resultado.getDouble("saldo"));
 					aux.setEstado(resultado.getBoolean("estado"));
 					
@@ -151,7 +151,7 @@ public ArrayList<Cuenta> Obtener_todasLasCuentas () {
 					aux.setCbu_cuenta(resultado.getString("cbu_cuenta"));
 					aux.setNombre_usuario(resultado.getString("nombre_usuario"));
 					aux.setTipo_Cuenta(resultado.getString("tipo_cuenta"));
-					aux.setFecha_creacion(resultado.getDate("fecha_creacion"));
+					aux.setFecha_creacion(resultado.getString("fecha_creacion"));
 					aux.setSaldo(resultado.getDouble("saldo"));
 					aux.setEstado(resultado.getBoolean("estado"));
 					
@@ -196,7 +196,7 @@ public Cuenta Obtener_cuenta(String cbuCuenta) {
 				aux.setCbu_cuenta(resultado.getString("cbu_cuenta"));
 				aux.setNombre_usuario(resultado.getString("nombre_usuario"));
 				aux.setTipo_Cuenta(resultado.getString("tipo_cuenta"));
-				aux.setFecha_creacion(resultado.getDate("fecha_creacion"));
+				aux.setFecha_creacion(resultado.getString("fecha_creacion"));
 				aux.setSaldo(resultado.getDouble("saldo"));
 				aux.setEstado(resultado.getBoolean("estado"));
 				

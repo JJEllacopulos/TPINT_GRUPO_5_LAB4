@@ -45,20 +45,23 @@ public class servletsCuentas extends HttpServlet {
 		NegocioCuentas cuentaNegocio = new NegocioCuentas();
 		
 		if(request.getParameter("btnCrearCuenta")!=null) {
-			
+			double a = 50;
 			Date myDate = new Date();
 			new SimpleDateFormat("yyyy-MM-dd").format(myDate);
 		    			
 			cuenta.setCbu_cuenta(request.getParameter("txtCBU"));
 			cuenta.setNombre_usuario(request.getParameter("txtUsuario"));
 			cuenta.setTipo_Cuenta("ca");  //request.getParameter("txtUsuario")
-			cuenta.setSaldo( Double.parseDouble(request.getParameter("txtSaldo")));
-			cuenta.setFecha_creacion (myDate);  //new SimpleDateFormat("yyyy-MM-dd").format(myDate));      //format(myDate));
-			cuenta.setEstado(true);
+			cuenta.setSaldo(Double.parseDouble(request.getParameter("txtSaldo"))); //
+			cuenta.setFecha_creacion(new SimpleDateFormat("yyyy-MM-dd").format(myDate));  
+			 
 			
 			cuentaNegocio.SPAltaCuenta(cuenta);
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/AltaCuenta.jsp");   
+			ArrayList<Cuenta> lista = cuentaNegocio.Obtener_todasLasCuentas();  
+			request.setAttribute("listaC", lista);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/ListarCuentasAdmin.jsp");   
 	        rd.forward(request, response);
 		}
 		
@@ -76,7 +79,7 @@ public class servletsCuentas extends HttpServlet {
 		
 		if(request.getParameter("Param3")!=null) {
 			
-		    ArrayList<Cuenta> lista = cuentaNegocio.Obtener_todasLasCuentas();
+			ArrayList<Cuenta> lista = cuentaNegocio.Obtener_todasLasCuentas();
 		    
 			request.setAttribute("listaC", lista);
 						

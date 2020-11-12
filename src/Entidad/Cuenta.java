@@ -8,7 +8,7 @@ public class Cuenta {
 	private String cbu_cuenta;
 	private String nombre_usuario;
 	private String tipo_Cuenta;
-	private Date fecha_creacion;
+	private String fecha_creacion;
 	private Double saldo;
 	private boolean estado;
 	
@@ -17,7 +17,7 @@ public class Cuenta {
 		
 	}
 	
-	public Cuenta(String cbu_cuenta, String nombre_usuario, String tipo_Cuenta, Date fecha_creacion, Double saldo, boolean estado) {
+	public Cuenta(String cbu_cuenta, String nombre_usuario, String tipo_Cuenta, String fecha_creacion, Double saldo, boolean estado) {
 		
 		this.cbu_cuenta = cbu_cuenta;
 		this.nombre_usuario = nombre_usuario;
@@ -52,12 +52,12 @@ public class Cuenta {
 		this.tipo_Cuenta = tipo_Cuenta;
 	}
 
-	public Date getFecha_creacion() {
+	public String getFecha_creacion() {
 		return fecha_creacion;
 	}
 
-	public void setFecha_creacion(Date fecha_creacion) {
-		this.fecha_creacion = fecha_creacion;
+	public void setFecha_creacion(String string) {
+		this.fecha_creacion = string;
 	}
 
 	public Double getSaldo() {
