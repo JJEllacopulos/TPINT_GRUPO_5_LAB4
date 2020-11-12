@@ -13,7 +13,11 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Program Files (x86)/MySQL/mysql-connector-java-8.0.21/mysql-connector-java-8.0.21.jar">
+=======
+	<classpathentry kind="lib" path="C:/mysql-connector-java-8.0.21/mysql-connector-java-8.0.21/mysql-connector-java-8.0.21.jar">
+>>>>>>> bfdf9b6d328643a29df64f4bea99050d7998a550
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
