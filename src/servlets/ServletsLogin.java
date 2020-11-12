@@ -62,7 +62,8 @@ public class ServletsLogin extends HttpServlet {
 				
 				//Si es administrador:
 				if(e_usuario.getTipo_usuario() == "ADMIN") {
-					rd = request.getRequestDispatcher("/MenuAdmin.html"); 
+					rd = request.getRequestDispatcher("/MenuAdmin.html");
+					rd.forward(request, response);
 				}
 				//Si es cliente:
 				else if(e_usuario.getTipo_usuario() == "USUAR") {
