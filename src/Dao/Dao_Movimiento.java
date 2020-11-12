@@ -47,7 +47,7 @@ public class Dao_Movimiento {
 	}
 	
 	
-	public Movimiento Obtener_usuario (int id_movimiento) {
+	public Movimiento Obtener_Movimiento (int id_movimiento) {
 		
 		
 		try {
