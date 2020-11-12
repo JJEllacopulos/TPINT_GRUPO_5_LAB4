@@ -46,32 +46,36 @@ public class ServletsLogin extends HttpServlet {
 		Boolean flag = false;
 		NegocioUsuario n_usuario = new NegocioUsuario();
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp"); ;
+		RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp");
 		
 		Usuario e_usuario = new Usuario();
 		
 		HttpSession session = request.getSession();
 		
+		String txtname = request.getParameter("txtName");
+		String txtpass = request.getParameter("txtpass");
+		
 		if(request.getParameter("btnAceptar")!=null){
 			
-			flag = n_usuario.Verificar_usuario(request.getParameter("txtName"), request.getParameter("txtpass"));
+			flag = n_usuario.Verificar_usuario(txtname, txtpass);
 			
 			if (flag) {
 				
-				e_usuario = n_usuario.Obtener_usuario(request.getParameter("txtName"));
+				e_usuario = n_usuario.Obtener_usuario(txtname);
+				
 				
 				//Si es administrador:
-				if(e_usuario.getTipo_usuario() == "ADMIN") {
-					rd = request.getRequestDispatcher("/MenuAdmin.html"); 
+				if("ADMIN".equals(e_usuario.getTipo_usuario())) {
+					rd = request.getRequestDispatcher("/AltaCliente.jsp"); 
 				}
 				//Si es cliente:
-				else if(e_usuario.getTipo_usuario() == "USUAR") {
-					rd = request.getRequestDispatcher("/MenuCliente.html"); 
+				else if("USUAR".equals(e_usuario.getTipo_usuario())) {
+					rd = request.getRequestDispatcher("/ModificarCuenta.jsp"); 
 				}
+				
 				
 				session.setAttribute("Usuario_ingresado", e_usuario);
 			}
-			
 			
 	        rd.forward(request, response);
 			
