@@ -47,40 +47,49 @@ public class ServletsLogin extends HttpServlet {
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp");
 		
-		Usuario e_usuario = new Usuario();
+		
 
 		HttpSession session = request.getSession();
+		
 		
 		//String txtname = request.getParameter("txtName");
 		//String txtpass = request.getParameter("txtpass");
 		
 		if(request.getParameter("btnAceptar")!=null){
-			String txtname = request.getParameter("txtName");
-			String txtpass = request.getParameter("txtpass");
-			e_usuario = n_usuario.Obtener_usuario(txtname);
+			String usuarioNombre = request.getParameter("txtNombreUsuario");
+			String password = request.getParameter("txtPassword");
+			Usuario usuario = new Usuario();
+			usuario = n_usuario.Obtener_usuario(usuarioNombre);
 			
-			if(e_usuario != null) {
+			
 				
-				if(e_usuario.getPassword() == txtpass) {
+				if(usuario.getPassword().equals(password)) {
 					
-					if(e_usuario.getTipo_usuario() == "user") {
+					
+					if(usuario.getTipo_usuario().equals("user")) {
 						
-						rd = request.getRequestDispatcher("/AltaCliente.jsp"); 
+						rd = request.getRequestDispatcher("/MenuDePagoCliente.jsp"); 
 						
-					}else if(e_usuario.getTipo_usuario() == "ADMIN") {
 						
-						rd = request.getRequestDispatcher("/ModificarCuenta.jsp");
+					}else if(usuario.getTipo_usuario().equals("ADMIN")) {
+						
+						rd = request.getRequestDispatcher("/AltaCuenta.jsp");
+						
 						
 					}
 					
-				}
+				
 				
 			}
+			//request.setAttribute("user", usuario);
+			//rd = request.getRequestDispatcher("/AltaCuenta.jsp");
+				
+			session.setAttribute("userSession", usuario);	
+			rd.forward(request, response);
+			
 			
 		}
-		
-		rd.forward(request, response);
-		
+	
 	}
 
 }

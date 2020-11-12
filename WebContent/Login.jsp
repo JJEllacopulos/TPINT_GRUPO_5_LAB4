@@ -30,12 +30,12 @@
 <form method="post" action="ServletsLogin">
 
   <div class="form-label-group">
-    <input type="text"  name= "txtName" class="form-control" placeholder="Email address" required="" autofocus="">
-    <label for="inputEmail">Email address</label>
+    <input type="text" class="form-control" name="txtNombreUsuario">
+    <label for="inputEmail">Nombre de usuario</label>
   </div>
 
   <div class="form-label-group">
-    <input type="password"  name= "txtpass" class="form-control" placeholder="Password" required="">
+    <input type="password" class="form-control" name="txtPassword">
     <label for="inputPassword">Password</label>
   </div>
 
