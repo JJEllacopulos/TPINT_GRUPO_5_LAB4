@@ -136,15 +136,9 @@ public class Dao_Movimiento {
 		{
 			cn = DriverManager.getConnection(host+dbName, user,pass);
 			CallableStatement cst = cn.prepareCall("CALL PRO_Desabilitar_movimiento(?)");
-<<<<<<< HEAD
-			//cst.setString(1, id_movimiento);
-		
-		
-=======
 			
 			cst.setInt(1, id_movimiento);
 
->>>>>>> 690d535202055a299983ae65d261c4b8d896ae4c
 			cst.execute();
 		}
 		catch (Exception e) {
