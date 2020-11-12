@@ -12,5 +12,5 @@ public interface InterfaceCuentas {
 	public ArrayList<Cuenta> Obtener_lista_CuentasCliente();
 	public ArrayList<Cuenta> Obtener_todasLasCuentas () ;
 	public Cuenta Obtener_cuenta(String cbuCuenta);
-	public Cuenta Eliminar_cuenta(String cbuCuenta);
+	public void Eliminar_cuenta(String cbuCuenta);
 }
