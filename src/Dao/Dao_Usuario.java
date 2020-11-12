@@ -248,8 +248,7 @@ public boolean Confirmar_usuario (String nombreUsuario, String contraseñaUsuario
 		e.printStackTrace();
 	}
 	boolean aux = false;
-		Direccion direccion = new Direccion();
-		Contacto contacto = new Contacto();
+		
 		Connection cn = null;
 		
 		try {
@@ -264,9 +263,7 @@ public boolean Confirmar_usuario (String nombreUsuario, String contraseñaUsuario
 
 			while(resultado.next()){
 				
-				if(resultado.getInt("resultado") == 1){
-					aux = true;
-				}
+					aux = resultado.getBoolean("resultado");
 				
 			}
 				
