@@ -12,125 +12,97 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
  	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<Style>
- 	.Alta{
- 	width: 100%;
-    max-width: 600px;
-    padding: 15px;
-    margin: auto;
- 	    }
- 	 .crear{
- 	  	width: 100%;
- 
-    margin: auto;
- 	 }
-</Style>
+
 <title>Alta de cliente</title>
+
+<style>
+.centrar {
+  margin: auto;
+  display: block;
+}
+</style>
 </head>
 <body>
 <jsp:include page="MenuAdmin.html"></jsp:include>
 <%
 
-Usuario usuario = new Usuario();
+/*Usuario usuario = new Usuario();
 usuario = (Usuario)session.getAttribute("userSession");
 if(!usuario.getTipo_usuario().equals("ADMIN")){
 	RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp");
 	rd.forward(request, response);
 }
+*/
 %>
-
-<div class="container">
-<h1 class="mt-3 text-center mb-1 text-info">Alta de cliente</h1>
+<div class="container mt-5">
 <form action="servletsCliente" method="get" class="Alta">
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Usuario</label>
-      <input type="text" class="form-control" name="txtUsuario">
+ <div class="form-row mt-4">
+    <div class="col-6">
+      <input type="text" class="form-control" name="txtUsuario" placeholder="Nombre de usuario">
     </div>
-    <div class="form-group col-md-6">
-      <label for="inputPassword4">Password</label>
-      <input type="password" class="form-control" name="txtPassword">
+    <div class="col-6">
+      <input type="password" class="form-control" name="txtPassword" placeholder="Contraseña">
     </div>
   </div>
-    <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" name="txtEmail">
+   <div class="form-row mt-4">
+    <div class="col-6">
+      <input type="email" class="form-control" name="txtEmail" placeholder="Email">
     </div>
-    <div class="form-group col-md-6">
-      <label for="inputPassword4">Teléfono</label>
-      <input type="text" class="form-control" name="txtTelefono">
+    <div class="col-6">
+      <input type="text" class="form-control" name="txtTelefono" placeholder="Teléfono">
     </div>
   </div>
-    <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Cuil</label>
-      <input type="text" class="form-control" name="txtCuil">
+   <div class="form-row mt-4">
+    <div class="col-6">
+      <input type="text" class="form-control" name="txtCuil" placeholder="Cuil">
     </div>
-    <div class="form-group col-md-6">
-      <label for="inputPassword4">Dni</label>
-      <input type="text" class="form-control" name="txtDni">
-    </div>
-  </div>
-    <div class="form-row">
-    <div class="form-group col-md-4">
-      <label for="inputEmail4">Nombre</label>
-      <input type="text" class="form-control" name="txtNombre">
-    </div>
-    <div class="form-group col-md-4">
-      <label for="inputPassword4">Apellido</label>
-      <input type="text" class="form-control" name="txtApellido">
-        </div>
-          <div class="form-group col-md-4">
-      <label for="inputState">Sexo</label>
-      <select class="form-control" name="ddlSexo">
-        <option selected>Seleccionar...</option>
-        <option value=1>Femenino</option>
-        <option value=2>Masculino</option>
-      </select>
+    <div class="col-6">
+      <input type="text" class="form-control" name="txtDni" placeholder="Dni">
     </div>
       </div>
-      
-        <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputCity">Fecha de nacimiento</label>
-      <input type="date" class="form-control" name="txtFechaNacimiento">
+    <div class="form-row mt-4">
+    <div class="col-5">
+      <input type="text" class="form-control" name="txtApellido" placeholder="Apellido">
     </div>
- <div class="form-group col-md-6">
-      <label for="inputCity">Nacionalidad</label>
-      <input type="text" class="form-control" name="txtNacionalidad">
+    <div class="col-5">
+      <input type="text" class="form-control" name="txtNombre" placeholder="Nombre">
     </div>
-
-  </div>
-      
-  <div class="form-row">
-  <div class="form-group col-md-6">
-    <label for="inputAddress">Calle</label>
-    <input type="text" class="form-control" id="inputAddress"  name="txtCalle">
-  </div>
-    <div class="form-group col-md-6">
-    <label for="inputAddress">Altura</label>
-    <input type="text" class="form-control" id="inputAddress" name="txtAltura">
-  </div>
-  </div>
-
-  <div class="form-row">
-    <div class="form-group col-md-4">
-      <label for="inputCity">Provincia</label>
-      <input type="text" class="form-control" name="txtProvincia">
+      <div class="col">
+      <select class="form-control" name="ddlSexo">
+        <option selected>Seleccionar...</option>
+        <option value=2>Masculino</option>
+        <option value=1>Femenino</option>
+      </select>
+      </div>
     </div>
- <div class="form-group col-md-4">
-      <label for="inputCity">Localidad</label>
-      <input type="text" class="form-control" name="txtLocalidad">
+    <div class="form-row mt-4">
+    <div class="col-6">
+      <input type="text" class="form-control" placeholder="Seleccionar Fecha de nacimiento" onfocus="(this.type='date')" onblur="(this.type='text')" name="txtFechaNacimiento" >
     </div>
-     <div class="form-group col-md-4">
-      <label for="inputCity">País</label>
-      <input type="text" class="form-control" name="txtPais">
+    <div class="col-6">
+      <input type="text" class="form-control" name="txtNacionalidad" placeholder="Nacionalidad">
     </div>
-
-  </div>
-  
-	<input type="submit" class="btn btn-primary crear" value="Crear cliente" name="btnAceptar">
+      </div>
+          <div class="form-row mt-4">
+    <div class="col-6">
+    <input type="text" class="form-control" name="txtCalle" placeholder="Calle">
+    </div>
+    <div class="col-6">
+      <input type="text" class="form-control" name="txtAltura" placeholder="Altura">
+    </div>
+      </div>
+                <div class="form-row mt-4">
+    <div class="col-4">
+    <input type="text" class="form-control" name="txtPais" placeholder="Pais">
+    </div>
+    <div class="col-4">
+      <input type="text" class="form-control" name="txtProvincia" placeholder="Provincia">
+    </div>
+       <div class="col-4">
+      <input type="text" class="form-control" name="txtLocalidad" placeholder="Localidad">
+    </div>
+      </div>
+      <input type="submit"  class="btn btn-success mt-5 centrar" value="Confirmar" name="btnAceptar">
   
 </form>
 </div>
