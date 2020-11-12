@@ -71,9 +71,8 @@ public class servletsCuentas extends HttpServlet {
 		}
 		
 		if(request.getParameter("Param3")!=null) {
-			   
 			
-		    ArrayList<Cuenta> lista = cuentaNegocio.Obtener_todasLasCuentas ();
+		    ArrayList<Cuenta> lista = cuentaNegocio.Obtener_todasLasCuentas();
 		    
 			request.setAttribute("listaC", lista);
 						
@@ -92,21 +91,20 @@ public class servletsCuentas extends HttpServlet {
 	        rd.forward(request, response);
 		}
 		
-		if(request.getParameter("btnEliminar")!=null) {
-		//String cbuCuenta;
-		//cbuCuenta = request.getParameter("cbuCuenta");
+		if(request.getParameter("btnEliminarCuenta")!=null) {
+		String cbuCuenta;
+		cbuCuenta = request.getParameter("cbuCuenta");
 			
 		if (request.getParameter("cbuCuenta")!=null)
 			
-			cuentaNegocio.Eliminar_cuenta(request.getParameter("cbuCuenta"));
+			cuentaNegocio.Eliminar_cuenta(cbuCuenta);
 			
 			ArrayList<Cuenta> lista = cuentaNegocio.Obtener_todasLasCuentas ();
 			request.setAttribute("listaC", lista);
 				
-				RequestDispatcher rd = request.getRequestDispatcher("/ModificarCuenta.jsp");   
+				RequestDispatcher rd = request.getRequestDispatcher("/ListarCuentasAdmin.jsp");   
 		        rd.forward(request, response);
-		}
-		
+		}	
 		
 	}
 

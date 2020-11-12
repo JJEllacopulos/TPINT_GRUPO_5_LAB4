@@ -37,11 +37,10 @@
   <thead class="thead-light">
     <tr>
 
-      <th scope="col">Nro de cuenta</th>
-      <th scope="col">Tipo de cuenta</th>
-      <th scope="col">Dni cliente</th>
-      <th scope="col">Apellido</th>
-      <th scope="col">Nombre</th>
+      <th scope="col">CBU de cuenta </th>
+      <th scope="col">Tipo de cuenta  </th>   
+      <th scope="col">Nombre y Apellido </th>
+      <th scope="col">Estado </th>
       <th class="fila" scope="col"></th>
       <th class="fila" scope="col"></th>
     </tr>
@@ -58,19 +57,22 @@ listaC = (ArrayList<Cuenta>)request.getAttribute("listaC");
     
     <%  if(listaC!=null){
   		 for(Cuenta e : listaC)
-		{
+		{ 
+  			 if (e.getEstado()==true){
 %>
 
     <tr>
-      <form action="servletsCliente" method="get">
-      <td><%=e.getNombre_usuario() %> </td>
+      <form action="servletsCuentas" method="get">
       <td><%= e.getCbu_cuenta() %><input type="hidden" name="cbuCuenta" value="<%=e.getCbu_cuenta() %>"></td>
       <td><%=e.getTipo_Cuenta() %></td>
-      <td><input type="submit" class="btn btn-danger boton" value="Eliminar" name="btnEliminar"></td> 
+      <td><%=e.getNombre_usuario() %> </td>
+    <td><%= e.getEstado() %> </td>
+      
+      <td><input type="submit" class="btn btn-danger boton" value="Eliminar" name="btnEliminarCuenta"></td> 
    <td><input type="submit" class="btn btn-danger boton" value="Modificar" name="btnModificarCuenta"></td> 
    
     </form>
-    <%  } }%>
+    <% } } }%>
  
     </tr>
        
