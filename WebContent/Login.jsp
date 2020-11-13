@@ -26,6 +26,9 @@
 <title>Login</title>
 </head>
 <body>
+
+<jsp:include page="MenuBasio.html"></jsp:include>
+
 <div class="container">
 <form method="post" action="ServletsLogin">
 
