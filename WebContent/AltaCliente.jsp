@@ -35,7 +35,7 @@ if(!usuario.getTipo_usuario().equals("ADMIN")){
 */
 %>
 <div class="container mt-5">
-<form action="servletsCliente" method="get" class="Alta">
+<form action="servletsCliente" method="get">
  <div class="form-row mt-4">
     <div class="col-6">
       <input type="text" class="form-control" name="txtUsuario" placeholder="Nombre de usuario">
