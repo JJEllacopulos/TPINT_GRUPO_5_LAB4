@@ -35,34 +35,37 @@
 <title>Transferencia a terceros</title>
 </head>
 <body>
-<jsp:include page="MenuCliente.jsp"></jsp:include>
-<div class="container">
-<h1 class="mt-3 text-center mb-1 text-info">Transferencia a terceros</h1>
-<form class="Alta">
-  <div class="form-row">
-           <div class="form-group col-md-6">
-      <label for="inputState">Cuenta de origen</label>
-      <select id="inputState" class="form-control">
-        <option selected>Seleccionar...</option>
-        <option>Opcion 1</option>
-        <option>Opcion 2</option>
-      </select>
-    </div>
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">CBU (Destino)</label>
-      <input type="text" class="form-control" id="inputEmail">
-    </div>
-  </div>
-    <div class="form-row">
-    <div class="form-group col-md-12">
-      <label id="lblMonto" for="lblMonto">Monto</label>
-      <input type="text" class="form-control" id="inputMonto">
-    </div>
-    
-  </div>
-
-  <button type="submit" class="btn btn-primary crear mt-2">Transferir</button>
-</form>
-</div>
+	
+	<jsp:include page="MenuCliente.jsp"></jsp:include>
+	
+	<div class="container">
+	<h1 class="mt-3 text-center mb-1 text-info">Transferencia a terceros</h1>
+	<form class="Alta">
+	  <div class="form-row">
+	           <div class="form-group col-md-6">
+	      <label for="inputState">Cuenta de origen</label>
+	      <select id="inputState" class="form-control">
+	        <option selected>Seleccionar...</option>
+	        <option>Opcion 1</option>
+	        <option>Opcion 2</option>
+	      </select>
+	    </div>
+	    <div class="form-group col-md-6">
+	      <label for="inputEmail4">CBU (Destino)</label>
+	      <input type="text" class="form-control" id="inputEmail">
+	    </div>
+	  </div>
+	    <div class="form-row">
+	    <div class="form-group col-md-12">
+	      <label id="lblMonto" for="lblMonto">Monto</label>
+	      <input type="text" class="form-control" id="inputMonto">
+	    </div>
+	    
+	  </div>
+	
+	  <button type="submit" class="btn btn-primary crear mt-2">Transferir</button>
+	</form>
+	</div>
+	
 </body>
 </html>

@@ -68,12 +68,12 @@ public class ServletsLogin extends HttpServlet {
 					
 					if(usuario.getTipo_usuario().equals("user")) {
 						
-						rd = request.getRequestDispatcher("/MenuDePagoCliente.jsp"); 
+						rd = request.getRequestDispatcher("/Inicio_cliente.jsp"); 
 						
 						
 					}else if(usuario.getTipo_usuario().equals("ADMIN")) {
 						
-						rd = request.getRequestDispatcher("/AltaCuenta.jsp");
+						rd = request.getRequestDispatcher("/Inicio_Administrador.jsp");
 						
 						
 					}

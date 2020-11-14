@@ -41,66 +41,69 @@
 </head>
 
 <body>
-<jsp:include page="MenuAdmin.jsp"></jsp:include>
 
-<div class="container Mover  ">
-<div class="row mt-5  ">
-
-      <input type="text" class="form-control" id="Filtrar">
-      <button type="submit" class="btn btn-primary ml-2 ">Buscar</button>
-    </div>
-    </div>
-    
-    	
-<%
-ArrayList<Usuario> listaU = new ArrayList<Usuario>();
-
-listaU = (ArrayList<Usuario>)request.getAttribute("listaU");
-
-		%>
-
-<div class="container">
-<table class="table ">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">Usuario</th>
-      <th scope="col">Nombre</th>
-      <th scope="col">Apellido</th>
-      <th scope="col">DNI</th>
-      <th scope="col">Email</th>
-      <th scope="col">Teléfono</th>
-      <th scope="col">Provincia</th>
-      <th scope="col">Eliminar</th>
-      <th scope="col">Modificar</th>
-      <th scope="col">Detalles</th>
-     
-    </tr>
-  </thead>
-  <tbody>
-    <%  if(listaU!=null){
-  		 for(Usuario e : listaU)
-		{
-%>
-
-    <tr>
-      <form action="servletsCliente" method="get">
-      <td><%=e.getNombre_usuario() %> <input type="hidden" name="nombreUsuario" value="<%=e.getNombre_usuario() %>"></td>
-      <td><%=e.getNombre_real() %></td>
-      <td><%=e.getApellido_real()%></td>
-      <td><%=e.getDni()%></td>
-      <td><%=e.getContacto().getEmail()%></td>
-      <td><%=e.getContacto().getTelefono()%></td>
-      <td><%=e.getDireccion().getProvincia()%></td>
-    
-      <td><button type="submit" class="btn btn-danger" name="btnEliminar">Eliminar</button></td> 
-      <td><button type="submit" class="btn btn-primary" name="btnModificar">Modificar</button></td> 
-      <td><button type="submit" class="btn btn-success" name="btnModificar">Detalles</button></td> 
-      </form>
-    </tr>
-    
-    <%  } }%>	
-  </tbody>
-</table>
-</div>
+	<jsp:include page="MenuAdmin.jsp"></jsp:include>
+	
+	<div class="container Mover  ">
+	<div class="row mt-5  ">
+	
+	      <input type="text" class="form-control" id="Filtrar">
+	      <button type="submit" class="btn btn-primary ml-2 ">Buscar</button>
+	    </div>
+	    </div>
+	    
+	    	
+	<%
+	
+	ArrayList<Usuario> listaU = new ArrayList<Usuario>();
+	
+	listaU = (ArrayList<Usuario>)request.getAttribute("listaU");
+	
+	%>
+	
+	<div class="container">
+	<table class="table ">
+	  <thead class="thead-light">
+	    <tr>
+	      <th scope="col">Usuario</th>
+	      <th scope="col">Nombre</th>
+	      <th scope="col">Apellido</th>
+	      <th scope="col">DNI</th>
+	      <th scope="col">Email</th>
+	      <th scope="col">Teléfono</th>
+	      <th scope="col">Provincia</th>
+	      <th scope="col">Eliminar</th>
+	      <th scope="col">Modificar</th>
+	      <th scope="col">Detalles</th>
+	     
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <%  if(listaU!=null){
+	  		 for(Usuario e : listaU)
+			{
+	%>
+	
+	    <tr>
+	      <form action="servletsCliente" method="get">
+	      <td><%=e.getNombre_usuario() %> <input type="hidden" name="nombreUsuario" value="<%=e.getNombre_usuario() %>"></td>
+	      <td><%=e.getNombre_real() %></td>
+	      <td><%=e.getApellido_real()%></td>
+	      <td><%=e.getDni()%></td>
+	      <td><%=e.getContacto().getEmail()%></td>
+	      <td><%=e.getContacto().getTelefono()%></td>
+	      <td><%=e.getDireccion().getProvincia()%></td>
+	    
+	      <td><button type="submit" class="btn btn-danger" name="btnEliminar">Eliminar</button></td> 
+	      <td><button type="submit" class="btn btn-primary" name="btnModificar">Modificar</button></td> 
+	      <td><button type="submit" class="btn btn-success" name="btnModificar">Detalles</button></td> 
+	      </form>
+	    </tr>
+	    
+	    <%  } }%>	
+	  </tbody>
+	</table>
+	</div>
+	
 </body>
 </html>
