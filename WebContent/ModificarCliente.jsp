@@ -23,16 +23,9 @@
 </style>
 </head>
 <body>
-<jsp:include page="MenuAdmin.html"></jsp:include>
+<jsp:include page="MenuAdmin.jsp"></jsp:include>
 <%
-/*
-Usuario aux = new Usuario();
-aux = (Usuario)session.getAttribute("userSession");
-if(!aux.getTipo_usuario().equals("ADMIN")){
-	RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp");
-	rd.forward(request, response);
-	
-}*/
+
 Usuario usuario = new Usuario();
 usuario = (Usuario)request.getAttribute("usuario");
 %>

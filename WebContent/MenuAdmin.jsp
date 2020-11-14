@@ -1,6 +1,13 @@
-<!DOCTYPE html>
+<%@page import="Entidad.Usuario"%>
+<%@page import="javax.servlet.http.HttpSession"%>
+<%@page import="javax.servlet.RequestDispatcher"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Menu administrador</title>
 
 	<style type="text/css">
 			
@@ -63,11 +70,18 @@
 			}
 			
 		</style>
-
-<meta charset="ISO-8859-1">
-<title>Menu administrador</title>
 </head>
 <body>
+<%
+
+Usuario usuario = new Usuario();
+usuario = (Usuario)session.getAttribute("userSession");
+if(!usuario.getTipo_usuario().equals("ADMIN")){
+	RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp");
+	rd.forward(request, response);
+}
+
+%>
  <nav class="navbar navbar-expand-lg navbar-light bg-success">
  
   <a class="navbar-brand" href="#">Administrador</a>
@@ -88,7 +102,7 @@
     </div>
   </div>
    -->
-  
+  <a class="navbar-brand" href="#">Usuario: <%=usuario.getNombre_usuario() %></a>
   <div id="header">
 		<ul class="nav">
 			<li><a href="">Menu</a>

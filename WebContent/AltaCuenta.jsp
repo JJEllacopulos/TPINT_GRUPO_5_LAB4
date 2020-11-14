@@ -21,7 +21,7 @@
 <title>Alta de cuenta</title>
 </head>
 <body>
-<jsp:include page="MenuAdmin.html"></jsp:include>
+<jsp:include page="MenuAdmin.jsp"></jsp:include>
 <%
 
 /*Usuario usuario = new Usuario();

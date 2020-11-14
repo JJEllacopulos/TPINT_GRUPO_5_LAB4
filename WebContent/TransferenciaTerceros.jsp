@@ -35,7 +35,7 @@
 <title>Transferencia a terceros</title>
 </head>
 <body>
-<jsp:include page="MenuCliente.html"></jsp:include>
+<jsp:include page="MenuCliente.jsp"></jsp:include>
 <div class="container">
 <h1 class="mt-3 text-center mb-1 text-info">Transferencia a terceros</h1>
 <form class="Alta">

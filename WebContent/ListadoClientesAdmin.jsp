@@ -41,16 +41,7 @@
 </head>
 
 <body>
-<jsp:include page="MenuAdmin.html"></jsp:include>
-<%
-
-Usuario usuario = new Usuario();
-usuario = (Usuario)session.getAttribute("userSession");
-if(!usuario.getTipo_usuario().equals("ADMIN")){
-	RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp");
-	rd.forward(request, response);
-}
-%>
+<jsp:include page="MenuAdmin.jsp"></jsp:include>
 
 <div class="container Mover  ">
 <div class="row mt-5  ">

@@ -17,7 +17,7 @@
 
 </head>
 <body>
-	<jsp:include page="MenuCliente.html"></jsp:include>
+	<jsp:include page="MenuCliente.jsp"></jsp:include>
 	<!-- Librerias opcionales -->
 
 

@@ -27,7 +27,7 @@
 </head>
 <body>
 
-<jsp:include page="MenuBasio.html"></jsp:include>
+<jsp:include page="MenuVacio.html"></jsp:include>
 
 <div class="container">
 <form method="post" action="ServletsLogin">

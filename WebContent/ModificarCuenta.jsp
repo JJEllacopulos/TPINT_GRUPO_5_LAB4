@@ -1,4 +1,10 @@
-<%@page import="Entidad.Cuenta"%>
+<%@page import="Entidad.Usuario"%>
+<%@page import="Entidad.TipoCuenta"%>
+<%@page import="Entidad.Cuenta"%>	
+<%@page import="Negocio.NegocioCuentas"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="javax.servlet.http.HttpSession"%>
+<%@page import="javax.servlet.RequestDispatcher"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,56 +17,54 @@
  	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <Style>
- 	.Alta{
- 	width: 100%;
-    max-width: 600px;
-    padding: 15px;
-    margin: auto;
- 	    }
- 	 .crear{
- 	  	width: 100%;
- 
-    margin: auto;
- 	 }
+
 </Style>
-<title>Modificar de cuenta</title>
+<title>Modificar cuenta</title>
 </head>
 <body>
-<jsp:include page="MenuAdmin.html"></jsp:include>
-
+<jsp:include page="MenuAdmin.jsp"></jsp:include>
 <%
+
 
 Cuenta cuenta = new Cuenta();
 cuenta = (Cuenta)request.getAttribute("cuenta");
-
-		%>
+%>
 <div class="container">
-<h1 class="mt-3 text-center mb-1 text-info">Modificar cuenta</h1>
-<form class="Alta">
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Usuario</label>
-      <input type="text" class="form-control" value="<%=cuenta.getNombre_usuario()%>" name="txtUsuario">
-    </div>
-          <div class="form-group col-md-6">
-      <label for="inputState">Tipo de cuenta</label>
-      <select id="inputState" class="form-control">
-        <option selected><%=cuenta.getTipo_Cuenta()%></option>
-      </select>
-    </div>
-  </div>
-    <div class="form-row">
-    <div class="form-group col-md-6">
-      <label >CBU</label>
-      <input type="text" class="form-control" value="<%=cuenta.getCbu_cuenta()%>" name="txtCbu">
-    </div>
-    <div class="form-group col-md-6">
-      <label>Saldo límite</label>
-      <input type="text" class="form-control" value="<%=cuenta.getSaldo()%>">
-    </div>
-  </div>
+<form action="servletsCuentas" method="get" class="Alta">
 
-  <input type="submit" name="btnAceptarModificar" value="Modificar" class="btn btn-success crear">
+ <div class="form-row mt-4">
+    <div class="col-6">
+    <input type="text" class="form-control" value="<%=cuenta.getNombre_usuario()%>" name="txtUsuario" placeholder="Nombre de usuario">
+    </div>
+    <div class="col-6">
+      <select name="ddl_tipo_cuenta" class="form-control" name="ddlTipoCuenta">
+<option selected>Seleccionar...</option>
+	 <%
+	 NegocioCuentas cuentaNegocio = new NegocioCuentas();
+		 	ArrayList<TipoCuenta> listaTipoCuenta =  new ArrayList<TipoCuenta>();
+		listaTipoCuenta =  cuentaNegocio.Obtener_TipoCuentas();
+		
+		 if(listaTipoCuenta!=null)
+		 for(TipoCuenta e : listaTipoCuenta)
+		{		
+	%>	
+	<option value="<%=e.getTipo_cuenta()%>"><%=e.getDescripcion()%></option>
+		<%  } %>
+		
+		
+		</select>
+    </div>
+      </div>
+       <div class="form-row mt-4">
+    <div class="col-6">
+    <input type="text" class="form-control" value="<%=cuenta.getSaldo()%>" name="txtSaldo" placeholder="Saldo">
+    </div>
+    <div class="col-6">
+      
+      <input type="submit"  class="btn btn-success" value="Modificar" name="btnAceptarModificar">
+	
+    </div>
+      </div>
 </form>
 </div>
 </body>

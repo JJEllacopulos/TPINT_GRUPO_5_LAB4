@@ -30,7 +30,7 @@
 </Style>
 </head>
 <body>
-<jsp:include page="MenuCliente.html"></jsp:include>
+<jsp:include page="MenuCliente.jsp"></jsp:include>
 <h1 class="mt-3 text-center mb-4 text-info">Cuentas</h1>
 <div class="container">
 <table class="table ">

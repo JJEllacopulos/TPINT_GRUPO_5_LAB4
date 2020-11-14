@@ -18,7 +18,7 @@
  	 
 </Style>
 <body>
-<jsp:include page="MenuCliente.html"></jsp:include>
+<jsp:include page="MenuCliente.jsp"></jsp:include>
 <div class="container">
 <table class="table ">
   <thead class="thead-light">
