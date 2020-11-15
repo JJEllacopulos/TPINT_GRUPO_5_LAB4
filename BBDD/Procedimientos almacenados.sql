@@ -252,7 +252,7 @@ DELIMITER $$
 	
 	IF EXISTS(SELECT * FROM contacto WHERE nombre_usuario = ing_nombre_usuario AND estado = 1) THEN
 		
-		Update contacto Set ing_email = email, ing_telefono = telefono Where nombre_usuario = ing_nombre_usuario;
+		Update contacto Set email = ing_email, telefono = ing_telefono  Where nombre_usuario = ing_nombre_usuario;
         
 	END IF;
 

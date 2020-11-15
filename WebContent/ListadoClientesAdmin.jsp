@@ -36,6 +36,10 @@
 		margin-right: 20px;
 		margin-top: 5px;
  	}
+ 	
+ 	.btnDD{
+ 	width: 100%
+ 	}]
  	 
 </Style>
 </head>
@@ -72,9 +76,8 @@
 	      <th scope="col">Email</th>
 	      <th scope="col">Teléfono</th>
 	      <th scope="col">Provincia</th>
-	      <th scope="col">Eliminar</th>
-	      <th scope="col">Modificar</th>
-	      <th scope="col">Detalles</th>
+	      <th scope="col"></th>
+	
 	     
 	    </tr>
 	  </thead>
@@ -93,11 +96,26 @@
 	      <td><%=e.getContacto().getEmail()%></td>
 	      <td><%=e.getContacto().getTelefono()%></td>
 	      <td><%=e.getDireccion().getProvincia()%></td>
-	    
-	      <td><button type="submit" class="btn btn-danger" name="btnEliminar">Eliminar</button></td> 
-	      <td><button type="submit" class="btn btn-primary" name="btnModificar">Modificar</button></td> 
-	      <td><button type="submit" class="btn btn-success" name="btnModificar">Detalles</button></td> 
-	      </form>
+	
+	
+	
+	<td>
+
+    <div class="btn-group dropright">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Opciones
+  </button>
+  <div class="dropdown-menu">
+    <!-- Dropdown menu links -->
+     <li><button type="submit" class="btn btn-primary btnDD" name="btnModificar" >Modificar</button></li>
+    <li><button type="submit" class="btn btn-danger btnDD" name="btnEliminar">Eliminar</button></li>
+    <li><button type="submit" class="btn btn-success btnDD" name="btnDetalles">Ver detalles</button></li>
+  </div>
+</div>
+
+</td>
+	
+   </form>
 	    </tr>
 	    
 	    <%  } }%>	
