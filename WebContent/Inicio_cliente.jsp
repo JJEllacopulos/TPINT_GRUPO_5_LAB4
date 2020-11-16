@@ -17,8 +17,7 @@ Usuario usuario = new Usuario();
 usuario = (Usuario)session.getAttribute("userSession");
 %>
 
-<a class="navbar-brand" href="#">Bienvenido <%=usuario.getNombre_usuario() %></a>
-<a class="navbar-brand" href="#">Menu para clientes</a>
+
 
 <style>
 .centrar {
@@ -28,7 +27,8 @@ usuario = (Usuario)session.getAttribute("userSession");
 </style>
 </head>
 <body>
-<jsp:include page="MenuAdmin.jsp"></jsp:include>
-
+<jsp:include page="MenuCliente.jsp"></jsp:include>
+<a class="navbar-brand" href="#">Bienvenido <%=usuario.getNombre_usuario() %></a>
+<a class="navbar-brand" href="#">Menu para clientes</a>
 </body>
 </html>

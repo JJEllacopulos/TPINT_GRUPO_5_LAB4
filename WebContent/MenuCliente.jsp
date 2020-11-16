@@ -36,7 +36,7 @@ if(!aux.getTipo_usuario().equals("user")){
     </div>
   </li>
       <a class="nav-link text-white" href="#"> Mi Perfil</a>
-      <a class="nav-link text-white" href="#">Cerrar Sesión</a>
+      <a class="nav-link text-white" href="ServletsLogin?Param4=4" href="#">Cerrar Sesión</a>
       <a class="nav-link text-white" href="#">Usuario: <%=aux.getNombre_usuario() %></a>
     </div>
   </div>

@@ -34,6 +34,12 @@ public class ServletsLogin extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		if(request.getParameter("Param4")!=null) {
+			request.getSession().invalidate();
+			RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp");
+			rd.forward(request, response);
+			}
 	}
 
 	/**
@@ -62,7 +68,7 @@ public class ServletsLogin extends HttpServlet {
 			usuario = n_usuario.Obtener_usuario(usuarioNombre);
 			
 			
-				
+			if(usuario.getPassword() != null) {
 				if(usuario.getPassword().equals(password)) {
 					
 					
@@ -81,6 +87,7 @@ public class ServletsLogin extends HttpServlet {
 				
 				
 			}
+			}
 			//request.setAttribute("user", usuario);
 			//rd = request.getRequestDispatcher("/AltaCuenta.jsp");
 				
@@ -89,6 +96,8 @@ public class ServletsLogin extends HttpServlet {
 			
 			
 		}
+	
+		
 	
 	}
 

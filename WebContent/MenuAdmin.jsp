@@ -111,7 +111,7 @@ if(!usuario.getTipo_usuario().equals("ADMIN")){
 				<li><a class="nav-link text-white" href="servletsCuentas?Param3=3">Cuentas</a></li>
 				<li><a class="nav-link text-white" href="servletsCliente?Param1=1">Clientes</a></li>
 				<li><a class="nav-link text-white" href="#">Reportes</a></li>
-				<li><a class="nav-link text-white" href="#">Cerrar Sesión</a></li>
+				<li><a class="nav-link text-white" href="ServletsLogin?Param4=4" href="#">Cerrar Sesión</a></li>
 				</ul>
 			</li>
 		</ul>
