@@ -98,6 +98,16 @@ public class servletsCuentas extends HttpServlet {
 			
 		}
 		
+		if(request.getParameter("link_4")!=null) {
+			
+			   
+		    
+						
+			RequestDispatcher rd = request.getRequestDispatcher("/Prestamo_admin_aprovacion.jsp");   
+	        rd.forward(request, response);
+			
+		}
+		
 		if(request.getParameter("btnModificarCuenta")!=null) {
 			String cbuCuenta;
 		cbuCuenta = request.getParameter("cbuCuenta");

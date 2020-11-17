@@ -107,15 +107,16 @@ if(!usuario.getTipo_usuario().equals("ADMIN")){
   
 	
 	<a class="navbar-brand" href="#">Usuario: <%=usuario.getNombre_usuario() %></a>
-  <div id="header">
+	 <div id="header">
 		<ul class="nav">
 			<li><a href="">Menu</a>
 				<ul>
-					<li><a href="#">Inicio <span class="sr-only">(current)</span></a></li>
-					<li><a href="servletsCuentas?Param3=3">Cuentas</a></li>
-					<li><a href="servletsCliente?Param1=1">Clientes</a></li>
+					<li><a href="Servlet_Menu_Administrador?link_1=1">Inicio <span class="sr-only">(current)</span></a></li>
+					<li><a href="Servlet_Menu_Administrador?link_2=1">Cuentas</a></li>
+					<li><a href="Servlet_Menu_Administrador?link_3=1">Clientes</a></li>
+					<li><a href="Servlet_Menu_Administrador?link_4=1">Prestamos a aprobar</a></li>
 					<li><a href="#">Reportes</a></li>
-					<li><a href="#">Cerrar Sesión</a></li>
+					<li><a href="Servlet_Menu_Administrador?link_0=1">Cerrar Sesión</a></li>
 				</ul>
 			</li>
 		</ul>
