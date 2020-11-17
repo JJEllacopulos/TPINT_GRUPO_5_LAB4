@@ -71,6 +71,7 @@
 			}
 			
 		</style>
+		
 </head>
 <body>
 <%
@@ -103,7 +104,9 @@ if(!usuario.getTipo_usuario().equals("ADMIN")){
     </div>
   </div>
    -->
-  <a class="navbar-brand" href="#">Usuario: <%=usuario.getNombre_usuario() %></a>
+  
+	
+	<a class="navbar-brand" href="#">Usuario: <%=usuario.getNombre_usuario() %></a>
   <div id="header">
 		<ul class="nav">
 			<li><a href="">Menu</a>

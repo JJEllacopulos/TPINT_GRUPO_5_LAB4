@@ -26,7 +26,7 @@ usuario = (Usuario)session.getAttribute("userSession");
 		
 		
 		
-		a{
+		.titulo a{
 			margin-left: auto;
 			font-size: x-large;
 			font-family:"Times New Roman", Times, serif;
@@ -34,20 +34,33 @@ usuario = (Usuario)session.getAttribute("userSession");
 			
 		}
 		
-		h1 {
-		  position: relative;
+		.titulo h1 {
+		  
 		  left: 50px;
 		  top: 20px;
 		}
 		
-		h2 {
-		  position: relative;
+		.titulo h2 {
+		  
 		  left: 50px;
 		  top: 10px;
 		}
 		
+		.est1 > li {
+			float:left;
+			
+		}
 		
-		
+		.est1 li a {
+			background-color:#02b802;
+			color:#fff;
+			text-decoration:none;
+			padding:10px 12px;
+			display:block;
+			height: 40px; 
+			width: 80%;
+			
+		}
 		
 	</style>
 
@@ -57,8 +70,34 @@ usuario = (Usuario)session.getAttribute("userSession");
 	
 	<jsp:include page="MenuAdmin.jsp"></jsp:include>
 	
-	<h1> <b> <a class="Titulo_1" href="#">Bienvenido <%=usuario.getNombre_usuario() %></a> </b> </h1>
+	<div class="titulo" >
+	<h1> <b> <a class="navbar-brand" href="#">Bienvenido <%=usuario.getNombre_usuario() %></a> </b> </h1>
 	<h2> <a class="navbar-brand" href="#">Menu para administradores</a> </h2>
+	</div>
+	
+	<div class="est1" >
+	<div style="float: left; height: 50px; width: 33%;">  
+		<li><a href="#">Inicio <span class="sr-only">(current)</span></a></li>
+	</div>
+	<div  style="float: left; height: 50px; width: 33%;">  
+		<li><a href="servletsCuentas?Param3=3">Cuentas</a></li>
+	</div>
+	<div style="float: left; height: 50px; width: 34%;"></div>
+	<br>
+	<div style="float: left; height: 50px; width: 33%;">  
+		<li><a href="servletsCliente?Param1=1">Clientes</a></li>
+	</div>
+	<div style="float: left; height: 50px; width: 33%;">  
+		<li><a href="#">Reportes</a></li>
+	</div>
+	<div style="float: left; height: 50px; width: 34%;"></div>
+	<br>
+	<div style="float: left; height: 50px; width: 33%;">  
+		<li><a href="#">Cerrar Sesión</a></li>
+	</div>
+	<div style="float: left; height: 50px; width: 34%;"></div>
+	<br>
+	</div>
 	
 </body>
 </html>

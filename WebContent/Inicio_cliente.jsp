@@ -20,15 +20,88 @@ usuario = (Usuario)session.getAttribute("userSession");
 
 
 <style>
-.centrar {
-  margin: auto;
-  display: block;
-}
+	.centrar {
+	  margin: auto;
+	  display: block;
+	}
+	
+	.titulo a{
+		margin-left: auto;
+		font-size: x-large;
+		font-family:"Times New Roman", Times, serif;
+		color: green;
+		
+	}
+	
+	.titulo h1 {
+		  
+	  left: 50px;
+	  top: 20px;
+	}
+	
+	.titulo h2 {
+	  
+	  left: 50px;
+	  top: 10px;
+	}
+	
+	.est1 > li {
+		float:left;
+		
+	}
+	
+	.est1 li a {
+		background-color:#02b802;
+		color:#fff;
+		text-decoration:none;
+		padding:10px 12px;
+		display:block;
+		height: 40px; 
+		width: 80%;
+		
+	}
+	
 </style>
 </head>
 <body>
 <jsp:include page="MenuCliente.jsp"></jsp:include>
-<a class="navbar-brand" href="#">Bienvenido <%=usuario.getNombre_usuario() %></a>
-<a class="navbar-brand" href="#">Menu para clientes</a>
+
+	<div class="titulo" >
+	<a class="navbar-brand"  href="#">Bienvenido <%=usuario.getNombre_usuario() %></a> <br>
+	<a class="navbar-brand" href="#">Menu para clientes</a> <br>
+	</div>
+
+	<div class="est1" >
+	<div style="float: left; height: 50px; width: 33%;">  
+		<li><a href="#">Inicio <span class="sr-only">(current)</span></a></li>
+	</div>
+	<div  style="float: left; height: 50px; width: 33%;">  
+		<li><a href="#"> Mi Perfil</a></li>
+	</div>
+	<div style="float: left; height: 50px; width: 34%;"></div>
+	<br>
+	<div style="float: left; height: 50px; width: 33%;">  
+		<li><a href="#">Usuario</a></li>
+	</div>
+	<div style="float: left; height: 50px; width: 33%;">  
+		<li><a href="servletsCuentas?Param2=1">Mis cuentas</a></li>
+	</div>
+	<div style="float: left; height: 50px; width: 34%;"></div>
+	<br>
+	<div style="float: left; height: 50px; width: 33%;">  
+		<li><a href="#">A Terceros</a></li>
+	</div>
+	<div style="float: left; height: 50px; width: 33%;">  
+		<li><a href="#">Cuenta</a></li>
+	</div>
+	<div style="float: left; height: 50px; width: 34%;"></div>
+	<br>
+	<div style="float: left; height: 50px; width: 33%;">  
+		<li><a href="#">Cerrar Sesión</a></li>
+	</div>
+	<div style="float: left; height: 50px; width: 34%;"></div>
+	<br>
+	</div>
+	
 </body>
 </html>
