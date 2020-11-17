@@ -1,3 +1,5 @@
+<%@page import="Entidad.Movimiento"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -19,11 +21,22 @@
 </Style>
 <body>
 <jsp:include page="MenuCliente.jsp"></jsp:include>
+	<%
+	
+	ArrayList<Movimiento> listaMovimiento = new ArrayList<Movimiento>();
+	
+
+	listaMovimiento = (ArrayList<Movimiento>)request.getAttribute("listaMovimientos");
+	
+	%>
 <div class="container">
 <table class="table ">
   <thead class="thead-light">
     <tr>
-
+ <%  if(listaMovimiento!=null){
+  		 for(Movimiento e : listaMovimiento)
+		{
+%>
       <th scope="col">Movimiento</th>
       <th scope="col">Fecha</th>
       <th scope="col">Monto</th>
@@ -31,17 +44,16 @@
   </thead>
   <tbody>
     <tr>
-      <td>Transferencia</td>
-      <td>06/10/20</td>
-      <td class="text-success"><b>+$700</b></td>
+      <td><%= e.getTipo_movimiento() %></td>
+      <td><%= e.getFecha_creacion() %></td>
+      <%if(e.getImporte()>0){ %>
+      <td class="text-success"><b><%= e.getImporte()%></b></td>
+        <% } else{%>
+         <td class="text-danger"><b><%= e.getImporte()%></b></td>
       <td></td> 
     </tr>
-       <tr>
-      <td>Retiro cajero</td>
-      <td>09/10/20</td>
-      <td class="text-danger"><b>-$1500 <b></td>
-      <td></td> 
-    </tr>
+
+     <%  }} }%>
   </tbody>
 </table>
 </div>

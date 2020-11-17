@@ -36,7 +36,7 @@
 <table class="table ">
   <thead class="thead-light">
     <tr>
-
+	  <th scope="col">Cbu</th>
       <th scope="col">Cuenta</th>
       <th scope="col">Total</th>
       <th class="fila" scope="col"></th>
@@ -57,7 +57,8 @@ listaC = (ArrayList<Cuenta>)request.getAttribute("listaC");
 %>
 
     <tr>
-      <form action="servletsCuentas" method="get">
+      <form action="ServletsMovimientos" method="get">
+      <td><%=e.getCbu_cuenta()%> <input type="hidden" name="cbuUsuario" value="<%=e.getCbu_cuenta()%>"></td>
       <td><%=e.getTipo_Cuenta() %></td>
       <td><%= e.getSaldo() %></td>
    <td><button type="submit" class="btn btn-primary boton " name="btnVerMovimientos">Ver movimientos</button></td> 

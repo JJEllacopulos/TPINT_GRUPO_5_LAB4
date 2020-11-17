@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.Date;
 
 import Entidad.Contacto;
+import Entidad.Cuenta;
 import Entidad.Direccion;
 import Entidad.Movimiento;
 import Entidad.TipoCuenta;
@@ -177,7 +178,55 @@ public int SPObtenerUltimoId () {
 		}
 		return aux;	
 	}
+
+public ArrayList<Movimiento> Obtener_Lista_Movimientos(String cbuNombre) {
 	
+	
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	ArrayList<Movimiento> x = new ArrayList<Movimiento>();
+	Movimiento aux = new Movimiento();
+		
+		Connection cn = null;
+		
+		try {
+			
+			cn = DriverManager.getConnection(host+dbName, user,pass);
+			CallableStatement st = cn.prepareCall("CALL PRO_Listar_movimiento(?)");
+			 st.setString(1, cbuNombre);
+			 
+			
+			ResultSet resultado = st.executeQuery();
+
+			while(resultado.next()){
+
+				
+				aux.setId_movimiento(resultado.getInt("id_movimiento"));
+				aux.setCbu_cuenta(resultado.getString("cbu_cuenta"));
+				aux.setTipo_movimiento(resultado.getString("tipo_movimiento"));
+				aux.setFecha_creacion(resultado.getDate("fecha_creacion"));
+				aux.setDetalles(resultado.getString("detalles"));
+				aux.setImporte(resultado.getDouble("importe"));
+				aux.setEstado(resultado.getBoolean("estado"));
+
+				x.add(aux);
+			}
+				
+			
+		}
+		catch(Exception e) {
+			
+			e.printStackTrace();
+			
+		}
+		
+		return x;
+		
+	}
 }
 
 

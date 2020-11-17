@@ -1,5 +1,5 @@
 package servlets;
-
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -77,6 +77,7 @@ public class Servlet_Menu_Administrador extends HttpServlet {
 		}
 		
 		if(request.getParameter("link_0")!=null) {
+			request.getSession().invalidate();
 			RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp");   
 	        rd.forward(request, response);
 		}
