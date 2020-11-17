@@ -182,7 +182,7 @@ public class servletsCuentas extends HttpServlet {
 			movimiento.setCbu_cuenta(CuentaOrigen);  
 			movimiento.setTipo_movimiento("Trans");  
 			movimiento.setDetalles("A terceros");   
-			movimiento.setImporte(importeNeg);   // transferencia negativa 
+			movimiento.setImporte(importeNeg*-1);   // transferencia negativa 
 			
 			negocioMovimiento.SPAltaMovimiento(movimiento, "");
 			
