@@ -189,7 +189,7 @@ public ArrayList<Movimiento> Obtener_Lista_Movimientos(String cbuNombre) {
 		e.printStackTrace();
 	}
 	ArrayList<Movimiento> x = new ArrayList<Movimiento>();
-	Movimiento aux = new Movimiento();
+	
 		
 		Connection cn = null;
 		
@@ -203,8 +203,8 @@ public ArrayList<Movimiento> Obtener_Lista_Movimientos(String cbuNombre) {
 			ResultSet resultado = st.executeQuery();
 
 			while(resultado.next()){
-
-				
+				//id_movimiento, cbu_cuenta, tipo_movimiento, fecha_creacion, detalles, importe, estado
+				Movimiento aux = new Movimiento();
 				aux.setId_movimiento(resultado.getInt("id_movimiento"));
 				aux.setCbu_cuenta(resultado.getString("cbu_cuenta"));
 				aux.setTipo_movimiento(resultado.getString("tipo_movimiento"));

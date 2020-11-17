@@ -78,7 +78,7 @@ public class servletsCuentas extends HttpServlet {
 		if(request.getParameter("Param2")!=null) {
 					   
 			//request.getParameter("CBU");
-		    ArrayList<Cuenta> lista = cuentaNegocio.Obtener_lista_CuentasCliente();
+		    ArrayList<Cuenta> lista = cuentaNegocio.Obtener_Datos_Cuenta("Adrianabanana");
 		    
 			request.setAttribute("listaC", lista);
 						

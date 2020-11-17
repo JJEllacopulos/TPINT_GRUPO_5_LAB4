@@ -33,27 +33,27 @@
 <table class="table ">
   <thead class="thead-light">
     <tr>
+    <th scope="col">Movimiento</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Monto</th>
  <%  if(listaMovimiento!=null){
   		 for(Movimiento e : listaMovimiento)
 		{
 %>
-      <th scope="col">Movimiento</th>
-      <th scope="col">Fecha</th>
-      <th scope="col">Monto</th>
+      
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><%= e.getTipo_movimiento() %></td>
       <td><%= e.getFecha_creacion() %></td>
-      <%if(e.getImporte()>0){ %>
+      
       <td class="text-success"><b><%= e.getImporte()%></b></td>
-        <% } else{%>
-         <td class="text-danger"><b><%= e.getImporte()%></b></td>
+       
       <td></td> 
     </tr>
 
-     <%  }} }%>
+     <%  } }%>
   </tbody>
 </table>
 </div>
