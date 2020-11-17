@@ -119,7 +119,7 @@ if(!aux.getTipo_usuario().equals("user")){
 					<li><a href="#"> Mi Perfil</a></li>
 					<li><a href="#">Usuario</a></li>
 					<li><a href="Servlet_Menu_clientes?link_4=1">Mis cuentas</a></li>
-					<li><a href="#">A Terceros</a></li>
+					<li><a href="TransferenciaTerceros.jsp">A Terceros</a></li>
 					<li><a href="#">Cuenta</a></li>
 					<li><a href="Servlet_Menu_clientes?link_7=1">Solisitar prestamo</a></li>
 					<li><a href="Servlet_Menu_clientes?link_8=1">Lista de prestamos</a></li>
