@@ -49,18 +49,37 @@
 	<jsp:include page="MenuAdmin.jsp"></jsp:include>
 	
 	<div class="container Mover  ">
+	<form action="servletsCliente" method="get">
 	<div class="row mt-5  ">
-	
-	      <input type="text" class="form-control" id="Filtrar">
-	      <button type="submit" class="btn btn-primary ml-2 ">Buscar</button>
+		<div class="col">
+		
+	      <input type="text" name="txtBuscarCliente" class="form-control" placeholder="Ingrese un nombre de usuario...">
+	      <% 	String usuarioInvalido;
+	usuarioInvalido = (String)request.getAttribute("usuarioInvalido");
+	if(usuarioInvalido!= null){
+	%>
+	      <label class="text-danger"> <%=usuarioInvalido %></label>
+	      <% }%>
+	      </div>
+	      <div class="col">
+	      <button type="submit" name="btnBuscarCliente" class="btn btn-primary ml-2">Buscar</button>
+	      </div>
+	         
+	      
+	      <div class="col">
+	      <a class="btn btn-success" href="AltaCliente.jsp">Nuevo cliente</a>
+	       </div>
 	    </div>
+	     </form>
 	    </div>
 	    
+	
 	    	
 	<%
 	
 	ArrayList<Usuario> listaU = new ArrayList<Usuario>();
-	
+	Usuario usuarioFiltrado = new Usuario();
+	usuarioFiltrado = (Usuario)request.getAttribute("usuarioFiltrado");
 	listaU = (ArrayList<Usuario>)request.getAttribute("listaU");
 	
 	%>
@@ -118,7 +137,41 @@
    </form>
 	    </tr>
 	    
-	    <%  } }%>	
+	    <%} } else if(usuarioFiltrado.getNombre_usuario()!=null){%>	
+
+	
+	    <tr>
+	      <form action="servletsCliente" method="get">
+	      <td><%=usuarioFiltrado.getNombre_usuario() %> <input type="hidden" name="nombreUsuario" value="<%=usuarioFiltrado.getNombre_usuario() %>"></td>
+	      <td><%=usuarioFiltrado.getNombre_real() %></td>
+	      <td><%=usuarioFiltrado.getApellido_real()%></td>
+	      <td><%=usuarioFiltrado.getDni()%></td>
+	      <td><%=usuarioFiltrado.getContacto().getEmail()%></td>
+	      <td><%=usuarioFiltrado.getContacto().getTelefono()%></td>
+	      <td><%=usuarioFiltrado.getDireccion().getProvincia()%></td>
+	
+	
+	
+	<td>
+
+    <div class="btn-group dropright">
+  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Opciones
+  </button>
+  <div class="dropdown-menu">
+    <!-- Dropdown menu links -->
+     <li><button type="submit" class="btn btn-primary btnDD" name="btnModificar" >Modificar</button></li>
+    <li><button type="submit" class="btn btn-danger btnDD" name="btnEliminar">Eliminar</button></li>
+    <li><button type="submit" class="btn btn-success btnDD" name="btnDetalles">Ver detalles</button></li>
+  </div>
+</div>
+
+</td>
+	
+   </form>
+	    </tr>
+	    
+	    <%  }%>	
 	  </tbody>
 	</table>
 	</div>
