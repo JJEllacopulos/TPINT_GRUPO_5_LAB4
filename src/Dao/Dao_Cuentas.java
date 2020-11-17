@@ -96,7 +96,7 @@ public class Dao_Cuentas {
 			try {
 				
 				cn = DriverManager.getConnection(host+dbName, user,pass);
-				CallableStatement st = cn.prepareCall("CALL PRO_Obtener_Cuentas");
+				CallableStatement st = cn.prepareCall("CALL PRO_Listar_Cuenta");
 							
 				ResultSet resultado = st.executeQuery();
 				/*  
@@ -269,6 +269,52 @@ public ArrayList<TipoCuenta> Obtener_TipoCuentas() {
 				aux.setTipo_cuenta(resultado.getString("tipo_cuenta"));
 				aux.setDescripcion(resultado.getString("descripcion"));
 
+				
+				x.add(aux);
+				
+			}
+			
+		}
+		catch(Exception e) {
+			
+			e.printStackTrace();
+			
+		}
+		
+		return x;	
+	}
+
+public ArrayList<Cuenta> Obtener_Datos_Cuenta (String nombre_usuario) {
+	
+	
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	ArrayList<Cuenta> x = new ArrayList<Cuenta>();
+		
+		Connection cn = null;
+		
+		try {
+			
+			cn = DriverManager.getConnection(host+dbName, user,pass);
+			CallableStatement st = cn.prepareCall("CALL PRO_Buscar_Datos_cuenta(?)");
+			 st.setString(1, nombre_usuario );
+			ResultSet resultado = st.executeQuery();
+			/*  
+ c.cbu_cuenta, c.nombre_usuario, c.tipo_cuenta, c.fecha_creacion, c.saldo, c.estado 
+			 */
+			while(resultado.next()){
+				
+				Cuenta aux = new Cuenta();
+				aux.setCbu_cuenta(resultado.getString("cbu_cuenta"));
+				aux.setNombre_usuario(resultado.getString("nombre_usuario"));
+				aux.setTipo_Cuenta(resultado.getString("tipo_cuenta"));
+				aux.setFecha_creacion(resultado.getString("fecha_creacion"));
+				aux.setSaldo(resultado.getDouble("saldo"));
+				aux.setEstado(resultado.getBoolean("estado"));
 				
 				x.add(aux);
 				

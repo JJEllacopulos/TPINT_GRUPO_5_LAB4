@@ -60,5 +60,13 @@ public class NegocioCuentas implements InterfaceCuentas {
 		return listaTipoCuenta;
 	}
 	
+	@Override
+	public ArrayList<Cuenta> Obtener_Datos_Cuenta(String nombre_usuario) {
+		// TODO Auto-generated method stub
+		ArrayList<Cuenta> listaTipoCuenta = new ArrayList<Cuenta>();
+		listaTipoCuenta = daoCuentas.Obtener_Datos_Cuenta(nombre_usuario);
+		return listaTipoCuenta;
+	}
+	
 
 }

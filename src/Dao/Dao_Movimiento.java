@@ -4,10 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.sql.Statement;
+import java.util.Date;
 
 import Entidad.Contacto;
 import Entidad.Direccion;
 import Entidad.Movimiento;
+import Entidad.TipoCuenta;
 import Entidad.Usuario;
 
 public class Dao_Movimiento {
@@ -30,13 +33,13 @@ public class Dao_Movimiento {
 		  try
 		  {
 			 cn = DriverManager.getConnection(host+dbName, user,pass);
-			 CallableStatement cst = cn.prepareCall("CALL PRO_ingresar_movimiento(?,?,?,?,?)");
+			 CallableStatement cst = cn.prepareCall("CALL PRO_ingresar_movimiento(?,?,?,?)");
 			 
 			 cst.setString(1, movimiento.getCbu_cuenta());
 			 cst.setString(2, movimiento.getTipo_movimiento());
-			 cst.setDate(3, java.sql.Date.valueOf(fecha));
-			 cst.setString(4, movimiento.getDetalles());
-			 cst.setDouble(5, movimiento.getImporte());
+			 //cst.setDate(3, java.sql.Date.valueOf(fecha));
+			 cst.setString(3, movimiento.getDetalles());
+			 cst.setDouble(4, movimiento.getImporte());
 			 
 			 cst.execute();
 		  }
@@ -145,6 +148,34 @@ public class Dao_Movimiento {
 			e.printStackTrace();
 		}
 			
+	}
+	
+public int SPObtenerUltimoId () {
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		int aux = 0; 
+		Connection cn = null;
+		
+		try {
+			
+			cn = DriverManager.getConnection(host+dbName, user,pass);
+			CallableStatement st = cn.prepareCall("CALL PRO_Obtener_Ultimo_Id_Movimiento");
+			ResultSet resultado = st.executeQuery();
+				
+				while(resultado.next()){	
+					aux=(resultado.getInt("id_movimiento"));
+				}
+				
+		}
+		catch(Exception e) {	
+			e.printStackTrace();	
+		}
+		return aux;	
 	}
 	
 }

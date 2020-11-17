@@ -1,3 +1,8 @@
+<%@page import="Entidad.Cuenta"%>
+<%@page import="Negocio.NegocioCuentas"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="javax.servlet.http.HttpSession"%>
+<%@page import="javax.servlet.RequestDispatcher"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -44,16 +49,38 @@
       <label for="inputState">Cuenta de origen</label>
       <select id="inputState" class="form-control">
         <option selected>Seleccionar...</option>
-        <option>Opcion 1</option>
-        <option>Opcion 2</option>
+       <%
+	 NegocioCuentas cuentaNegocio = new NegocioCuentas();
+	 
+		 	ArrayList<Cuenta> listaCuenta =  new ArrayList<Cuenta>();
+		listaCuenta =  cuentaNegocio.Obtener_Datos_Cuenta(""); //nombre_usuario
+		
+		 if(listaCuenta!=null)
+		 for(Cuenta e : listaCuenta)
+		{		
+	%>	
+	<option value= "<%=e.getCbu_cuenta() %>" ><%=e.getTipo_Cuenta()%></option>
+		<%  } %>
+		
       </select>
     </div>
    <div class="form-group col-md-6">
       <label for="inputState">Cuenta de destino</label>
       <select id="inputState" class="form-control">
         <option selected>Seleccionar...</option>
-        <option>Opcion 1</option>
-        <option>Opcion 2</option>
+        <%
+	 NegocioCuentas cuentaNegocio2 = new NegocioCuentas();
+	 
+		 	ArrayList<Cuenta> listaCuenta2 =  new ArrayList<Cuenta>();
+		listaCuenta2 =  cuentaNegocio.Obtener_Datos_Cuenta(""); //nombre_usuario
+		
+		 if(listaCuenta2!=null)
+		 for(Cuenta e : listaCuenta2)
+		{		
+	%>	
+	<option value= "<%=e.getCbu_cuenta() %>" ><%=e.getTipo_Cuenta()%></option>
+		<%  } %>
+		
       </select>
     </div>
   </div>

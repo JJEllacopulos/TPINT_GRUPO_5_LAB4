@@ -28,7 +28,7 @@ public class Dao_Transferencia {
 		  try
 		  {
 			 cn = DriverManager.getConnection(host+dbName, user,pass);
-			 CallableStatement cst = cn.prepareCall("CALL PRO_ingresar_movimiento(?,?)");
+			 CallableStatement cst = cn.prepareCall("CALL PRO_ingresar_transferencia(?,?)"); 
 			 
 			 cst.setInt(1, transferencias.getId_movimiento());
 			 cst.setString(2, transferencias.getCbu_cuenta_destino());

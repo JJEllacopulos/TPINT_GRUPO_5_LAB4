@@ -16,8 +16,12 @@ import javax.servlet.http.HttpServletResponse;
 import Entidad.Cuenta;
 import Entidad.TipoCuenta;
 import Entidad.Usuario;
+import Entidad.Movimiento;
+import Entidad.Transferencias;
+import Negocio.NegocioTransferencia;
 import Negocio.NegocioCuentas;
 import Negocio.NegocioUsuario;
+import Negocio.NegocioMovimiento;
 
 /**
  * Servlet implementation class servletsCuentas
@@ -140,6 +144,85 @@ public class servletsCuentas extends HttpServlet {
 		        rd.forward(request, response);
 			
 			}
+		if(request.getParameter("btnTransferirTerceros")!=null) {
+				
+			if (cuentaNegocio.Obtener_cuenta(request.getParameter("CBUdestino"))!=null) { // validar CBU destino 
+				
+			Cuenta cuenta1 = new Cuenta ();
+			NegocioMovimiento negocioMovimiento = new NegocioMovimiento();
+			
+			String CuentaOrigen = request.getParameter("ddl_cuenta_origen");
+			
+			double importe = Double.parseDouble(request.getParameter("inputMonto"));
+			double saldoCuenta = 0;
+			double saldoFinal = 0;
+			int idMovimiento = negocioMovimiento.SPObtenerUltimoId() + 1;
+			
+			cuenta1	= cuentaNegocio.Obtener_cuenta(CuentaOrigen);
+			saldoCuenta = cuenta1.getSaldo();
+			saldoFinal = saldoCuenta - importe; 
+			
+			if (importe<=saldoCuenta) {
+			
+			// alta del moviento 
+			
+			Movimiento movimiento = new Movimiento();
+			
+			movimiento.setCbu_cuenta(CuentaOrigen);  
+			movimiento.setTipo_movimiento("Neg");  
+			movimiento.setDetalles("Transferencia");   
+			movimiento.setImporte(importe);  
+			
+			negocioMovimiento.SPAltaMovimiento(movimiento, "");
+			
+			
+			Movimiento movimiento2 = new Movimiento();
+			
+			
+			movimiento2.setCbu_cuenta(request.getParameter("CBUdestino"));  
+			movimiento2.setTipo_movimiento("Pos");  
+			movimiento2.setDetalles("Transferencia");   
+			movimiento2.setImporte(importe);  
+			
+			negocioMovimiento.SPAltaMovimiento(movimiento2, "");
+			
+			// alta de transferencia 
+					
+			Transferencias transferencia = new Transferencias(); 
+			NegocioTransferencia negocioTransferencia = new NegocioTransferencia();
+			
+			transferencia.setId_movimiento(idMovimiento); 
+			transferencia.setCbu_cuenta_destino(request.getParameter("CBUdestino")); 
+			
+			negocioTransferencia.SPAltaTransferencia(transferencia, "");
+			
+			// actualizacion de cuentas 
+			
+			
+			cuenta1.setSaldo(saldoFinal);
+			cuentaNegocio.SPModificarCuenta(cuenta1);
+			
+			Cuenta cuenta2 = new Cuenta ();
+			
+			double saldoCuentaDestino = 0;
+			
+			cuenta2	= cuentaNegocio.Obtener_cuenta(request.getParameter("CBUdestino"));
+			saldoCuentaDestino = cuenta2.getSaldo();
+			
+			cuenta2.setSaldo(saldoCuentaDestino+importe);
+			cuentaNegocio.SPModificarCuenta(cuenta2);
+			
+			}
+			
+			else {
+				// Mensaje de saldo insuficiente 
+			}
+		}
+			else {
+				// Mensaje cuenta incorrecta
+			}
+			RequestDispatcher rd = request.getRequestDispatcher("/ListadoMovimientos.jsp");  
+		}
 		
 	}
 

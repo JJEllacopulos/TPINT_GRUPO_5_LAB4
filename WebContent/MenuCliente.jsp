@@ -96,7 +96,7 @@ if(!aux.getTipo_usuario().equals("user")){
        <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle text-white" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Transferencia</a>
     <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">A Terceros</a>
+    <a class="dropdown-item" href="TransferenciaTerceros.jsp">A Terceros</a>
      <a class="dropdown-item " href="#">Cuenta</a>
       
     </div>

@@ -1,3 +1,9 @@
+<%@page import="Entidad.Cuenta"%>
+<%@page import="Entidad.Usuario"%>
+<%@page import="Negocio.NegocioCuentas"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="javax.servlet.http.HttpSession"%>
+<%@page import="javax.servlet.RequestDispatcher"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -40,30 +46,45 @@
 	
 	<div class="container">
 	<h1 class="mt-3 text-center mb-1 text-info">Transferencia a terceros</h1>
-	<form class="Alta">
+	<form action="servletsCuentas" method="get" class="Alta">
 	  <div class="form-row">
 	           <div class="form-group col-md-6">
 	      <label for="inputState">Cuenta de origen</label>
-	      <select id="inputState" class="form-control">
-	        <option selected>Seleccionar...</option>
-	        <option>Opcion 1</option>
-	        <option>Opcion 2</option>
+	      <select  name="ddl_cuenta_origen" class="form-control">
+	       <option selected>Seleccionar...</option>
+	       <%
+
+Usuario usuario = new Usuario();
+usuario = (Usuario)session.getAttribute("userSession");
+NegocioCuentas cuentaNegocio = new NegocioCuentas();
+	 
+		 	ArrayList<Cuenta> listaCuenta =  new ArrayList<Cuenta>();
+		listaCuenta =  cuentaNegocio.Obtener_Datos_Cuenta(usuario.getNombre_usuario()); 
+		
+		 if(listaCuenta!=null)
+		 for(Cuenta e : listaCuenta)
+		{		
+	%>	
+	<option value= "<%=e.getCbu_cuenta() %>" ><%= e.getTipo_Cuenta() +" Saldo: $"+ e.getSaldo()  %></option>
+		<%  } %>
+		
+		
 	      </select>
 	    </div>
 	    <div class="form-group col-md-6">
 	      <label for="inputEmail4">CBU (Destino)</label>
-	      <input type="text" class="form-control" id="inputEmail">
+	      <input type="text" class="form-control" name="CBUdestino">
 	    </div>
 	  </div>
 	    <div class="form-row">
 	    <div class="form-group col-md-12">
 	      <label id="lblMonto" for="lblMonto">Monto</label>
-	      <input type="text" class="form-control" id="inputMonto">
+	      <input type="text" class="form-control" name="inputMonto">
 	    </div>
 	    
 	  </div>
 	
-	  <button type="submit" class="btn btn-primary crear mt-2">Transferir</button>
+	  <input type="submit"  class="btn btn-success" value="Transferir" name="btnTransferirTerceros">
 	</form>
 	</div>
 	

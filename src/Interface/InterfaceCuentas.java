@@ -15,4 +15,5 @@ public interface InterfaceCuentas {
 	public Cuenta Obtener_cuenta(String cbuCuenta);
 	public void Eliminar_cuenta(String cbuCuenta);
 	public ArrayList<TipoCuenta> Obtener_TipoCuentas();
+	public ArrayList<Cuenta> Obtener_Datos_Cuenta(String nombre_usuario);
 }
