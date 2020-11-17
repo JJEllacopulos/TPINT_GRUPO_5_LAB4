@@ -102,6 +102,8 @@ if(!aux.getTipo_usuario().equals("user")){
     </div>
   </li>
       <a class="nav-link text-white" href="#"> Mi Perfil</a>
+      <a class="nav-link text-white" href="ServletsLogin?Param4=4">Cerrar Sesión</a>
+
       <a class="nav-link text-white" href="ServletsLogin?Param4=4" href="#">Cerrar Sesión</a>
       
     </div>
@@ -119,7 +121,7 @@ if(!aux.getTipo_usuario().equals("user")){
 					<li><a href="servletsCuentas?Param2=1">Mis cuentas</a></li>
 					<li><a href="#">A Terceros</a></li>
 					<li><a href="#">Cuenta</a></li>
-					<li><a href="#">Cerrar Sesión</a></li>
+					<li><a href="ServletsLogin?Param4=4">Cerrar Sesión</a></li>
 				</ul>
 			</li>
 		</ul>

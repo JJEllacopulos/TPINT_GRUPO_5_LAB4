@@ -170,6 +170,27 @@ public class servletsCliente extends HttpServlet {
 	        rd.forward(request, response); 
 			
 		}
+		
+		if(request.getParameter("btnBuscarCliente")!=null) {
+			RequestDispatcher rd = request.getRequestDispatcher("/ListadoClientesAdmin.jsp"); 
+			String nombreUsuario = request.getParameter("txtBuscarCliente");
+		usuario = 	usuarioNegocio.Obtener_usuario(nombreUsuario);
+		if(usuario.getNombre_usuario()!= null) {
+			request.setAttribute("usuarioFiltrado", usuario);
+			   
+	         
+		}else {
+			String invalido = "Ingrese un nombre válido";
+		    ArrayList<Usuario> lista = usuarioNegocio.Obtener_lista_usuarios();
+			
+			request.setAttribute("usuarioInvalido", invalido);
+			request.setAttribute("listaU", lista);
+			   
+		}
+		rd.forward(request, response);
+
+		}
+	
 	}
 		
 	

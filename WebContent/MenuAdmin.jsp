@@ -100,7 +100,7 @@ if(!usuario.getTipo_usuario().equals("ADMIN")){
       <a class="nav-link text-white" href="servletsCuentas?Param3=3">Cuentas</a>
       <a class="nav-link text-white" href="servletsCliente?Param1=1">Clientes</a>
       <a class="nav-link text-white" href="#">Reportes</a>
-      <a class="nav-link text-white" href="#">Cerrar Sesión</a>
+      <a class="nav-link text-white" href="ServletsLogin?Param4=4">Cerrar Sesión</a>
     </div>
   </div>
    -->
