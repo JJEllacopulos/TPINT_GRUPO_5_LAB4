@@ -16,18 +16,49 @@
 Usuario usuario = new Usuario();
 usuario = (Usuario)session.getAttribute("userSession");
 %>
-<a class="navbar-brand" href="#">Bienvenido <%=usuario.getNombre_usuario() %></a>
-<a class="navbar-brand" href="#">Menu para administradores</a>
 
-<style>
-.centrar {
-  margin: auto;
-  display: block;
-}
-</style>
+
+	<style>
+		.centrar {
+		  margin: auto;
+		  display: block;
+		}
+		
+		
+		
+		a{
+			margin-left: auto;
+			font-size: x-large;
+			font-family:"Times New Roman", Times, serif;
+			color: green;
+			
+		}
+		
+		h1 {
+		  position: relative;
+		  left: 50px;
+		  top: 20px;
+		}
+		
+		h2 {
+		  position: relative;
+		  left: 50px;
+		  top: 10px;
+		}
+		
+		
+		
+		
+	</style>
+
+
 </head>
 <body>
-<jsp:include page="MenuAdmin.jsp"></jsp:include>
-
+	
+	<jsp:include page="MenuAdmin.jsp"></jsp:include>
+	
+	<h1> <b> <a class="Titulo_1" href="#">Bienvenido <%=usuario.getNombre_usuario() %></a> </b> </h1>
+	<h2> <a class="navbar-brand" href="#">Menu para administradores</a> </h2>
+	
 </body>
 </html>

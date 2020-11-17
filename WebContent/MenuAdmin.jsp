@@ -19,7 +19,7 @@
 			
 			#header {
 				margin-left: auto;
-				width:10%;
+				width:20%;
 				font-family:"Times New Roman", Times, serif;
 				z-index: 2;
 				
@@ -55,12 +55,13 @@
 				
 			}
 			
-			.nav li:hover > ul {
+			.nav li:hover ul {
 				display:block;
 			}
 			
 			.nav li ul li {
 				position:relative;
+				
 			}
 			
 			.nav li ul li ul {
@@ -98,7 +99,7 @@ if(!usuario.getTipo_usuario().equals("ADMIN")){
       <a class="nav-link text-white" href="servletsCuentas?Param3=3">Cuentas</a>
       <a class="nav-link text-white" href="servletsCliente?Param1=1">Clientes</a>
       <a class="nav-link text-white" href="#">Reportes</a>
-      <a class="nav-link text-white" href="#">Cerrar Sesión</a>
+      <a class="nav-link text-white" href="ServletsLogin?Param4=4">Cerrar Sesión</a>
     </div>
   </div>
    -->
@@ -107,11 +108,11 @@ if(!usuario.getTipo_usuario().equals("ADMIN")){
 		<ul class="nav">
 			<li><a href="">Menu</a>
 				<ul>
-				<li><a class="nav-link active ml-5 text-white" href="#">Inicio <span class="sr-only">(current)</span></a></li>
-				<li><a class="nav-link text-white" href="servletsCuentas?Param3=3">Cuentas</a></li>
-				<li><a class="nav-link text-white" href="servletsCliente?Param1=1">Clientes</a></li>
-				<li><a class="nav-link text-white" href="#">Reportes</a></li>
-				<li><a class="nav-link text-white" href="ServletsLogin?Param4=4" href="#">Cerrar Sesión</a></li>
+					<li><a href="#">Inicio <span class="sr-only">(current)</span></a></li>
+					<li><a href="servletsCuentas?Param3=3">Cuentas</a></li>
+					<li><a href="servletsCliente?Param1=1">Clientes</a></li>
+					<li><a href="#">Reportes</a></li>
+					<li><a href="#">Cerrar Sesión</a></li>
 				</ul>
 			</li>
 		</ul>
