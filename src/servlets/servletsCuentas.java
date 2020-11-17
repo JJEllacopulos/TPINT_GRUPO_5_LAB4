@@ -175,13 +175,14 @@ public class servletsCuentas extends HttpServlet {
 			if (importe<=saldoCuenta) {
 			
 			// alta del moviento 
-			
+			double importeNeg = 0;
+			importeNeg = importe;
 			Movimiento movimiento = new Movimiento();
 			
 			movimiento.setCbu_cuenta(CuentaOrigen);  
-			movimiento.setTipo_movimiento("Neg");  
-			movimiento.setDetalles("Transferencia");   
-			movimiento.setImporte(importe);  
+			movimiento.setTipo_movimiento("Transferencia");  
+			movimiento.setDetalles("Transferencia a terceros");   
+			movimiento.setImporte(importeNeg * -1);   // transferencia negativa 
 			
 			negocioMovimiento.SPAltaMovimiento(movimiento, "");
 			
@@ -190,9 +191,9 @@ public class servletsCuentas extends HttpServlet {
 			
 			
 			movimiento2.setCbu_cuenta(request.getParameter("CBUdestino"));  
-			movimiento2.setTipo_movimiento("Pos");  
-			movimiento2.setDetalles("Transferencia");   
-			movimiento2.setImporte(importe);  
+			movimiento2.setTipo_movimiento(" Transferencia ");  
+			movimiento2.setDetalles("Transferencia a terceros");   
+			movimiento2.setImporte(importe);   // transferencia positiva 
 			
 			negocioMovimiento.SPAltaMovimiento(movimiento2, "");
 			
