@@ -52,13 +52,34 @@ public class Servlet_Menu_clientes extends HttpServlet {
 		}
 		
 		if(request.getParameter("link_4")!=null) {
-			RequestDispatcher rd = request.getRequestDispatcher("/Prestamo_admin_aprovacion.jsp");   
+			//request.getParameter("CBU");
+		    ArrayList<Cuenta> lista = cuentaNegocio.Obtener_lista_CuentasCliente();
+		    
+			request.setAttribute("listaC", lista);
+						
+			RequestDispatcher rd = request.getRequestDispatcher("/ListadoCuentasDelCliente.jsp");   
 	        rd.forward(request, response);
 		}
 		
 		if(request.getParameter("link_5")!=null) {
 			
 		}
+		
+		if(request.getParameter("link_6")!=null) {
+			
+		}
+		
+		if(request.getParameter("link_7")!=null) {
+			RequestDispatcher rd = request.getRequestDispatcher("/Prestamo_cliente_solisitud.jsp");   
+	        rd.forward(request, response);
+		}
+		
+		if(request.getParameter("link_8")!=null) {
+			RequestDispatcher rd = request.getRequestDispatcher("/Prestamo_cliente_listar.jsp");   
+	        rd.forward(request, response);
+		}
+		
+		
 		
 		if(request.getParameter("link_0")!=null) {
 			RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp");   

@@ -115,13 +115,15 @@ if(!aux.getTipo_usuario().equals("user")){
 		<ul class="nav">
 			<li><a href="">Menu</a>
 				<ul>
-					<li><a href="#">Inicio <span class="sr-only">(current)</span></a></li>
+					<li><a href="Servlet_Menu_clientes?link_1=1">Inicio <span class="sr-only">(current)</span></a></li>
 					<li><a href="#"> Mi Perfil</a></li>
 					<li><a href="#">Usuario</a></li>
-					<li><a href="servletsCuentas?Param2=1">Mis cuentas</a></li>
+					<li><a href="Servlet_Menu_clientes?link_4=1">Mis cuentas</a></li>
 					<li><a href="#">A Terceros</a></li>
 					<li><a href="#">Cuenta</a></li>
-					<li><a href="ServletsLogin?Param4=4">Cerrar Sesión</a></li>
+					<li><a href="Servlet_Menu_clientes?link_7=1">Solisitar prestamo</a></li>
+					<li><a href="Servlet_Menu_clientes?link_8=1">Lista de prestamos</a></li>
+					<li><a href="Servlet_Menu_clientes?link_0=1">Cerrar Sesión</a></li>
 				</ul>
 			</li>
 		</ul>
