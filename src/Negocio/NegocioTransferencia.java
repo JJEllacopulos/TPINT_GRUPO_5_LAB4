@@ -15,5 +15,15 @@ public class NegocioTransferencia implements InterfaceTransferencia{
 		
 	}
 	
+	@Override
+	public boolean StringIsNumeric(String nombre_usuario) {
+		try {
+			Integer.parseInt(nombre_usuario);
+			return true;
+		} catch (NumberFormatException nfe){
+			return false;
+		}	
+	}
+	
 	
 }

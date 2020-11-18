@@ -37,8 +37,9 @@ cuenta = (Cuenta)request.getAttribute("cuenta");
     <input type="text" class="form-control" value="<%=cuenta.getNombre_usuario()%>" name="txtUsuario" placeholder="Nombre de usuario">
     </div>
     <div class="col-6">
-      <select name="ddl_tipo_cuenta" class="form-control" name="ddlTipoCuenta">
+      <select  class="form-control" name="ddlTipoCuenta">
 <option selected>Seleccionar...</option>
+	
 	 <%
 	 NegocioCuentas cuentaNegocio = new NegocioCuentas();
 		 	ArrayList<TipoCuenta> listaTipoCuenta =  new ArrayList<TipoCuenta>();
@@ -49,8 +50,9 @@ cuenta = (Cuenta)request.getAttribute("cuenta");
 		{		
 	%>	
 	<option value="<%=e.getTipo_cuenta()%>"><%=e.getDescripcion()%></option>
+
 		<%  } %>
-		
+
 		
 		</select>
     </div>
@@ -58,6 +60,7 @@ cuenta = (Cuenta)request.getAttribute("cuenta");
        <div class="form-row mt-4">
     <div class="col-6">
     <input type="text" class="form-control" value="<%=cuenta.getSaldo()%>" name="txtSaldo" placeholder="Saldo">
+   			 <input type="hidden" name="cbuCuenta" value="<%=cuenta.getCbu_cuenta()%>">
     </div>
     <div class="col-6">
       

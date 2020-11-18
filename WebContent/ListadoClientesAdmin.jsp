@@ -37,6 +37,38 @@
 		margin-top: 5px;
  	}
  	
+ 	
+ .paginacion {
+	margin:20px 0;
+}
+ 
+.paginacion ul {
+	list-style:none;
+	text-align: center;
+}
+ 
+.paginacion ul li {
+	display:inline-block;
+	margin-right:10px;
+}
+ 
+.paginacion ul li a {
+	display:block;
+	padding:10px 20px;
+	color:#fff;
+	background:#024959;
+	text-decoration: none;
+}
+ 
+.paginacion ul li a:hover {
+	background:#037E8C;
+}
+ 
+.paginacion ul li .active {
+	background:#037E8C;
+	font-weight:bold;
+}
+ 	
  	.btnDD{
  	width: 100%
  	}]
@@ -53,7 +85,7 @@
 	<div class="row mt-5  ">
 		<div class="col">
 		
-	      <input type="text" name="txtBuscarCliente" class="form-control" placeholder="Ingrese un nombre de usuario...">
+	      <input type="text" name="txtBuscarCliente" class="form-control" placeholder="Ingrese un nombre de usuario..." minlength="1" maxlength="20" title="Ingrese un usuario valido">
 	      <% 	String usuarioInvalido;
 	usuarioInvalido = (String)request.getAttribute("usuarioInvalido");
 	if(usuarioInvalido!= null){
@@ -101,12 +133,13 @@
 	    </tr>
 	  </thead>
 	  <tbody>
+	  	        
 	    <%  if(listaU!=null){
 	  		 for(Usuario e : listaU)
-			{
+			{			 
 	%>
 	
-	    <tr>
+<tr>
 	      <form action="servletsCliente" method="get">
 	      <td><%=e.getNombre_usuario() %> <input type="hidden" name="nombreUsuario" value="<%=e.getNombre_usuario() %>"></td>
 	      <td><%=e.getNombre_real() %></td>
@@ -115,8 +148,6 @@
 	      <td><%=e.getContacto().getEmail()%></td>
 	      <td><%=e.getContacto().getTelefono()%></td>
 	      <td><%=e.getDireccion().getProvincia()%></td>
-	
-	
 	
 	<td>
 
@@ -134,10 +165,24 @@
 
 </td>
 	
+	
    </form>
 	    </tr>
 	    
-	    <%} } else if(usuarioFiltrado.getNombre_usuario()!=null){%>	
+	    <%} %>
+	  		 <section class="paginacion">
+			<ul>
+			<li><a href="Servlet_Menu_Administrador?link_3=1">PAGINAS:</a></li>
+				<%
+				for (int i=1; i<=(int)request.getAttribute("cantPag"); i++){
+				%>
+				<li><a href="Servlet_Menu_Administrador?link_3=<%=i%>"<%if((int)request.getAttribute("pagActual")==i){%>class="active"<%}%>><%=i%></a></li>
+				<% 
+				}
+				%>
+			</ul>
+		</section>
+	  		  <% } else if(usuarioFiltrado.getNombre_usuario()!=null){%>	
 
 	
 	    <tr>
@@ -149,8 +194,6 @@
 	      <td><%=usuarioFiltrado.getContacto().getEmail()%></td>
 	      <td><%=usuarioFiltrado.getContacto().getTelefono()%></td>
 	      <td><%=usuarioFiltrado.getDireccion().getProvincia()%></td>
-	
-	
 	
 	<td>
 
@@ -172,6 +215,7 @@
 	    </tr>
 	    
 	    <%  }%>	
+	    
 	  </tbody>
 	</table>
 	</div>

@@ -59,13 +59,40 @@ public class Servlet_Menu_Administrador extends HttpServlet {
 		}
 		
 		if(request.getParameter("link_3")!=null) {
-			ArrayList<Usuario> lista = usuarioNegocio.Obtener_lista_usuarios();
-		    
-			request.setAttribute("listaU", lista);
-						
+		int usuariosXpagina = 10;
+		
+		ArrayList<Usuario> lista = usuarioNegocio.Obtener_lista_usuarios();
+		int cantPag=1;
+		
+		if(lista!=null){
+	    	int usuarios=0;
+	  		 for(Usuario e : lista)
+			{ usuarios++;
+	  			if (usuarios == usuariosXpagina){
+	  				usuarios = 0;
+	  				cantPag = cantPag + 1;
+	  			} } }	  			
+		
+		int usuarioFinal=  Integer.parseInt(request.getParameter("link_3"))*usuariosXpagina; 
+		int usuarioInicio = usuarioFinal - usuariosXpagina;									
+	
+		ArrayList<Usuario> listaPaginada = new ArrayList<Usuario>();	
+		
+		for (int i=0;i<lista.size();i++) {		      
+			if(i>=usuarioInicio && i< usuarioFinal) {	
+			usuario = lista.get(i);
+			listaPaginada.add(usuario);
+			}  
+		    }
+		
+			request.setAttribute("listaU", listaPaginada);
+			request.setAttribute("cantPag", cantPag);
+			request.setAttribute("pagActual", Integer.parseInt(request.getParameter("link_3")));	
+			
 			RequestDispatcher rd = request.getRequestDispatcher("/ListadoClientesAdmin.jsp");   
 	        rd.forward(request, response);
 		}
+			
 		
 		if(request.getParameter("link_4")!=null) {
 			
@@ -76,6 +103,17 @@ public class Servlet_Menu_Administrador extends HttpServlet {
 		if(request.getParameter("link_5")!=null) {
 			
 		}
+		
+		if(request.getParameter("link_7")!=null) { ///----------------
+			RequestDispatcher rd = request.getRequestDispatcher("/AltaCliente.jsp");   
+	        rd.forward(request, response);
+		}
+		if(request.getParameter("link_8")!=null) { ///----------------
+			RequestDispatcher rd = request.getRequestDispatcher("/AltaCuenta.jsp");   
+	        rd.forward(request, response);
+		}
+		
+		
 		
 		if(request.getParameter("link_0")!=null) {
 			request.getSession().invalidate();
