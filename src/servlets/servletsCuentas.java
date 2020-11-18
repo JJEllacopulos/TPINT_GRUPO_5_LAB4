@@ -236,7 +236,7 @@ public class servletsCuentas extends HttpServlet {
 			else {
 				// Mensaje cuenta incorrecta
 			}
-			RequestDispatcher rd = request.getRequestDispatcher("/ListadoMovimientos.jsp");  
+			RequestDispatcher rd = request.getRequestDispatcher("/ListadoCuentasDelCliente.jsp");  
 		}
 		
 	}
