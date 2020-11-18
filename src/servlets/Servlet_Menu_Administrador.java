@@ -68,7 +68,8 @@ public class Servlet_Menu_Administrador extends HttpServlet {
 		}
 		
 		if(request.getParameter("link_4")!=null) {
-			RequestDispatcher rd = request.getRequestDispatcher("/Prestamo_admin_aprovacion.jsp");   
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/Servlet_Prestamo_Administrador?Param_1=1");   
 	        rd.forward(request, response);
 		}
 		

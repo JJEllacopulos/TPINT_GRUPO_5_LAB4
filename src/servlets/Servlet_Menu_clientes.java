@@ -51,12 +51,11 @@ public class Servlet_Menu_clientes extends HttpServlet {
 			
 		}
 		
-		if(request.getParameter("link_4")!=null) {
-			//request.getParameter("CBU");
-		    ArrayList<Cuenta> lista = cuentaNegocio.Obtener_lista_CuentasCliente();
-		    
+		if(request.getParameter("link_4")!=null) {	
+			
+			ArrayList<Cuenta> lista = cuentaNegocio.Obtener_lista_CuentasCliente();
 			request.setAttribute("listaC", lista);
-						
+			
 			RequestDispatcher rd = request.getRequestDispatcher("/ListadoCuentasDelCliente.jsp");   
 	        rd.forward(request, response);
 		}
