@@ -73,7 +73,7 @@ NegocioCuentas cuentaNegocio = new NegocioCuentas();
 	    </div>
 	    <div class="form-group col-md-6">
 	      <label for="inputEmail4">CBU (Destino)</label>
-	      <input type="text" class="form-control" name="CBUdestino" title="Ingrese un CBU valido" pattern="[a-zA-Záéíóú,. '-]{2,49}" required>
+	      <input type="text" class="form-control" name="CBUdestino" title="Ingrese un CBU valido" pattern="[0-9]{5,16}" required>
 	    </div>
 	  </div>
 	    <div class="form-row">
