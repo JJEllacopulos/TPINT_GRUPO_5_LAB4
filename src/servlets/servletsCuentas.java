@@ -209,9 +209,9 @@ if(request.getParameter("btnConfirmarTransferencia")!=null) {
 			
 			movimiento2.setCbu_cuenta(request.getParameter("CBUdestino"));  
 			if (!movimiento.getCbu_cuenta().equals(movimiento2.getCbu_cuenta())) {	
+				
 			negocioMovimiento.SPAltaMovimiento(movimiento, "");
 			
-
 			movimiento2.setTipo_movimiento("Trans");  
 			movimiento2.setDetalles("A terceros");   
 			movimiento2.setImporte(importe);   // transferencia positiva 

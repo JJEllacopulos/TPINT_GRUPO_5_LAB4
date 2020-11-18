@@ -134,7 +134,7 @@ if(!aux.getTipo_usuario().equals("user")){
   </a>
   <div class="dropdown-menu">
     <!-- Dropdown menu links -->
-     <li><a href="TransferenciaTerceros.jsp" >Aterceros</a></li>
+     <li><a href="TransferenciaTerceros.jsp" >A terceros</a></li>
     <li><a  href="TransferenciaCuentaPropia.jsp" >A cuenta propia</a></li>
   </div>
 </div>

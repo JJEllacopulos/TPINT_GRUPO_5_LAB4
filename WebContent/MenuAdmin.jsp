@@ -114,6 +114,8 @@ if(!usuario.getTipo_usuario().equals("ADMIN")){
 					<li><a href="Servlet_Menu_Administrador?link_1=1">Inicio <span class="sr-only">(current)</span></a></li>
 					<li><a href="Servlet_Menu_Administrador?link_2=1">Cuentas</a></li>
 					<li><a href="Servlet_Menu_Administrador?link_3=1">Clientes</a></li>
+					<li><a href="Servlet_Menu_Administrador?link_7=1">Alta Cliente</a></li>
+					<li><a href="Servlet_Menu_Administrador?link_8=1">Alta Cuenta</a></li>
 					<li><a href="Servlet_Menu_Administrador?link_4=1">Prestamos a aprobar</a></li>
 					<li><a href="#">Reportes</a></li>
 					<li><a href="Servlet_Menu_Administrador?link_0=1">Cerrar Sesión</a></li>

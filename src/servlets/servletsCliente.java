@@ -53,16 +53,13 @@ public class servletsCliente extends HttpServlet {
 		}
 		
 		if(request.getParameter("link_4")!=null) {
-			
-			   
-		    
 						
 			RequestDispatcher rd = request.getRequestDispatcher("/Prestamo_admin_aprovacion.jsp");   
 	        rd.forward(request, response);
 			
 		}
 		
-		if(request.getParameter("btnAceptar")!=null)
+		if(request.getParameter("btnAceptar")!=null) // alta cliente 
 		{
 			
 			Direccion direccion = new Direccion();
@@ -186,8 +183,7 @@ public class servletsCliente extends HttpServlet {
 			String nombreUsuario = request.getParameter("txtBuscarCliente");
 		usuario = 	usuarioNegocio.Obtener_usuario(nombreUsuario);
 		if(usuario.getNombre_usuario()!= null) {
-			request.setAttribute("usuarioFiltrado", usuario);
-			   
+			request.setAttribute("usuarioFiltrado", usuario);			   
 	         
 		}else {
 			String invalido = "Ingrese un nombre válido";
