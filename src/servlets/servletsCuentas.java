@@ -11,7 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import Entidad.Cuenta;
 import Entidad.TipoCuenta;
@@ -78,7 +78,11 @@ public class servletsCuentas extends HttpServlet {
 		if(request.getParameter("Param2")!=null) {
 					   
 			//request.getParameter("CBU");
-		    ArrayList<Cuenta> lista = cuentaNegocio.Obtener_Datos_Cuenta("Adrianabanana");
+			HttpSession session = request.getSession();
+			Usuario usuario1 = new Usuario();
+			usuario1 = (Usuario)session.getAttribute("userSession");
+			
+		    ArrayList<Cuenta> lista = cuentaNegocio.Obtener_Datos_Cuenta(usuario1.getNombre_usuario());
 		    
 			request.setAttribute("listaC", lista);
 						
