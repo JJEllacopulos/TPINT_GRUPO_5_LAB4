@@ -16,6 +16,7 @@ import Entidad.Cuenta;
 import Entidad.Prestamo;
 import Entidad.Usuario;
 import Negocio.NegocioCuentas;
+import Negocio.Negocio_Prestamo;
 
 import javax.servlet.http.HttpSession;
 
@@ -42,6 +43,7 @@ public class Servlet_Prestamo_Administrador extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		Prestamo e_prestamo = new Prestamo ();
+		Negocio_Prestamo n_prestamo = new Negocio_Prestamo();
 		NegocioCuentas n_cuentaNegocio = new NegocioCuentas();
 		
 		HttpSession misession = (HttpSession) request.getSession();
@@ -57,7 +59,7 @@ public class Servlet_Prestamo_Administrador extends HttpServlet {
 			e_prestamo.setPago_x_mes(pag_x_mes);
 			e_prestamo.setCantidad_cuotas(Integer.parseInt(request.getParameter("txt_Cuotas")));
 			
-			
+			n_prestamo.SPNuevo_Prestamo(e_prestamo);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/Prestamo_cliente_solisitud.jsp");   
 	        rd.forward(request, response);
