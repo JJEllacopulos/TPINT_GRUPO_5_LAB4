@@ -47,25 +47,30 @@ public class servletsCuentas extends HttpServlet {
 		
 		Cuenta cuenta = new Cuenta ();
 		NegocioCuentas cuentaNegocio = new NegocioCuentas();
-		
+		NegocioMovimiento negMovimiento = new NegocioMovimiento();
+		Movimiento movimiento = new Movimiento();
 		if(request.getParameter("btnCrearCuenta")!=null) {
 			double a = 50;
+			long cbuCuenta = (long) Math.floor(Math.random()*(99999999-9999999+1)+9999999);
 			Date myDate = new Date();
 			String tipoCuenta = request.getParameter("ddl_tipo_cuenta");
-			cuenta.setCbu_cuenta(request.getParameter("txtCBU"));
+			cuenta.setCbu_cuenta(String.valueOf(cbuCuenta));
 			cuenta.setNombre_usuario(request.getParameter("txtUsuario"));
 			cuenta.setTipo_Cuenta(tipoCuenta);
-			cuenta.setSaldo(Double.parseDouble(request.getParameter("txtSaldo"))); //
+			cuenta.setSaldo(10000.00); //
 			cuenta.setFecha_creacion(new SimpleDateFormat("yyyy-MM-dd").format(myDate));  
-			 
-			
 			cuentaNegocio.SPAltaCuenta(cuenta);
+			movimiento.setCbu_cuenta(cuenta.getCbu_cuenta());
+			movimiento.setDetalles("Monto inicial");
+			movimiento.setImporte(cuenta.getSaldo());
+			movimiento.setTipo_movimiento("Inici");
+			negMovimiento.SPAltaMovimiento(movimiento, "");
 			
 			ArrayList<Cuenta> lista = cuentaNegocio.Obtener_todasLasCuentas();  
 			request.setAttribute("listaC", lista);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/ListarCuentasAdmin.jsp");   
-			cuenta.setTipo_Cuenta(request.getParameter("txtUsuario"));
+			
 			//cuenta.setSaldo(request.getParameter("txtSaldo"));
 			//cuenta.setFecha_creacion(new SimpleDateFormat("yyyy-MM-dd").format(myDate));
 			//cuenta.setEstado(true);
@@ -137,13 +142,13 @@ public class servletsCuentas extends HttpServlet {
 		
 		if(request.getParameter("btnAceptarModificar")!=null) {
 			
-			double a = 50;
+		
 				Date myDate = new Date();
-				String tipoCuenta = request.getParameter("ddl_tipo_cuenta");
-				cuenta.setCbu_cuenta(request.getParameter("txtCBU"));
+				
+				cuenta.setCbu_cuenta(request.getParameter("cbuCuenta"));
 				cuenta.setNombre_usuario(request.getParameter("txtUsuario"));
-				cuenta.setTipo_Cuenta(tipoCuenta);
-				cuenta.setSaldo(a); //
+				cuenta.setTipo_Cuenta(request.getParameter("ddlTipoCuenta"));
+				cuenta.setSaldo(Double.parseDouble(request.getParameter("txtSaldo")));
 				cuenta.setFecha_creacion(new SimpleDateFormat("yyyy-MM-dd").format(myDate));  
 				 
 				cuentaNegocio.SPModificarCuenta(cuenta);
@@ -152,7 +157,7 @@ public class servletsCuentas extends HttpServlet {
 				request.setAttribute("listaC", lista);
 				
 				RequestDispatcher rd = request.getRequestDispatcher("/ListarCuentasAdmin.jsp");   
-				cuenta.setTipo_Cuenta(request.getParameter("txtUsuario"));
+				
 		        rd.forward(request, response);
 			
 			}

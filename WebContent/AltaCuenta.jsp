@@ -59,10 +59,7 @@ if(!usuario.getTipo_usuario().equals("ADMIN")){
     </div>
       </div>
        <div class="form-row mt-4">
-    <div class="col-6">
-    <input type="text" class="form-control" name="txtSaldo" placeholder="Saldo">
-    </div>
-    <div class="col-6">
+        <div class="col-6">
       
       <input type="submit"  class="btn btn-success" value="Confirmar" name="btnCrearCuenta">
 	

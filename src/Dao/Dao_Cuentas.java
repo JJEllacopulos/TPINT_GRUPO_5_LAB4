@@ -35,13 +35,14 @@ public class Dao_Cuentas {
 		  {
 			 cn = DriverManager.getConnection(host+dbName, user,pass);
 
-			 CallableStatement cst = cn.prepareCall("CALL PRO_ingresar_cuenta(?,?,?,?,?,?)");
+			 CallableStatement cst = cn.prepareCall("CALL PRO_ingresar_cuenta(?,?,?,?,?)");
 			 cst.setString(1, cuenta.getCbu_cuenta() ); 
 			 cst.setString(2,  cuenta.getNombre_usuario());
 			 cst.setString(3, cuenta.getTipo_Cuenta() );//cuenta.getTipo_Cuenta()
 			 cst.setString(4, cuenta.getFecha_creacion()); 
-			 cst.setString(5, cuenta.getSaldo().toString() ); 
-			 cst.setBoolean(6, true); 
+			 cst.setDouble(5, cuenta.getSaldo()); 
+	
+			 
 
 
 			 cst.execute();
