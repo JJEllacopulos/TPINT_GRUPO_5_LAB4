@@ -34,7 +34,7 @@ cuenta = (Cuenta)request.getAttribute("cuenta");
 
  <div class="form-row mt-4">
     <div class="col-6">
-    <input type="text" class="form-control" value="<%=cuenta.getNombre_usuario()%>" name="txtUsuario" placeholder="Nombre de usuario">
+    <input type="text" class="form-control" value="<%=cuenta.getNombre_usuario()%>" name="txtUsuario" placeholder="Nombre de usuario"  maxlength="20" title="Ingrese un usuario valido" required>
     </div>
     <div class="col-6">
       <select  class="form-control" name="ddlTipoCuenta">
@@ -59,7 +59,7 @@ cuenta = (Cuenta)request.getAttribute("cuenta");
       </div>
        <div class="form-row mt-4">
     <div class="col-6">
-    <input type="text" class="form-control" value="<%=cuenta.getSaldo()%>" name="txtSaldo" placeholder="Saldo">
+    <input type="text" class="form-control" value="<%=cuenta.getSaldo()%>" name="txtSaldo" placeholder="Saldo" pattern="[0-9]{0,10000000}" title="Ingrese saldo valido" required>
    			 <input type="hidden" name="cbuCuenta" value="<%=cuenta.getCbu_cuenta()%>">
     </div>
     <div class="col-6">

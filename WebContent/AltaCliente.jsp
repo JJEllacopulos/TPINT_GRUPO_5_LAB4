@@ -63,26 +63,26 @@ if(filas > 0){%>
   </div>
    <div class="form-row mt-4">
     <div class="col-6">
-      <input type="email" class="form-control" name="txtEmail" placeholder="Email">
+      <input type="email" class="form-control" name="txtEmail" placeholder="Email" required>
     </div>
     <div class="col-6">
-      <input type="text" pattern="[0-9]{6,15}" title="Ingrese un telefono valido " class="form-control" name="txtTelefono" placeholder="Teléfono" required>
+      <input type="text" class="form-control" name="txtTelefono" placeholder="Teléfono" pattern="[0-9]{6,15}" title="Ingrese un telefono valido " required>
     </div>
   </div>
    <div class="form-row mt-4">
     <div class="col-6">
-      <input type="text" pattern="[0-9]{9,11}" title="Ingrese un Cuil valido " class="form-control" name="txtCuil" placeholder="Cuil" required>
+      <input type="text" class="form-control" name="txtCuil" placeholder="Cuil" pattern="[0-9]{9,11}" title="Ingrese un Cuil valido " required>
     </div>
     <div class="col-6">
-      <input type="text" pattern="[0-9]{6,8}" title="Ingrese un DNI valido " class="form-control" name="txtDni" placeholder="Dni" required>
+      <input type="text" title="Ingrese un DNI valido " class="form-control" name="txtDni" placeholder="Dni" pattern="[0-9]{6,8}" required>
     </div>
       </div>
     <div class="form-row mt-4">
     <div class="col-5">
-      <input type="text" class="form-control" name="txtApellido" placeholder="Apellido" title="Ingrese un apellido valido" pattern="[a-zA-Záéíóú,.'-]{2,49}"required>
+      <input type="text" class="form-control" name="txtApellido" placeholder="Apellido" title="Ingrese un apellido valido" pattern="[a-zA-Záéíóú,. '-]{2,49}" required>
     </div>
     <div class="col-5">
-      <input type="text" class="form-control" name="txtNombre" placeholder="Nombre" title="Ingrese un nombre valido" pattern="[a-zA-Záéíóú,.'-]{2,49}" required>
+      <input type="text" class="form-control" name="txtNombre" placeholder="Nombre" title="Ingrese un nombre valido" pattern="[a-zA-Záéíóú,. '-]{2,49}" required>
     </div>
       <div class="col">
       <select class="form-control" name="ddlSexo">
@@ -94,26 +94,26 @@ if(filas > 0){%>
     </div>
     <div class="form-row mt-4">
     <div class="col-6">
-      <input type="text" class="form-control" placeholder="Seleccionar Fecha de nacimiento" onfocus="(this.type='date')" onblur="(this.type='text')" name="txtFechaNacimiento" >
+      <input type="text" class="form-control" placeholder="Seleccionar Fecha de nacimiento" onfocus="(this.type='date')" onblur="(this.type='text')" name="txtFechaNacimiento" required>
     </div>
     <div class="col-6">
-      <input type="text" class="form-control" name="txtNacionalidad" placeholder="Nacionalidad" title="Ingrese una nacionalidad valida" pattern="[a-zA-Záéíóú,.'-]{2,49}" required>
+      <input type="text" class="form-control" name="txtNacionalidad" placeholder="Nacionalidad" title="Ingrese una nacionalidad valida" pattern="[a-zA-Záéíóú,. '-]{2,49}" required>
     </div>
       </div>
           <div class="form-row mt-4">
     <div class="col-6">
-    <input type="text" class="form-control" name="txtCalle" placeholder="Calle" title="Ingrese una calle valida" pattern="[a-zA-Záéíóú,.'-]{2,49}" required>
+    <input type="text" class="form-control" name="txtCalle" placeholder="Calle" title="Ingrese una calle valida" pattern="[a-zA-Záéíóú,. '-]{2,49}" required>
     </div>
     <div class="col-6">
-      <input type="text" pattern="[0-9]{1,5}"  title="Ingrese una altura valida" class="form-control" name="txtAltura" placeholder="Altura" required>
+      <input type="text" class="form-control" name="txtAltura" placeholder="Altura" title="Ingrese una altura valida" pattern="[0-9]{1,5}" required>
     </div>
       </div>
                 <div class="form-row mt-4">
     <div class="col-4">
-    <input type="text" class="form-control" name="txtPais" placeholder="Pais" title="Ingrese un pais valido" pattern="[a-zA-Záéíóú,.'-]{2,49}" required>
+    <input type="text" class="form-control" name="txtPais" placeholder="Pais" title="Ingrese un pais valido" pattern="[a-zA-Záéíóú,. '-]{2,49}" required>
     </div>
     <div class="col-4">
-      <input type="text" class="form-control" name="txtProvincia" placeholder="Provincia" title="Ingrese una provincia valida" pattern="[a-zA-Záéíóú,.'-]{2,49}" required>
+      <input type="text" class="form-control" name="txtProvincia" placeholder="Provincia" title="Ingrese una provincia valida" pattern="[a-zA-Záéíóú,. '-]{2,49}" required>
     </div>
        <div class="col-4">
       <input type="text" class="form-control" name="txtLocalidad" placeholder="Localidad" title="Ingrese una localidad valida" required>

@@ -35,34 +35,34 @@ usuario = (Usuario)request.getAttribute("usuario");
 <form action="servletsCliente" method="get">
  <div class="form-row mt-4">
     <div class="col-6">
-      <input type="text" class="form-control" value="<%=usuario.getNombre_usuario()%>" name="txtUsuario" placeholder="Nombre de usuario">
+      <input type="text" class="form-control" value="<%=usuario.getNombre_usuario()%>" name="txtUsuario" placeholder="Nombre de usuario" maxlength="20" title="Ingrese un usuario valido" required>
     </div>
     <div class="col-6">
-      <input type="password" class="form-control" value="<%=usuario.getPassword()%>" name="txtPassword" placeholder="Contraseña">
-    </div>
-  </div>
-   <div class="form-row mt-4">
-    <div class="col-6">
-      <input type="email" class="form-control" value="<%=usuario.getContacto().getEmail()%>" name="txtEmail" placeholder="Email">
-    </div>
-    <div class="col-6">
-      <input type="text" class="form-control" value="<%=usuario.getContacto().getTelefono()%>" name="txtTelefono" placeholder="Teléfono">
+      <input type="password" class="form-control" value="<%=usuario.getPassword()%>" name="txtPassword" placeholder="Contraseña" minlength="4" maxlength="20" title="Ingrese una contraseña valida" required>
     </div>
   </div>
    <div class="form-row mt-4">
     <div class="col-6">
-      <input type="text" class="form-control" value="<%=usuario.getCuil()%>"  name="txtCuil" placeholder="Cuil">
+      <input type="email" class="form-control" value="<%=usuario.getContacto().getEmail()%>" name="txtEmail" placeholder="Email" required>
     </div>
     <div class="col-6">
-      <input type="text" class="form-control" value="<%=usuario.getDni()%>" name="txtDni" placeholder="Dni">
+      <input type="text" class="form-control" value="<%=usuario.getContacto().getTelefono()%>" name="txtTelefono" placeholder="Teléfono" pattern="[0-9]{6,15}" title="Ingrese un telefono valido " required>
+    </div>
+  </div>
+   <div class="form-row mt-4">
+    <div class="col-6">
+      <input type="text" class="form-control" value="<%=usuario.getCuil()%>"  name="txtCuil" placeholder="Cuil" pattern="[0-9]{9,11}" title="Ingrese un Cuil valido " required>
+    </div>
+    <div class="col-6">
+      <input type="text" class="form-control" value="<%=usuario.getDni()%>" name="txtDni" placeholder="Dni" pattern="[0-9]{6,8}" required>
     </div>
       </div>
     <div class="form-row mt-4">
     <div class="col-5">
-      <input type="text" class="form-control" value="<%=usuario.getApellido_real()%>" name="txtApellido" placeholder="Apellido">
+      <input type="text" class="form-control" value="<%=usuario.getApellido_real()%>" name="txtApellido" placeholder="Apellido" title="Ingrese un apellido valido" pattern="[a-zA-Záéíóú,. '-]{2,49}" required>
     </div>
     <div class="col-5">
-      <input type="text" class="form-control"  value="<%=usuario.getNombre_real()%>" name="txtNombre" placeholder="Nombre">
+      <input type="text" class="form-control"  value="<%=usuario.getNombre_real()%>" name="txtNombre" placeholder="Nombre" title="Ingrese un nombre valido" pattern="[a-zA-Záéíóú,. '-]{2,49}" required>
     </div>
                 <%if(usuario.getSexo()=="F") {%>
 			          <div class="col">
@@ -87,29 +87,29 @@ usuario = (Usuario)request.getAttribute("usuario");
 
     <div class="form-row mt-4">
     <div class="col-6">
-      <input type="date" class="form-control" value="<%=usuario.getFecha_nacimiento()%>"  name="txtFechaNacimiento" >
+      <input type="date" class="form-control" value="<%=usuario.getFecha_nacimiento()%>"  name="txtFechaNacimiento" placeholder="Seleccionar Fecha de nacimiento" onfocus="(this.type='date')" onblur="(this.type='text')" required>
     </div>
     <div class="col-6">
-      <input type="text" class="form-control" value="<%=usuario.getNacionalidad()%>" name="txtNacionalidad" placeholder="Nacionalidad">
+      <input type="text" class="form-control" value="<%=usuario.getNacionalidad()%>" name="txtNacionalidad" placeholder="Nacionalidad" title="Ingrese una nacionalidad valida" pattern="[a-zA-Záéíóú,. '-]{2,49}" required>
     </div>
       </div>
           <div class="form-row mt-4">
     <div class="col-6">
-    <input type="text" class="form-control" value="<%=usuario.getDireccion().getCalle()%>" name="txtCalle" placeholder="Calle">
+    <input type="text" class="form-control" value="<%=usuario.getDireccion().getCalle()%>" name="txtCalle" placeholder="Calle" title="Ingrese una calle valida" pattern="[a-zA-Záéíóú,. '-]{2,49}" required>
     </div>
     <div class="col-6">
-      <input type="text" class="form-control" value="<%=usuario.getDireccion().getAltura()%>" name="txtAltura" placeholder="Altura">
+      <input type="text" class="form-control" value="<%=usuario.getDireccion().getAltura()%>" name="txtAltura" placeholder="Altura" pattern="[0-9]{1,5}" required>
     </div>
       </div>
                 <div class="form-row mt-4">
     <div class="col-4">
-    <input type="text" class="form-control" value="<%=usuario.getDireccion().getPais()%>" name="txtPais" placeholder="Pais">
+    <input type="text" class="form-control" value="<%=usuario.getDireccion().getPais()%>" name="txtPais" placeholder="Pais" title="Ingrese un pais valido" pattern="[a-zA-Záéíóú,. '-]{2,49}" required>
     </div>
     <div class="col-4">
-      <input type="text" class="form-control" value="<%=usuario.getDireccion().getProvincia()%>" name="txtProvincia" placeholder="Provincia">
+      <input type="text" class="form-control" value="<%=usuario.getDireccion().getProvincia()%>" name="txtProvincia" placeholder="Provincia" title="Ingrese una provincia valida" pattern="[a-zA-Záéíóú,. '-]{2,49}" required>
     </div>
        <div class="col-4">
-      <input type="text" class="form-control" value="<%=usuario.getDireccion().getLocalidad()%>" name="txtLocalidad" placeholder="Localidad">
+      <input type="text" class="form-control" value="<%=usuario.getDireccion().getLocalidad()%>" name="txtLocalidad" placeholder="Localidad" title="Ingrese una localidad valida" required>
     </div>
       </div>
       <input type="submit"  class="btn btn-success mt-5 centrar" value="Confirmar" name="btnModificarUsuario">
