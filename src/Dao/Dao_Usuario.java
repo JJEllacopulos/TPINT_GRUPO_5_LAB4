@@ -22,7 +22,7 @@ public class Dao_Usuario {
 	private String dbName = "banco";
 	
 
-	public void SPAltaUsuario(Usuario usuario, String fecha)
+	public int SPAltaUsuario(Usuario usuario, String fecha)
 	{
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -30,6 +30,7 @@ public class Dao_Usuario {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		int filas=0;
 		Connection cn = null;
 		  try
 		  {
@@ -46,12 +47,13 @@ public class Dao_Usuario {
 			 cst.setString(9, usuario.getNacionalidad());
 			 cst.setDate(10, java.sql.Date.valueOf(fecha));
 			 cst.setBoolean(11, usuario.getEstado());
-			 cst.execute();
+			
+			 filas=cst.executeUpdate();
 		  }
 		  catch (Exception e) {
 			e.printStackTrace();
 		}
-			
+		return filas;
 	}
 
 	public void SPAltaDireccionUsuario(Direccion direccion)

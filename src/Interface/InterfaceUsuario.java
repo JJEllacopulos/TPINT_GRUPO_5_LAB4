@@ -7,7 +7,7 @@ import Entidad.Usuario;
 
 public interface InterfaceUsuario {
 	
-	public void SPAltaUsuario(Usuario usuario, String fecha);
+	public int SPAltaUsuario(Usuario usuario, String fecha);
 	public void SPAltaDireccionUsuario(Direccion direccion);
 	public void SPAltaContactoUsuario(Contacto contacto);
 	public ArrayList<Usuario> Obtener_lista_usuarios ();
