@@ -104,9 +104,7 @@ public class servletsCuentas extends HttpServlet {
 		
 		if(request.getParameter("link_4")!=null) {
 			
-			   
-		    
-						
+			
 			RequestDispatcher rd = request.getRequestDispatcher("/Prestamo_admin_aprovacion.jsp");   
 	        rd.forward(request, response);
 			
@@ -158,8 +156,26 @@ public class servletsCuentas extends HttpServlet {
 		        rd.forward(request, response);
 			
 			}
-		if(request.getParameter("btnTransferirTerceros")!=null) {
-				
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+		
+		HttpSession session = request.getSession();
+		Usuario usuario1 = new Usuario();
+		usuario1 = (Usuario)session.getAttribute("userSession");
+		Cuenta cuenta = new Cuenta ();
+		NegocioCuentas cuentaNegocio = new NegocioCuentas();
+		
+if(request.getParameter("btnConfirmarTransferencia")!=null) {
+	
+	RequestDispatcher rd =request.getRequestDispatcher("");
+	
 			if (cuentaNegocio.Obtener_cuenta(request.getParameter("CBUdestino"))!=null) { // validar CBU destino 
 				
 			Cuenta cuenta1 = new Cuenta ();
@@ -195,6 +211,7 @@ public class servletsCuentas extends HttpServlet {
 			
 			
 			movimiento2.setCbu_cuenta(request.getParameter("CBUdestino"));  
+			if (!movimiento.getCbu_cuenta().equals(movimiento2.getCbu_cuenta())) {
 			movimiento2.setTipo_movimiento("Trans");  
 			movimiento2.setDetalles("A terceros");   
 			movimiento2.setImporte(importe);   // transferencia positiva 
@@ -228,7 +245,11 @@ public class servletsCuentas extends HttpServlet {
 			cuentaNegocio.SPModificarCuenta(cuenta2);
 			
 			}
-			
+			else {
+				// No se puede transferir entre las mismas cuentas
+				rd = request.getRequestDispatcher("TransferenciaCuentaPropia.jsp");  	
+			}
+			}
 			else {
 				// Mensaje de saldo insuficiente 
 			}
@@ -236,17 +257,20 @@ public class servletsCuentas extends HttpServlet {
 			else {
 				// Mensaje cuenta incorrecta
 			}
-			RequestDispatcher rd = request.getRequestDispatcher("/ListadoCuentasDelCliente.jsp");  
+			
+		    ArrayList<Cuenta> lista = cuentaNegocio.Obtener_Datos_Cuenta(usuario1.getNombre_usuario());
+		    
+			request.setAttribute("listaC", lista);
+						
+			rd = request.getRequestDispatcher("/ListadoCuentasDelCliente.jsp");   
+	       
+			//RequestDispatcher rd = request.getRequestDispatcher("servletsCuentas?Param2=2");  
+			rd.forward(request, response);
 		}
 		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		
+		
 	}
 
 }

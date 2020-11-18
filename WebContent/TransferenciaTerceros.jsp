@@ -46,7 +46,7 @@
 	
 	<div class="container">
 	<h1 class="mt-3 text-center mb-1 text-info">Transferencia a terceros</h1>
-	<form action="servletsCuentas" method="get" class="Alta">
+	<form action="servletsCuentas" method="post" class="Alta">
 	  <div class="form-row">
 	           <div class="form-group col-md-6">
 	      <label for="inputState">Cuenta de origen</label>
@@ -84,7 +84,7 @@ NegocioCuentas cuentaNegocio = new NegocioCuentas();
 	    
 	  </div>
 	
-	  <input type="submit"  class="btn btn-success" value="Transferir" name="btnTransferirTerceros">
+	  <input type="submit"  class="btn btn-success" value="Transferir" name="btnConfirmarTransferencia">
 	</form>
 	</div>
 	

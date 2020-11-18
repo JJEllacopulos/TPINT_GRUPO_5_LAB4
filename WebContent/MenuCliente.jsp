@@ -70,6 +70,14 @@
 				
 			}
 			
+			.boton{
+			background-color:#006400;
+				color:#fff;
+				text-decoration:none;
+				padding:10px 12px;
+				display:block;
+			}
+			
 		</style>
 
 </head>
@@ -118,9 +126,18 @@ if(!aux.getTipo_usuario().equals("user")){
 					<li><a href="Servlet_Menu_clientes?link_1=1">Inicio <span class="sr-only">(current)</span></a></li>
 					<li><a href="#"> Mi Perfil</a></li>
 					<li><a href="#">Usuario</a></li>
-					<li><a href="Servlet_Menu_clientes?link_4=1">Mis cuentas</a></li>
-					<li><a href="TransferenciaTerceros.jsp">A Terceros</a></li>
-					<li><a href="servletsCuentas?Param2=2">Cuenta</a></li>
+					<li><a href="servletsCuentas?Param2=2">Mis cuentas</a></li>
+					 
+					<div class="btn-group dropright">
+  <a type="button" class=" boton dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Transferencias 
+  </a>
+  <div class="dropdown-menu">
+    <!-- Dropdown menu links -->
+     <li><a href="TransferenciaTerceros.jsp" >Aterceros</a></li>
+    <li><a  href="TransferenciaCuentaPropia.jsp" >A cuenta propia</a></li>
+  </div>
+</div>
 					<li><a href="Servlet_Menu_clientes?link_7=1">Solicitar prestamo</a></li>
 					<li><a href="Servlet_Menu_clientes?link_8=1">Lista de prestamos</a></li>
 					<li><a href="Servlet_Menu_clientes?link_0=1">Cerrar Sesión</a></li>

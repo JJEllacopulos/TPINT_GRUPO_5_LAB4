@@ -1,4 +1,5 @@
 <%@page import="Entidad.Cuenta"%>
+<%@page import="Entidad.Usuario"%>
 <%@page import="Negocio.NegocioCuentas"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="javax.servlet.http.HttpSession"%>
@@ -43,42 +44,46 @@
 <jsp:include page="MenuCliente.jsp"></jsp:include>
 <div class="container">
 <h1 class="mt-3 text-center mb-1 text-info">Transferencia a cuenta propia</h1>
-<form class="Alta">
+<form action="servletsCuentas" method="post" class="Alta">
   <div class="form-row">
            <div class="form-group col-md-6">
       <label for="inputState">Cuenta de origen</label>
-      <select id="inputState" class="form-control">
+      <select name="ddl_cuenta_origen" class="form-control">
         <option selected>Seleccionar...</option>
        <%
+       
+Usuario usuario = new Usuario();
+usuario = (Usuario)session.getAttribute("userSession");
 	 NegocioCuentas cuentaNegocio = new NegocioCuentas();
 	 
 		 	ArrayList<Cuenta> listaCuenta =  new ArrayList<Cuenta>();
-		listaCuenta =  cuentaNegocio.Obtener_Datos_Cuenta(""); //nombre_usuario
+		listaCuenta =  cuentaNegocio.Obtener_Datos_Cuenta(usuario.getNombre_usuario()); //nombre_usuario
 		
 		 if(listaCuenta!=null)
 		 for(Cuenta e : listaCuenta)
 		{		
 	%>	
-	<option value= "<%=e.getCbu_cuenta() %>" ><%=e.getTipo_Cuenta()%></option>
+	<option value= "<%=e.getCbu_cuenta() %>" ><%= e.getTipo_Cuenta() +" Saldo: $"+ e.getSaldo()  %></option>
 		<%  } %>
 		
       </select>
     </div>
    <div class="form-group col-md-6">
       <label for="inputState">Cuenta de destino</label>
-      <select id="inputState" class="form-control">
+      <select name="CBUdestino" class="form-control">
         <option selected>Seleccionar...</option>
         <%
+ 
 	 NegocioCuentas cuentaNegocio2 = new NegocioCuentas();
 	 
 		 	ArrayList<Cuenta> listaCuenta2 =  new ArrayList<Cuenta>();
-		listaCuenta2 =  cuentaNegocio.Obtener_Datos_Cuenta(""); //nombre_usuario
+		listaCuenta2 =  cuentaNegocio.Obtener_Datos_Cuenta(usuario.getNombre_usuario()); //nombre_usuario
 		
 		 if(listaCuenta2!=null)
 		 for(Cuenta e : listaCuenta2)
 		{		
 	%>	
-	<option value= "<%=e.getCbu_cuenta() %>" ><%=e.getTipo_Cuenta()%></option>
+	<option value= "<%=e.getCbu_cuenta() %>" ><%= e.getTipo_Cuenta() +" Saldo: $"+ e.getSaldo()  %></option>
 		<%  } %>
 		
       </select>
@@ -87,12 +92,12 @@
     <div class="form-row">
     <div class="form-group col-md-12">
       <label id="lblMonto" for="lblMonto">Monto</label>
-      <input type="text" class="form-control" id="inputMonto">
+      <input type="text" class="form-control" name="inputMonto">
     </div>
     
   </div>
 
-  <button type="submit" class="btn btn-primary crear mt-2">Transferir</button>
+  <input type="submit"  class="btn btn-success" value="Transferir" name="btnConfirmarTransferencia">
 </form>
 </div>
 </body>
