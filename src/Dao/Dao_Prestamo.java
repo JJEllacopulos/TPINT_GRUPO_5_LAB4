@@ -224,6 +224,56 @@ public class Dao_Prestamo {
 		return x;	
 	}
 	
+	public ArrayList<Prestamo> Obtener_lista_Prestamo_cliente(String Nombre_usuario) {
+		
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} 
+		catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ArrayList<Prestamo> x = new ArrayList<Prestamo>();
+		
+		Connection cn = null;
+		
+		try {
+			
+			cn = DriverManager.getConnection(host+dbName, user,pass);
+			CallableStatement st = cn.prepareCall("CALL PRO_Listar_prestamos_clientes(?)");
+			
+			st.setString(1, Nombre_usuario);
+			
+			ResultSet resultado = st.executeQuery();
+			
+			/*  c.cbu_cuenta, c.nombre_usuario, c.tipo_cuenta, c.fecha_creacion, c.saldo, c.estado */
+			
+			while(resultado.next()){
+				
+				Prestamo aux = new Prestamo();
+				aux.setId_prestamo(resultado.getInt("id_prestamo"));
+				aux.setCbu_cuenta_deudor(resultado.getString("cbu_cuenta_deudor"));
+				aux.setInporte_pedido(resultado.getDouble("importe_pedido"));
+				aux.setInporte_con_intereses(resultado.getDouble("importe_con_intereses"));
+				aux.setPlazo_de_pago(resultado.getDate("plazo_de_pago"));
+				aux.setPago_x_mes(resultado.getDouble("pago_x_mes"));
+				aux.setMonto_actual(resultado.getDouble("monto_actual"));
+				aux.setCantidad_cuotas(resultado.getInt("cantidad_cuotas"));
+				aux.setEstado(resultado.getBoolean("estado"));
+				
+				x.add(aux);
+				
+			}
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return x;	
+	}
+	
 	public void SPAceptar_Prestamo(int id_prestamo)
 	{
 		try {

@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -58,6 +59,17 @@ public class Servlet_Prestamo_Cliente extends HttpServlet {
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/Prestamo_cliente_solisitud.jsp");   
 	        rd.forward(request, response);
+		}
+		
+		if(request.getParameter("Param_1")!=null)
+		{
+			
+			ArrayList<Prestamo> lista = n_prestamo.Obtener_lista_Prestamo_cliente(e_usuario.getNombre_usuario());
+			request.setAttribute("lista_prestamos", lista);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/Prestamo_cliente_listar.jsp");   
+	        rd.forward(request, response);  
+			
 		}
 		
 	}

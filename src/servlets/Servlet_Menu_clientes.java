@@ -74,7 +74,10 @@ public class Servlet_Menu_clientes extends HttpServlet {
 		}
 		
 		if(request.getParameter("link_8")!=null) {
-			RequestDispatcher rd = request.getRequestDispatcher("/Prestamo_cliente_listar.jsp");   
+			
+			
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/Servlet_Prestamo_Cliente?Param_1=1");   
 	        rd.forward(request, response);
 		}
 		

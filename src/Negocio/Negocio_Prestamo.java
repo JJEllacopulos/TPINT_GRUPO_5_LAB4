@@ -27,4 +27,9 @@ public class Negocio_Prestamo {
 		dao_prestamo.SPAceptar_Prestamo(id_prestamo);
 	}
 	
+	public ArrayList<Prestamo> Obtener_lista_Prestamo_cliente(String Nombre_usuario) {
+		ArrayList<Prestamo> lista = dao_prestamo.Obtener_lista_Prestamo_cliente(Nombre_usuario);
+		return lista;
+	}
+	
 }

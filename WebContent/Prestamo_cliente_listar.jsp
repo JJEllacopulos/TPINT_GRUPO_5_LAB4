@@ -1,4 +1,5 @@
 <%@page import="Entidad.Usuario"%>
+<%@page import="Entidad.Prestamo"%>
 <%@page import="Entidad.TipoCuenta"%>
 <%@page import="Negocio.NegocioCuentas"%>
 <%@page import="java.util.ArrayList"%>
@@ -26,6 +27,61 @@
 <body>
 
 	<jsp:include page="MenuCliente.jsp"></jsp:include>
+
+	<%
+	
+	ArrayList<Prestamo> lista_pre = new ArrayList<Prestamo>();
+	Prestamo lista_prestamos = new Prestamo();
+	// lista_prestamos = (Prestamo)request.getAttribute("lista_prestamos");
+	lista_pre = (ArrayList<Prestamo>)request.getAttribute("lista_prestamos");
+	
+	%>
+		
+	<div class="container">
+		<table class="table ">
+			<thead class="thead-light">
+			    <tr>
+			    	
+			    	<th scope="col">ID</th>
+					<th scope="col">CBU</th>
+					<th scope="col">Importe pedido</th>
+					<th scope="col">Importe con intereses</th>
+					<th scope="col">Cantidad de cuotas</th>
+					<th scope="col">Pago por mes</th>
+					<th scope="col">Monto actual</th>
+					<th scope="col"></th>
+			
+			    </tr>
+		  	</thead>
+		  	
+		  	<tbody>
+		  
+		    <%if(lista_pre!=null){
+		  		 for(Prestamo e : lista_pre)
+				{%>
+		
+			    <tr>
+					<form action="Servlet_Prestamo_Cliente" method="get">
+				   
+						<td><%=e.getId_prestamo()%> <input type="hidden" name="id_prestamo" value="<%= e.getId_prestamo() %>"></td>
+						<td><%=e.getCbu_cuenta_deudor()%></td>
+						<td><%=e.getInporte_pedido()%></td>
+						<td><%=e.getInporte_con_intereses()%></td>
+						<td><%=e.getCantidad_cuotas()%></td>
+						<td><%=e.getPago_x_mes()%></td>
+						<td><%=e.getMonto_actual()%></td>
+						
+						<td> <button type="submit" class="btn btn-primary btnDD" name="btn_Pagar_prestamo" >Aceptar</button> </td>
+				
+				
+					</form>
+			    </tr>
+		    <%} 
+		  	}%>
+		    
+			</tbody>
+		</table>
+	</div>
 
 </body>
 </html>
