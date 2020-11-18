@@ -62,6 +62,12 @@ public class Servlet_Prestamo_Administrador extends HttpServlet {
 		
 		if(request.getParameter("btn_Aceptar_prestamo")!=null) {
 			
+			int id_prestamo = Integer.parseInt(request.getParameter("id_prestamo"));
+			
+			n_prestamo.SPAceptar_Prestamo(id_prestamo);
+			
+			ArrayList<Prestamo> lista = n_prestamo.Obtener_lista_Prestamo();
+			request.setAttribute("lista_prestamos", lista);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/Prestamo_admin_aprovacion.jsp");   
 	        rd.forward(request, response);
@@ -71,7 +77,10 @@ public class Servlet_Prestamo_Administrador extends HttpServlet {
 			
 			int id_prestamo = Integer.parseInt(request.getParameter("id_prestamo"));
 			
+			n_prestamo.SPEliminar_Prestamo(id_prestamo);
 			
+			ArrayList<Prestamo> lista = n_prestamo.Obtener_lista_Prestamo();
+			request.setAttribute("lista_prestamos", lista);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/Prestamo_admin_aprovacion.jsp");   
 	        rd.forward(request, response);

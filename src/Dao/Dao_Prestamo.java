@@ -224,4 +224,28 @@ public class Dao_Prestamo {
 		return x;	
 	}
 	
+	public void SPAceptar_Prestamo(int id_prestamo)
+	{
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Connection cn = null;
+		try
+		{
+			cn = DriverManager.getConnection(host+dbName, user,pass);
+			CallableStatement cst = cn.prepareCall("CALL PRO_abilitar_prestamo(?)");
+			
+			cst.setInt(1, id_prestamo);
+
+			cst.execute();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+			
+	}
+	
 }

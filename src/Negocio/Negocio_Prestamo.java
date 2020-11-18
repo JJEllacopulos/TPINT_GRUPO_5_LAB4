@@ -19,4 +19,12 @@ public class Negocio_Prestamo {
 		return lista;
 	}
 	
+	public void SPEliminar_Prestamo(int id_prestamo) {
+		dao_prestamo.SPEliminarPrestamo(id_prestamo);
+	}
+	
+	public void SPAceptar_Prestamo(int id_prestamo) {
+		dao_prestamo.SPAceptar_Prestamo(id_prestamo);
+	}
+	
 }
