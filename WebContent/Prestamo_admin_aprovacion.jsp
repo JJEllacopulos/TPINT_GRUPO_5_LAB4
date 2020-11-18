@@ -1,3 +1,4 @@
+<%@page import="Entidad.Prestamo"%>
 <%@page import="Entidad.Usuario"%>
 <%@page import="Entidad.TipoCuenta"%>
 <%@page import="Negocio.NegocioCuentas"%>
@@ -18,6 +19,26 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	
 	<Style>
+		.table{
+		 	width: 100%;
+		    max-width: 40%;
+		    padding: 15px;
+		    margin: auto;
+		    margin-top:15px;
+	 	}
+	 	
+	 	#Filtrar{
+	 		width: 20%;
+	 	}
+	 	
+	 	.Mover{
+			margin-right: 20px;
+			margin-top: 5px;
+	 	}
+	 	
+	 	.btnDD{
+	 		width: 100%
+	 	}]
 	</Style>
 	
 	<title>Prestamos por aprobar</title>
@@ -26,6 +47,137 @@
 <body>
 
 	<jsp:include page="MenuAdmin.jsp"></jsp:include>
-
+	
+	<div class="container Mover  ">
+		<form action="servletsCliente" method="get">
+			<div class="row mt-5  ">
+				
+				<div class="col">
+				
+				<input type="text" name="txtBuscarCliente" class="form-control" placeholder="Ingrese un nombre de usuario...">
+					<% 	String usuarioInvalido;
+					usuarioInvalido = (String)request.getAttribute("usuarioInvalido");
+					if(usuarioInvalido!= null){
+					%>
+				      <label class="text-danger"> <%=usuarioInvalido %></label>
+				    <% }%>
+				    
+			    </div>
+			      
+				<div class="col">
+					<button type="submit" name="btnBuscarCliente" class="btn btn-primary ml-2">Buscar</button>
+				</div>
+			         
+				<div class="col">
+			    	<a class="btn btn-success" href="AltaCliente.jsp">Nuevo cliente</a>
+			    </div>
+		    
+			</div>
+	    </form>
+		    </div>
+		    
+		
+		    	
+		<%
+		
+		ArrayList<Prestamo> lista_pre = new ArrayList<Prestamo>();
+		Prestamo lista_prestamos = new Prestamo();
+		lista_prestamos = (Prestamo)request.getAttribute("lista_prestamos");
+		lista_pre = (ArrayList<Prestamo>)request.getAttribute("lista_pre");
+		
+		%>
+		
+		<div class="container">
+		<table class="table ">
+		  <thead class="thead-light">
+		    <tr>
+		    
+		      <th scope="col">Usuario</th>
+		      <th scope="col">CBU</th>
+		      <th scope="col">ID</th>
+		      <th scope="col">DNI</th>
+		      <th scope="col">Importe pedido</th>
+		      <th scope="col">Cantidad de cuotas</th>
+		      <th scope="col">Pago por mes</th>
+		      <th scope="col"></th>
+		
+		    </tr>
+		  </thead>
+		  <tbody>
+		  
+		    <%if(lista_pre!=null){
+		  		 for(Prestamo e : lista_pre)
+				{%>
+		
+		    <tr>
+		      <form action="servletsCliente" method="get">
+		      <td><%=e.getNombre_usuario() %> <input type="hidden" name="nombreUsuario" value="<%=e.getNombre_usuario() %>"></td>
+		      <td><%=e.getNombre_real() %></td>
+		      <td><%=e.getApellido_real()%></td>
+		      <td><%=e.getDni()%></td>
+		      <td><%=e.getContacto().getEmail()%></td>
+		      <td><%=e.getContacto().getTelefono()%></td>
+		      <td><%=e.getDireccion().getProvincia()%></td>
+		
+		
+		
+		<td>
+	
+	    <div class="btn-group dropright">
+	  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	    Opciones
+	  </button>
+	  <div class="dropdown-menu">
+	    <!-- Dropdown menu links -->
+	     <li><button type="submit" class="btn btn-primary btnDD" name="btnModificar" >Modificar</button></li>
+	    <li><button type="submit" class="btn btn-danger btnDD" name="btnEliminar">Eliminar</button></li>
+	    <li><button type="submit" class="btn btn-success btnDD" name="btnDetalles">Ver detalles</button></li>
+	  </div>
+	</div>
+	
+	</td>
+		
+	   </form>
+		    </tr>
+		    
+		    <%} } else if(usuarioFiltrado.getNombre_usuario()!=null){%>	
+	
+		
+		    <tr>
+		      <form action="servletsCliente" method="get">
+		      <td><%=usuarioFiltrado.getNombre_usuario() %> <input type="hidden" name="nombreUsuario" value="<%=usuarioFiltrado.getNombre_usuario() %>"></td>
+		      <td><%=usuarioFiltrado.getNombre_real() %></td>
+		      <td><%=usuarioFiltrado.getApellido_real()%></td>
+		      <td><%=usuarioFiltrado.getDni()%></td>
+		      <td><%=usuarioFiltrado.getContacto().getEmail()%></td>
+		      <td><%=usuarioFiltrado.getContacto().getTelefono()%></td>
+		      <td><%=usuarioFiltrado.getDireccion().getProvincia()%></td>
+		
+		
+		
+		<td>
+	
+	    <div class="btn-group dropright">
+	  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	    Opciones
+	  </button>
+	  <div class="dropdown-menu">
+	    <!-- Dropdown menu links -->
+	     <li><button type="submit" class="btn btn-primary btnDD" name="btnModificar" >Modificar</button></li>
+	    <li><button type="submit" class="btn btn-danger btnDD" name="btnEliminar">Eliminar</button></li>
+	    <li><button type="submit" class="btn btn-success btnDD" name="btnDetalles">Ver detalles</button></li>
+	  </div>
+	</div>
+	
+	</td>
+		
+	   </form>
+		    </tr>
+		    
+		    <%  }%>	
+		  </tbody>
+		</table>
+		</div>
+	
 </body>
 </html>

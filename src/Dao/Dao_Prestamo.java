@@ -30,7 +30,7 @@ public class Dao_Prestamo {
 			 cn = DriverManager.getConnection(host+dbName, user,pass);
 			 CallableStatement cst = cn.prepareCall("CALL PRO_ingresar_prestamo(?,?,?,?,?,?)");
 			 
-			 cst.setString(1, prestamo.getCbu_cuenta_deudor());
+			 cst.setInt(1, prestamo.getCbu_cuenta_deudor());
 			 cst.setDouble(2, prestamo.getInporte_pedido());
 			 cst.setDouble(3, prestamo.getInporte_con_intereses());
 			 cst.setDate(4, java.sql.Date.valueOf(fecha));
@@ -71,7 +71,7 @@ public class Dao_Prestamo {
 			while(resultado.next()){
 				
 				aux.setId_prestamo(resultado.getInt("id_prestamo"));
-				aux.setCbu_cuenta_deudor(resultado.getString("cbu_cuenta_deudor"));
+				aux.setCbu_cuenta_deudor(resultado.getInt("cbu_cuenta_deudor"));
 				aux.setInporte_pedido(resultado.getDouble("importe_pedido"));
 				aux.setInporte_con_intereses(resultado.getDouble("importe_con_intereses"));
 				aux.setPlazo_de_pago(resultado.getDate("plazo_de_pago"));
@@ -109,7 +109,7 @@ public class Dao_Prestamo {
 		 CallableStatement cst = cn.prepareCall("CALL PRO_Alterar_prestamo(?,?,?,?,?,?,?)");
 		 
 		 cst.setInt(1, prestamo.getId_prestamo());
-		 cst.setString(2, prestamo.getCbu_cuenta_deudor());
+		 cst.setInt(2, prestamo.getCbu_cuenta_deudor());
 		 cst.setDouble(3, prestamo.getInporte_pedido());
 		 cst.setDouble(4, prestamo.getInporte_con_intereses());
 		 cst.setDate(5, java.sql.Date.valueOf(fecha));
@@ -143,6 +143,33 @@ public class Dao_Prestamo {
 			cst.execute();
 		}
 		catch (Exception e) {
+			e.printStackTrace();
+		}
+			
+	}
+	
+	public void SPNuevoPrestamo(Prestamo prestamo)
+	{
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Connection cn = null;
+		  try
+		  {
+			 cn = DriverManager.getConnection(host+dbName, user,pass);
+			 CallableStatement cst = cn.prepareCall("CALL PRO_Nuevo_prestamo(?,?,?,?)");
+			 
+			 cst.setInt(1, prestamo.getCbu_cuenta_deudor());
+			 cst.setDouble(2, prestamo.getInporte_pedido());
+			 cst.setDouble(3, prestamo.getPago_x_mes());
+			 cst.setInt(4, prestamo.getCantidad_cuotas());
+			 
+			 cst.execute();
+		  }
+		  catch (Exception e) {
 			e.printStackTrace();
 		}
 			

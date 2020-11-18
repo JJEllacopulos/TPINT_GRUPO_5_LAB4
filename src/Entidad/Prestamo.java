@@ -6,7 +6,7 @@ public class Prestamo {
 	
 	//Campos
 	private int id_prestamo;
-	private String cbu_cuenta_deudor;
+	private int cbu_cuenta_deudor;
 	private Double inporte_pedido;
 	private Double inporte_con_intereses;
 	private Date plazo_de_pago;
@@ -19,7 +19,7 @@ public class Prestamo {
 		
 	}
 
-	public Prestamo(int id_prestamo, String cbu_cuenta_deudor, Double inporte_pedido, Double inporte_con_intereses, Date plazo_de_pago, Double pago_x_mes, int cantidad_cuotas, boolean estado) {
+	public Prestamo(int id_prestamo, int cbu_cuenta_deudor, Double inporte_pedido, Double inporte_con_intereses, Date plazo_de_pago, Double pago_x_mes, int cantidad_cuotas, boolean estado) {
 		
 		this.id_prestamo = id_prestamo;
 		this.cbu_cuenta_deudor = cbu_cuenta_deudor;
@@ -40,11 +40,11 @@ public class Prestamo {
 		this.id_prestamo = id_prestamo;
 	}
 
-	public String getCbu_cuenta_deudor() {
+	public int getCbu_cuenta_deudor() {
 		return cbu_cuenta_deudor;
 	}
 
-	public void setCbu_cuenta_deudor(String cbu_cuenta_deudor) {
+	public void setCbu_cuenta_deudor(int cbu_cuenta_deudor) {
 		this.cbu_cuenta_deudor = cbu_cuenta_deudor;
 	}
 
