@@ -174,10 +174,11 @@ public class servletsCuentas extends HttpServlet {
 		
 if(request.getParameter("btnConfirmarTransferencia")!=null) {
 	
-	RequestDispatcher rd =request.getRequestDispatcher("");
+	RequestDispatcher rd = request.getRequestDispatcher("/ListadoCuentasDelCliente.jsp");   
 	
 			if (cuentaNegocio.Obtener_cuenta(request.getParameter("CBUdestino"))!=null) { // validar CBU destino 
 				
+
 			Cuenta cuenta1 = new Cuenta ();
 			NegocioMovimiento negocioMovimiento = new NegocioMovimiento();
 			
@@ -203,15 +204,14 @@ if(request.getParameter("btnConfirmarTransferencia")!=null) {
 			movimiento.setTipo_movimiento("Trans");  
 			movimiento.setDetalles("A terceros");   
 			movimiento.setImporte(importeNeg*-1);   // transferencia negativa 
-			
-			negocioMovimiento.SPAltaMovimiento(movimiento, "");
-			
-			
 			Movimiento movimiento2 = new Movimiento();
 			
 			
 			movimiento2.setCbu_cuenta(request.getParameter("CBUdestino"));  
-			if (!movimiento.getCbu_cuenta().equals(movimiento2.getCbu_cuenta())) {
+			if (!movimiento.getCbu_cuenta().equals(movimiento2.getCbu_cuenta())) {	
+			negocioMovimiento.SPAltaMovimiento(movimiento, "");
+			
+
 			movimiento2.setTipo_movimiento("Trans");  
 			movimiento2.setDetalles("A terceros");   
 			movimiento2.setImporte(importe);   // transferencia positiva 
@@ -262,7 +262,7 @@ if(request.getParameter("btnConfirmarTransferencia")!=null) {
 		    
 			request.setAttribute("listaC", lista);
 						
-			rd = request.getRequestDispatcher("/ListadoCuentasDelCliente.jsp");   
+			
 	       
 			//RequestDispatcher rd = request.getRequestDispatcher("servletsCuentas?Param2=2");  
 			rd.forward(request, response);

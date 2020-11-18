@@ -60,10 +60,11 @@ listaC = (ArrayList<Cuenta>)request.getAttribute("listaC");
       <form action="ServletsMovimientos" method="get">
       <td><%=e.getCbu_cuenta()%> <input type="hidden" name="cbuUsuario" value="<%=e.getCbu_cuenta()%>"></td>
       <td><%=e.getTipo_Cuenta() %></td>
-      <td><%= e.getSaldo() %></td>
+      <td>$<%= e.getSaldo() %></td>
    <td><button type="submit" class="btn btn-primary boton " name="btnVerMovimientos">Ver movimientos</button></td> 
    
-    
+   </form>
+   </tr> 
     <%  } }%>
        
     

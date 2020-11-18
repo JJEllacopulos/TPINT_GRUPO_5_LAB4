@@ -47,13 +47,15 @@
     <tr>
       <td><%= e.getTipo_movimiento() %></td>
       <td><%= e.getFecha_creacion() %></td>
-      
-      <td class="text-success"><b><%= e.getImporte()%></b></td>
-       
+         <%if(e.getImporte()>0){ %>
+      <td class="text-success"><b>$<%= e.getImporte()%></b></td>
+       <% } else{%>
+         <td class="text-danger"><b>$<%= e.getImporte()%></b></td>
+         <% }%>
       <td></td> 
     </tr>
 
-     <%  } }%>
+     <% } }%>
   </tbody>
 </table>
 </div>
