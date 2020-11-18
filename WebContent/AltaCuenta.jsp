@@ -37,7 +37,7 @@ if(!usuario.getTipo_usuario().equals("ADMIN")){
 
  <div class="form-row mt-4">
     <div class="col-6">
-    <input type="text" class="form-control" name="txtUsuario" placeholder="Nombre de usuario">
+    <input type="text" class="form-control" name="txtUsuario" placeholder="Nombre de usuario"  maxlength="20" title="Ingrese un usuario valido" required>
     </div>
     <div class="col-6">
       <select name="ddl_tipo_cuenta" class="form-control" name="ddlTipoCuenta">
@@ -59,7 +59,6 @@ if(!usuario.getTipo_usuario().equals("ADMIN")){
     </div>
       </div>
        <div class="form-row mt-4">
-        <div class="col-6">
       
       <input type="submit"  class="btn btn-success" value="Confirmar" name="btnCrearCuenta">
 	

@@ -330,5 +330,7 @@ public ArrayList<Cuenta> Obtener_Datos_Cuenta (String nombre_usuario) {
 		
 		return x;	
 	}
-	
+
+
+
 }

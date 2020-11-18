@@ -21,4 +21,5 @@ public interface InterfaceUsuario {
 	public void SPEliminarUsuario(String usuarioNombre);
 	public void SPEliminarDireccionUsuario(String usuarioNombre);
 	public void SPEliminarContactoUsuario(String usuarioNombre);
+	boolean StringIsNumeric(String nombre_usuario);
 }
