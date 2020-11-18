@@ -30,7 +30,7 @@
 	
 	
 	
-	<form action="Servlet_Prestamo_Administrador" method="get" class="Alta">
+	<form action="Servlet_Prestamo_Cliente" method="get" class="Alta">
 	
 	<label for="inputState">CBU de la cuenta:</label>
 	

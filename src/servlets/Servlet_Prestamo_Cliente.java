@@ -1,9 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,26 +8,24 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import Entidad.Cuenta;
 import Entidad.Prestamo;
 import Entidad.Usuario;
 import Negocio.NegocioCuentas;
 import Negocio.Negocio_Prestamo;
 
-import javax.servlet.http.HttpSession;
-
 /**
- * Servlet implementation class Servlet_Prestamo_Administrador
+ * Servlet implementation class Servlet_Prestamo_Cliente
  */
-@WebServlet("/Servlet_Prestamo_Administrador")
-public class Servlet_Prestamo_Administrador extends HttpServlet {
+@WebServlet("/Servlet_Prestamo_Cliente")
+public class Servlet_Prestamo_Cliente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Servlet_Prestamo_Administrador() {
+    public Servlet_Prestamo_Cliente() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -49,40 +44,19 @@ public class Servlet_Prestamo_Administrador extends HttpServlet {
 		HttpSession misession = (HttpSession) request.getSession();
 		Usuario e_usuario = (Usuario) misession.getAttribute("userSession");
 		
-		if(request.getParameter("Param_1")!=null)
-		{
-			
-			ArrayList<Prestamo> lista = n_prestamo.Obtener_lista_Prestamo();
-			request.setAttribute("lista_prestamos", lista);
-			
-			RequestDispatcher rd = request.getRequestDispatcher("/Prestamo_admin_aprovacion.jsp");   
-	        rd.forward(request, response);  
-			
-		}
 		
-		if(request.getParameter("btn_Aceptar_prestamo")!=null) {
-			
-			int id_prestamo = Integer.parseInt(request.getParameter("id_prestamo"));
-			
-			n_prestamo.SPAceptar_Prestamo(id_prestamo);
-			
-			ArrayList<Prestamo> lista = n_prestamo.Obtener_lista_Prestamo();
-			request.setAttribute("lista_prestamos", lista);
-			
-			RequestDispatcher rd = request.getRequestDispatcher("/Prestamo_admin_aprovacion.jsp");   
-	        rd.forward(request, response);
-		}
 		
-		if(request.getParameter("btn_Rechasar_prestamo")!=null) {
+		if(request.getParameter("btn_Crear_Solisitar_Prestamo")!=null) {
 			
-			int id_prestamo = Integer.parseInt(request.getParameter("id_prestamo"));
+			e_prestamo.setCbu_cuenta_deudor(request.getParameter("ddl_cuenta"));
+			e_prestamo.setInporte_pedido(Double.parseDouble(request.getParameter("txt_Prestamo_pedido")));
+			Double pag_x_mes = Double.parseDouble(request.getParameter("txt_Prestamo_pedido"))/Integer.parseInt(request.getParameter("txt_Cuotas"));
+			e_prestamo.setPago_x_mes(pag_x_mes);
+			e_prestamo.setCantidad_cuotas(Integer.parseInt(request.getParameter("txt_Cuotas")));
 			
-			n_prestamo.SPEliminar_Prestamo(id_prestamo);
+			n_prestamo.SPNuevo_Prestamo(e_prestamo);
 			
-			ArrayList<Prestamo> lista = n_prestamo.Obtener_lista_Prestamo();
-			request.setAttribute("lista_prestamos", lista);
-			
-			RequestDispatcher rd = request.getRequestDispatcher("/Prestamo_admin_aprovacion.jsp");   
+			RequestDispatcher rd = request.getRequestDispatcher("/Prestamo_cliente_solisitud.jsp");   
 	        rd.forward(request, response);
 		}
 		
