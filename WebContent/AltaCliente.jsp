@@ -34,8 +34,25 @@ if(!usuario.getTipo_usuario().equals("ADMIN")){
 }
 */
 %>
+
+<% 
+if(request.getAttribute("filas")!=null){
+	
+
+int filas = (int)request.getAttribute("filas");
+
+	
+
+if(filas > 0){%>
+<div class="alert alert-primary alert-dismissible fade show" role="alert">
+  <strong>Hola!</strong> Se creó el usuario correctamente.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<% }}%>
 <div class="container mt-5">
-<form action="servletsCliente" method="get">
+<form action="servletsCliente" method="post">
  <div class="form-row mt-4">
     <div class="col-6">
       <input type="text" class="form-control" name="txtUsuario" placeholder="Nombre de usuario" maxlength="20" title="Ingrese un usuario valido" required>
@@ -65,7 +82,7 @@ if(!usuario.getTipo_usuario().equals("ADMIN")){
       <input type="text" class="form-control" name="txtApellido" placeholder="Apellido" title="Ingrese un apellido valido" pattern="[a-zA-Záéíóú,.'-]{2,49}"required>
     </div>
     <div class="col-5">
-      <input type="text" class="form-control" name="txtNombre" placeholder="Nombre" title="Ingrese un nombre valido" pattern="[a-zA-Záéíóú,.'-]{2,49} "required>
+      <input type="text" class="form-control" name="txtNombre" placeholder="Nombre" title="Ingrese un nombre valido" pattern="[a-zA-Záéíóú,.'-]{2,49}" required>
     </div>
       <div class="col">
       <select class="form-control" name="ddlSexo">
@@ -80,12 +97,12 @@ if(!usuario.getTipo_usuario().equals("ADMIN")){
       <input type="text" class="form-control" placeholder="Seleccionar Fecha de nacimiento" onfocus="(this.type='date')" onblur="(this.type='text')" name="txtFechaNacimiento" >
     </div>
     <div class="col-6">
-      <input type="text" class="form-control" name="txtNacionalidad" placeholder="Nacionalidad" title="Ingrese una nacionalidad valida" pattern="[a-zA-Záéíóú,.'-]{2,49} "required>
+      <input type="text" class="form-control" name="txtNacionalidad" placeholder="Nacionalidad" title="Ingrese una nacionalidad valida" pattern="[a-zA-Záéíóú,.'-]{2,49}" required>
     </div>
       </div>
           <div class="form-row mt-4">
     <div class="col-6">
-    <input type="text" class="form-control" name="txtCalle" placeholder="Calle" title="Ingrese una calle valida" pattern="[a-zA-Záéíóú,.'-]{2,49} "required>
+    <input type="text" class="form-control" name="txtCalle" placeholder="Calle" title="Ingrese una calle valida" pattern="[a-zA-Záéíóú,.'-]{2,49}" required>
     </div>
     <div class="col-6">
       <input type="text" pattern="[0-9]{1,5}"  title="Ingrese una altura valida" class="form-control" name="txtAltura" placeholder="Altura" required>
@@ -93,18 +110,22 @@ if(!usuario.getTipo_usuario().equals("ADMIN")){
       </div>
                 <div class="form-row mt-4">
     <div class="col-4">
-    <input type="text" class="form-control" name="txtPais" placeholder="Pais" title="Ingrese un pais valido" pattern="[a-zA-Záéíóú,.'-]{2,29} "required>
+    <input type="text" class="form-control" name="txtPais" placeholder="Pais" title="Ingrese un pais valido" pattern="[a-zA-Záéíóú,.'-]{2,49}" required>
     </div>
     <div class="col-4">
-      <input type="text" class="form-control" name="txtProvincia" placeholder="Provincia" title="Ingrese una provincia valida" pattern="[a-zA-Záéíóú,.'-]{2,29} "required>>
+      <input type="text" class="form-control" name="txtProvincia" placeholder="Provincia" title="Ingrese una provincia valida" pattern="[a-zA-Záéíóú,.'-]{2,49}" required>
     </div>
        <div class="col-4">
-      <input type="text" class="form-control" name="txtLocalidad" placeholder="Localidad" title="Ingrese una localidad valida" required>>
+      <input type="text" class="form-control" name="txtLocalidad" placeholder="Localidad" title="Ingrese una localidad valida" required>
     </div>
       </div>
       <input type="submit"  class="btn btn-success mt-5 centrar" value="Confirmar" name="btnAceptar">
   
 </form>
+
+
+
+<script>$('.alert').alert()</script>
 </div>
 </body>
 </html>
