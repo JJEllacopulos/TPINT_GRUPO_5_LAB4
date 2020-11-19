@@ -640,7 +640,8 @@ DELIMITER $$
 		ing_plazo_de_pago DATE,
 		ing_pago_x_mes float,
 		ing_cantidad_cuotas INT,
-        ing_monto_actual float
+        ing_monto_actual float,
+        ing_cuotas_restantes int
 		
 		)
     
@@ -648,7 +649,7 @@ DELIMITER $$
 	
 	IF EXISTS(SELECT * FROM prestamo WHERE id_prestamo = ing_id_prestamo AND estado = 1) THEN
 		
-		Update prestamo Set cbu_cuenta_deudor = ing_cbu_cuenta_deudor, importe_pedido = ing_importe_pedido, importe_con_intereses = ing_importe_con_intereses, plazo_de_pago = ing_plazo_de_pago, pago_x_mes = ing_pago_x_mes, cantidad_cuotas = ing_cantidad_cuotas, monto_actual = ing_monto_actual Where id_prestamo = ing_id_prestamo;
+		Update prestamo Set cbu_cuenta_deudor = ing_cbu_cuenta_deudor, importe_pedido = ing_importe_pedido, importe_con_intereses = ing_importe_con_intereses, plazo_de_pago = ing_plazo_de_pago, pago_x_mes = ing_pago_x_mes, cantidad_cuotas = ing_cantidad_cuotas, monto_actual = ing_monto_actual, cuotas_restantes = ing_cuotas_restantes Where id_prestamo = ing_id_prestamo;
         
 	END IF;
 
@@ -765,8 +766,8 @@ DELIMITER $$
         
 	BEGIN
 
-		INSERT INTO  prestamo(cbu_cuenta_deudor, importe_pedido, importe_con_intereses, plazo_de_pago, pago_x_mes, cantidad_cuotas, monto_actual)
-		SELECT ing_cbu_cuenta_deudor, ing_importe_pedido, (ing_importe_pedido * 1.1), CURDATE(), ing_pago_x_mes, ing_cantidad_cuotas, (ing_importe_pedido * 1.1);
+		INSERT INTO  prestamo(cbu_cuenta_deudor, importe_pedido, importe_con_intereses, plazo_de_pago, pago_x_mes, cantidad_cuotas, monto_actual, cuotas_restantes)
+		SELECT ing_cbu_cuenta_deudor, ing_importe_pedido, (ing_importe_pedido * 1.1), CURDATE(), ing_pago_x_mes, ing_cantidad_cuotas, (ing_importe_pedido * 1.1), ing_cantidad_cuotas;
 		
 	END$$
 

@@ -64,7 +64,7 @@ public class Dao_Prestamo {
 		try {
 			
 			cn = DriverManager.getConnection(host+dbName, user,pass);
-			CallableStatement st = cn.prepareCall("CALL PRO_Buscar_movimiento(?)");
+			CallableStatement st = cn.prepareCall("CALL PRO_Buscar_prestamo(?)");
 			 st.setInt(1, id_prestamo);
 			 
 			
@@ -78,7 +78,9 @@ public class Dao_Prestamo {
 				aux.setInporte_con_intereses(resultado.getDouble("importe_con_intereses"));
 				aux.setPlazo_de_pago(resultado.getDate("plazo_de_pago"));
 				aux.setPago_x_mes(resultado.getDouble("pago_x_mes"));
+				aux.setMonto_actual(resultado.getDouble("monto_actual"));
 				aux.setCantidad_cuotas(resultado.getInt("cantidad_cuotas"));
+				aux.setCuotas_a_pagar(resultado.getInt("cuotas_restantes"));
 				aux.setEstado(resultado.getBoolean("estado"));
 				
 			}
@@ -108,7 +110,7 @@ public class Dao_Prestamo {
 	  try
 	  {
 		 cn = DriverManager.getConnection(host+dbName, user,pass);
-		 CallableStatement cst = cn.prepareCall("CALL PRO_Alterar_prestamo(?,?,?,?,?,?,?)");
+		 CallableStatement cst = cn.prepareCall("CALL PRO_Alterar_prestamo(?,?,?,?,?,?,?,?,?)");
 		 
 		 cst.setInt(1, prestamo.getId_prestamo());
 		 cst.setString(2, prestamo.getCbu_cuenta_deudor());
@@ -117,6 +119,8 @@ public class Dao_Prestamo {
 		 cst.setDate(5, java.sql.Date.valueOf(fecha));
 		 cst.setDouble(6, prestamo.getPago_x_mes());
 		 cst.setInt(7, prestamo.getCantidad_cuotas());
+		 cst.setDouble(8, prestamo.getMonto_actual());
+		 cst.setInt(9, prestamo.getCuotas_a_pagar());
 		 
 		 cst.execute();
 	  }
