@@ -32,4 +32,13 @@ public class Negocio_Prestamo {
 		return lista;
 	}
 	
+	public Prestamo Obtener_Prestamo(int id_prestamo) {
+		Prestamo prestamo = dao_prestamo.Obtener_Prestamo(id_prestamo);
+		return prestamo;
+	}
+	
+	public void SPEliminar_Prestamo(Prestamo prestamo) {
+		dao_prestamo.SPModificarPrestamo(prestamo, prestamo.getPlazo_de_pago().toString());
+	}
+	
 }

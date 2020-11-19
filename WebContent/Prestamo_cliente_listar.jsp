@@ -48,6 +48,7 @@
 					<th scope="col">Importe con intereses</th>
 					<th scope="col">Cantidad de cuotas</th>
 					<th scope="col">Pago por mes</th>
+					<th scope="col">Cuotas restantes</th>
 					<th scope="col">Monto actual</th>
 					<th scope="col"></th>
 			
@@ -64,14 +65,15 @@
 					<form action="Servlet_Prestamo_Cliente" method="get">
 				   
 						<td><%=e.getId_prestamo()%> <input type="hidden" name="id_prestamo" value="<%= e.getId_prestamo() %>"></td>
-						<td><%=e.getCbu_cuenta_deudor()%></td>
+						<td><%=e.getCbu_cuenta_deudor()%> <input type="hidden" name="cbu_prestamo" value="<%= e.getCbu_cuenta_deudor() %>"> </td>
 						<td><%=e.getInporte_pedido()%></td>
 						<td><%=e.getInporte_con_intereses()%></td>
 						<td><%=e.getCantidad_cuotas()%></td>
-						<td><%=e.getPago_x_mes()%></td>
+						<td><%=e.getPago_x_mes()%> <input type="hidden" name="pagoxmes_prestamo" value="<%= e.getPago_x_mes() %>"> </td>
+						<td><%=e.getCuotas_a_pagar()%></td>
 						<td><%=e.getMonto_actual()%></td>
 						
-						<td> <button type="submit" class="btn btn-primary btnDD" name="btn_Pagar_prestamo" >Aceptar</button> </td>
+						<td> <button type="submit" class="btn btn-primary btnDD" name="btn_Pagar_prestamo" >Pagar cuota</button> </td>
 				
 				
 					</form>

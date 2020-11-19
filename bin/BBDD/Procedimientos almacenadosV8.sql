@@ -115,8 +115,6 @@ DELIMITER $$
 END$$
 
 
-
-
 -- Direccion
 
 DELIMITER $$
@@ -252,7 +250,7 @@ DELIMITER $$
 	
 	IF EXISTS(SELECT * FROM contacto WHERE nombre_usuario = ing_nombre_usuario AND estado = 1) THEN
 		
-		Update contacto Set email = ing_email, telefono = ing_telefono  Where nombre_usuario = ing_nombre_usuario;
+		Update contacto Set email = ing_email, telefono = ing_telefono Where nombre_usuario = ing_nombre_usuario;
         
 	END IF;
 
@@ -303,9 +301,6 @@ DELIMITER $$
     
 -- Cuenta
 
-
-
-use banco;
 DELIMITER $$
 	CREATE PROCEDURE PRO_ingresar_cuenta(
 		
@@ -313,15 +308,14 @@ DELIMITER $$
 		ing_nombre_usuario VARCHAR(22),
 		ing_tipo_cuenta VARCHAR(5),
 		ing_fecha_creacion DATE,
-		ing_saldo FLOAT,
-        ing_estado BOOL
+		ing_saldo FLOAT
 		
         )
         
 	BEGIN
 
-		INSERT INTO  cuenta(cbu_cuenta, nombre_usuario, tipo_cuenta, fecha_creacion, saldo, estado)
-		SELECT ing_cbu_cuenta, ing_nombre_usuario, ing_tipo_cuenta, ing_fecha_creacion, ing_saldo, ing_estado;
+		INSERT INTO  cuenta(cbu_cuenta, nombre_usuario, tipo_cuenta, fecha_creacion, saldo)
+		SELECT ing_cbu_cuenta, ing_nombre_usuario, ing_tipo_cuenta, ing_fecha_creacion, ing_saldo;
 		
 	END$$
 
@@ -389,6 +383,20 @@ DELIMITER $$
 
 END$$
 
+DELIMITER $$
+    CREATE PROCEDURE PRO_Buscar_Datos_cuenta(
+	
+		ing_nombre_usuario VARCHAR(22)
+        
+		)
+    
+	BEGIN
+	
+		SELECT * FROM cuenta WHERE nombre_usuario = "Adrianabanana" AND estado = 1;
+	
+
+END$$
+
 -- tipo_movimiento
 
 DELIMITER $$
@@ -413,7 +421,6 @@ DELIMITER $$
 		
 		ing_cbu_cuenta VARCHAR(22),
 		ing_tipo_movimiento VARCHAR(5),
-		ing_fecha_creacion DATE,
 		ing_detalles VARCHAR(22),
 		ing_importe FLOAT
 		
@@ -422,7 +429,7 @@ DELIMITER $$
 	BEGIN
 
 		INSERT INTO  movimiento(cbu_cuenta, tipo_movimiento, fecha_creacion, detalles, importe)
-		SELECT ing_cbu_cuenta, ing_tipo_movimiento, ing_fecha_creacion, ing_detalles, ing_importe;
+		SELECT ing_cbu_cuenta, ing_tipo_movimiento, CURDATE(), ing_detalles, ing_importe;
 		
 	END$$
     
@@ -481,12 +488,25 @@ END$$
 
 DELIMITER $$
     CREATE PROCEDURE PRO_Listar_movimiento(
+    cbuCuenta VARCHAR(22)
+
+        )
+
+    BEGIN
+
+        SELECT * FROM movimiento where cbu_cuenta = cbuCuenta ;
+
+
+END$$
+
+DELIMITER $$
+    CREATE PROCEDURE PRO_Obtener_Ultimo_Id_Movimiento(
         
 		)
     
 	BEGIN
 	
-		SELECT * FROM movimiento;
+		SELECT MAX(id_movimiento) as id_movimiento FROM movimiento;
 	
 
 END$$
@@ -580,14 +600,16 @@ DELIMITER $$
 		ing_importe_con_intereses float,
 		ing_plazo_de_pago DATE,
 		ing_pago_x_mes float,
-		ing_cantidad_cuotas INT
+		ing_cantidad_cuotas INT,
+        ing_cuotas_restantes INT,
+        ing_monto_actual float
 		
         )
         
 	BEGIN
 
-		INSERT INTO  prestamo(cbu_cuenta_deudor, importe_pedido, importe_con_intereses, plazo_de_pago, pago_x_mes, cantidad_cuotas)
-		SELECT ing_cbu_cuenta_deudor, ing_importe_pedido, ing_importe_con_intereses, ing_plazo_de_pago, ing_pago_x_mes, ing_cantidad_cuotas;
+		INSERT INTO  prestamo(cbu_cuenta_deudor, importe_pedido, importe_con_intereses, plazo_de_pago, pago_x_mes, cantidad_cuotas, cuotas_restantes, monto_actual)
+		SELECT ing_cbu_cuenta_deudor, ing_importe_pedido, ing_importe_con_intereses, ing_plazo_de_pago, ing_pago_x_mes, ing_cantidad_cuotas, ing_cuotas_restantes, ing_monto_actual;
 		
 	END$$
     
@@ -617,7 +639,8 @@ DELIMITER $$
 		ing_importe_con_intereses float,
 		ing_plazo_de_pago DATE,
 		ing_pago_x_mes float,
-		ing_cantidad_cuotas INT
+		ing_cantidad_cuotas INT,
+        ing_monto_actual float
 		
 		)
     
@@ -625,7 +648,7 @@ DELIMITER $$
 	
 	IF EXISTS(SELECT * FROM prestamo WHERE id_prestamo = ing_id_prestamo AND estado = 1) THEN
 		
-		Update prestamo Set cbu_cuenta_deudor = ing_cbu_cuenta_deudor, importe_pedido = ing_importe_pedido, importe_con_intereses = ing_importe_con_intereses, plazo_de_pago = ing_plazo_de_pago, pago_x_mes = ing_pago_x_mes, cantidad_cuotas = ing_cantidad_cuotas Where id_prestamo = ing_id_prestamo;
+		Update prestamo Set cbu_cuenta_deudor = ing_cbu_cuenta_deudor, importe_pedido = ing_importe_pedido, importe_con_intereses = ing_importe_con_intereses, plazo_de_pago = ing_plazo_de_pago, pago_x_mes = ing_pago_x_mes, cantidad_cuotas = ing_cantidad_cuotas, monto_actual = ing_monto_actual Where id_prestamo = ing_id_prestamo;
         
 	END IF;
 
@@ -690,18 +713,18 @@ where u.estado = 1 and u.tipo_usuario like 'user';
 
 END$$
 
-  DELIMITER $$
-    CREATE PROCEDURE PRO_Obtener_usuario(
-        Nombre_usuario VARCHAR(25)
-        )
+DELIMITER $$
+	CREATE PROCEDURE PRO_Obtener_usuario(
+		Nombre_usuario VARCHAR(25)
+		)
 
-    BEGIN
+	BEGIN
 
-        select u.nombre_usuario, u.dni_usuario, nombre_real, u.apellido_real, u.contraseña_usuario, u.cuil_usuario,
-u.sexo, u.nacionalidad, u.fecha_nacimiento, d.calle, d.altura, d.localidad, d.provincia, d.pais, c.email, c.telefono, u.tipo_usuario from usuario as u
-inner join direccion as d on d.nombre_usuario = u.nombre_usuario
-inner join contacto as c on c.nombre_usuario = u.nombre_usuario
-where u.nombre_usuario = Nombre_usuario;
+		select u.nombre_usuario, u.dni_usuario, nombre_real, u.apellido_real, u.contraseña_usuario, u.cuil_usuario,
+		u.sexo, u.nacionalidad, u.fecha_nacimiento, d.calle, d.altura, d.localidad, d.provincia, d.pais, c.email, c.telefono, u.tipo_usuario from usuario as u
+		inner join direccion as d on d.nombre_usuario = u.nombre_usuario
+		inner join contacto as c on c.nombre_usuario = u.nombre_usuario
+		where u.nombre_usuario = Nombre_usuario;
 
 
 END$$
@@ -718,23 +741,77 @@ DELIMITER $$
 	
 	IF EXISTS(SELECT * FROM usuario WHERE nombre_usuario = ing_nombre_usuario AND contraseña_usuario = ing_contraseña_usuario AND estado = 1) THEN
 		BEGIN
-			select 1 as resultado;
+			select true as resultado;
 		END;
 		ELSE
 		BEGIN
-			select 0 as resultado;
+			select false as resultado;
 		END;
 	END IF;
 
 END$$
+
+-- Prestamos
+
 DELIMITER $$
-    CREATE PROCEDURE PRO_Listar_TipoCuenta(
+	CREATE PROCEDURE PRO_Nuevo_prestamo(
+		
+		ing_cbu_cuenta_deudor VARCHAR(22),
+		ing_importe_pedido float,
+		ing_pago_x_mes float,
+		ing_cantidad_cuotas INT
+		
+        )
+        
+	BEGIN
+
+		INSERT INTO  prestamo(cbu_cuenta_deudor, importe_pedido, importe_con_intereses, plazo_de_pago, pago_x_mes, cantidad_cuotas, monto_actual)
+		SELECT ing_cbu_cuenta_deudor, ing_importe_pedido, (ing_importe_pedido * 1.1), CURDATE(), ing_pago_x_mes, ing_cantidad_cuotas, (ing_importe_pedido * 1.1);
+		
+	END$$
+
+DELIMITER $$
+    CREATE PROCEDURE PRO_Listar_prestamos_administradores(
         
 		)
     
 	BEGIN
 	
-		SELECT * FROM tipo_cuenta;
+		SELECT * FROM prestamo where aprobacion = 0 and estado = 1;
 	
+
+END$$
+
+DELIMITER $$
+    CREATE PROCEDURE PRO_Listar_prestamos_clientes(
+        
+        ing_nombre_usuario VARCHAR(25)
+        
+		)
+    
+	BEGIN
+	
+		SELECT prestamo.id_prestamo, prestamo.cbu_cuenta_deudor, prestamo.importe_pedido, prestamo.importe_con_intereses, prestamo.cantidad_cuotas, prestamo.pago_x_mes, prestamo.monto_actual, prestamo.cuotas_restantes, prestamo.plazo_de_pago FROM prestamo
+        inner join cuenta on prestamo.cbu_cuenta_deudor = cuenta.cbu_cuenta
+        inner join usuario on cuenta.nombre_usuario = usuario.nombre_usuario
+        where prestamo.aprobacion = 1 and prestamo.estado = 1 and usuario.nombre_usuario = ing_nombre_usuario;
+	
+
+END$$
+
+DELIMITER $$
+    CREATE PROCEDURE PRO_abilitar_prestamo(
+	
+		 ing_id_prestamo INT
+		
+		)
+    
+	BEGIN
+	
+	IF EXISTS(SELECT * FROM prestamo WHERE id_prestamo = ing_id_prestamo AND aprobacion = 0 and estado = 1) THEN
+		
+		Update prestamo Set aprobacion = 1 Where id_prestamo = ing_id_prestamo;
+        
+	END IF;
 
 END$$
