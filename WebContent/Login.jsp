@@ -11,7 +11,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
  	<Style>
-
+.centrar {
+  margin: auto;
+  
+  display: block;
+	margin-top: 20px;
+  margin-left: 45%;
+}
  	.form-signin{
  	width: 100%;
     max-width: 420px;
@@ -33,30 +39,21 @@
 <form method="post" action="ServletsLogin">
 
   <div class="form-label-group">
+    <label for="inputEmail">Nombre del usuario</label>
     <input type="text" class="form-control" name="txtNombreUsuario">
-    <label for="inputEmail">Nombre de usuario</label>
+  
   </div>
 
   <div class="form-label-group">
+   <label class="mb-2 mt-2" for="inputPassword">Contraseña</label>
     <input type="password" class="form-control" name="txtPassword">
-    <label for="inputPassword">Password</label>
+   
   </div>
-
-  <div class="checkbox mb-3">
-    <label>
-      <input type="checkbox" value="remember-me"> Remember me
-    </label>
-  </div>
- <input type="submit" class="btn btn-primary crear" value="Aceptar" name="btnAceptar">
-  <p class="mt-5 mb-3 text-muted text-center">© 2017-2020</p>
+ <input type="submit" class="btn btn-success centrar" value="Aceptar" name="btnAceptar">
+  <p class="mt-5 mb-3 text-muted text-center">© Grupo 5 - Turno Mañana - Programación IV 2020</p>
 </form>
 </div>
 
-<%
-	
-	
-
-%>
 
 </body>
 </html>
