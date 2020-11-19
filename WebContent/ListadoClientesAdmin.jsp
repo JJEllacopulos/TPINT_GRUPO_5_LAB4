@@ -79,7 +79,44 @@
 <body>
 
 	<jsp:include page="MenuAdmin.jsp"></jsp:include>
+	<% 
+if(request.getAttribute("filas")!=null){
 	
+
+int filas = (int)request.getAttribute("filas");
+
+	
+
+if(filas > 0){%>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Hola!</strong> Se eliminó el usuario correctamente.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<% }}%>
+	<% 
+if(request.getAttribute("filasE")!=null){
+	
+
+int filas = (int)request.getAttribute("filasE");
+
+	
+
+if(filas > 0){%>
+<div class="alert alert-primary alert-dismissible fade show" role="alert">
+  <strong>Hola!</strong> Se modificó el usuario correctamente.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<% }}%>
+
+
+
+
 	<div class="container Mover  ">
 	<form action="servletsCliente" method="get">
 	<div class="row mt-5  ">
@@ -219,6 +256,6 @@
 	  </tbody>
 	</table>
 	</div>
-	
+	<script>$('.alert').alert()</script>
 </body>
 </html>

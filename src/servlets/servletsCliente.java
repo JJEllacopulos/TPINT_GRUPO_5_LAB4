@@ -106,28 +106,31 @@ public class servletsCliente extends HttpServlet {
 	        direccion.setPais(request.getParameter("txtPais"));
 	        
 	        direccion.setProvincia(request.getParameter("txtProvincia"));
+	        int filas = 0;
 	        
-	       
-	        usuarioNegocio.SPModificarUsuario(usuario,fecha);
+	       filas = usuarioNegocio.SPModificarUsuario(usuario,fecha);
 	        usuarioNegocio.SPModificarDireccionUsuario(direccion);
 	        usuarioNegocio.SPModificarContactoUsuario(contacto);
 	        
 	        ArrayList<Usuario> lista = usuarioNegocio.Obtener_lista_usuarios();
+	        request.setAttribute("filasE", filas);
+		
 			request.setAttribute("listaU", lista);
-			RequestDispatcher rd = request.getRequestDispatcher("/ListadoClientesAdmin.jsp");    
+			RequestDispatcher rd = request.getRequestDispatcher("Servlet_Menu_Administrador?link_3=1");    
 	        rd.forward(request, response); 
 		}
 		
 		if(request.getParameter("btnEliminar")!=null) {
 			String nombreUsuario = request.getParameter("nombreUsuario");
-			
+			int filas = 0;
 			usuarioNegocio.SPEliminarDireccionUsuario(nombreUsuario);
 			usuarioNegocio.SPEliminarContactoUsuario(nombreUsuario);
-			usuarioNegocio.SPEliminarUsuario(nombreUsuario);
+		filas =	usuarioNegocio.SPEliminarUsuario(nombreUsuario);
 			
 	        ArrayList<Usuario> lista = usuarioNegocio.Obtener_lista_usuarios();
-			request.setAttribute("listaU", lista);
-			RequestDispatcher rd = request.getRequestDispatcher("/ListadoClientesAdmin.jsp");    
+			request.setAttribute("lista", lista);
+			request.setAttribute("filas", filas);
+			RequestDispatcher rd = request.getRequestDispatcher("Servlet_Menu_Administrador?link_3=1");    
 	        rd.forward(request, response); 
 			
 		}

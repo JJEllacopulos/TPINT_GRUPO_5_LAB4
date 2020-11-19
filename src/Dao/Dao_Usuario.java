@@ -283,7 +283,7 @@ public boolean Confirmar_usuario (String nombreUsuario, String contraseñaUsuario
 	}
 
 
-public void SPModificarUsuario(Usuario usuario, String fecha)
+public int SPModificarUsuario(Usuario usuario, String fecha)
 {
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
@@ -291,6 +291,7 @@ public void SPModificarUsuario(Usuario usuario, String fecha)
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+	int filas = 0;
 	Connection cn = null;
 	  try
 	  {
@@ -307,12 +308,12 @@ public void SPModificarUsuario(Usuario usuario, String fecha)
 		 cst.setString(9, usuario.getNacionalidad());
 		 cst.setDate(10, java.sql.Date.valueOf(fecha));
 		 
-		 cst.execute();
+		 filas=cst.executeUpdate();
 	  }
 	  catch (Exception e) {
 		e.printStackTrace();
 	}
-		
+		return filas;
 }
 
 public void SPModificarDireccionUsuario(Direccion direccion)
@@ -367,7 +368,7 @@ public void SPModificarContactoUsuario(Contacto contacto)
 	}
 		
 }
-public void SPEliminarUsuario(String usuarioNombre)
+public int SPEliminarUsuario(String usuarioNombre)
 {
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
@@ -375,6 +376,7 @@ public void SPEliminarUsuario(String usuarioNombre)
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+	int filas = 0;
 	Connection cn = null;
 	  try
 	  {
@@ -383,11 +385,12 @@ public void SPEliminarUsuario(String usuarioNombre)
 		 cst.setString(1, usuarioNombre);
 
 	
-		 cst.execute();
+		 filas=cst.executeUpdate();
 	  }
 	  catch (Exception e) {
 		e.printStackTrace();
 	}
+	  return filas;
 		
 }
 

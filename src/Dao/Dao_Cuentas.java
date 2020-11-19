@@ -22,7 +22,7 @@ public class Dao_Cuentas {
 	private String pass = "ROOT";
 	private String dbName = "banco";
 
-	public void SPAltaCuenta(Cuenta cuenta)
+	public int SPAltaCuenta(Cuenta cuenta)
 	{
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -30,6 +30,7 @@ public class Dao_Cuentas {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	int	filas = 0;
 		Connection cn = null;
 		  try
 		  {
@@ -45,14 +46,14 @@ public class Dao_Cuentas {
 			 
 
 
-			 cst.execute();
+			 filas=cst.executeUpdate();
 		  }
 		  catch (Exception e) {
 			e.printStackTrace();
 		}
-			
+			return filas;
 	}
-	public void SPModificarCuenta(Cuenta cuenta)
+	public int SPModificarCuenta(Cuenta cuenta)
 	{
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -60,6 +61,7 @@ public class Dao_Cuentas {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		int filas = 0;
 		Connection cn = null;
 		  try
 		  {
@@ -72,12 +74,12 @@ public class Dao_Cuentas {
 			 cst.setString(5, cuenta.getSaldo().toString());
 		
 
-			 cst.execute();
+			 filas=cst.executeUpdate();
 		  }
 		  catch (Exception e) {
 			e.printStackTrace();
 		}
-			
+			return filas;
 	}
 	
 	
@@ -219,7 +221,7 @@ public Cuenta Obtener_cuenta(String cbuCuenta) {
 		
 	}
 
-public void SPEliminarCuenta(String CBUcuenta)
+public int SPEliminarCuenta(String CBUcuenta)
 {
 	try {
 		Class.forName("com.mysql.jdbc.Driver");
@@ -227,6 +229,7 @@ public void SPEliminarCuenta(String CBUcuenta)
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+	int filas = 0;
 	Connection cn = null;
 	  try
 	  {
@@ -234,11 +237,12 @@ public void SPEliminarCuenta(String CBUcuenta)
 		 CallableStatement cst = cn.prepareCall("CALL PRO_Desabilitar_cuenta(?)");
 		 cst.setString(1, CBUcuenta);
 	
-		 cst.execute();
+		 filas=cst.executeUpdate();
 	  }
 	  catch (Exception e) {
 		e.printStackTrace();
 	}
+	  return filas;
 		
 }
 

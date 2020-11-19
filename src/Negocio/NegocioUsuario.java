@@ -42,11 +42,7 @@ public class NegocioUsuario implements InterfaceUsuario {
 		return lista;
 	}
 
-	@Override
-	public void SPModificarUsuario(Usuario usuario, String fecha) {
-		// TODO Auto-generated method stub
-		daoUsuario.SPModificarUsuario(usuario, fecha);
-	}
+
 
 	@Override
 	public void SPModificarDireccionUsuario(Direccion direccion) {
@@ -75,11 +71,6 @@ public class NegocioUsuario implements InterfaceUsuario {
 		return daoUsuario.Confirmar_usuario(nombreUsuario, contraseñaUsuario);
 	}
 
-	@Override
-	public void SPEliminarUsuario(String usuarioNombre) {
-		// TODO Auto-generated method stub
-		daoUsuario.SPEliminarUsuario(usuarioNombre);
-	}
 
 	@Override
 	public void SPEliminarDireccionUsuario(String usuarioNombre) {
@@ -101,6 +92,23 @@ public class NegocioUsuario implements InterfaceUsuario {
 		} catch (NumberFormatException nfe){
 			return false;
 		}	
+	}
+
+	@Override
+	public int SPModificarUsuario(Usuario usuario, String fecha) {
+		// TODO Auto-generated method stub
+		int filas = 0;
+		filas = daoUsuario.SPModificarUsuario(usuario, fecha);
+		return filas;
+	}
+
+	@Override
+	public int SPEliminarUsuario(String usuarioNombre) {
+		// TODO Auto-generated method stub
+		int filas = 0;
+		filas = daoUsuario.SPEliminarUsuario(usuarioNombre);
+		
+		return filas;
 	}
 
 	
