@@ -73,6 +73,12 @@ public class NegocioCuentas implements InterfaceCuentas {
 	}
 	
 	@Override
+	public ArrayList<Cuenta> Obtener_cuentas_activas(String tipoCuenta1, String tipoCuenta2) {
+		ArrayList<Cuenta> lista = daoCuentas.Obtener_cuentas_activas( tipoCuenta1, tipoCuenta2);
+		return lista;
+	}
+	
+	@Override
 	public boolean StringIsNumeric(String nombre_usuario) {
 		try {
 			Integer.parseInt(nombre_usuario);

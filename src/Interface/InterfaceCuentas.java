@@ -16,5 +16,6 @@ public interface InterfaceCuentas {
 	public int Eliminar_cuenta(String cbuCuenta);
 	public ArrayList<TipoCuenta> Obtener_TipoCuentas();
 	public ArrayList<Cuenta> Obtener_Datos_Cuenta(String nombre_usuario);
+	public ArrayList<Cuenta> Obtener_cuentas_activas(String tipoCuenta1, String tipoCuenta2);
 	boolean StringIsNumeric(String nombre_usuario);
 }

@@ -113,7 +113,50 @@ public class Servlet_Menu_Administrador extends HttpServlet {
 	        rd.forward(request, response);
 		}
 		
-		
+		if(request.getParameter("link_10")!=null) {
+			int cuentasXpagina = 10;
+			
+			ArrayList<Cuenta> lista = new ArrayList<Cuenta>();
+			lista = cuentaNegocio.Obtener_cuentas_activas("CC","CA");
+			
+			String cc = request.getParameter("chkBoxCC");
+			String ca = request.getParameter("chkBoxCA");
+			
+			if (cc!=null)lista = cuentaNegocio.Obtener_cuentas_activas("CC","CC");
+			if (ca!=null)lista = cuentaNegocio.Obtener_cuentas_activas("CA","CA");
+			
+			//if (request.getParameter("chkBoxCC")!=null) lista = cuentaNegocio.Obtener_cuentas_activas("CC","CC");
+			//if (request.getParameter("chkBoxCA")!=null) lista = cuentaNegocio.Obtener_cuentas_activas("CA","CA");
+			
+			int cantPag=1;
+			if(lista!=null){
+		    	int usuarios=0;
+		  		 for(Cuenta e : lista)
+				{ usuarios++;
+		  			if (usuarios == cuentasXpagina){
+		  				usuarios = 0;
+		  				cantPag = cantPag + 1;
+		  			} } }	  			
+			
+			int usuarioFinal=  Integer.parseInt(request.getParameter("link_10"))*cuentasXpagina; 
+			int usuarioInicio = usuarioFinal - cuentasXpagina;
+			
+			ArrayList<Cuenta> listaPaginada = new ArrayList<Cuenta>();	
+			
+			for (int i=0;i<lista.size();i++) {		      
+				if(i>=usuarioInicio && i< usuarioFinal) {	
+				cuenta = lista.get(i);
+				listaPaginada.add(cuenta);
+				}  
+			    }
+			
+				request.setAttribute("listaC", listaPaginada);
+				request.setAttribute("cantPag", cantPag);
+				request.setAttribute("pagActual", Integer.parseInt(request.getParameter("link_10")));	
+				
+				RequestDispatcher rd = request.getRequestDispatcher("/ListarCuentasAdmin.jsp");   
+		        rd.forward(request, response);
+			}
 		
 		if(request.getParameter("link_0")!=null) {
 			request.getSession().invalidate();

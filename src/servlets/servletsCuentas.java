@@ -163,7 +163,7 @@ public class servletsCuentas extends HttpServlet {
 			ArrayList<Cuenta> lista = cuentaNegocio.Obtener_todasLasCuentas ();
 			request.setAttribute("filasE", filas);
 			request.setAttribute("listaC", lista);	
-				RequestDispatcher rd = request.getRequestDispatcher("Servlet_Menu_Administrador?link_2=1");   
+				RequestDispatcher rd = request.getRequestDispatcher("Servlet_Menu_Administrador?link_10=1");   
 		        rd.forward(request, response);
 		}	
 		
@@ -189,6 +189,17 @@ public class servletsCuentas extends HttpServlet {
 		        rd.forward(request, response);
 			
 			}
+		
+		if(request.getParameter("btnFiltrar")!=null) {
+			
+			if (request.getParameter("chkBoxCC")!=null)request.setAttribute("chkBoxCC","CC");
+			if (request.getParameter("chkBoxCA")!=null)request.setAttribute("chkBoxCC","CA");
+			//request.setAttribute("chkBoxCA","CA");
+			//request.setAttribute("chkBoxCC","CC");	
+			RequestDispatcher rd = request.getRequestDispatcher("/Servlet_Menu_Administrador?link_10=1");   
+	        rd.forward(request, response);
+			
+		}
 		
 	}
 

@@ -129,6 +129,65 @@ public class Dao_Cuentas {
 			return x;	
 		}
 	
+public ArrayList<Cuenta> Obtener_cuentas_activas (String tipoCuenta1, String tipoCuenta2) {
+		
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ArrayList<Cuenta> x = new ArrayList<Cuenta>();
+			
+			Connection cn = null;
+			
+			try {
+				
+				cn = DriverManager.getConnection(host+dbName, user,pass);
+				CallableStatement st = cn.prepareCall("CALL PRO_Listar_Cuenta");
+							
+				ResultSet resultado = st.executeQuery();
+				/*  
+	 c.cbu_cuenta, c.nombre_usuario, c.tipo_cuenta, c.fecha_creacion, c.saldo, c.estado 
+				 */
+				while(resultado.next()){
+				if (resultado.getBoolean("estado")) {
+					
+			   if (!tipoCuenta1.equals(tipoCuenta2)) {
+				   Cuenta aux = new Cuenta();
+					aux.setCbu_cuenta(resultado.getString("cbu_cuenta"));
+					aux.setNombre_usuario(resultado.getString("nombre_usuario"));
+					aux.setTipo_Cuenta(resultado.getString("tipo_cuenta"));
+					aux.setFecha_creacion(resultado.getString("fecha_creacion"));
+					aux.setSaldo(resultado.getDouble("saldo"));
+					aux.setEstado(resultado.getBoolean("estado"));
+					x.add(aux); 
+			   }	
+					
+			   else if (tipoCuenta1.equals(resultado.getString("tipo_cuenta"))) {
+					Cuenta aux = new Cuenta();
+					aux.setCbu_cuenta(resultado.getString("cbu_cuenta"));
+					aux.setNombre_usuario(resultado.getString("nombre_usuario"));
+					aux.setTipo_Cuenta(resultado.getString("tipo_cuenta"));
+					aux.setFecha_creacion(resultado.getString("fecha_creacion"));
+					aux.setSaldo(resultado.getDouble("saldo"));
+					aux.setEstado(resultado.getBoolean("estado"));
+					x.add(aux);
+				}}
+				}
+				
+			}
+			catch(Exception e) {
+				
+				e.printStackTrace();
+				
+			}
+			
+			return x;	
+		}
+	
+	
 public ArrayList<Cuenta> Obtener_todasLasCuentas () {
 		
 		

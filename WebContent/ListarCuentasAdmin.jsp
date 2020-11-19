@@ -24,6 +24,38 @@
  	.fila{
  	width: 30%;
  	}
+ 	
+ 	 .paginacion {
+	margin:20px 0;
+}
+ 
+.paginacion ul {
+	list-style:none;
+	text-align: center;
+}
+ 
+.paginacion ul li {
+	display:inline-block;
+	margin-right:10px;
+}
+ 
+.paginacion ul li a {
+	display:block;
+	padding:10px 20px;
+	color:#fff;
+	background:#024959;
+	text-decoration: none;
+}
+ 
+.paginacion ul li a:hover {
+	background:#037E8C;
+}
+ 
+.paginacion ul li .active {
+	background:#037E8C;
+	font-weight:bold;
+}
+ 	
  	.boton{
  	width: 100%;
  	}
@@ -105,11 +137,12 @@ if(request.getAttribute("Mensaje")!=null){
     <tr>
 
       <th scope="col">CBU de cuenta </th>
-      <th scope="col">Tipo de cuenta  </th>   
+      <th scope="col">Tipo de cuenta  </th>  
       <th scope="col">Nombre y Apellido </th>
       <th scope="col">Estado </th>
       <th class="fila" scope="col"></th>
       <th class="fila" scope="col"></th>
+      
     </tr>
   </thead>
   <tbody>
@@ -130,6 +163,7 @@ listaC = (ArrayList<Cuenta>)request.getAttribute("listaC");
 
     <tr>
       <form action="servletsCuentas" method="get">
+           
       <td><%= e.getCbu_cuenta() %><input type="hidden" name="cbuCuenta" value="<%=e.getCbu_cuenta() %>"></td>
       <td><%=e.getTipo_Cuenta() %></td>
       <td><%=e.getNombre_usuario() %> </td>
@@ -140,7 +174,24 @@ listaC = (ArrayList<Cuenta>)request.getAttribute("listaC");
    
     </form>
     <% } } }%>
- 
+    <form action="servletsCuentas" method="get">
+    <a> Filtrar por tipo de cuenta: </a>      
+     <input type="radio"  name="chkBoxCC" value="CC"> CC </label>
+<input type="radio"  name="chkBoxCA" value="CA"> CA </label>
+      <input type="submit"  class="btn btn-success mt-5 centrar" value="Filtrar" name="btnFiltrar">
+      </form>
+  <section class="paginacion">
+			<ul>
+			<li><a href="Servlet_Menu_Administrador?link_10=1">PAGINAS:</a></li>
+				<%
+				for (int i=1; i<=(int)request.getAttribute("cantPag"); i++){
+				%>
+				<li><a href="Servlet_Menu_Administrador?link_10=<%=i%>"<%if((int)request.getAttribute("pagActual")==i){%>class="active"<%}%>><%=i%></a></li>
+				<% 
+				}
+				%>
+			</ul>
+		</section>
     </tr>
        
   </tbody>
