@@ -31,6 +31,59 @@
 </head>
 <body>
 <jsp:include page="MenuAdmin.jsp"></jsp:include>
+	<% 
+if(request.getAttribute("filasA")!=null){
+	
+
+int filas = (int)request.getAttribute("filasA");
+
+	
+
+if(filas > 0){%>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Hola!</strong> Se creó la cuenta correctamente.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<% }}%>
+
+<% 
+if(request.getAttribute("filasM")!=null){
+	
+
+int filas = (int)request.getAttribute("filasM");
+
+	
+
+if(filas > 0){%>
+<div class="alert alert-primary alert-dismissible fade show" role="alert">
+  <strong>Hola!</strong> Se modificó la cuenta correctamente.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<% }}%>
+
+<% 
+if(request.getAttribute("filasE")!=null){
+	
+
+int filas = (int)request.getAttribute("filasE");
+
+	
+
+if(filas > 0){%>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Hola!</strong> Se eliminó la cuenta correctamente.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<% }}%>
 <h1 class="mt-3 text-center mb-4 text-info">Cuentas</h1>
 <div class="container">
 <table class="table ">
@@ -79,5 +132,6 @@ listaC = (ArrayList<Cuenta>)request.getAttribute("listaC");
   </tbody>
 </table>
 </div>
+<script>$('.alert').alert()</script>
 </body>
 </html>
