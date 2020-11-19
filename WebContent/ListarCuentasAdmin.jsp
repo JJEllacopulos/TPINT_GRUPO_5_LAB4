@@ -84,6 +84,20 @@ if(filas > 0){%>
 </div>
 
 <% }}%>
+
+<% 
+if(request.getAttribute("Mensaje")!=null){
+	
+%>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>!!!<%=request.getAttribute("Mensaje") %> </strong> 
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<% } %>
+
 <h1 class="mt-3 text-center mb-4 text-info">Cuentas</h1>
 <div class="container">
 <table class="table ">

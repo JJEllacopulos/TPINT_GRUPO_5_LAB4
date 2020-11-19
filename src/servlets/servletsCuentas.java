@@ -46,42 +46,65 @@ public class servletsCuentas extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		Cuenta cuenta = new Cuenta ();
+		Usuario usuario = new Usuario();
+		NegocioUsuario usuarioNegocio = new NegocioUsuario();
 		NegocioCuentas cuentaNegocio = new NegocioCuentas();
 		NegocioMovimiento negMovimiento = new NegocioMovimiento();
 		Movimiento movimiento = new Movimiento();
+		
 		if(request.getParameter("btnCrearCuenta")!=null) {
 			double a = 50;
-			long cbuCuenta = (long) Math.floor(Math.random()*(99999999-9999999+1)+9999999);
+			long cbuCuenta = 0;
+			boolean c = true;		
+			
+			usuario = usuarioNegocio.Obtener_usuario(request.getParameter("txtUsuario"));
+			
+			if (usuario.getNombre_usuario()!=null) {
+				
+			ArrayList<Cuenta> Us = cuentaNegocio.Obtener_Datos_Cuenta(request.getParameter("txtUsuario"));
+				
+			if (Us.size() < 3) {
+			
+			//while (c) {
+				cbuCuenta = (long) Math.floor(Math.random()*(99999999-9999999+1)+9999999);
+				//if (cuentaNegocio.Obtener_cuenta(String.valueOf(cbuCuenta))==null) c=false;	
+			//}
+				
 			Date myDate = new Date();
 			String tipoCuenta = request.getParameter("ddl_tipo_cuenta");
 			cuenta.setCbu_cuenta(String.valueOf(cbuCuenta));
 			cuenta.setNombre_usuario(request.getParameter("txtUsuario"));
 			cuenta.setTipo_Cuenta(tipoCuenta);
 			cuenta.setSaldo(10000.00); //
-			cuenta.setFecha_creacion(new SimpleDateFormat("yyyy-MM-dd").format(myDate));  
+			cuenta.setFecha_creacion(new SimpleDateFormat("yyyy-MM-dd").format(myDate)); 
+ 
 			int filas= 0;
 			filas = cuentaNegocio.SPAltaCuenta(cuenta);
 			movimiento.setCbu_cuenta(cuenta.getCbu_cuenta());
 			movimiento.setDetalles("Monto inicial");
 			movimiento.setImporte(cuenta.getSaldo());
 			movimiento.setTipo_movimiento("Inici");
-			
 			negMovimiento.SPAltaMovimiento(movimiento, "");
 			
-			ArrayList<Cuenta> lista = cuentaNegocio.Obtener_todasLasCuentas();
-			
+			ArrayList<Cuenta> lista = cuentaNegocio.Obtener_todasLasCuentas();  
+		
 			request.setAttribute("filasA", filas);
 			request.setAttribute("listaC", lista);
 			
-			RequestDispatcher rd = request.getRequestDispatcher("Servlet_Menu_Administrador?link_2=1");   
+			//request.setAttribute("Mensaje", "Cuenta creada satisfactoriamente");
+			}
+			else {
+				request.setAttribute("Mensaje", "ERROR: el usuario ya posee 3 cuentas");
+			}
+			}
+			else {
+				request.setAttribute("Mensaje", "ERROR: Usuario inexistente");
+			}
 			
-			//cuenta.setSaldo(request.getParameter("txtSaldo"));
-			//cuenta.setFecha_creacion(new SimpleDateFormat("yyyy-MM-dd").format(myDate));
-			//cuenta.setEstado(true);
-				
-			//RequestDispatcher rd = request.getRequestDispatcher("/AltaCuenta.jsp");   
-
-	        rd.forward(request, response);
+			
+			
+			RequestDispatcher rd = request.getRequestDispatcher("Servlet_Menu_Administrador?link_2=1");
+			rd.forward(request, response);
 		}
 		
 		if(request.getParameter("Param2")!=null) {
