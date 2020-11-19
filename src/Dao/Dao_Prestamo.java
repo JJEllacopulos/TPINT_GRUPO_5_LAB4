@@ -260,7 +260,7 @@ public class Dao_Prestamo {
 				aux.setPago_x_mes(resultado.getDouble("pago_x_mes"));
 				aux.setMonto_actual(resultado.getDouble("monto_actual"));
 				aux.setCantidad_cuotas(resultado.getInt("cantidad_cuotas"));
-
+				aux.setCuotas_a_pagar(resultado.getInt("cuotas_restantes"));
 				
 				x.add(aux);
 				

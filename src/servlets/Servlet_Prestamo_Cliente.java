@@ -1,7 +1,9 @@
 package servlets;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,9 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Entidad.Movimiento;
+import Entidad.Movimiento_x_Prestamo;
 import Entidad.Prestamo;
 import Entidad.Usuario;
 import Negocio.NegocioCuentas;
+import Negocio.NegocioMovimiento;
+import Negocio.Negocio_Movimiento_x_Prestamo;
 import Negocio.Negocio_Prestamo;
 
 /**
@@ -39,13 +45,17 @@ public class Servlet_Prestamo_Cliente extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		Prestamo e_prestamo = new Prestamo ();
+		Movimiento e_movimiento = new Movimiento();
+		Movimiento_x_Prestamo e_movimiento_x_Prestamo = new Movimiento_x_Prestamo();
 		Negocio_Prestamo n_prestamo = new Negocio_Prestamo();
 		NegocioCuentas n_cuentaNegocio = new NegocioCuentas();
+		NegocioMovimiento n_movimiento = new NegocioMovimiento();
+		Negocio_Movimiento_x_Prestamo n_movimiento_x_Prestamo = new Negocio_Movimiento_x_Prestamo();
 		
 		HttpSession misession = (HttpSession) request.getSession();
 		Usuario e_usuario = (Usuario) misession.getAttribute("userSession");
 		
-		
+		Date myDate = new Date();
 		
 		if(request.getParameter("btn_Crear_Solisitar_Prestamo")!=null) {
 			
@@ -66,6 +76,41 @@ public class Servlet_Prestamo_Cliente extends HttpServlet {
 			
 			ArrayList<Prestamo> lista = n_prestamo.Obtener_lista_Prestamo_cliente(e_usuario.getNombre_usuario());
 			request.setAttribute("lista_prestamos", lista);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/Prestamo_cliente_listar.jsp");   
+	        rd.forward(request, response);  
+			
+		}
+		
+		if(request.getParameter("btn_Pagar_prestamo")!=null)
+		{
+			String cbu = request.getParameter("cbu_prestamo");
+			e_movimiento.setCbu_cuenta(cbu);
+			e_movimiento.setTipo_movimiento("Prest");
+			e_movimiento.setDetalles(" ");
+			Double importe = Double.parseDouble(request.getParameter("pagoxmes_prestamo"));
+			e_movimiento.setImporte(importe);
+			
+			n_movimiento.SPAltaMovimiento(e_movimiento, new SimpleDateFormat("yyyy-MM-dd").format(myDate));
+			
+			int id_movimiento = n_movimiento.SPObtenerUltimoId();
+			int id_prestamo = Integer.parseInt(request.getParameter("id_prestamo"));
+			
+			e_movimiento_x_Prestamo.setId_movimiento(id_movimiento);
+			e_movimiento_x_Prestamo.setId_prestamo(id_prestamo);
+			
+			n_movimiento_x_Prestamo.SPAlta_movimieto_x_prestamo(e_movimiento_x_Prestamo);
+			
+			e_prestamo = n_prestamo.Obtener_Prestamo(id_prestamo);
+			
+			Double Monto_actual = e_prestamo.getMonto_actual();
+			Double Pago_x_mes = e_prestamo.getMonto_actual();
+			int cuotas = e_prestamo.getCuotas_a_pagar();
+			
+			e_prestamo.setMonto_actual(Monto_actual - Pago_x_mes);
+			e_prestamo.setCuotas_a_pagar(cuotas - 1);
+			
+			n_prestamo.
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/Prestamo_cliente_listar.jsp");   
 	        rd.forward(request, response);  
