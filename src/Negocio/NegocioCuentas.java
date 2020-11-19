@@ -14,9 +14,11 @@ public class NegocioCuentas implements InterfaceCuentas {
 	private Dao_Cuentas daoCuentas = new Dao_Cuentas();
 	
 	@Override
-	public void SPAltaCuenta(Cuenta cuenta) {
+	public int SPAltaCuenta(Cuenta cuenta) {
 		// TODO Auto-generated method stub
-		daoCuentas.SPAltaCuenta(cuenta);
+		int filas = 0;
+		filas = daoCuentas.SPAltaCuenta(cuenta);
+		return filas;
 	}
 	
 	@Override
@@ -32,10 +34,11 @@ public class NegocioCuentas implements InterfaceCuentas {
 		
 	}
 	@Override
-	public void SPModificarCuenta(Cuenta cuenta) {
+	public int SPModificarCuenta(Cuenta cuenta) {
 		// TODO Auto-generated method stub
-		daoCuentas.SPModificarCuenta(cuenta);
-		
+		int filas = 0;
+		filas = daoCuentas.SPModificarCuenta(cuenta);
+		return filas;
 	}
 	@Override
 	public Cuenta Obtener_cuenta(String cbuCuenta) {
@@ -46,10 +49,11 @@ public class NegocioCuentas implements InterfaceCuentas {
 	}
 
 	@Override
-	public void Eliminar_cuenta(String cbuCuenta) {
+	public int Eliminar_cuenta(String cbuCuenta) {
 		// TODO Auto-generated method stub
-	    daoCuentas.SPEliminarCuenta(cbuCuenta);
-		
+		int filas = 0;
+		filas =  daoCuentas.SPEliminarCuenta(cbuCuenta);
+		return filas;
 	}
 
 	@Override
