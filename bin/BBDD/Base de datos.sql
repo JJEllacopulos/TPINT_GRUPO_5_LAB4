@@ -153,6 +153,9 @@ create table prestamo
     plazo_de_pago DATE NOT NULL,
     pago_x_mes float NOT NULL,
     cantidad_cuotas INT NOT NULL,
+    cuotas_restantes INT NOT NULL,
+    monto_actual float NOT NULL,
+    aprobacion bit NOT NULL DEFAULT 0,
     estado bit NOT NULL DEFAULT 1
     
 );
