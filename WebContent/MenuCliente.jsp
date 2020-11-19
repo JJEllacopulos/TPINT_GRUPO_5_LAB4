@@ -124,8 +124,6 @@ if(!aux.getTipo_usuario().equals("user")){
 			<li><a href="">Menu</a>
 				<ul>
 					<li><a href="Servlet_Menu_clientes?link_1=1">Inicio <span class="sr-only">(current)</span></a></li>
-					<li><a href="#"> Mi Perfil</a></li>
-					<li><a href="#">Usuario</a></li>
 					<li><a href="servletsCuentas?Param2=2">Mis cuentas</a></li>
 					 
 					<div class="btn-group dropright">

@@ -35,7 +35,7 @@ usuario = (Usuario)request.getAttribute("usuario");
 <form action="servletsCliente" method="get">
  <div class="form-row mt-4">
     <div class="col-6">
-      <input type="text" class="form-control" value="<%=usuario.getNombre_usuario()%>" name="txtUsuario" placeholder="Nombre de usuario" maxlength="20" title="Ingrese un usuario valido" required>
+      <input type="text" class="form-control" value="<%=usuario.getNombre_usuario()%>" name="txtUsuario" placeholder="Nombre de usuario" maxlength="20" title="Ingrese un usuario valido" readonly="true" required>
     </div>
     <div class="col-6">
       <input type="password" class="form-control" value="<%=usuario.getPassword()%>" name="txtPassword" placeholder="Contraseña" minlength="4" maxlength="20" title="Ingrese una contraseña valida" required>
