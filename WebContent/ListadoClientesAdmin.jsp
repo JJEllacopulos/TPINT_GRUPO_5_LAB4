@@ -38,36 +38,36 @@
  	}
  	
  	
- .paginacion {
-	margin:20px 0;
-}
- 
-.paginacion ul {
-	list-style:none;
-	text-align: center;
-}
- 
-.paginacion ul li {
-	display:inline-block;
-	margin-right:10px;
-}
- 
-.paginacion ul li a {
-	display:block;
-	padding:10px 20px;
-	color:#fff;
-	background:#024959;
-	text-decoration: none;
-}
- 
-.paginacion ul li a:hover {
-	background:#037E8C;
-}
- 
-.paginacion ul li .active {
-	background:#037E8C;
-	font-weight:bold;
-}
+	 .paginacion {
+		margin:20px 0;
+	}
+	 
+	.paginacion ul {
+		list-style:none;
+		text-align: center;
+	}
+	 
+	.paginacion ul li {
+		display:inline-block;
+		margin-right:10px;
+	}
+	 
+	.paginacion ul li a {
+		display:block;
+		padding:10px 20px;
+		color:#5bc3cf;
+		background:#c99308;
+		text-decoration: none;
+	}
+	 
+	.paginacion ul li a:hover {
+		background:#038c65;
+	}
+	 
+	.paginacion ul li .active {
+		background:#034c8c;
+		font-weight:bold;
+	}
  	
  	.btnDD{
  	width: 100%
@@ -118,29 +118,31 @@ if(filas > 0){%>
 
 
 	<div class="container Mover  ">
-	<form action="servletsCliente" method="get">
-	<div class="row mt-5  ">
-		<div class="col">
+		<form action="servletsCliente" method="get">
+			<div class="row mt-5  ">
+				<div class="col">
 		
-	      <input type="text" name="txtBuscarCliente" class="form-control" placeholder="Ingrese un nombre de usuario..." minlength="1" maxlength="20" title="Ingrese un usuario valido">
-	      <% 	String usuarioInvalido;
-	usuarioInvalido = (String)request.getAttribute("usuarioInvalido");
-	if(usuarioInvalido!= null){
-	%>
-	      <label class="text-danger"> <%=usuarioInvalido %></label>
-	      <% }%>
-	      </div>
-	      <div class="col">
-	      <button type="submit" name="btnBuscarCliente" class="btn btn-primary ml-2">Buscar</button>
-	      </div>
+					<input type="text" name="txtBuscarCliente" class="form-control" placeholder="Ingrese un nombre de usuario..." minlength="1" maxlength="20" title="Ingrese un usuario valido">
+					<%String usuarioInvalido;
+					usuarioInvalido = (String)request.getAttribute("usuarioInvalido");
+					if(usuarioInvalido!= null){
+					%>
+						<label class="text-danger"> <%=usuarioInvalido %></label>
+					<% }%>
+				
+	      		</div>
+	      		
+				<div class="col">
+					<button type="submit" name="btnBuscarCliente" class="btn btn-primary ml-2">Buscar</button>
+				</div>
 	         
-	      
-	      <div class="col">
-	      <a class="btn btn-success" href="AltaCliente.jsp">Nuevo cliente</a>
-	       </div>
-	    </div>
-	     </form>
-	    </div>
+	      		<div class="col">
+	      			<a class="btn btn-success" href="AltaCliente.jsp">Nuevo cliente</a>
+	       		</div>
+	       		
+	    	</div>
+    	</form>
+	</div>
 	    
 	
 	    	
@@ -154,62 +156,61 @@ if(filas > 0){%>
 	%>
 	
 	<div class="container">
-	<table class="table ">
-	  <thead class="thead-light">
-	    <tr>
-	      <th scope="col">Usuario</th>
-	      <th scope="col">Nombre</th>
-	      <th scope="col">Apellido</th>
-	      <th scope="col">DNI</th>
-	      <th scope="col">Email</th>
-	      <th scope="col">Teléfono</th>
-	      <th scope="col">Provincia</th>
-	      <th scope="col"></th>
-	
-	     
-	    </tr>
-	  </thead>
-	  <tbody>
+		<table class="table ">
+		  <thead class="thead-light">
+		    <tr>
+		    
+				<th scope="col">Usuario</th>
+				<th scope="col">Nombre</th>
+				<th scope="col">Apellido</th>
+				<th scope="col">DNI</th>
+				<th scope="col">Email</th>
+				<th scope="col">Teléfono</th>
+				<th scope="col">Provincia</th>
+				<th scope="col"></th>
+		
+			</tr>
+		</thead>
+		<tbody>
 	  	        
-	    <%  if(listaU!=null){
+	    <%if(listaU!=null){
 	  		 for(Usuario e : listaU)
-			{			 
-	%>
+			{%>
 	
-<tr>
-	      <form action="servletsCliente" method="get">
-	      <td><%=e.getNombre_usuario() %> <input type="hidden" name="nombreUsuario" value="<%=e.getNombre_usuario() %>"></td>
-	      <td><%=e.getNombre_real() %></td>
-	      <td><%=e.getApellido_real()%></td>
-	      <td><%=e.getDni()%></td>
-	      <td><%=e.getContacto().getEmail()%></td>
-	      <td><%=e.getContacto().getTelefono()%></td>
-	      <td><%=e.getDireccion().getProvincia()%></td>
-	
-	<td>
-
-    <div class="btn-group dropright">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Opciones
-  </button>
-  <div class="dropdown-menu">
-    <!-- Dropdown menu links -->
-     <li><button type="submit" class="btn btn-primary btnDD" name="btnModificar" >Modificar</button></li>
-    <li><button type="submit" class="btn btn-danger btnDD" name="btnEliminar">Eliminar</button></li>
-    <li><button type="submit" class="btn btn-success btnDD" name="btnDetalles">Ver detalles</button></li>
-  </div>
-</div>
-
-</td>
-	
-	
-   </form>
+		<tr>
+		
+			<form action="servletsCliente" method="get">
+				<td><%=e.getNombre_usuario() %> <input type="hidden" name="nombreUsuario" value="<%=e.getNombre_usuario() %>"></td>
+				<td><%=e.getNombre_real() %></td>
+				<td><%=e.getApellido_real()%></td>
+				<td><%=e.getDni()%></td>
+				<td><%=e.getContacto().getEmail()%></td>
+				<td><%=e.getContacto().getTelefono()%></td>
+				<td><%=e.getDireccion().getProvincia()%></td>
+		
+				<td>
+				
+					<div class="btn-group dropright">
+						<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Opciones
+						</button>
+						<div class="dropdown-menu">
+							<!-- Dropdown menu links -->
+							<li><button type="submit" class="btn btn-primary btnDD" name="btnModificar" >Modificar</button></li>
+							<li><button type="submit" class="btn btn-danger btnDD" name="btnEliminar">Eliminar</button></li>
+							<li><button type="submit" class="btn btn-success btnDD" name="btnDetalles">Ver detalles</button></li>
+						</div>
+					</div>
+				
+				</td>
+		
+			</form>
 	    </tr>
 	    
 	    <%} %>
-	  		 <section class="paginacion">
+		<section class="paginacion">
 			<ul>
-			<li><a href="Servlet_Menu_Administrador?link_3=1">PAGINAS:</a></li>
+				<li><a href="Servlet_Menu_Administrador?link_3=1">PAGINAS:</a></li>
 				<%
 				for (int i=1; i<=(int)request.getAttribute("cantPag"); i++){
 				%>
@@ -219,36 +220,37 @@ if(filas > 0){%>
 				%>
 			</ul>
 		</section>
-	  		  <% } else if(usuarioFiltrado.getNombre_usuario()!=null){%>	
+		<% } else if(usuarioFiltrado.getNombre_usuario()!=null){%>	
 
 	
 	    <tr>
-	      <form action="servletsCliente" method="get">
-	      <td><%=usuarioFiltrado.getNombre_usuario() %> <input type="hidden" name="nombreUsuario" value="<%=usuarioFiltrado.getNombre_usuario() %>"></td>
-	      <td><%=usuarioFiltrado.getNombre_real() %></td>
-	      <td><%=usuarioFiltrado.getApellido_real()%></td>
-	      <td><%=usuarioFiltrado.getDni()%></td>
-	      <td><%=usuarioFiltrado.getContacto().getEmail()%></td>
-	      <td><%=usuarioFiltrado.getContacto().getTelefono()%></td>
-	      <td><%=usuarioFiltrado.getDireccion().getProvincia()%></td>
+		<form action="servletsCliente" method="get">
+		      
+			<td><%=usuarioFiltrado.getNombre_usuario() %> <input type="hidden" name="nombreUsuario" value="<%=usuarioFiltrado.getNombre_usuario() %>"></td>
+			<td><%=usuarioFiltrado.getNombre_real() %></td>
+			<td><%=usuarioFiltrado.getApellido_real()%></td>
+			<td><%=usuarioFiltrado.getDni()%></td>
+			<td><%=usuarioFiltrado.getContacto().getEmail()%></td>
+			<td><%=usuarioFiltrado.getContacto().getTelefono()%></td>
+			<td><%=usuarioFiltrado.getDireccion().getProvincia()%></td>
 	
-	<td>
+			<td>
 
-    <div class="btn-group dropright">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Opciones
-  </button>
-  <div class="dropdown-menu">
-    <!-- Dropdown menu links -->
-     <li><button type="submit" class="btn btn-primary btnDD" name="btnModificar" >Modificar</button></li>
-    <li><button type="submit" class="btn btn-danger btnDD" name="btnEliminar">Eliminar</button></li>
-    <li><button type="submit" class="btn btn-success btnDD" name="btnDetalles">Ver detalles</button></li>
-  </div>
-</div>
-
-</td>
+				<div class="btn-group dropright">
+					<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Opciones
+					</button>
+					<div class="dropdown-menu">
+						<!-- Dropdown menu links -->
+					    <li><button type="submit" class="btn btn-primary btnDD" name="btnModificar" >Modificar</button></li>
+					    <li><button type="submit" class="btn btn-danger btnDD" name="btnEliminar">Eliminar</button></li>
+					    <li><button type="submit" class="btn btn-success btnDD" name="btnDetalles">Ver detalles</button></li>
+					</div>
+				</div>
+			
+			</td>
 	
-   </form>
+		</form>
 	    </tr>
 	    
 	    <%  }%>	
