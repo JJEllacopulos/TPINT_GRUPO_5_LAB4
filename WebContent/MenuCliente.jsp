@@ -140,6 +140,7 @@ if(!aux.getTipo_usuario().equals("user")){
 </div>
 					<li><a href="Servlet_Menu_clientes?link_7=1">Solicitar prestamo</a></li>
 					<li><a href="Servlet_Menu_clientes?link_8=1">Lista de prestamos</a></li>
+					<li><a href="Servlet_Menu_clientes?link_9=1">Mis datos</a></li>
 					<li><a href="Servlet_Menu_clientes?link_0=1">Cerrar Sesión</a></li>
 				</ul>
 			</li>

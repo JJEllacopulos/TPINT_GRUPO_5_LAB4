@@ -22,7 +22,7 @@ public class Dao_Movimiento {
 	private String dbName = "banco";
 	
 
-	public void SPAltaMovimiento(Movimiento movimiento, String fecha)
+	public int SPAltaMovimiento(Movimiento movimiento, String fecha)
 	{
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -30,6 +30,7 @@ public class Dao_Movimiento {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		int filas = 0;
 		Connection cn = null;
 		  try
 		  {
@@ -42,12 +43,12 @@ public class Dao_Movimiento {
 			 cst.setString(3, movimiento.getDetalles());
 			 cst.setDouble(4, movimiento.getImporte());
 			 
-			 cst.execute();
+			 filas=cst.executeUpdate();
 		  }
 		  catch (Exception e) {
 			e.printStackTrace();
 		}
-			
+			return filas;
 	}
 	
 	

@@ -1,5 +1,5 @@
 package servlets;
-
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -9,7 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import Entidad.Usuario;
 import Entidad.Cuenta;
 import Negocio.NegocioCuentas;
 
@@ -80,7 +80,14 @@ public class Servlet_Menu_clientes extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/Servlet_Prestamo_Cliente?Param_1=1");   
 	        rd.forward(request, response);
 		}
-		
+		if(request.getParameter("link_9")!=null) {
+			HttpSession session = request.getSession();
+			Usuario usuario = new Usuario();
+			usuario = (Usuario)session.getAttribute("userSession");
+			request.setAttribute("usuario", usuario);
+			RequestDispatcher rd = request.getRequestDispatcher("/DatosClientes.jsp");   
+	        rd.forward(request, response);
+		}
 		
 		
 		if(request.getParameter("link_0")!=null) {
