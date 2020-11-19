@@ -37,7 +37,7 @@ public class Negocio_Prestamo {
 		return prestamo;
 	}
 	
-	public void SPEliminar_Prestamo(Prestamo prestamo) {
+	public void SPModificar_Prestamo(Prestamo prestamo) {
 		dao_prestamo.SPModificarPrestamo(prestamo, prestamo.getPlazo_de_pago().toString());
 	}
 	

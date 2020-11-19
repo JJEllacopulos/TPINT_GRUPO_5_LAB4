@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Entidad.Cuenta;
 import Entidad.Movimiento;
 import Entidad.Movimiento_x_Prestamo;
 import Entidad.Prestamo;
@@ -47,10 +48,13 @@ public class Servlet_Prestamo_Cliente extends HttpServlet {
 		Prestamo e_prestamo = new Prestamo ();
 		Movimiento e_movimiento = new Movimiento();
 		Movimiento_x_Prestamo e_movimiento_x_Prestamo = new Movimiento_x_Prestamo();
+		Cuenta cuenta = new Cuenta();
+		
 		Negocio_Prestamo n_prestamo = new Negocio_Prestamo();
 		NegocioCuentas n_cuentaNegocio = new NegocioCuentas();
 		NegocioMovimiento n_movimiento = new NegocioMovimiento();
 		Negocio_Movimiento_x_Prestamo n_movimiento_x_Prestamo = new Negocio_Movimiento_x_Prestamo();
+		
 		
 		HttpSession misession = (HttpSession) request.getSession();
 		Usuario e_usuario = (Usuario) misession.getAttribute("userSession");
@@ -104,13 +108,30 @@ public class Servlet_Prestamo_Cliente extends HttpServlet {
 			e_prestamo = n_prestamo.Obtener_Prestamo(id_prestamo);
 			
 			Double Monto_actual = e_prestamo.getMonto_actual();
-			Double Pago_x_mes = e_prestamo.getMonto_actual();
-			int cuotas = e_prestamo.getCuotas_a_pagar();
+			Double Pago_x_mes = e_prestamo.getPago_x_mes();
+			Double aux = Monto_actual - Pago_x_mes;
 			
-			e_prestamo.setMonto_actual(Monto_actual - Pago_x_mes);
-			e_prestamo.setCuotas_a_pagar(cuotas - 1);
+			int cuotas = (e_prestamo.getCuotas_a_pagar()) - 1;
 			
-			n_prestamo.
+			e_prestamo.setMonto_actual(aux);
+			e_prestamo.setCuotas_a_pagar(cuotas);
+			
+			n_prestamo.SPModificar_Prestamo(e_prestamo);
+			
+			//Actualizar saldo
+			cuenta = n_cuentaNegocio.Obtener_cuenta(cbu);
+			Double saldo = (cuenta.getSaldo()) - Pago_x_mes;
+			cuenta.setSaldo(saldo);
+			n_cuentaNegocio.SPModificarCuenta(cuenta);
+			
+			if(aux <= 0) {
+				
+				n_prestamo.SPEliminar_Prestamo(id_prestamo);
+				
+			}
+			
+			ArrayList<Prestamo> lista = n_prestamo.Obtener_lista_Prestamo_cliente(e_usuario.getNombre_usuario());
+			request.setAttribute("lista_prestamos", lista);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/Prestamo_cliente_listar.jsp");   
 	        rd.forward(request, response);  
