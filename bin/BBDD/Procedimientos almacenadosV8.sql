@@ -308,14 +308,15 @@ DELIMITER $$
 		ing_nombre_usuario VARCHAR(22),
 		ing_tipo_cuenta VARCHAR(5),
 		ing_fecha_creacion DATE,
-		ing_saldo FLOAT
+		ing_saldo FLOAT,
+        ing_alias VARCHAR(22)
 		
         )
         
 	BEGIN
 
-		INSERT INTO  cuenta(cbu_cuenta, nombre_usuario, tipo_cuenta, fecha_creacion, saldo)
-		SELECT ing_cbu_cuenta, ing_nombre_usuario, ing_tipo_cuenta, ing_fecha_creacion, ing_saldo;
+		INSERT INTO  cuenta(cbu_cuenta, nombre_usuario, tipo_cuenta, fecha_creacion, saldo, alias)
+		SELECT ing_cbu_cuenta, ing_nombre_usuario, ing_tipo_cuenta, ing_fecha_creacion, ing_saldo, ing_alias;
 		
 	END$$
 
@@ -343,7 +344,8 @@ DELIMITER $$
 		ing_nombre_usuario VARCHAR(22),
 		ing_tipo_cuenta VARCHAR(5),
 		ing_fecha_creacion DATE,
-		ing_saldo FLOAT
+		ing_saldo FLOAT,
+        ing_alias VARCHAR(22)
 		
 		)
     
@@ -351,7 +353,7 @@ DELIMITER $$
 	
 	IF EXISTS(SELECT * FROM cuenta WHERE cbu_cuenta = ing_cbu_cuenta AND estado = 1) THEN
 		
-		Update cuenta Set nombre_usuario = ing_nombre_usuario, tipo_cuenta = ing_tipo_cuenta, fecha_creacion = ing_fecha_creacion, saldo = ing_saldo Where cbu_cuenta = ing_cbu_cuenta;
+		Update cuenta Set nombre_usuario = ing_nombre_usuario, tipo_cuenta = ing_tipo_cuenta, fecha_creacion = ing_fecha_creacion, saldo = ing_saldo, alias = ing_alias Where cbu_cuenta = ing_cbu_cuenta;
         
 	END IF;
 
@@ -392,7 +394,7 @@ DELIMITER $$
     
 	BEGIN
 	
-		SELECT * FROM cuenta WHERE nombre_usuario = "Adrianabanana" AND estado = 1;
+		SELECT * FROM cuenta WHERE nombre_usuario = ing_nombre_usuario AND estado = 1;
 	
 
 END$$

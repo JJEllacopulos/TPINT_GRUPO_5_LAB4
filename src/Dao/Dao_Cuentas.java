@@ -36,13 +36,13 @@ public class Dao_Cuentas {
 		  {
 			 cn = DriverManager.getConnection(host+dbName, user,pass);
 
-			 CallableStatement cst = cn.prepareCall("CALL PRO_ingresar_cuenta(?,?,?,?,?)");
+			 CallableStatement cst = cn.prepareCall("CALL PRO_ingresar_cuenta(?,?,?,?,?,?)");
 			 cst.setString(1, cuenta.getCbu_cuenta() ); 
 			 cst.setString(2,  cuenta.getNombre_usuario());
 			 cst.setString(3, cuenta.getTipo_Cuenta() );//cuenta.getTipo_Cuenta()
 			 cst.setString(4, cuenta.getFecha_creacion()); 
 			 cst.setDouble(5, cuenta.getSaldo()); 
-	
+			 cst.setString(6, cuenta.getAlias()); 
 			 
 
 
@@ -66,12 +66,13 @@ public class Dao_Cuentas {
 		  try
 		  {
 			 cn = DriverManager.getConnection(host+dbName, user,pass);
-			 CallableStatement cst = cn.prepareCall("CALL PRO_Alterar_cuenta(?,?,?,?,?)");
+			 CallableStatement cst = cn.prepareCall("CALL PRO_Alterar_cuenta(?,?,?,?,?,?)");
 			 cst.setString(1, cuenta.getCbu_cuenta());
 			 cst.setString(2, cuenta.getNombre_usuario());
 			 cst.setString(3, cuenta.getTipo_Cuenta());
 			 cst.setString(4, cuenta.getFecha_creacion().toString());
 			 cst.setString(5, cuenta.getSaldo().toString());
+			 cst.setString(6, cuenta.getAlias()); 
 		
 
 			 filas=cst.executeUpdate();
@@ -114,6 +115,7 @@ public class Dao_Cuentas {
 					aux.setFecha_creacion(resultado.getString("fecha_creacion"));
 					aux.setSaldo(resultado.getDouble("saldo"));
 					aux.setEstado(resultado.getBoolean("estado"));
+					aux.setAlias(resultado.getString("alias"));
 					
 					x.add(aux);
 					
@@ -162,6 +164,7 @@ public ArrayList<Cuenta> Obtener_cuentas_activas (String tipoCuenta1, String tip
 					aux.setFecha_creacion(resultado.getString("fecha_creacion"));
 					aux.setSaldo(resultado.getDouble("saldo"));
 					aux.setEstado(resultado.getBoolean("estado"));
+					aux.setAlias(resultado.getString("alias"));
 					x.add(aux); 
 			   }	
 					
@@ -173,6 +176,7 @@ public ArrayList<Cuenta> Obtener_cuentas_activas (String tipoCuenta1, String tip
 					aux.setFecha_creacion(resultado.getString("fecha_creacion"));
 					aux.setSaldo(resultado.getDouble("saldo"));
 					aux.setEstado(resultado.getBoolean("estado"));
+					aux.setAlias(resultado.getString("alias"));
 					x.add(aux);
 				}}
 				}
@@ -219,6 +223,7 @@ public ArrayList<Cuenta> Obtener_todasLasCuentas () {
 					aux.setFecha_creacion(resultado.getString("fecha_creacion"));
 					aux.setSaldo(resultado.getDouble("saldo"));
 					aux.setEstado(resultado.getBoolean("estado"));
+					aux.setAlias(resultado.getString("alias"));
 					
 					x.add(aux);
 					
@@ -264,6 +269,7 @@ public Cuenta Obtener_cuenta(String cbuCuenta) {
 				aux.setFecha_creacion(resultado.getString("fecha_creacion"));
 				aux.setSaldo(resultado.getDouble("saldo"));
 				aux.setEstado(resultado.getBoolean("estado"));
+				aux.setAlias(resultado.getString("alias"));
 				
 				
 			}
@@ -379,6 +385,7 @@ public ArrayList<Cuenta> Obtener_Datos_Cuenta (String nombre_usuario) {
 				aux.setFecha_creacion(resultado.getString("fecha_creacion"));
 				aux.setSaldo(resultado.getDouble("saldo"));
 				aux.setEstado(resultado.getBoolean("estado"));
+				aux.setAlias(resultado.getString("alias"));
 				
 				x.add(aux);
 				

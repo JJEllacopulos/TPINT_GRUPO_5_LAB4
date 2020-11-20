@@ -88,7 +88,8 @@ create table cuenta
     
     fecha_creacion DATE NOT NULL,
     saldo FLOAT NOT NULL,
-    estado bit NOT NULL DEFAULT 1
+    estado bit NOT NULL DEFAULT 1,
+    alias VARCHAR(22) NOT NULL
 
 );
 

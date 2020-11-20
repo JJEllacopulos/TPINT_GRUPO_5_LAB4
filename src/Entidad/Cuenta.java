@@ -11,13 +11,14 @@ public class Cuenta {
 	private String fecha_creacion;
 	private Double saldo;
 	private boolean estado;
+	private String alias;
 	
 	//Constructores
 	public Cuenta() {
 		
 	}
 	
-	public Cuenta(String cbu_cuenta, String nombre_usuario, String tipo_Cuenta, String fecha_creacion, Double saldo, boolean estado) {
+	public Cuenta(String cbu_cuenta, String nombre_usuario, String tipo_Cuenta, String fecha_creacion, Double saldo, boolean estado, String alias) {
 		
 		this.cbu_cuenta = cbu_cuenta;
 		this.nombre_usuario = nombre_usuario;
@@ -25,6 +26,7 @@ public class Cuenta {
 		this.fecha_creacion = fecha_creacion;
 		this.saldo = saldo;
 		this.estado = estado;
+		this.alias = alias;
 	}
 	
 	//Gets y sets
@@ -74,6 +76,14 @@ public class Cuenta {
 
 	public void setEstado(Boolean estado) {
 		this.estado = estado;
+	}
+	
+	public String getAlias() {
+		return alias;
+	}
+
+	public void setAlias(String alias) {
+		this.alias = alias;
 	}
 	
 }
