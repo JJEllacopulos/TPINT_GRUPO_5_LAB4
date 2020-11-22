@@ -19,6 +19,9 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	
 	<Style>
+	
+		
+		
 	</Style>
 	
 	<title>Solisitar prestamo</title>
@@ -50,7 +53,7 @@
 			 	for(Cuenta e : listaCuenta)
 				{		
 				%>	
-				<option value= "<%=e.getCbu_cuenta() %>" ><%= e.getCbu_cuenta()  %></option>
+				<option value= "<%=e.getCbu_cuenta() %>" ><%= e.getAlias()  %></option>
 				<%}%>
 		
 		
@@ -62,7 +65,18 @@
 		<label for="inputState">Monto:</label>
 		
 		<div class="col-6">
-		  <input type="text" class="form-control" name="txt_Prestamo_pedido" placeholder="">
+			
+			<select  name="ddl_Prestamo_pedido" class="form-control">
+				
+				<option value= "<%= "10000" %>" ><%= 10000 %></option>
+				<option value= "<%= "20000" %>" ><%= 20000 %></option>
+				<option value= "<%= "50000" %>" ><%= 50000 %></option>
+				<option value= "<%= "100000" %>" ><%= 100000 %></option>
+				<option value= "<%= "500000" %>" ><%= 500000 %></option>
+				
+			</select>
+			<!-- <input type="text" class="form-control" name="txt_Prestamo_pedido" placeholder=""> -->
+		
 		</div>
 		
 	</div>
@@ -72,7 +86,19 @@
 	    <label for="inputState">Cuotas:</label>
 	    
 	    <div class="col-4">
-	      <input type="text" class="form-control" name="txt_Cuotas" placeholder="">
+	    
+	    	<select  name="ddl_Cuotas" class="form-control">
+				
+				<option value= "<%= "1" %>" ><%= 1 %></option>
+				<option value= "<%= "2" %>" ><%= 2 %></option>
+				<option value= "<%= "4" %>" ><%= 4 %></option>
+				<option value= "<%= "8" %>" ><%= 8 %></option>
+				<option value= "<%= "12" %>" ><%= 12 %></option>
+				
+			</select>
+	    	
+			<!-- <input type="text" class="form-control" name="txt_Cuotas" placeholder=""> -->
+	    
 	    </div>
 	    
     </div>

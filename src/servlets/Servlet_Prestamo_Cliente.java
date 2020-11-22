@@ -64,10 +64,10 @@ public class Servlet_Prestamo_Cliente extends HttpServlet {
 		if(request.getParameter("btn_Crear_Solisitar_Prestamo")!=null) {
 			
 			e_prestamo.setCbu_cuenta_deudor(request.getParameter("ddl_cuenta"));
-			e_prestamo.setInporte_pedido(Double.parseDouble(request.getParameter("txt_Prestamo_pedido")));
-			Double pag_x_mes = Double.parseDouble(request.getParameter("txt_Prestamo_pedido"))/Integer.parseInt(request.getParameter("txt_Cuotas"));
+			e_prestamo.setInporte_pedido(Double.parseDouble(request.getParameter("ddl_Prestamo_pedido")));
+			Double pag_x_mes = Double.parseDouble(request.getParameter("ddl_Prestamo_pedido"))/Integer.parseInt(request.getParameter("ddl_Cuotas"));
 			e_prestamo.setPago_x_mes(pag_x_mes);
-			e_prestamo.setCantidad_cuotas(Integer.parseInt(request.getParameter("txt_Cuotas")));
+			e_prestamo.setCantidad_cuotas(Integer.parseInt(request.getParameter("ddl_Cuotas")));
 			
 			n_prestamo.SPNuevo_Prestamo(e_prestamo);
 			
