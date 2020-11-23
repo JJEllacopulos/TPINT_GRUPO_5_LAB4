@@ -505,41 +505,22 @@ CALL PRO_ingresar_contacto
 
 CALL PRO_ingresar_tipo_cuenta 
 (
-    'CORRI',
+    'CC',
     'Cuenta corriente'
 );
 
 CALL PRO_ingresar_tipo_cuenta 
 (
-    'AHORR',
-    'Cuenta remunerada'
+    'CA',
+    'Caja de Ahorro'
 );
 
-CALL PRO_ingresar_tipo_cuenta 
-(
-    'NOMIN',
-    'Cuenta nómina'
-);
-
-CALL PRO_ingresar_tipo_cuenta 
-(
-    'VALOR',
-    'Cuenta de valor'
-);
-
-CALL PRO_ingresar_tipo_cuenta 
-(
-    'EMPRE',
-    'Cuenta para empresa'
-);
-
--- Cuentas
 
 CALL PRO_ingresar_cuenta 
 (
     '582461493628608',
     'JoseHernandes',
-    'CORRI',
+    'CC',
     '2020-11-12',
     1000.00,
     'Labado de dinero'
@@ -550,7 +531,7 @@ CALL PRO_ingresar_cuenta
 (
     '248917267180968',
     'JoseHernandes',
-    'VALOR',
+    'CA',
     '2020-11-12',
     1000.00,
     'Operacion para mi hijo'
@@ -561,7 +542,7 @@ CALL PRO_ingresar_cuenta
 (
     '8612772756330675',
     'Adrianabanana',
-    'NOMIN',
+    'CC',
     '2020-11-12',
     1000.00,
     'Herencia'
@@ -572,7 +553,7 @@ CALL PRO_ingresar_cuenta
 (
     '720716748347099',
     'Adrianabanana',
-    'AHORR',
+    'CA',
     '2020-11-12',
     1000.00,
     'KKK'
@@ -583,7 +564,7 @@ CALL PRO_ingresar_cuenta
 (
     '549218310983198',
     'Tomaska',
-    'EMPRE',
+    'CC',
     '2020-11-12',
     1000.00,
     'mauske herramienta'
@@ -594,7 +575,7 @@ CALL PRO_ingresar_cuenta
 (
     '417214834307091',
     'Tomaska',
-    'EMPRE',
+    'CA',
     '2020-11-12',
     1000.00,
     'Circo'
@@ -605,7 +586,7 @@ CALL PRO_ingresar_cuenta
 (
     '417214834307092',
     'xxMaxiconsumoxx',
-    'EMPRE',
+    'CC',
     '2020-11-12',
     1000.00,
     'Lancha'
@@ -616,7 +597,7 @@ CALL PRO_ingresar_cuenta
 (
     '417214834307093',
     'xxMaxiconsumoxx',
-    'AHORR',
+    'CA',
     '2020-11-16',
     1000.00,
     'New vegas 2'
@@ -627,7 +608,7 @@ CALL PRO_ingresar_cuenta
 (
     '417214834307094',
     'narcicismo',
-    'NOMIN',
+    'CC',
     '2020-11-16',
     1000.00,
     'Half life 3'
@@ -638,7 +619,7 @@ CALL PRO_ingresar_cuenta
 (
     '417214834307095',
     'narcicismo',
-    'VALOR',
+    'CA',
     '2020-11-16',
     1000.00,
     'Oro nazi'
@@ -649,7 +630,7 @@ CALL PRO_ingresar_cuenta
 (
     '417214834307096',
     'Lauret_mas',
-    'NOMIN',
+    'CC',
     '2020-11-16',
     1000.00,
     'Nuevo orden mundial'
@@ -660,7 +641,7 @@ CALL PRO_ingresar_cuenta
 (
     '417214834307097',
     'Lauret_mas',
-    'CORRI',
+    'CA',
     '2020-11-16',
     1000.00,
     'Antioquía'
@@ -671,7 +652,7 @@ CALL PRO_ingresar_cuenta
 (
     '417214834307098',
     'Gabriel',
-    'AHORR',
+    'CC',
     '2020-11-16',
     1000.00,
     'SCP 500'
@@ -682,7 +663,7 @@ CALL PRO_ingresar_cuenta
 (
     '417214834307099',
     'Gabriel',
-    'NOMIN',
+    'CA',
     '2020-11-16',
     1000.00,
     'just do it'
@@ -693,7 +674,7 @@ CALL PRO_ingresar_cuenta
 (
     '417214834307100',
     'Ariel',
-    'AHORR',
+    'CC',
     '2020-11-16',
     1000.00,
     'Escape'
@@ -704,7 +685,7 @@ CALL PRO_ingresar_cuenta
 (
     '417214834307101',
     'Ariel',
-    'NOMIN',
+    'CA',
     '2020-11-16',
     1000.00,
     'Cuba'
@@ -715,7 +696,7 @@ CALL PRO_ingresar_cuenta
 (
     '417215834307102',
     'Salagal',
-    'VALOR',
+    'CC',
     '2020-11-16',
     1000.00,
     'Cocaina'
@@ -726,7 +707,7 @@ CALL PRO_ingresar_cuenta
 (
     '417214834307103',
     'Salagal',
-    'VALOR',
+    'CA',
     '2020-11-16',
     1000.00,
     'Apocalipcis'
@@ -737,7 +718,7 @@ CALL PRO_ingresar_cuenta
 (
     '417224834307103',
     'Desam',
-    'VALOR',
+    'CC',
     '2020-11-16',
     1000.00,
     'MiCasa'
@@ -748,7 +729,7 @@ CALL PRO_ingresar_cuenta
 (
     '417214834307104',
     'Desam',
-    'VALOR',
+    'CA',
     '2020-11-16',
     1000.00,
     'Retiro'
