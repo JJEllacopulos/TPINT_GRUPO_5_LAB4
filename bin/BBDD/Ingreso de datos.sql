@@ -752,4 +752,4 @@ CALL PRO_ingresar_prestamo
 
 INSERT INTO `banco`.`tipo_movimiento` (`tipo_movimiento`, `descripcion`) VALUES ('Trans', 'Transferencia');
 INSERT INTO `banco`.`tipo_movimiento` (`tipo_movimiento`, `descripcion`) VALUES ('Prest', 'Prestamo');
-
+INSERT INTO `banco`.`tipo_movimiento` (`tipo_movimiento`, `descripcion`) VALUES ('Inic', 'Movimiento Inicial');

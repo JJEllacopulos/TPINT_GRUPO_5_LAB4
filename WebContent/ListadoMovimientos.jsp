@@ -45,7 +45,7 @@
   </thead>
   <tbody>
     <tr>
-      <td><%= e.getTipo_movimiento() %></td>
+      <td><%= e.getDetalles() %></td>
       <td><%= e.getFecha_creacion() %></td>
          <%if(e.getImporte()>0){ %>
       <td class="text-success"><b>$<%= e.getImporte()%></b></td>

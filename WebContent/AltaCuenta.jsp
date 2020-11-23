@@ -58,6 +58,13 @@ if(!usuario.getTipo_usuario().equals("ADMIN")){
 		</select>
     </div>
       </div>
+             <div class="form-row mt-4">
+      
+       <input type="text" class="form-control" name="txtAlias" placeholder="Alias"  maxlength="22" title="Ingrese un alias válido" required>
+
+	
+    </div>
+      </div>
        <div class="form-row mt-4">
       
       <input type="submit"  class="btn btn-success" value="Confirmar" name="btnCrearCuenta">
