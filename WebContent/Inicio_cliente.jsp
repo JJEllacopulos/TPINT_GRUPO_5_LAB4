@@ -61,6 +61,7 @@ usuario = (Usuario)session.getAttribute("userSession");
 		
 	}
 	
+	
 </style>
 </head>
 <body>
@@ -73,34 +74,41 @@ usuario = (Usuario)session.getAttribute("userSession");
 
 	<div class="est1" >
 	<div style="float: left; height: 50px; width: 33%;">  
-		<li><a href="#">Inicio <span class="sr-only">(current)</span></a></li>
+		<li><a href="Servlet_Menu_clientes?link_1=1">Inicio <span class="sr-only">(current)</span></a></li>
 	</div>
 	<div  style="float: left; height: 50px; width: 33%;">  
-		<li><a href="#"> Mi Perfil</a></li>
+		<li><a href="servletsCuentas?Param2=2">Mis cuentas</a></li>
 	</div>
 	<div style="float: left; height: 50px; width: 34%;"></div>
 	<br>
+	
 	<div style="float: left; height: 50px; width: 33%;">  
-		<li><a href="#">Usuario</a></li>
+		<li><a href="TransferenciaTerceros.jsp" >Transferencia a terceros</a></li>
 	</div>
-	<div style="float: left; height: 50px; width: 33%;">  
-		<li><a href="servletsCuentas?Param2=1">Mis cuentas</a></li>
-	</div>
-	<div style="float: left; height: 50px; width: 34%;"></div>
-	<br>
-	<div style="float: left; height: 50px; width: 33%;">  
-		<li><a href="#">A Terceros</a></li>
-	</div>
-	<div style="float: left; height: 50px; width: 33%;">  
-		<li><a href="#">Cuenta</a></li>
+	<div  style="float: left; height: 50px; width: 33%;">  
+		<li><a  href="TransferenciaCuentaPropia.jsp" >Transferencia a cuenta propia</a></li>
 	</div>
 	<div style="float: left; height: 50px; width: 34%;"></div>
 	<br>
+	
 	<div style="float: left; height: 50px; width: 33%;">  
-		<li><a href="#">Cerrar Sesión</a></li>
+		<li><a href="Servlet_Menu_clientes?link_7=1">Solicitar prestamo</a></li>
+	</div>
+	<div style="float: left; height: 50px; width: 33%;">  
+		<li><a href="Servlet_Menu_clientes?link_8=1">Lista de prestamos</a></li>
 	</div>
 	<div style="float: left; height: 50px; width: 34%;"></div>
 	<br>
+	
+	<div style="float: left; height: 50px; width: 33%;">  
+		<li><a href="Servlet_Menu_clientes?link_9=1">Mis datos</a></li>
+	</div>
+	<div style="float: left; height: 50px; width: 33%;">  
+		<li><a href="Servlet_Menu_clientes?link_0=1">Cerrar Sesión</a></li>
+	</div>
+	<div style="float: left; height: 50px; width: 34%;"></div>
+	<br>
+	
 	</div>
 	
 </body>

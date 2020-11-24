@@ -127,19 +127,22 @@ if(!aux.getTipo_usuario().equals("user")){
 					<li><a href="servletsCuentas?Param2=2">Mis cuentas</a></li>
 					 
 					<div class="btn-group dropright">
-  <a type="button" class=" boton dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Transferencias 
-  </a>
-  <div class="dropdown-menu">
-    <!-- Dropdown menu links -->
-     <li><a href="TransferenciaTerceros.jsp" >A terceros</a></li>
-    <li><a  href="TransferenciaCuentaPropia.jsp" >A cuenta propia</a></li>
-  </div>
-</div>
+					
+					  <a type="button" class=" boton dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					    Transferencias 
+					  </a>
+					  <div class="dropdown-menu">
+					    <!-- Dropdown menu links -->
+					     <li><a href="TransferenciaTerceros.jsp" >A terceros</a></li>
+					    <li><a  href="TransferenciaCuentaPropia.jsp" >A cuenta propia</a></li>
+					  </div>
+					</div>
+					
 					<li><a href="Servlet_Menu_clientes?link_7=1">Solicitar prestamo</a></li>
 					<li><a href="Servlet_Menu_clientes?link_8=1">Lista de prestamos</a></li>
 					<li><a href="Servlet_Menu_clientes?link_9=1">Mis datos</a></li>
 					<li><a href="Servlet_Menu_clientes?link_0=1">Cerrar Sesión</a></li>
+				
 				</ul>
 			</li>
 		</ul>

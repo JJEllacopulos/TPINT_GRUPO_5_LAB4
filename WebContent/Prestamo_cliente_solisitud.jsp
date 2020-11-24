@@ -35,9 +35,13 @@
 	
 	<form action="Servlet_Prestamo_Cliente" method="get" class="Alta">
 	
-	<label for="inputState">CBU de la cuenta:</label>
+	<div style="float: left; height: 20px; width: 100%;"></div>
 	
-	<div class="col-6">
+	<div style="float: left; height: 100px; width: 25%;"></div>
+	<div style="float: left; height: 100px; width: 50%;">
+	
+		<label for="inputState">CBU de la cuenta:</label>
+	
     	<select  name="ddl_cuenta" class="form-control">
 	       <option selected>Seleccionar...</option>
 	       <%
@@ -59,8 +63,10 @@
 		
 	     </select>
     </div>
+    <div style="float: left; height: 100px; width: 25%;"></div>
 
-	<div class="form-row mt-4">
+	<div style="float: left; height: 100px; width: 25%;"></div>
+	<div style="float: left; height: 100px; width: 50%;">
 		
 		<label for="inputState">Monto:</label>
 		
@@ -80,8 +86,10 @@
 		</div>
 		
 	</div>
+	<div style="float: left; height: 100px; width: 25%;"></div>
       
-	<div class="form-row mt-4">
+	<div style="float: left; height: 100px; width: 25%;"></div>
+	<div style="float: left; height: 100px; width: 50%;">
 	    
 	    <label for="inputState">Cuotas:</label>
 	    
@@ -102,8 +110,13 @@
 	    </div>
 	    
     </div>
-		    
-	    <input type="submit"  class="btn btn-success" value="Confirmar" name="btn_Crear_Solisitar_Prestamo">
+    <div style="float: left; height: 100px; width: 25%;"></div>
+	
+	<div style="float: left; height: 100px; width: 25%;"></div>
+	<div style="float: left; height: 100px; width: 50%;">   
+	<input type="submit"  class="btn btn-success" value="Confirmar" name="btn_Crear_Solisitar_Prestamo">
+	</div> 
+	<div style="float: left; height: 100px; width: 25%;"></div>
 			
 	</form>
 

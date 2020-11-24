@@ -77,6 +77,7 @@ public class servletsCuentas extends HttpServlet {
 			cuenta.setTipo_Cuenta(tipoCuenta);
 			cuenta.setSaldo(10000.00); //
 			cuenta.setFecha_creacion(new SimpleDateFormat("yyyy-MM-dd").format(myDate)); 
+			cuenta.setAlias(request.getParameter("txtAlias"));
  
 			int filas= 0;
 			filas = cuentaNegocio.SPAltaCuenta(cuenta);
@@ -103,7 +104,7 @@ public class servletsCuentas extends HttpServlet {
 			
 			
 			
-			RequestDispatcher rd = request.getRequestDispatcher("Servlet_Menu_Administrador?link_2=1");
+			RequestDispatcher rd = request.getRequestDispatcher("/ListarCuentasAdmin.jsp");
 			rd.forward(request, response);
 		}
 		

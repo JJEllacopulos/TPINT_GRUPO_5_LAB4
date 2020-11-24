@@ -77,26 +77,43 @@ usuario = (Usuario)session.getAttribute("userSession");
 	
 	<div class="est1" >
 	<div style="float: left; height: 50px; width: 33%;">  
-		<li><a href="#">Inicio <span class="sr-only">(current)</span></a></li>
+		<li><a href="Servlet_Menu_Administrador?link_1=1">Inicio <span class="sr-only">(current)</span></a></li>
 	</div>
 	<div  style="float: left; height: 50px; width: 33%;">  
-		<li><a href="servletsCuentas?Param3=3">Cuentas</a></li>
+		<li><a href="Servlet_Menu_Administrador?link_2=1">Cuentas</a></li>
 	</div>
 	<div style="float: left; height: 50px; width: 34%;"></div>
 	<br>
+	
 	<div style="float: left; height: 50px; width: 33%;">  
-		<li><a href="servletsCliente?Param1=1">Clientes</a></li>
+		<li><a href="Servlet_Menu_Administrador?link_8=1">Alta Cuenta</a></li>
 	</div>
 	<div style="float: left; height: 50px; width: 33%;">  
-		<li><a href="#">Reportes</a></li>
-	</div>
-	<div style="float: left; height: 50px; width: 34%;"></div>
-	<br>
-	<div style="float: left; height: 50px; width: 33%;">  
-		<li><a href="#">Cerrar Sesión</a></li>
+		<li><a href="Servlet_Menu_Administrador?link_10=1">Listar Cuentas</a></li>
 	</div>
 	<div style="float: left; height: 50px; width: 34%;"></div>
 	<br>
+	
+	<!-- -->
+	
+	<div style="float: left; height: 50px; width: 33%;">  
+		<li><a href="Servlet_Menu_Administrador?link_3=1">Clientes</a></li>
+	</div>
+	<div style="float: left; height: 50px; width: 33%;">  
+		<li><a href="Servlet_Menu_Administrador?link_7=1">Alta Cliente</a></li>
+	</div>
+	<div style="float: left; height: 50px; width: 34%;"></div>
+	<br>
+	
+	<div style="float: left; height: 50px; width: 33%;">  
+		<li><a href="Servlet_Menu_Administrador?link_4=1">Prestamos a aprobar</a></li>
+	</div>
+	<div style="float: left; height: 50px; width: 33%;">  
+		<li><a href="Servlet_Menu_Administrador?link_0=1">Cerrar Sesión</a></li>
+	</div>
+	<div style="float: left; height: 50px; width: 34%;"></div>
+	<br>
+	
 	</div>
 	
 </body>

@@ -818,3 +818,14 @@ DELIMITER $$
 	END IF;
 
 END$$
+DELIMITER $$
+    CREATE PROCEDURE PRO_Listar_TipoCuenta(
+        
+		)
+    
+	BEGIN
+	
+		SELECT * FROM tipo_cuenta;
+	
+
+END$$
