@@ -150,13 +150,14 @@ public class Servlet_Menu_Administrador extends HttpServlet {
 				}  
 			    }
 			
-				request.setAttribute("listaC", listaPaginada);
+				request.setAttribute("listaC", lista);
 				request.setAttribute("cantPag", cantPag);
 				request.setAttribute("pagActual", Integer.parseInt(request.getParameter("link_10")));	
 				
 				RequestDispatcher rd = request.getRequestDispatcher("/ListarCuentasAdmin.jsp");   
 		        rd.forward(request, response);
 			}
+		
 		
 		if(request.getParameter("link_0")!=null) {
 			request.getSession().invalidate();

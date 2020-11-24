@@ -114,9 +114,6 @@ if(filas > 0){%>
 
 <% }}%>
 
-
-
-
 	<div class="container Mover  ">
 		<form action="servletsCliente" method="get">
 			<div class="row mt-5  ">

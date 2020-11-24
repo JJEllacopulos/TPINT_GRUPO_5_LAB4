@@ -5,8 +5,11 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="javax.servlet.http.HttpSession"%>
 <%@page import="javax.servlet.RequestDispatcher"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,22 +28,32 @@
 <jsp:include page="MenuAdmin.jsp"></jsp:include>
 <%
 
+String s = (String)request.getQueryString() ;
+String[] parts = s.split("&btn");
+String s1 = parts[0]; 
+String part2 = parts[1]; 
+String s2= s1.substring(s1.length()-15, s1.length());
 
 Cuenta cuenta = new Cuenta();
-cuenta = (Cuenta)request.getAttribute("cuenta");
+NegocioCuentas cuentaNegocio1 = new NegocioCuentas();
+//cuenta = (Cuenta)request.getAttribute("cuenta");
+
+cuenta= cuentaNegocio1.Obtener_cuenta(s2);
+
 %>
 <div class="container">
 <form action="servletsCuentas" method="get" class="Alta">
 
  <div class="form-row mt-4">
     <div class="col-6">
-    <input type="text" class="form-control" value="<%=cuenta.getNombre_usuario()%>" name="txtUsuario" placeholder="Nombre de usuario"  maxlength="20" title="Ingrese un usuario valido" required>
+    <input type="text" class="form-control" value="<%=cuenta.getNombre_usuario()%>" name="txtUsuario" placeholder="Nombre de usuario"  maxlength="2000" title="Ingrese un usuario valido" required>
     </div>
     <div class="col-6">
       <select  class="form-control" name="ddlTipoCuenta">
 <option selected>Seleccionar...</option>
 	
 	 <%
+	 
 	 NegocioCuentas cuentaNegocio = new NegocioCuentas();
 		 	ArrayList<TipoCuenta> listaTipoCuenta =  new ArrayList<TipoCuenta>();
 		listaTipoCuenta =  cuentaNegocio.Obtener_TipoCuentas();
@@ -52,14 +65,13 @@ cuenta = (Cuenta)request.getAttribute("cuenta");
 	<option value="<%=e.getTipo_cuenta()%>"><%=e.getDescripcion()%></option>
 
 		<%  } %>
-
 		
 		</select>
     </div>
       </div>
        <div class="form-row mt-4">
     <div class="col-6">
-    <input type="text" class="form-control" value="<%=cuenta.getSaldo()%>" name="txtSaldo" placeholder="Saldo" pattern="[0-9]{0,10000000}" title="Ingrese saldo valido" required>
+    <input type="text" class="form-control" value="<%=cuenta.getSaldo()%>" name="txtSaldo" placeholder="Saldo" pattern="[0-9.]{0,10000000}" title="Ingrese saldo valido" required>
    			 <input type="hidden" name="cbuCuenta" value="<%=cuenta.getCbu_cuenta()%>">
     </div>
     <div class="col-6">
