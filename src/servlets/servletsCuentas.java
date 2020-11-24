@@ -184,11 +184,18 @@ public class servletsCuentas extends HttpServlet {
 		        rd.forward(request, response);
 		}	
 		
-		if(request.getParameter("btnAceptarModificar")!=null) {
+		if(request.getParameter("btnAceptarModificar")!=null) {			
 			
-		
+			// cuenta original obtenida por CBU
+			Cuenta cu = new Cuenta ();
+			cu = cuentaNegocio.Obtener_cuenta(request.getParameter("cbuCuenta"));
+
+			RequestDispatcher rd ;
+			
+			// si es valido el alias 
+				if (cuentaNegocio.Existe_Alias_cuenta(cu.getCbu_cuenta(), request.getParameter("txtAlias")) == 0) {	
 				Date myDate = new Date();
-				// validaciones usuarios repetidos y/o alias repetidos
+				
 				cuenta.setCbu_cuenta(request.getParameter("cbuCuenta"));
 				cuenta.setNombre_usuario(request.getParameter("txtUsuario"));
 				cuenta.setTipo_Cuenta(request.getParameter("ddlTipoCuenta"));
@@ -202,11 +209,21 @@ public class servletsCuentas extends HttpServlet {
 				request.setAttribute("filasM", filas);
 				request.setAttribute("listaC", lista);
 				
-				RequestDispatcher rd = request.getRequestDispatcher("Servlet_Menu_Administrador?link_2=1");   
+				rd = request.getRequestDispatcher("Servlet_Menu_Administrador?link_2=1");
 				
-		        rd.forward(request, response);
-			
-			}
+				}
+				
+				else { // Alias repetido  
+					String mensaje = "Alias existente, por favor vuelva a cargar los datos"; 
+					request.setAttribute("MensajeError", mensaje );
+					request.setAttribute("Stringcuenta", cu.getCbu_cuenta() );					
+					rd = request.getRequestDispatcher("/ModificarCuenta.jsp");   
+				}				
+				
+								
+		        rd.forward(request, response);	
+										
+}
 		
 		if(request.getParameter("btnFiltrar")!=null) {
 			

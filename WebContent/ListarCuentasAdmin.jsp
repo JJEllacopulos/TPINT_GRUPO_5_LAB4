@@ -96,9 +96,10 @@ if(request.getAttribute("Mensaje")!=null){
 		<thead>
 			<tr>
 				<th>·</th>
-				<th>CBU cuenta</th>
-				<th>Tipo de cuenta</th>
+				<th>CBU cuenta</th>			
 				<th>Nombre Usuario</th>
+				<th>Alias</th>
+				<th>Tipo de cuenta</th>
 				<th>Saldo</th>
 				<th></th>
 				<th></th>
@@ -117,8 +118,9 @@ listaC = (ArrayList<Cuenta>)request.getAttribute("listaC");
       <tr>
       <td>·<input type="hidden" name="cbuCuenta" value="<%= e.getCbu_cuenta()%>"></td>
       <td><%= e.getCbu_cuenta()%></td>
-      <td><%=e.getTipo_Cuenta() %></td>
       <td><%=e.getNombre_usuario() %> </td>
+      <td><%=e.getAlias() %></td>
+      <td><%=e.getTipo_Cuenta() %></td>
       <td><%=e.getSaldo() %> </td>
       <td><input type="submit" class="btn btn-danger boton" value="Eliminar" name="btnEliminarCuenta" /></td>
       <td><input type="submit" class= "btn btn-primary" value="Modificar" name="btnModificarCuenta" /></td>

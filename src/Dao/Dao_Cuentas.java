@@ -270,10 +270,8 @@ public Cuenta Obtener_cuenta(String cbuCuenta) {
 				aux.setSaldo(resultado.getDouble("saldo"));
 				aux.setEstado(resultado.getBoolean("estado"));
 				aux.setAlias(resultado.getString("alias"));
-				
-				
-			}
-				
+								
+			}				
 			
 		}
 		catch(Exception e) {
@@ -285,6 +283,37 @@ public Cuenta Obtener_cuenta(String cbuCuenta) {
 		return aux;
 		
 	}
+
+public int Existe_Alias_cuenta(String cbuCuenta,String alias) {
+	
+	
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	int filas = 0;
+	Connection cn = null;
+	  try
+	  {
+		  cn = DriverManager.getConnection(host+dbName, user,pass);
+			CallableStatement st = cn.prepareCall("CALL PRO_Existe_Alias_cuenta(?,?)");
+			 st.setString(1, cbuCuenta);
+			 st.setString(2, alias);
+			 
+			ResultSet resultado = st.executeQuery();
+
+			while(resultado.next()){
+				filas++;
+			}			
+	  }
+	  catch (Exception e) {
+		e.printStackTrace();
+	}
+		return filas;		
+	}
+
 
 public int SPEliminarCuenta(String CBUcuenta)
 {

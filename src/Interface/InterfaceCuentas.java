@@ -18,4 +18,5 @@ public interface InterfaceCuentas {
 	public ArrayList<Cuenta> Obtener_Datos_Cuenta(String nombre_usuario);
 	public ArrayList<Cuenta> Obtener_cuentas_activas(String tipoCuenta1, String tipoCuenta2);
 	boolean StringIsNumeric(String nombre_usuario);
+	public int Existe_Alias_cuenta(String cbuCuenta, String alias);
 }

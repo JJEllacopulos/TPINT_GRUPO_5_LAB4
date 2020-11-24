@@ -88,5 +88,14 @@ public class NegocioCuentas implements InterfaceCuentas {
 		}	
 	}
 	
+	@Override
+	public int Existe_Alias_cuenta(String cbuCuenta,String alias) {
+		// TODO Auto-generated method stub
+		int filas = 0;
+		filas = daoCuentas.Existe_Alias_cuenta(cbuCuenta,alias);
+		return filas;
+	}
+	
+	
 
 }

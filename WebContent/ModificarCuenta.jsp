@@ -40,10 +40,12 @@ cuenta= cuentaNegocio1.Obtener_cuenta((String)request.getAttribute("Stringcuenta
 
  <div class="form-row mt-4">
     <div class="col-6">
-    <input type="text" class="form-control" value="<%=cuenta.getNombre_usuario()%>" name="txtUsuario" placeholder="Nombre de usuario"  maxlength="20" title="Ingrese un usuario valido" required>
+    <h4>Nombre Usuario:</h4>
+    <input type="text" class="form-control" value="<%=cuenta.getNombre_usuario()%>" name="txtUsuario" placeholder="Nombre de usuario"  maxlength="20" title="Ingrese un usuario valido" readonly="true" required>
     
     </div>
     <div class="col-6">
+    <h4>Alias:</h4>
     <input type="text" class="form-control" value="<%=cuenta.getAlias()%>" name="txtAlias" placeholder="Alias" title="Ingrese un alias valido" pattern="[0-9a-zA-Záéíóú,. '-]{2,49}" required>
     </div>
     
@@ -53,12 +55,13 @@ cuenta= cuentaNegocio1.Obtener_cuenta((String)request.getAttribute("Stringcuenta
       </div>
        <div class="form-row mt-4">
     <div class="col-6">
+    <h4>Saldo:</h4>
     <input type="text" class="form-control" value="<%=cuenta.getSaldo()%>" name="txtSaldo" placeholder="Saldo" pattern="[0-9.]{0,10000000}" title="Ingrese saldo valido" required>
    			 <input type="hidden" name="cbuCuenta" value="<%=cuenta.getCbu_cuenta()%>">
     </div>
     <div class="col-6">
-    <select  class="form-control" name="ddlTipoCuenta">
-<option selected>Seleccionar...</option>
+    	<h4>Tipo de cuenta:</h4>
+    <select  class="form-control" name="ddlTipoCuenta" required>
 	
 	 <%
 	 
@@ -79,10 +82,24 @@ cuenta= cuentaNegocio1.Obtener_cuenta((String)request.getAttribute("Stringcuenta
     <div class="form-row mt-4">
     <div class="col-6">  
       <input type="submit"  class="btn btn-success" value="Modificar" name="btnAceptarModificar">
+ 
     </div>
+<br> <br>
+         <% 
+if(request.getAttribute("MensajeError")!=null){%>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>ERROR:</strong> <%=(String)request.getAttribute("MensajeError")%>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<% }%>
+  
+    
     </div>
       </div>
 </form>
 </div>
+<script>$('.alert').alert()</script>
 </body>
 </html>
