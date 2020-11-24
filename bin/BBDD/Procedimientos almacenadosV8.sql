@@ -32,7 +32,7 @@ DELIMITER $$
         Contraseña_usuario VARCHAR(25),
         Cuil_usuario VARCHAR(11),
         Sexo VARCHAR(4),
-        Nacionalidad VARCHAR(50),
+        id_estado INT,
         Fecha_nacimiento DATE,
         estado bit
 		
@@ -40,8 +40,8 @@ DELIMITER $$
         
 	BEGIN
 
-		INSERT INTO usuario (nombre_usuario, dni_usuario, nombre_real, apellido_real, tipo_usuario, contraseña_usuario, cuil_usuario, sexo, nacionalidad, fecha_nacimiento)
-		SELECT Nombre_usuario, Dni_usuario, Nombre_real, Apellido_real, Tipo_usuario, Contraseña_usuario, Cuil_usuario, Sexo, Nacionalidad, Fecha_nacimiento;
+		INSERT INTO usuario (nombre_usuario, dni_usuario, nombre_real, apellido_real, tipo_usuario, contraseña_usuario, cuil_usuario, sexo, id_estado, fecha_nacimiento)
+		SELECT Nombre_usuario, Dni_usuario, Nombre_real, Apellido_real, Tipo_usuario, Contraseña_usuario, Cuil_usuario, Sexo, id_estado, Fecha_nacimiento;
 		
 	END$$
     
@@ -73,7 +73,7 @@ DELIMITER $$
         Contraseña_usuario VARCHAR(25),
         Cuil_usuario VARCHAR(11),
         Sexo VARCHAR(4),
-        Nacionalidad VARCHAR(50),
+        id_estado INT,
         Fecha_nacimiento DATE
 		
 		)
@@ -82,7 +82,7 @@ DELIMITER $$
 	
 	IF EXISTS(SELECT * FROM usuario WHERE nombre_usuario = Nombre_usuario AND estado = 1) THEN
 		
-		Update usuario Set usuario.dni_usuario = Dni_usuario, usuario.nombre_real = Nombre_real, usuario.Apellido_real = apellido_real, usuario.tipo_usuario = Tipo_usuario, usuario.contraseña_usuario = Contraseña_usuario, usuario.cuil_usuario = Cuil_usuario, usuario.sexo = Sexo, usuario.nacionalidad = Nacionalidad, usuario.fecha_nacimiento = Fecha_nacimiento  Where usuario.nombre_usuario = Nombre_usuario;
+		Update usuario Set usuario.dni_usuario = Dni_usuario, usuario.nombre_real = Nombre_real, usuario.Apellido_real = apellido_real, usuario.tipo_usuario = Tipo_usuario, usuario.contraseña_usuario = Contraseña_usuario, usuario.cuil_usuario = Cuil_usuario, usuario.sexo = Sexo, usuario.id_estado = id_estado, usuario.fecha_nacimiento = Fecha_nacimiento  Where usuario.nombre_usuario = Nombre_usuario;
         
 	END IF;
 
