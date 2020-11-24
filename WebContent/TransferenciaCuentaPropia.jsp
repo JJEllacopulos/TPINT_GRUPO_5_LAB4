@@ -92,7 +92,7 @@ usuario = (Usuario)session.getAttribute("userSession");
     <div class="form-row">
     <div class="form-group col-md-12">
       <label id="lblMonto" for="lblMonto">Monto</label>
-      <input type="text" class="form-control" name="inputMonto" pattern="[0-9]{0,10000000}" title="Ingrese monto valido" required>
+      <input type="text" class="form-control" name="inputMonto" pattern="[0-9.]{0,10000000}" title="Ingrese monto valido" required>
     </div>
     
   </div>

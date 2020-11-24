@@ -28,17 +28,11 @@
 <jsp:include page="MenuAdmin.jsp"></jsp:include>
 <%
 
-String s = (String)request.getQueryString() ;
-String[] parts = s.split("&btn");
-String s1 = parts[0]; 
-String part2 = parts[1]; 
-String s2= s1.substring(s1.length()-15, s1.length());
-
 Cuenta cuenta = new Cuenta();
 NegocioCuentas cuentaNegocio1 = new NegocioCuentas();
 //cuenta = (Cuenta)request.getAttribute("cuenta");
 
-cuenta= cuentaNegocio1.Obtener_cuenta(s2);
+cuenta= cuentaNegocio1.Obtener_cuenta((String)request.getAttribute("Stringcuenta"));
 
 %>
 <div class="container">
@@ -46,7 +40,7 @@ cuenta= cuentaNegocio1.Obtener_cuenta(s2);
 
  <div class="form-row mt-4">
     <div class="col-6">
-    <input type="text" class="form-control" value="<%=cuenta.getNombre_usuario()%>" name="txtUsuario" placeholder="Nombre de usuario"  maxlength="2000" title="Ingrese un usuario valido" required>
+    <input type="text" class="form-control" value="<%=cuenta.getNombre_usuario()%>" name="txtUsuario" placeholder="Nombre de usuario"  maxlength="20" title="Ingrese un usuario valido" required>
     </div>
     <div class="col-6">
       <select  class="form-control" name="ddlTipoCuenta">

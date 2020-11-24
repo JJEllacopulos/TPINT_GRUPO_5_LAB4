@@ -60,7 +60,7 @@
     <div class="form-row">
     <div class="form-group col-md-12">
       <label id="lblMonto" for="lblMonto">Monto total</label>
-      <input type="text" class="form-control" id="inputMonto">
+      <input type="text" class="form-control" id="inputMonto" pattern="[0-9.]{0,10000000}" title="Ingrese saldo valido" required>
     </div>
     
   </div>
