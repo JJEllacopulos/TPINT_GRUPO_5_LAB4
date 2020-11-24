@@ -188,12 +188,13 @@ public class servletsCuentas extends HttpServlet {
 			
 		
 				Date myDate = new Date();
-				
+				// validaciones usuarios repetidos y/o alias repetidos
 				cuenta.setCbu_cuenta(request.getParameter("cbuCuenta"));
 				cuenta.setNombre_usuario(request.getParameter("txtUsuario"));
 				cuenta.setTipo_Cuenta(request.getParameter("ddlTipoCuenta"));
 				cuenta.setSaldo(Double.parseDouble(request.getParameter("txtSaldo")));
-				cuenta.setFecha_creacion(new SimpleDateFormat("yyyy-MM-dd").format(myDate));  
+				cuenta.setFecha_creacion(new SimpleDateFormat("yyyy-MM-dd").format(myDate)); 
+				cuenta.setAlias(request.getParameter("txtAlias"));
 				int filas = 0; 
 				filas = cuentaNegocio.SPModificarCuenta(cuenta);
 				

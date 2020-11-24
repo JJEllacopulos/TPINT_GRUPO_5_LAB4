@@ -41,9 +41,23 @@ cuenta= cuentaNegocio1.Obtener_cuenta((String)request.getAttribute("Stringcuenta
  <div class="form-row mt-4">
     <div class="col-6">
     <input type="text" class="form-control" value="<%=cuenta.getNombre_usuario()%>" name="txtUsuario" placeholder="Nombre de usuario"  maxlength="20" title="Ingrese un usuario valido" required>
+    
     </div>
     <div class="col-6">
-      <select  class="form-control" name="ddlTipoCuenta">
+    <input type="text" class="form-control" value="<%=cuenta.getAlias()%>" name="txtAlias" placeholder="Alias" title="Ingrese un alias valido" pattern="[0-9a-zA-Záéíóú,. '-]{2,49}" required>
+    </div>
+    
+    <div class="col-6">
+      
+    </div>
+      </div>
+       <div class="form-row mt-4">
+    <div class="col-6">
+    <input type="text" class="form-control" value="<%=cuenta.getSaldo()%>" name="txtSaldo" placeholder="Saldo" pattern="[0-9.]{0,10000000}" title="Ingrese saldo valido" required>
+   			 <input type="hidden" name="cbuCuenta" value="<%=cuenta.getCbu_cuenta()%>">
+    </div>
+    <div class="col-6">
+    <select  class="form-control" name="ddlTipoCuenta">
 <option selected>Seleccionar...</option>
 	
 	 <%
@@ -62,16 +76,10 @@ cuenta= cuentaNegocio1.Obtener_cuenta((String)request.getAttribute("Stringcuenta
 		
 		</select>
     </div>
-      </div>
-       <div class="form-row mt-4">
-    <div class="col-6">
-    <input type="text" class="form-control" value="<%=cuenta.getSaldo()%>" name="txtSaldo" placeholder="Saldo" pattern="[0-9.]{0,10000000}" title="Ingrese saldo valido" required>
-   			 <input type="hidden" name="cbuCuenta" value="<%=cuenta.getCbu_cuenta()%>">
-    </div>
-    <div class="col-6">
-      
+    <div class="form-row mt-4">
+    <div class="col-6">  
       <input type="submit"  class="btn btn-success" value="Modificar" name="btnAceptarModificar">
-	
+    </div>
     </div>
       </div>
 </form>
