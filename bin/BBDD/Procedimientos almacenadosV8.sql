@@ -829,3 +829,19 @@ DELIMITER $$
 	
 
 END$$
+
+
+DELIMITER $$
+    CREATE PROCEDURE PRO_Buscar_cuenta_entre_fechas(
+	
+		fecha_inicio DATE,
+        fecha_final DATE
+        
+		)
+    
+	BEGIN
+	
+		SELECT * FROM cuenta WHERE estado = 1 AND fecha_creacion BETWEEN fecha_inicio AND fecha_final;
+	
+
+END$$
