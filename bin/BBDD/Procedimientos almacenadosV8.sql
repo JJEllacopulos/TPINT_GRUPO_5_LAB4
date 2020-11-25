@@ -724,7 +724,7 @@ DELIMITER $$
 	BEGIN
 
 		select u.nombre_usuario, u.dni_usuario, nombre_real, u.apellido_real, u.contraseña_usuario, u.cuil_usuario,
-		u.sexo, u.nacionalidad, u.fecha_nacimiento, d.calle, d.altura, d.localidad, d.provincia, d.pais, c.email, c.telefono, u.tipo_usuario from usuario as u
+		u.sexo, u.fecha_nacimiento, d.calle, d.altura, d.localidad, d.provincia, d.pais, c.email, c.telefono, u.tipo_usuario from usuario as u
 		inner join direccion as d on d.nombre_usuario = u.nombre_usuario
 		inner join contacto as c on c.nombre_usuario = u.nombre_usuario
 		where u.nombre_usuario = Nombre_usuario;

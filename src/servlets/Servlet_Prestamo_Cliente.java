@@ -105,7 +105,7 @@ public class Servlet_Prestamo_Cliente extends HttpServlet {
 			request.setAttribute("pagoxmes_prestamo", importe);
 			request.setAttribute("id_prestamo", id_prestamo);
 			
-			request.setAttribute("DeudaFinal", e_prestamo.getMonto_actual());  ////////////////////////////////////////////
+			request.setAttribute("DeudaFinal", e_prestamo.getMonto_actual()*e_prestamo.getCuotas_a_pagar());  
 			
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/Prestamo_cliente_pagar.jsp");   
