@@ -13,7 +13,7 @@ public class Usuario {
 	private String password;
 	private String cuil;
 	private String sexo;
-	private String nacionalidad;
+	private int id_estado;
 	private Date fecha_nacimiento;
 	private Contacto contacto;
 	private Direccion direccion;
@@ -46,7 +46,7 @@ public class Usuario {
 		
 	}
 	
-	public Usuario(String nombre_usuario, String dni, String nombre_real, String apellido_real, String tipo_usuario, String password, String cuil, String sexo, String nacionalidad, Date fecha_nacimiento, boolean estado) {
+	public Usuario(String nombre_usuario, String dni, String nombre_real, String apellido_real, String tipo_usuario, String password, String cuil, String sexo, int id_estado, Date fecha_nacimiento, boolean estado) {
 		
 		this.nombre_usuario = nombre_usuario;
 		this.dni = dni;
@@ -56,7 +56,7 @@ public class Usuario {
 		this.password = password;
 		this.cuil = cuil;
 		this.sexo = sexo;
-		this.nacionalidad = nacionalidad;
+		this.id_estado = id_estado;
 		this.fecha_nacimiento = fecha_nacimiento;
 		this.estado = estado;
 		
@@ -127,12 +127,12 @@ public class Usuario {
 		this.sexo = sexo;
 	}
 
-	public String getNacionalidad() {
-		return nacionalidad;
+	public int getId_estado() {
+		return id_estado;
 	}
 
-	public void setNacionalidad(String nacionalidad) {
-		this.nacionalidad = nacionalidad;
+	public void setId_estado(int id_estado) {
+		this.id_estado = id_estado;
 	}
 
 	public Date getFecha_nacimiento() {

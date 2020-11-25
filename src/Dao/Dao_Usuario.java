@@ -44,7 +44,7 @@ public class Dao_Usuario {
 			 cst.setString(6, usuario.getPassword());
 			 cst.setString(7, usuario.getCuil());
 			 cst.setString(8, usuario.getSexo());
-			 cst.setString(9, usuario.getNacionalidad());
+			 cst.setInt(9, usuario.getId_estado());
 			 cst.setDate(10, java.sql.Date.valueOf(fecha));
 			 cst.setBoolean(11, usuario.getEstado());
 			
@@ -152,7 +152,7 @@ email, telefono
 				aux.setPassword(resultado.getString("contraseña_usuario"));
 				aux.setCuil(resultado.getString("cuil_usuario"));
 				aux.setSexo(resultado.getString("sexo"));
-				aux.setNacionalidad(resultado.getString("nacionalidad"));
+				aux.setId_estado(resultado.getInt("id_estado"));
 				aux.setFecha_nacimiento(resultado.getDate("fecha_nacimiento"));
 				direccion.setAltura(resultado.getString("altura"));
 				direccion.setCalle(resultado.getString("calle"));
@@ -212,7 +212,7 @@ public Usuario Obtener_usuario (String nombreUsuario) {
 				aux.setPassword(resultado.getString("contraseña_usuario"));
 				aux.setCuil(resultado.getString("cuil_usuario"));
 				aux.setSexo(resultado.getString("sexo"));
-				aux.setNacionalidad(resultado.getString("nacionalidad"));
+				aux.setId_estado(resultado.getInt("id_estado"));
 				aux.setFecha_nacimiento(resultado.getDate("fecha_nacimiento"));
 				direccion.setAltura(resultado.getString("altura"));
 				direccion.setCalle(resultado.getString("calle"));
@@ -305,7 +305,7 @@ public int SPModificarUsuario(Usuario usuario, String fecha)
 		 cst.setString(6, usuario.getPassword());
 		 cst.setString(7, usuario.getCuil());
 		 cst.setString(8, usuario.getSexo());
-		 cst.setString(9, usuario.getNacionalidad());
+		 cst.setInt(9, usuario.getId_estado());
 		 cst.setDate(10, java.sql.Date.valueOf(fecha));
 		 
 		 filas=cst.executeUpdate();

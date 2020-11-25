@@ -11,6 +11,28 @@ create table tipo_usuario
     
 );
 
+create table pais
+(
+    id_pais INT NOT NULL,
+    CONSTRAINT PK_pais PRIMARY KEY (id_pais),
+    
+    pais_nombre VARCHAR(250) NOT NULL
+    
+);
+
+create table estado
+(
+    id_estado INT NOT NULL,
+    CONSTRAINT PK_estado PRIMARY KEY (id_estado),
+    
+    id_pais INT NOT NULL,
+    constraint PF_estado_x_pais foreign key (id_pais) 
+	references pais(id_pais),
+    
+    estado_nombre VARCHAR(255) NOT NULL
+    
+);
+
 create table usuario
 (
 	nombre_usuario VARCHAR(25) NOT NULL,
@@ -28,7 +50,12 @@ create table usuario
 	contraseña_usuario VARCHAR(25) NOT NULL,
 	cuil_usuario VARCHAR(11) NOT NULL,
 	sexo VARCHAR(4) NOT NULL,
-	nacionalidad VARCHAR(50) NOT NULL,
+    
+	id_estado INT NOT NULL,
+    
+    constraint PF_usuario_x_estado foreign key (id_estado) 
+	references estado(id_estado),
+    
 	fecha_nacimiento DATE NOT NULL,
     estado bit NOT NULL DEFAULT 1
 
