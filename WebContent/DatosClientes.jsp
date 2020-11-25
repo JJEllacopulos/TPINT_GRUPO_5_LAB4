@@ -66,10 +66,7 @@ usuario = (Usuario)request.getAttribute("usuario"); %>
     <div class="row">
        <label class="text-dark">Fecha nacimiento: </label><label class="text-success ml-2"><%=usuario.getFecha_nacimiento()%></label>
     </div>
-    <div class="row">
-       <label class="text-dark">Nacionalidad: </label><label class="text-success ml-2"><%=usuario.getNacionalidad()%></label>
-    </div>
-
+    
     <div class="row">
        <label class="text-dark">Calle: </label><label class="text-success ml-2"><%=usuario.getDireccion().getCalle()%></label>
     </div>

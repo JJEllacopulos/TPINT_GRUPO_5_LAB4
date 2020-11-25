@@ -51,11 +51,6 @@ create table usuario
 	cuil_usuario VARCHAR(11) NOT NULL,
 	sexo VARCHAR(4) NOT NULL,
     
-	id_estado INT NOT NULL,
-    
-    constraint PF_usuario_x_estado foreign key (id_estado) 
-	references estado(id_estado),
-    
 	fecha_nacimiento DATE NOT NULL,
     estado bit NOT NULL DEFAULT 1
 

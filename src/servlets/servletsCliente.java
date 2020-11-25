@@ -92,7 +92,6 @@ public class servletsCliente extends HttpServlet {
 	        usuario.setTipo_usuario("user");
 	        usuario.setPassword(request.getParameter("txtPassword"));
 	        usuario.setCuil(request.getParameter("txtCuil"));
-	        usuario.setNacionalidad(request.getParameter("txtNacionalidad"));
 	        usuario.setEstado(true);
 	        
 	        contacto.setEmail(request.getParameter("txtEmail"));
@@ -191,7 +190,6 @@ public class servletsCliente extends HttpServlet {
 	        usuario.setTipo_usuario("user");
 	        usuario.setPassword(request.getParameter("txtPassword"));
 	        usuario.setCuil(request.getParameter("txtCuil"));
-	        usuario.setNacionalidad(request.getParameter("txtNacionalidad"));
 	        usuario.setEstado(true);
 	        
 	        contacto.setEmail(request.getParameter("txtEmail"));

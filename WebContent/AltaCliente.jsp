@@ -96,9 +96,7 @@ if(filas > 0){%>
     <div class="col-6">
       <input type="text" class="form-control" placeholder="Seleccionar Fecha de nacimiento" onfocus="(this.type='date')" onblur="(this.type='text')" name="txtFechaNacimiento" required>
     </div>
-    <div class="col-6">
-      <input type="text" class="form-control" name="txtNacionalidad" placeholder="Nacionalidad" title="Ingrese una nacionalidad valida" pattern="[a-zA-Záéíóú,. '-]{2,49}" required>
-    </div>
+    
       </div>
           <div class="form-row mt-4">
     <div class="col-6">

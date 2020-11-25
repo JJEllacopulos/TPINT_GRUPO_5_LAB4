@@ -35,7 +35,7 @@ public class Dao_Usuario {
 		  try
 		  {
 			 cn = DriverManager.getConnection(host+dbName, user,pass);
-			 CallableStatement cst = cn.prepareCall("CALL PRO_ingresar_datos_usuario(?,?,?,?,?,?,?,?,?,?,?)");
+			 CallableStatement cst = cn.prepareCall("CALL PRO_ingresar_datos_usuario(?,?,?,?,?,?,?,?,?,?)");
 			 cst.setString(1, usuario.getNombre_usuario());
 			 cst.setString(2, usuario.getDni());
 			 cst.setString(3, usuario.getNombre_real());
@@ -44,9 +44,8 @@ public class Dao_Usuario {
 			 cst.setString(6, usuario.getPassword());
 			 cst.setString(7, usuario.getCuil());
 			 cst.setString(8, usuario.getSexo());
-			 cst.setInt(9, usuario.getId_estado());
-			 cst.setDate(10, java.sql.Date.valueOf(fecha));
-			 cst.setBoolean(11, usuario.getEstado());
+			 cst.setDate(9, java.sql.Date.valueOf(fecha));
+			 cst.setBoolean(10, usuario.getEstado());
 			
 			 filas=cst.executeUpdate();
 		  }
@@ -152,7 +151,6 @@ email, telefono
 				aux.setPassword(resultado.getString("contraseña_usuario"));
 				aux.setCuil(resultado.getString("cuil_usuario"));
 				aux.setSexo(resultado.getString("sexo"));
-				aux.setId_estado(resultado.getInt("id_estado"));
 				aux.setFecha_nacimiento(resultado.getDate("fecha_nacimiento"));
 				direccion.setAltura(resultado.getString("altura"));
 				direccion.setCalle(resultado.getString("calle"));
@@ -213,7 +211,6 @@ public Usuario Obtener_usuario (String nombreUsuario) {
 				aux.setPassword(resultado.getString("contraseña_usuario"));
 				aux.setCuil(resultado.getString("cuil_usuario"));
 				aux.setSexo(resultado.getString("sexo"));
-				//aux.setId_estado(resultado.getInt("id_estado"));
 				aux.setFecha_nacimiento(resultado.getDate("fecha_nacimiento"));
 				direccion.setAltura(resultado.getString("altura"));
 				direccion.setCalle(resultado.getString("calle"));
@@ -297,7 +294,7 @@ public int SPModificarUsuario(Usuario usuario, String fecha)
 	  try
 	  {
 		 cn = DriverManager.getConnection(host+dbName, user,pass);
-		 CallableStatement cst = cn.prepareCall("CALL PRO_Alterar_usuario(?,?,?,?,?,?,?,?,?,?)");
+		 CallableStatement cst = cn.prepareCall("CALL PRO_Alterar_usuario(?,?,?,?,?,?,?,?,?)");
 		 cst.setString(1, usuario.getNombre_usuario());
 		 cst.setString(2, usuario.getDni());
 		 cst.setString(3, usuario.getNombre_real());
@@ -306,8 +303,7 @@ public int SPModificarUsuario(Usuario usuario, String fecha)
 		 cst.setString(6, usuario.getPassword());
 		 cst.setString(7, usuario.getCuil());
 		 cst.setString(8, usuario.getSexo());
-		 cst.setInt(9, usuario.getId_estado());
-		 cst.setDate(10, java.sql.Date.valueOf(fecha));
+		 cst.setDate(9, java.sql.Date.valueOf(fecha));
 		 
 		 filas=cst.executeUpdate();
 	  }

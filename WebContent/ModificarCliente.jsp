@@ -89,9 +89,7 @@ usuario = (Usuario)request.getAttribute("usuario");
     <div class="col-6">
       <input type="date" class="form-control" value="<%=usuario.getFecha_nacimiento()%>"  name="txtFechaNacimiento" placeholder="Seleccionar Fecha de nacimiento" onfocus="(this.type='date')" onblur="(this.type='text')" required>
     </div>
-    <div class="col-6">
-      <input type="text" class="form-control" value="<%=usuario.getNacionalidad()%>" name="txtNacionalidad" placeholder="Nacionalidad" title="Ingrese una nacionalidad valida" pattern="[a-zA-Záéíóú,. '-]{2,49}" required>
-    </div>
+    
       </div>
           <div class="form-row mt-4">
     <div class="col-6">

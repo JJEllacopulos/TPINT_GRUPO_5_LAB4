@@ -32,7 +32,6 @@ DELIMITER $$
         Contraseña_usuario VARCHAR(25),
         Cuil_usuario VARCHAR(11),
         Sexo VARCHAR(4),
-        id_estado INT,
         Fecha_nacimiento DATE,
         estado bit
 		
@@ -40,8 +39,8 @@ DELIMITER $$
         
 	BEGIN
 
-		INSERT INTO usuario (nombre_usuario, dni_usuario, nombre_real, apellido_real, tipo_usuario, contraseña_usuario, cuil_usuario, sexo, id_estado, fecha_nacimiento)
-		SELECT Nombre_usuario, Dni_usuario, Nombre_real, Apellido_real, Tipo_usuario, Contraseña_usuario, Cuil_usuario, Sexo, id_estado, Fecha_nacimiento;
+		INSERT INTO usuario (nombre_usuario, dni_usuario, nombre_real, apellido_real, tipo_usuario, contraseña_usuario, cuil_usuario, sexo, fecha_nacimiento)
+		SELECT Nombre_usuario, Dni_usuario, Nombre_real, Apellido_real, Tipo_usuario, Contraseña_usuario, Cuil_usuario, Sexo, Fecha_nacimiento;
 		
 	END$$
     
@@ -73,7 +72,6 @@ DELIMITER $$
         Contraseña_usuario VARCHAR(25),
         Cuil_usuario VARCHAR(11),
         Sexo VARCHAR(4),
-        id_estado INT,
         Fecha_nacimiento DATE
 		
 		)
@@ -82,7 +80,7 @@ DELIMITER $$
 	
 	IF EXISTS(SELECT * FROM usuario WHERE nombre_usuario = Nombre_usuario AND estado = 1) THEN
 		
-		Update usuario Set usuario.dni_usuario = Dni_usuario, usuario.nombre_real = Nombre_real, usuario.Apellido_real = apellido_real, usuario.tipo_usuario = Tipo_usuario, usuario.contraseña_usuario = Contraseña_usuario, usuario.cuil_usuario = Cuil_usuario, usuario.sexo = Sexo, usuario.id_estado = id_estado, usuario.fecha_nacimiento = Fecha_nacimiento  Where usuario.nombre_usuario = Nombre_usuario;
+		Update usuario Set usuario.dni_usuario = Dni_usuario, usuario.nombre_real = Nombre_real, usuario.Apellido_real = apellido_real, usuario.tipo_usuario = Tipo_usuario, usuario.contraseña_usuario = Contraseña_usuario, usuario.cuil_usuario = Cuil_usuario, usuario.sexo = Sexo, usuario.fecha_nacimiento = Fecha_nacimiento  Where usuario.nombre_usuario = Nombre_usuario;
         
 	END IF;
 
@@ -708,7 +706,7 @@ DELIMITER $$
 	BEGIN
 	
 		select u.nombre_usuario, u.dni_usuario, nombre_real, u.apellido_real, u.contraseña_usuario, u.cuil_usuario,
-u.sexo, u.nacionalidad, u.fecha_nacimiento, d.calle, d.altura, d.localidad, d.provincia, d.pais, c.email, c.telefono  from usuario as u
+u.sexo, u.fecha_nacimiento, d.calle, d.altura, d.localidad, d.provincia, d.pais, c.email, c.telefono  from usuario as u
 inner join direccion as d on d.nombre_usuario = u.nombre_usuario
 inner join contacto as c on c.nombre_usuario = u.nombre_usuario
 where u.estado = 1 and u.tipo_usuario like 'user';
@@ -830,6 +828,20 @@ DELIMITER $$
 
 END$$
 
+DELIMITER $$
+    CREATE PROCEDURE PRO_Existe_Alias_cuenta(
+	
+		ing_CBU_cuenta VARCHAR(22),
+        ing_Alias VARCHAR(22)
+        
+		)
+    
+	BEGIN
+	
+		SELECT * FROM cuenta WHERE alias = ing_Alias AND cbu_cuenta != ing_CBU_cuenta;
+	
+
+END$$
 
 DELIMITER $$
     CREATE PROCEDURE PRO_Buscar_cuenta_entre_fechas(
