@@ -66,7 +66,7 @@ public class Servlet_Prestamo_Cliente extends HttpServlet {
 			e_prestamo.setCbu_cuenta_deudor(request.getParameter("ddl_cuenta"));
 			e_prestamo.setInporte_pedido(Double.parseDouble(request.getParameter("ddl_Prestamo_pedido")));
 			Double pag_x_mes = Double.parseDouble(request.getParameter("ddl_Prestamo_pedido"))/Integer.parseInt(request.getParameter("ddl_Cuotas"));
-			e_prestamo.setPago_x_mes(pag_x_mes);
+			e_prestamo.setPago_x_mes(pag_x_mes*1.1);
 			e_prestamo.setCantidad_cuotas(Integer.parseInt(request.getParameter("ddl_Cuotas")));
 			
 			n_prestamo.SPNuevo_Prestamo(e_prestamo);
@@ -96,6 +96,7 @@ public class Servlet_Prestamo_Cliente extends HttpServlet {
 			int id_prestamo = Integer.parseInt(request.getParameter("id_prestamo"));
 			
 			cuenta = n_cuentaNegocio.Obtener_cuenta(cbu);
+			e_prestamo = n_prestamo.Obtener_Prestamo(id_prestamo);
 			
 			request.setAttribute("Alias", cuenta.getAlias());
 			request.setAttribute("nombre_usuario", cuenta.getNombre_usuario());
@@ -104,7 +105,7 @@ public class Servlet_Prestamo_Cliente extends HttpServlet {
 			request.setAttribute("pagoxmes_prestamo", importe);
 			request.setAttribute("id_prestamo", id_prestamo);
 			
-			request.setAttribute("DeudaFinal", DeudaFinal);
+			request.setAttribute("DeudaFinal", e_prestamo.getMonto_actual());  ////////////////////////////////////////////
 			
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/Prestamo_cliente_pagar.jsp");   
@@ -139,13 +140,16 @@ public class Servlet_Prestamo_Cliente extends HttpServlet {
 
 			
 			if (cuentaDDL.getSaldo()>=importe) {				
-						
+					
+			e_prestamo = n_prestamo.Obtener_Prestamo(id_prestamo);
 			//String cbu = request.getParameter("cbu_prestamo");
-			e_movimiento.setCbu_cuenta(cbuPrestamo);
+			e_movimiento.setCbu_cuenta(cuentaDDL.getCbu_cuenta());
 			e_movimiento.setTipo_movimiento("Prest");
-			e_movimiento.setDetalles(" ");
+			
+			int cuota = (e_prestamo.getCantidad_cuotas()-e_prestamo.getCuotas_a_pagar())+1;
+			e_movimiento.setDetalles("Prestamo cuota " +cuota+"/"+e_prestamo.getCantidad_cuotas());
 			//Double importe = Double.parseDouble(request.getParameter("pagoxmes_prestamo"));
-			e_movimiento.setImporte(importe);
+			e_movimiento.setImporte(importe*-1);
 			n_movimiento.SPAltaMovimiento(e_movimiento, new SimpleDateFormat("yyyy-MM-dd").format(myDate));		
 			int id_movimiento = n_movimiento.SPObtenerUltimoId();
 			//int id_prestamo = Integer.parseInt(request.getParameter("id_prestamo"));
@@ -154,8 +158,7 @@ public class Servlet_Prestamo_Cliente extends HttpServlet {
 			e_movimiento_x_Prestamo.setId_prestamo(id_prestamo);
 			
 			n_movimiento_x_Prestamo.SPAlta_movimieto_x_prestamo(e_movimiento_x_Prestamo);
-			
-			e_prestamo = n_prestamo.Obtener_Prestamo(id_prestamo);
+						
 			
 			Double Monto_actual = e_prestamo.getMonto_actual();
 			Double Pago_x_mes = e_prestamo.getPago_x_mes();

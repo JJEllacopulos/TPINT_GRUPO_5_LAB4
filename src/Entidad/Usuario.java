@@ -60,6 +60,7 @@ public class Usuario {
 		this.fecha_nacimiento = fecha_nacimiento;
 		this.estado = estado;
 		
+		
 	}
 	
 	//Gets y sets
@@ -155,5 +156,6 @@ public class Usuario {
 		// TODO Auto-generated method stub
 		this.direccion = direccion;
 	}
+
 	
 }

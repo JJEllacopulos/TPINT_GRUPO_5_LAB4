@@ -205,6 +205,7 @@ public Usuario Obtener_usuario (String nombreUsuario) {
 			ResultSet resultado = st.executeQuery();
 
 			while(resultado.next()){
+				
 				aux.setNombre_usuario(resultado.getString("nombre_usuario"));
 				aux.setDni(resultado.getString("dni_usuario"));
 				aux.setNombre_real(resultado.getString("nombre_real"));
@@ -212,7 +213,7 @@ public Usuario Obtener_usuario (String nombreUsuario) {
 				aux.setPassword(resultado.getString("contraseña_usuario"));
 				aux.setCuil(resultado.getString("cuil_usuario"));
 				aux.setSexo(resultado.getString("sexo"));
-				aux.setId_estado(resultado.getInt("id_estado"));
+				//aux.setId_estado(resultado.getInt("id_estado"));
 				aux.setFecha_nacimiento(resultado.getDate("fecha_nacimiento"));
 				direccion.setAltura(resultado.getString("altura"));
 				direccion.setCalle(resultado.getString("calle"));

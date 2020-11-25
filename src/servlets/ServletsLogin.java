@@ -68,7 +68,7 @@ public class ServletsLogin extends HttpServlet {
 			usuario = n_usuario.Obtener_usuario(usuarioNombre);
 			
 			
-			if(usuario.getPassword() != null) {
+			if(usuario.getTipo_usuario() != null) {
 				if(usuario.getPassword().equals(password)) {
 					
 					
@@ -82,9 +82,7 @@ public class ServletsLogin extends HttpServlet {
 						rd = request.getRequestDispatcher("/Inicio_Administrador.jsp");
 						
 						
-					}
-					
-				
+					}				
 				
 			}
 			}
