@@ -219,10 +219,8 @@ public class servletsCuentas extends HttpServlet {
 					request.setAttribute("Stringcuenta", cu.getCbu_cuenta() );					
 					rd = request.getRequestDispatcher("/ModificarCuenta.jsp");   
 				}				
-				
-								
-		        rd.forward(request, response);	
-										
+												
+		        rd.forward(request, response);											
 }
 		
 		if(request.getParameter("btnFiltrar")!=null) {
