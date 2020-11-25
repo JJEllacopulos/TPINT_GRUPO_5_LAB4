@@ -5,6 +5,8 @@ import java.util.List;
 import Dao.Dao_Usuario;
 import Entidad.Contacto;
 import Entidad.Direccion;
+import Entidad.Localidad;
+import Entidad.Provincias;
 import Entidad.Usuario;
 import Interface.InterfaceUsuario;
 
@@ -109,6 +111,20 @@ public class NegocioUsuario implements InterfaceUsuario {
 		filas = daoUsuario.SPEliminarUsuario(usuarioNombre);
 		
 		return filas;
+	}
+
+	@Override
+	public ArrayList<Localidad> Listar_Localidades(int idProvincia) {
+		ArrayList<Localidad> localidad = daoUsuario.Listar_Localidades(idProvincia);
+		
+		return localidad;
+	}
+
+	@Override
+	public ArrayList<Provincias> Listar_Provincias() {
+		ArrayList<Provincias> provincias = daoUsuario.Listar_Provincias();
+		
+		return provincias;
 	}
 
 	

@@ -202,7 +202,7 @@ public class servletsCliente extends HttpServlet {
 	        direccion.setNombre_usuario(usuario.getNombre_usuario());
 	        direccion.setPais(request.getParameter("txtPais"));
 	        
-	        direccion.setProvincia(request.getParameter("txtProvincia"));
+	        direccion.setProvincia(request.getParameter("ddlProvincia"));
 	        
 	       
 	       filas = usuarioNegocio.SPAltaUsuario(usuario,fecha);
@@ -214,6 +214,8 @@ public class servletsCliente extends HttpServlet {
 	        rd.forward(request, response);   
 			 
 		 }
+
+		
 
 	}
 }
