@@ -10,6 +10,8 @@ import java.util.Date;
 import Entidad.Usuario;
 import Entidad.Contacto;
 import Entidad.Direccion;
+import Entidad.Localidad;
+import Entidad.Provincias;
 import Entidad.TipoUsuario;
 
 
@@ -439,7 +441,93 @@ public void SPEliminarContactoUsuario(String usuarioNombre)
 		
 }
 
+public ArrayList<Localidad> Listar_Localidades (int idProvincia) {
+	
+	
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	ArrayList<Localidad> x = new  ArrayList<Localidad>();
+		
+	Connection cn = null;
+		
+		try {
+			
+			cn = DriverManager.getConnection(host+dbName, user,pass);
+			CallableStatement st = cn.prepareCall("CALL PRO_Listar_Localidades(?)");
+			 st.setInt(1, idProvincia);
+			 
+			
+			ResultSet resultado = st.executeQuery();
 
+			while(resultado.next()){
+				
+			
+				Localidad aux = new Localidad();
+				
+				aux.setIdLocalidad(resultado.getInt("id"));
+				aux.setIdProvincia(resultado.getInt("id_privincia"));
+				aux.setNombreLocalidad(resultado.getString("localidad"));	
+				
+				x.add(aux);
+				
+			}
+			
+		}
+		catch(Exception e) {
+			
+			e.printStackTrace();
+			
+		}
+		
+		return x;
+		
+	}
+
+public ArrayList<Provincias> Listar_Provincias() {
+	
+	
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	ArrayList<Provincias> x = new ArrayList<Provincias>();
+		
+		Connection cn = null;
+		
+		try {
+			
+			cn = DriverManager.getConnection(host+dbName, user,pass);
+			CallableStatement st = cn.prepareCall("CALL PRO_Listar_Provincias");
+			
+			
+			ResultSet resultado = st.executeQuery();
+
+			while(resultado.next()){
+				
+				Provincias aux = new Provincias();
+				
+				aux.setIdProvincia(resultado.getInt("id"));
+				aux.setNombreProvincia(resultado.getString("provincia"));
+				x.add(aux); 
+				
+			}
+			
+		}
+		catch(Exception e) {
+			
+			e.printStackTrace();
+			
+		}
+		
+		return x;
+		
+	}
 
 
 }

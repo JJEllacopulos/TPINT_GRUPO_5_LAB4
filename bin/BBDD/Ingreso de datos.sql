@@ -7,7 +7,7 @@ CALL PRO_ingresar_datos_tipo_usuario
 	'ADMIN',
 	'Usuario administrador'
 );
-provincias
+
 
  CALL PRO_ingresar_datos_tipo_usuario 
  (
