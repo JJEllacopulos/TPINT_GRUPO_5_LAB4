@@ -47,8 +47,8 @@
 <body>
 
 	<jsp:include page="MenuAdmin.jsp"></jsp:include>
-	
-<form action="Servlet_Prestamo_Administrador" method="get">	    	
+	<form action="Servlet_Prestamo_Administrador" method="get">	  
+ 	
 	<%
 	
 	ArrayList<Prestamo> lista_pre = new ArrayList<Prestamo>();
@@ -96,13 +96,13 @@
 			
 			    </tr>
 		  	</thead>
-		  	
+		  	</form>
 		  	<tbody>
 		  
 		    <%if(lista_pre!=null){
 		  		 for(Prestamo e : lista_pre)
 				{%>
-		
+		<form action="Servlet_Prestamo_Administrador" method="get">	   
 			    <tr>
 									   
 						<td><%=e.getId_prestamo()%> <input type="hidden" name="id_prestamo" value="<%= e.getId_prestamo() %>"></td>
@@ -110,8 +110,7 @@
 						<td><%=e.getInporte_pedido()%></td>
 						<td><%=e.getCantidad_cuotas()%></td>
 						<td><%=e.getPago_x_mes()%></td>
-
-						<% if (!e.getAprobacion()&& e.getEstado()){  %>
+						<% if (e.getAprobacion()!= true && e.getEstado()==true){  %>
 						<td> <button type="submit" class="btn btn-primary btnDD" name="btn_Aceptar_prestamo" >Aceptar</button> </td>
 						<td> <button type="submit" class="btn btn-primary btnDD" name="btn_Rechasar_prestamo" >Rechazar</button> </td>
 						<%} 
@@ -128,15 +127,15 @@
 				<td> <button type="button" class="btn btn-danger btnDD" name="btnPadeuda" >Adeuda: <%= e.getCuotas_a_pagar() %> cuotas</button> </td>
 				<td> <button type="button" class="btn btn-danger btnDD" name="btnPadeuda2" >Total Deuda: $ <%=e.getMonto_actual() %></button> </td>
 				<%} %>
-				
-
+					
 			    </tr>
+			      	</form>
 		    <%} 
 		  	}%>
-		    
+		  
 			</tbody>
 		</table>
 	</div>
-	</form>
+
 </body>
 </html>
