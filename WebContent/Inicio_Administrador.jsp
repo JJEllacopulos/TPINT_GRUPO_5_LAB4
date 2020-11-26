@@ -19,9 +19,13 @@ usuario = (Usuario)session.getAttribute("userSession");
 
 
 	<style>
-		.centrar {
-		  margin: auto;
-		  display: block;
+	.centrar {
+  margin: auto;
+  
+  display: block;
+	margin-top: 20px;
+  margin-left: 20%;
+}
 		}
 		
 		
@@ -69,7 +73,7 @@ usuario = (Usuario)session.getAttribute("userSession");
 <body>
 	
 	<jsp:include page="MenuAdmin.jsp"></jsp:include>
-	
+	<div class="centrar">
 	<div class="titulo" >
 	<h1> <b> <a class="navbar-brand" href="#">Bienvenido <%=usuario.getNombre_usuario() %></a> </b> </h1>
 	<h2> <a class="navbar-brand" href="#">Menu para administradores</a> </h2>
@@ -115,6 +119,6 @@ usuario = (Usuario)session.getAttribute("userSession");
 	<br>
 	
 	</div>
-	
+	</div>
 </body>
 </html>

@@ -88,8 +88,8 @@
 						<td><%=e.getCantidad_cuotas()%></td>
 						<td><%=e.getPago_x_mes()%></td>
 						
-						<td> <button type="submit" class="btn btn-primary btnDD" name="btn_Aceptar_prestamo" >Aceptar</button> </td>
-						<td> <button type="submit" class="btn btn-primary btnDD" name="btn_Rechasar_prestamo" >Rechasar</button> </td>
+						<td> <button type="submit" class="btn btn-success btnDD" name="btn_Aceptar_prestamo" >Aceptar</button> </td>
+						<td> <button type="submit" class="btn btn-danger btnDD" name="btn_Rechasar_prestamo" >Rechazar</button> </td>
 				
 				
 					</form>

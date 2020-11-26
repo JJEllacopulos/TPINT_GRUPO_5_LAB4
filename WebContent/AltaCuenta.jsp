@@ -16,7 +16,13 @@
  	
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <Style>
-
+.centrar {
+  margin: auto;
+  
+  display: block;
+	margin-top: 20px;
+  margin-left: 45%;
+}
 </Style>
 <title>Alta de cuenta</title>
 </head>
@@ -67,7 +73,7 @@ if(!usuario.getTipo_usuario().equals("ADMIN")){
       </div>
        <div class="form-row mt-4">
       
-      <input type="submit"  class="btn btn-success" value="Confirmar" name="btnCrearCuenta">
+      <input type="submit"  class="btn btn-success centrar" value="Confirmar" name="btnCrearCuenta">
 	
     </div>
       </div>
