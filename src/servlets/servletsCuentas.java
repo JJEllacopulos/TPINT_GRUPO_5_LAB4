@@ -163,7 +163,7 @@ public class servletsCuentas extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/ModificarCuenta.jsp"); 
 	       rd.forward(request, response);
 		}		
-		
+				
 		if(request.getParameter("btnEliminarCuenta")!=null) {
 			
 			String s = (String)request.getQueryString() ;
