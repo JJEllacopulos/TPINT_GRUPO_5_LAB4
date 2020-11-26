@@ -110,6 +110,7 @@
 						<td><%=e.getInporte_pedido()%></td>
 						<td><%=e.getCantidad_cuotas()%></td>
 						<td><%=e.getPago_x_mes()%></td>
+
 						<% if (!e.getAprobacion()&& e.getEstado()){  %>
 						<td> <button type="submit" class="btn btn-primary btnDD" name="btn_Aceptar_prestamo" >Aceptar</button> </td>
 						<td> <button type="submit" class="btn btn-primary btnDD" name="btn_Rechasar_prestamo" >Rechazar</button> </td>
@@ -128,6 +129,14 @@
 				<td> <button type="button" class="btn btn-danger btnDD" name="btnPadeuda2" >Total Deuda: $ <%=e.getMonto_actual() %></button> </td>
 				<%} %>
 					
+
+						
+						<td> <button type="submit" class="btn btn-success btnDD" name="btn_Aceptar_prestamo" >Aceptar</button> </td>
+						<td> <button type="submit" class="btn btn-danger btnDD" name="btn_Rechasar_prestamo" >Rechazar</button> </td>
+				
+				
+					</form>
+
 			    </tr>
 		    <%} 
 		  	}%>

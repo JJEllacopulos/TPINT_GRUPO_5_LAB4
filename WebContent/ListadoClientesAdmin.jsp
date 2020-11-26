@@ -173,10 +173,10 @@ if(filas > 0){%>
 	    <%if(listaU!=null){
 	  		 for(Usuario e : listaU)
 			{%>
-	
+	<form id="formulario" action="servletsCliente" method="get">
 		<tr>
 		
-			<form action="servletsCliente" method="get">
+			
 				<td><%=e.getNombre_usuario() %> <input type="hidden" name="nombreUsuario" value="<%=e.getNombre_usuario() %>"></td>
 				<td><%=e.getNombre_real() %></td>
 				<td><%=e.getApellido_real()%></td>
@@ -186,7 +186,10 @@ if(filas > 0){%>
 				<td><%=e.getDireccion().getProvincia()%></td>
 		
 				<td>
-				
+				<!-- Button trigger modal -->
+
+
+
 					<div class="btn-group dropright">
 						<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							Opciones
@@ -194,16 +197,15 @@ if(filas > 0){%>
 						<div class="dropdown-menu">
 							<!-- Dropdown menu links -->
 							<li><button type="submit" class="btn btn-primary btnDD" name="btnModificar" >Modificar</button></li>
-							<li><button type="submit" class="btn btn-danger btnDD" name="btnEliminar">Eliminar</button></li>
+							<li><button type="submit" onclick="return ConfirmDelete();" value="1" class="btn btn-danger btnDD" name="btnEliminar">Eliminar</button></li>
 							<li><button type="submit" class="btn btn-success btnDD" name="btnDetalles">Ver detalles</button></li>
 						</div>
 					</div>
 				
 				</td>
-		
-			</form>
-	    </tr>
-	    
+				<!-- Modal -->
+				    </tr>
+	    </form>
 	    <%} %>
 		<section class="paginacion">
 			<ul>
@@ -240,13 +242,13 @@ if(filas > 0){%>
 					<div class="dropdown-menu">
 						<!-- Dropdown menu links -->
 					    <li><button type="submit" class="btn btn-primary btnDD" name="btnModificar" >Modificar</button></li>
-					    <li><button type="submit" class="btn btn-danger btnDD" name="btnEliminar">Eliminar</button></li>
+							<li><button type="submit" onclick="return ConfirmDelete();" value="1" class="btn btn-danger btnDD" name="btnEliminar">Eliminar</button></li>
 					    <li><button type="submit" class="btn btn-success btnDD" name="btnDetalles">Ver detalles</button></li>
 					</div>
 				</div>
 			
 			</td>
-	
+
 		</form>
 	    </tr>
 	    
@@ -255,6 +257,22 @@ if(filas > 0){%>
 	  </tbody>
 	</table>
 	</div>
-	<script>$('.alert').alert()</script>
+	<script>
+
+	$('.alert').alert()
+
+    function ConfirmDelete() 
+    { 
+     var x = confirm("¿Estás seguro que deseas eliminar?"); 
+     if (x) 
+      return true; 
+     else 
+     return false; 
+    } 
+
+
+
+
+</script>
 </body>
 </html>

@@ -196,4 +196,16 @@ create table movimiento_x_prestamo
 
 );
 
+CREATE TABLE IF NOT EXISTS `provincias` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `provincia` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
+
+CREATE TABLE IF NOT EXISTS `localidades` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_privincia` int(11) NOT NULL,
+  `localidad` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2383 ;
 

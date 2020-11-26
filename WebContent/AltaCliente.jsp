@@ -1,13 +1,21 @@
 <%@page import="Entidad.Usuario"%>
+<%@page import="Entidad.Localidad"%>
+<%@page import="Entidad.Provincias"%>
+<%@page import="Negocio.NegocioUsuario"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="javax.servlet.http.HttpSession"%>
 <%@page import="javax.servlet.RequestDispatcher"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+ pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
 <head>
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
  	
@@ -24,16 +32,7 @@
 </head>
 <body>
 <jsp:include page="MenuAdmin.jsp"></jsp:include>
-<%
 
-/*Usuario usuario = new Usuario();
-usuario = (Usuario)session.getAttribute("userSession");
-if(!usuario.getTipo_usuario().equals("ADMIN")){
-	RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp");
-	rd.forward(request, response);
-}
-*/
-%>
 
 <% 
 if(request.getAttribute("filas")!=null){
@@ -44,7 +43,7 @@ int filas = (int)request.getAttribute("filas");
 	
 
 if(filas > 0){%>
-<div class="alert alert-primary alert-dismissible fade show" role="alert">
+<div id="hola" class="alert alert-primary alert-dismissible fade show" role="alert">
   <strong>Hola!</strong> Se creó el usuario correctamente.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
@@ -54,8 +53,11 @@ if(filas > 0){%>
 <div class="container mt-5">
 <form action="servletsCliente" method="post">
  <div class="form-row mt-4">
+
     <div class="col-6">
-      <input type="text" class="form-control" name="txtUsuario" placeholder="Nombre de usuario" maxlength="20" title="Ingrese un usuario valido" required>
+
+    	      <input type="text" class="form-control" name="txtUsuario" placeholder="Nombre de usuario" maxlength="20" title="Ingrese un usuario valido" required>
+    	
     </div>
     <div class="col-6">
       <input type="password" class="form-control" name="txtPassword" placeholder="Contraseña" minlength="4" maxlength="20" title="Ingrese una contraseña valida" required>
@@ -69,6 +71,7 @@ if(filas > 0){%>
       <input type="text" class="form-control" name="txtTelefono" placeholder="Teléfono" pattern="[0-9]{6,15}" title="Ingrese un telefono valido " required>
     </div>
   </div>
+
    <div class="form-row mt-4">
     <div class="col-6">
       <input type="text" class="form-control" name="txtCuil" placeholder="Cuil" pattern="[0-9]{9,11}" title="Ingrese un Cuil valido " required>
@@ -108,10 +111,25 @@ if(filas > 0){%>
       </div>
                 <div class="form-row mt-4">
     <div class="col-4">
-    <input type="text" class="form-control" name="txtPais" placeholder="Pais" title="Ingrese un pais valido" pattern="[a-zA-Záéíóú,. '-]{2,49}" required>
+    <input type="text" readonly="true" class="form-control" name="txtPais" placeholder="Pais" value="Argentina" title="Ingrese un pais valido" pattern="[a-zA-Záéíóú,. '-]{2,49}" required>
     </div>
     <div class="col-4">
-      <input type="text" class="form-control" name="txtProvincia" placeholder="Provincia" title="Ingrese una provincia valida" pattern="[a-zA-Záéíóú,. '-]{2,49}" required>
+          <select  class="form-control" name="ddlProvincia">
+<option selected>Seleccionar provincia</option>
+	 <%
+	 NegocioUsuario usuarioNegocio = new NegocioUsuario();
+		 	ArrayList<Provincias> listaProvincias =  usuarioNegocio.Listar_Provincias();
+			
+		
+		 if(listaProvincias!=null)
+		 for(Provincias e : listaProvincias)
+		{		
+	%>	
+	<option value="<%=e.getNombreProvincia()%>"><%=e.getNombreProvincia()%></option>
+		<%  } %>
+		
+		
+		</select>
     </div>
        <div class="col-4">
       <input type="text" class="form-control" name="txtLocalidad" placeholder="Localidad" title="Ingrese una localidad valida" required>
@@ -121,9 +139,11 @@ if(filas > 0){%>
   
 </form>
 
+   <script>
+   $('.alert').alert()
 
+ </script>
 
-<script>$('.alert').alert()</script>
 </div>
 </body>
 </html>

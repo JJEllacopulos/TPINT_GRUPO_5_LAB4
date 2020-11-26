@@ -857,3 +857,31 @@ DELIMITER $$
 	
 
 END$$
+
+DELIMITER $$
+    CREATE PROCEDURE PRO_Listar_Localidades(
+	
+		ing_id_provincia INT
+        
+		)
+    
+	BEGIN
+	
+		SELECT * FROM localidades WHERE id_privincia = ing_id_provincia;
+	
+
+END$$
+
+DELIMITER $$
+    CREATE PROCEDURE PRO_Listar_Provincias(
+        
+		)
+    
+	BEGIN
+	
+		SELECT * FROM provincias;
+	
+
+END$$
+
+DELIMITER $$

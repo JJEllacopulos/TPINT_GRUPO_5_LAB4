@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import Dao.Dao_Usuario;
 import Entidad.Contacto;
 import Entidad.Direccion;
+import Entidad.Localidad;
+import Entidad.Provincias;
 import Entidad.Usuario;
 
 public interface InterfaceUsuario {
@@ -22,4 +24,6 @@ public interface InterfaceUsuario {
 	public void SPEliminarDireccionUsuario(String usuarioNombre);
 	public void SPEliminarContactoUsuario(String usuarioNombre);
 	boolean StringIsNumeric(String nombre_usuario);
+	public ArrayList<Localidad> Listar_Localidades (int idProvincia);
+	public ArrayList<Provincias> Listar_Provincias();
 }

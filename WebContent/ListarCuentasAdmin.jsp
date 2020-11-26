@@ -16,9 +16,20 @@
 	src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 
 <script type="text/javascript">
+
 	$(document).ready(function() {
 		$('#table_id').DataTable();
 	});
+	
+	   function ConfirmDelete() 
+	    { 
+	     var x = confirm("¿Estás seguro que deseas eliminar?"); 
+	     if (x) 
+	      return true; 
+	     else 
+	     return false; 
+	    } 
+	    $('.alert').alert()
 </script> 
 
 </head>
@@ -122,7 +133,9 @@ listaC = (ArrayList<Cuenta>)request.getAttribute("listaC");
       <td><%=e.getAlias() %></td>
       <td><%=e.getTipo_Cuenta() %></td>
       <td><%=e.getSaldo() %> </td>
-      <td><input type="submit" class="btn btn-danger boton" value="Eliminar" name="btnEliminarCuenta" /></td>
+      
+      
+      <td><button type="submit"  class="btn btn-danger btnDD" name="btnEliminarCuenta">Eliminar</button></td>    
       <td><input type="submit" class= "btn btn-primary" value="Modificar" name="btnModificarCuenta" /></td>
        </tr>
    
@@ -135,7 +148,10 @@ listaC = (ArrayList<Cuenta>)request.getAttribute("listaC");
 
 
 </div>
-<script>$('.alert').alert()</script>
+<script>
+
+ 
+</script>
 </div>
 
 </body>
