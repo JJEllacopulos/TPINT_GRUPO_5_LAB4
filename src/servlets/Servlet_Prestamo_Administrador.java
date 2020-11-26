@@ -76,7 +76,7 @@ public class Servlet_Prestamo_Administrador extends HttpServlet {
 				e_movimiento.setTipo_movimiento("Prest");
 				e_movimiento.setDetalles("PrestNº "+e_prestamo.getId_prestamo()+" de "+ e_prestamo.getCantidad_cuotas() + " cuotas");
 				//Double importe = Double.parseDouble(request.getParameter("pagoxmes_prestamo"));
-				e_movimiento.setImporte(e_prestamo.getInporte_pedido());
+				e_movimiento.setImporte(8888.0);//e_prestamo.getInporte_pedido());
 				n_movimiento.SPAltaMovimiento(e_movimiento, new SimpleDateFormat("yyyy-MM-dd").format(myDate));	
 			 
 			

@@ -128,14 +128,7 @@
 				<td> <button type="button" class="btn btn-danger btnDD" name="btnPadeuda" >Adeuda: <%= e.getCuotas_a_pagar() %> cuotas</button> </td>
 				<td> <button type="button" class="btn btn-danger btnDD" name="btnPadeuda2" >Total Deuda: $ <%=e.getMonto_actual() %></button> </td>
 				<%} %>
-					
-
-						
-						<td> <button type="submit" class="btn btn-success btnDD" name="btn_Aceptar_prestamo" >Aceptar</button> </td>
-						<td> <button type="submit" class="btn btn-danger btnDD" name="btn_Rechasar_prestamo" >Rechazar</button> </td>
 				
-				
-					</form>
 
 			    </tr>
 		    <%} 

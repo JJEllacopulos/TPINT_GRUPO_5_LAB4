@@ -502,6 +502,7 @@ CALL PRO_ingresar_tipo_cuenta
 );
 
 
+
 CALL PRO_ingresar_cuenta 
 (    
     '5762860873528745',
