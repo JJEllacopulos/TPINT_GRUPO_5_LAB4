@@ -79,6 +79,83 @@
 <body>
 
 	<jsp:include page="MenuAdmin.jsp"></jsp:include>
+<%	if(request.getAttribute("usuarioDetalles")!=null){
+			Usuario usuarioDetalles = (Usuario)request.getAttribute("usuarioDetalles");
+	 %>	
+	 
+
+	
+	  <div id="myModal" class="modal fade">
+            <div class="modal-dialog modal-login">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Detalles del usuario</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div> 
+                    <div class="modal-body">
+                        <div class="container centrar">
+    <div class="row">
+      <label class="text-dark">Nombre de usuario: </label><label class="text-success ml-2"><%= usuarioDetalles.getNombre_usuario()%></label>
+    </div>
+    <div class="row">
+         <label class="text-dark">Email: </label><label class="text-success ml-2"><%= usuarioDetalles.getContacto().getEmail()%></label>
+   
+    </div>
+    <div class="row">
+       <label class="text-dark">Teléfono: </label><label class="text-success ml-2"><%=usuarioDetalles.getContacto().getTelefono()%></label>
+     
+    </div>
+    <div class="row">
+       <label class="text-dark">Cuil: </label><label class="text-success ml-2"><%=usuarioDetalles.getCuil()%></label>
+    </div>
+
+    <div class="row">
+       <label class="text-dark">Dni: </label><label class="text-success ml-2"><%=usuarioDetalles.getDni()%></label>
+    
+    </div>
+    <div class="row">
+<label class="text-dark">Apellido: </label><label class="text-success ml-2"><%=usuarioDetalles.getApellido_real()%></label>
+			
+    </div>
+
+   <div class="row">
+   <label class="text-dark">Nombre: </label><label class="text-success ml-2"><%=usuarioDetalles.getNombre_real()%></label>
+   
+    </div>
+    <div class="row">
+       <label class="text-dark">Género: </label><label class="text-success ml-2"><%=usuarioDetalles.getSexo()%></label>
+   
+   </div>
+ 
+    <div class="row">
+       <label class="text-dark">Fecha nacimiento: </label><label class="text-success ml-2"><%=usuarioDetalles.getFecha_nacimiento()%></label>
+    </div>
+    
+    <div class="row">
+       <label class="text-dark">Calle: </label><label class="text-success ml-2"><%=usuarioDetalles.getDireccion().getCalle()%></label>
+    </div>
+    <div class="row">
+       <label class="text-dark">Altura: </label><label class="text-success ml-2"><%=usuarioDetalles.getDireccion().getAltura()%></label>
+    </div>
+      <div class="row">
+       <label class="text-dark">Calle: </label><label class="text-success ml-2"><%=usuarioDetalles.getDireccion().getPais()%></label>
+    </div>
+    <div class="row">
+           <label class="text-dark">Provincia: </label><label class="text-success ml-2"><%=usuarioDetalles.getDireccion().getProvincia()%></label>
+      </div>
+       <div class="row">
+       <label class="text-dark">Localidad: </label><label class="text-success ml-2"><%=usuarioDetalles.getDireccion().getLocalidad()%></label>
+    </div>
+
+  </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+	
+	 
+	 <% }%>
 	<% 
 if(request.getAttribute("filas")!=null){
 	
@@ -258,7 +335,9 @@ if(filas > 0){%>
 	</table>
 	</div>
 	<script>
-
+	$( document ).ready(function() {
+	    $('#myModal').modal('toggle')
+	});
 	$('.alert').alert()
 
     function ConfirmDelete() 

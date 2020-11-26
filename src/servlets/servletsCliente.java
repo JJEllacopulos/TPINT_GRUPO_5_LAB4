@@ -134,6 +134,19 @@ public class servletsCliente extends HttpServlet {
 			
 		}
 		
+		if(request.getParameter("btnDetalles")!=null) {
+			String nombreUsuario = request.getParameter("nombreUsuario");
+		
+		usuario = usuarioNegocio.Obtener_usuario(nombreUsuario);
+
+			request.setAttribute("usuarioDetalles", usuario);
+			RequestDispatcher rd = request.getRequestDispatcher("Servlet_Menu_Administrador?link_3=1");    
+	        rd.forward(request, response); 
+			
+		}
+		
+		
+		
 		if(request.getParameter("btnBuscarCliente")!=null) {
 			RequestDispatcher rd = request.getRequestDispatcher("/ListadoClientesAdmin.jsp"); 
 			String nombreUsuario = request.getParameter("txtBuscarCliente");
