@@ -73,12 +73,13 @@
 	%>	
 	<option value="<%= e.getCbu_cuenta() %>">Alias: <%=e.getAlias()%> - Saldo: <%= e.getSaldo() %></option>	
 		<% } %>
+<button type="submit" onclick="return ConfirmDelete();" value="1" class="btn btn-success" name="btnConfirmarPagoPrestamo">PAGAR CUOTA</button>
 		
 		</select>
     </div>    
     <div class="col-6">  
     <br> <br>
-    &nbsp&nbsp&nbsp <input type="submit"  class="btn btn-success" value="PAGAR CUOTA" name="btnConfirmarPagoPrestamo">
+    &nbsp&nbsp&nbsp <button type="submit" onclick="return ConfirmDelete();" value="1" class="btn btn-success" name="btnConfirmarPagoPrestamo">PAGAR CUOTA</button>
     &nbsp<input type="submit"  class="btn btn-primary btnDD" value="VOLVER" name="btnVolverListarPrestamo">
     <br> <br>
          <% 
@@ -106,8 +107,18 @@ if(request.getAttribute("MensajeConfirmacion")!=null){%>
      
 </form>
 </div>
-  
-<script>$('.alert').alert()</script>
+  <script>
+function ConfirmDelete() 
+{ 
+ var x = confirm("¿Estás seguro que deseas pagar la cuota?"); 
+ if (x) 
+  return true; 
+ else 
+ return false; 
+} 
+$('.alert').alert()
+</script>
+
 
 </body>
 </html>

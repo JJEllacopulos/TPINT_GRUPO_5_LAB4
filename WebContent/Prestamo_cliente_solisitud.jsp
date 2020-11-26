@@ -98,11 +98,12 @@
 	    	<select  name="ddl_Cuotas" class="form-control">
 				
 				<option value= "<%= "1" %>" ><%= 1 %></option>
-				<option value= "<%= "2" %>" ><%= 2 %></option>
-				<option value= "<%= "4" %>" ><%= 4 %></option>
-				<option value= "<%= "8" %>" ><%= 8 %></option>
+				<option value= "<%= "2" %>" ><%= 3 %></option>
+				<option value= "<%= "4" %>" ><%= 6 %></option>
+				<option value= "<%= "8" %>" ><%= 9 %></option>
 				<option value= "<%= "12" %>" ><%= 12 %></option>
-				
+				<option value= "<%= "12" %>" ><%= 18 %></option>
+				<option value= "<%= "12" %>" ><%= 36 %></option>
 			</select>
 	    	
 			<!-- <input type="text" class="form-control" name="txt_Cuotas" placeholder=""> -->
@@ -114,11 +115,21 @@
 	
 	<div style="float: left; height: 100px; width: 25%;"></div>
 	<div style="float: left; height: 100px; width: 50%;">   
-	<input type="submit"  class="btn btn-success" value="Confirmar" name="btn_Crear_Solisitar_Prestamo">
-	</div> 
+	<button type="submit" onclick="return ConfirmDelete();" value="1" class="btn btn-success" name="btn_Crear_Solisitar_Prestamo">Confirmar</button>
+		</div> 
 	<div style="float: left; height: 100px; width: 25%;"></div>
 			
 	</form>
-
+<script>
+function ConfirmDelete() 
+{ 
+ var x = confirm("¿Estás seguro que deseas solicitar un prestamo?"); 
+ if (x) 
+  return true; 
+ else 
+ return false; 
+} 
+$('.alert').alert()
+</script>
 </body>
 </html>
