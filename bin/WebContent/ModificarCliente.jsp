@@ -90,7 +90,7 @@ usuario = (Usuario)request.getAttribute("usuario");
       <input type="date" class="form-control" value="<%=usuario.getFecha_nacimiento()%>"  name="txtFechaNacimiento" >
     </div>
     <div class="col-6">
-      <input type="text" class="form-control" value="<%=usuario.getNacionalidad()%>" name="txtNacionalidad" placeholder="Nacionalidad">
+      
     </div>
       </div>
           <div class="form-row mt-4">

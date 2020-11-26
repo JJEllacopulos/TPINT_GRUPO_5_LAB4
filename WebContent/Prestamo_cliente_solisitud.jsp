@@ -43,7 +43,7 @@
 		<label for="inputState">CBU de la cuenta:</label>
 	
     	<select  name="ddl_cuenta" class="form-control">
-	       <option selected>Seleccionar...</option>
+	       
 	       <%
 
 			Usuario usuario = new Usuario();
@@ -98,12 +98,12 @@
 	    	<select  name="ddl_Cuotas" class="form-control">
 				
 				<option value= "<%= "1" %>" ><%= 1 %></option>
-				<option value= "<%= "2" %>" ><%= 3 %></option>
-				<option value= "<%= "4" %>" ><%= 6 %></option>
-				<option value= "<%= "8" %>" ><%= 9 %></option>
+				<option value= "<%= "3" %>" ><%= 3 %></option>
+				<option value= "<%= "6" %>" ><%= 6 %></option>
+				<option value= "<%= "9" %>" ><%= 9 %></option>
 				<option value= "<%= "12" %>" ><%= 12 %></option>
-				<option value= "<%= "12" %>" ><%= 18 %></option>
-				<option value= "<%= "12" %>" ><%= 36 %></option>
+				<option value= "<%= "18" %>" ><%= 18 %></option>
+				<option value= "<%= "24" %>" ><%= 24 %></option>
 			</select>
 	    	
 			<!-- <input type="text" class="form-control" name="txt_Cuotas" placeholder=""> -->

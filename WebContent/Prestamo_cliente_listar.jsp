@@ -72,10 +72,13 @@
 						<td><%=e.getPago_x_mes()%> <input type="hidden" name="pagoxmes_prestamo" value="<%= e.getPago_x_mes() %>"> </td>
 						<td><%=e.getCuotas_a_pagar()%></td>
 						<td><%=e.getMonto_actual()%> <input type="hidden" name="MontoActual" value="<%=e.getMonto_actual()%>"></td>
-						
+						<%if ( e.getCuotas_a_pagar()>0 ){ %>
 						<td> <button type="submit" class="btn btn-primary btnDD" name="btn_Pagar_prestamo" >Pagar cuota</button> </td>
-				
-				
+						<%}
+						else {
+						 %>
+						 <td> <button type="button" class="btn btn-success" name="btn_prestamo_p" >Abonado </button> </td>
+						<%} %>
 					</form>
 			    </tr>
 		    <%} 

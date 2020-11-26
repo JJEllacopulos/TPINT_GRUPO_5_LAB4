@@ -47,7 +47,7 @@ if(!usuario.getTipo_usuario().equals("ADMIN")){
     </div>
     <div class="col-6">
       <select name="ddl_tipo_cuenta" class="form-control" name="ddlTipoCuenta">
-<option selected>Seleccionar...</option>
+
 	 <%
 	 NegocioCuentas cuentaNegocio = new NegocioCuentas();
 		 	ArrayList<TipoCuenta> listaTipoCuenta =  new ArrayList<TipoCuenta>();

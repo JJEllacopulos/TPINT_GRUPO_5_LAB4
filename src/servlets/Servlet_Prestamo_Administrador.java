@@ -66,6 +66,7 @@ public class Servlet_Prestamo_Administrador extends HttpServlet {
 			Movimiento e_movimiento = new Movimiento();
 			NegocioMovimiento n_movimiento = new NegocioMovimiento();
 			Date myDate = new Date();
+			Cuenta cuenta = new Cuenta();
 			
 			int id_prestamo = Integer.parseInt(request.getParameter("id_prestamo"));
 			
@@ -76,10 +77,16 @@ public class Servlet_Prestamo_Administrador extends HttpServlet {
 				e_movimiento.setTipo_movimiento("Prest");
 				e_movimiento.setDetalles("PrestNº "+e_prestamo.getId_prestamo()+" de "+ e_prestamo.getCantidad_cuotas() + " cuotas");
 				//Double importe = Double.parseDouble(request.getParameter("pagoxmes_prestamo"));
-				e_movimiento.setImporte(8888.0);//e_prestamo.getInporte_pedido());
+				e_movimiento.setImporte(e_prestamo.getInporte_pedido());
 				n_movimiento.SPAltaMovimiento(e_movimiento, new SimpleDateFormat("yyyy-MM-dd").format(myDate));	
-			 
-			
+				
+			 // Actualiza saldo
+				cuenta = n_cuentaNegocio.Obtener_cuenta(e_prestamo.getCbu_cuenta_deudor());
+				Double saldo = cuenta.getSaldo() + e_prestamo.getInporte_pedido();
+				cuenta.setSaldo(saldo);
+				n_cuentaNegocio.SPModificarCuenta(cuenta);  
+				
+				
 				ArrayList<Prestamo> lista = n_prestamo.Listar_todos_prestamos();
 				request.setAttribute("lista_prestamos", lista);
 			
