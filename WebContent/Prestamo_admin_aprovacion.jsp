@@ -47,7 +47,8 @@
 <body>
 
 	<jsp:include page="MenuAdmin.jsp"></jsp:include>
-		    	
+	
+<form action="Servlet_Prestamo_Administrador" method="get">	    	
 	<%
 	
 	ArrayList<Prestamo> lista_pre = new ArrayList<Prestamo>();
@@ -56,6 +57,29 @@
 	lista_pre = (ArrayList<Prestamo>)request.getAttribute("lista_prestamos");
 	
 	%>
+		<br><br>
+		
+	<div class="form-row mt-2" >
+	<div class="col-3"> 
+	&nbsp
+	</div>
+	
+    <div class="col-3">  
+    <h3>Filtros:</h3>
+	<input type="checkbox" name="cbox1" value="Todos"> <label for="cbox1">Negados</label>
+	<input type="checkbox" name="cbox2" value="aprobar"> <label for="cbox2">A aprobar</label>
+	<input type="checkbox" name="cbox3" value="pagos"> <label for="cbox3">Pagos</label>	
+	<input type="checkbox" name="cbox4" value="deuda"> <label for="cbox4">Con deuda</label> 
+	<button type="submit" class="btn btn-danger btnDD" name="btnLimpiarFiltros" style="width: 32px; ">X</button>				
+	
+	</div>
+	
+	<div class="col-3"> 
+	<input type="text" class="form-control" name="txtCbuCuenta" placeholder="CBU cuenta" title="Ingrese un CBU" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	<button type="submit" class="btn btn-primary btnDD" name="btn_buscarXcbu" style="width: 188px; ">Buscar</button>
+	</div>
+		</div>
 		
 	<div class="container">
 		<table class="table ">
@@ -63,11 +87,11 @@
 			    <tr>
 			    	
 			    	<th scope="col">ID</th>
-					<th scope="col">CBU</th>
+					<th scope="col">CBU cuenta</th>
 					<th scope="col">Importe pedido</th>
 					<th scope="col">Cantidad de cuotas</th>
 					<th scope="col">Pago por mes</th>
-					<th scope="col"></th>
+					<th scope="col">Estado: </th>
 					<th scope="col"></th>
 			
 			    </tr>
@@ -80,19 +104,30 @@
 				{%>
 		
 			    <tr>
-					<form action="Servlet_Prestamo_Administrador" method="get">
-				   
+									   
 						<td><%=e.getId_prestamo()%> <input type="hidden" name="id_prestamo" value="<%= e.getId_prestamo() %>"></td>
 						<td><%=e.getCbu_cuenta_deudor()%></td>
 						<td><%=e.getInporte_pedido()%></td>
 						<td><%=e.getCantidad_cuotas()%></td>
 						<td><%=e.getPago_x_mes()%></td>
-						
+						<% if (!e.getAprobacion()&& e.getEstado()){  %>
 						<td> <button type="submit" class="btn btn-primary btnDD" name="btn_Aceptar_prestamo" >Aceptar</button> </td>
-						<td> <button type="submit" class="btn btn-primary btnDD" name="btn_Rechasar_prestamo" >Rechasar</button> </td>
-				
-				
-					</form>
+						<td> <button type="submit" class="btn btn-primary btnDD" name="btn_Rechasar_prestamo" >Rechazar</button> </td>
+						<%} 
+						else if (!e.getEstado()&& e.getAprobacion()){
+						%>
+						<td> <button type="button" class="btn btn-success" name="btnPpago" >Prestamo pago</button> </td>
+						<%} 
+						if (!e.getAprobacion()&&!e.getEstado()){
+						 %>
+						 <td> <button type="button" class="btn btn-danger btnDD" name="btndene" >Prestamo rechazado</button> </td>
+				<%}
+				if ( e.getMonto_actual()>0 && e.getAprobacion() ){			
+				 %>
+				<td> <button type="button" class="btn btn-danger btnDD" name="btnPadeuda" >Adeuda: <%= e.getCuotas_a_pagar() %> cuotas</button> </td>
+				<td> <button type="button" class="btn btn-danger btnDD" name="btnPadeuda2" >Total Deuda: $ <%=e.getMonto_actual() %></button> </td>
+				<%} %>
+					
 			    </tr>
 		    <%} 
 		  	}%>
@@ -100,6 +135,6 @@
 			</tbody>
 		</table>
 	</div>
-	
+	</form>
 </body>
 </html>

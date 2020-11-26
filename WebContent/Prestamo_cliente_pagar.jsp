@@ -1,7 +1,9 @@
 <%@page import="Entidad.Usuario"%>
 <%@page import="Entidad.TipoCuenta"%>
 <%@page import="Entidad.Cuenta"%>	
+<%@page import="Entidad.Prestamo"%>
 <%@page import="Negocio.NegocioCuentas"%>
+<%@page import="Negocio.Negocio_Prestamo"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="javax.servlet.http.HttpSession"%>
 <%@page import="javax.servlet.RequestDispatcher"%>
@@ -52,7 +54,15 @@
     </div>
     <div class="col-6">
     	<h4>Deuda Final:</h4>
-   <input type="text" class="form-control" value="<%=request.getAttribute("DeudaFinal")%>" name="DeudaFinal" placeholder="Saldo"  title="Deuda" readonly="true" required>
+   <%
+   Prestamo e_prestamo = new Prestamo ();
+   Negocio_Prestamo n_prestamo = new Negocio_Prestamo();
+   e_prestamo = n_prestamo.Obtener_Prestamo((int)request.getAttribute("id_prestamo"));
+   double deuda = 0;
+   if ( e_prestamo.getMonto_actual()!=null)deuda = e_prestamo.getMonto_actual();
+    %>
+    <input type="hidden" name="DeudaFinal" value="">
+   <input type="text" class="form-control" value="<%= deuda %>" name="DeudaFinal2" placeholder="Saldo"  title="Deuda" readonly="true" required>
     </div>
     </div>
     

@@ -54,7 +54,9 @@ public class servletsCuentas extends HttpServlet {
 		
 		if(request.getParameter("btnCrearCuenta")!=null) {
 			double a = 50;
-			long cbuCuenta = 0;
+			String cbuCuenta = "0";
+			long cbuCuenta1 = 0;
+			long cbuCuenta2 = 0;
 			boolean c = true;		
 			
 			usuario = usuarioNegocio.Obtener_usuario(request.getParameter("txtUsuario"));
@@ -65,14 +67,15 @@ public class servletsCuentas extends HttpServlet {
 				
 			if (Us.size() < 3) {
 			
-			//while (c) {
-				cbuCuenta = (long) Math.floor(Math.random()*(99999999-9999999+1)+9999999);
-				//if (cuentaNegocio.Obtener_cuenta(String.valueOf(cbuCuenta))==null) c=false;	
-			//}
+				//cbuCuenta = (long) Math.floor(Math.random()*(99999999-9999999+1)+9999999);				
+				cbuCuenta1 = (long) Math.floor(Math.random()*(99999999-9999999+1)+9999999);
+				cbuCuenta2 = (long) Math.floor(Math.random()*(99999999-9999999+1)+9999999);
+				
+			cbuCuenta=String.valueOf(cbuCuenta1)+String.valueOf(cbuCuenta2);			
 				
 			Date myDate = new Date();
 			String tipoCuenta = request.getParameter("ddl_tipo_cuenta");
-			cuenta.setCbu_cuenta(String.valueOf(cbuCuenta));
+			cuenta.setCbu_cuenta(cbuCuenta);
 			cuenta.setNombre_usuario(request.getParameter("txtUsuario"));
 			cuenta.setTipo_Cuenta(tipoCuenta);
 			cuenta.setSaldo(10000.00); //
@@ -150,7 +153,7 @@ public class servletsCuentas extends HttpServlet {
 			String[] parts = s.split("&btn");
 			String s1 = parts[0]; 
 			String part2 = parts[1]; 
-			String s2= s1.substring(s1.length()-15, s1.length());
+			String s2= s1.substring(s1.length()-16, s1.length());
 			
 		//cbuCuenta = request.getParameter("cbuCuenta");
 		//cuenta= cuentaNegocio.Obtener_cuenta(cbuCuenta);
@@ -167,7 +170,7 @@ public class servletsCuentas extends HttpServlet {
 			String[] parts = s.split("&btn");
 			String s1 = parts[0]; 
 			String part2 = parts[1]; 
-			String s2= s1.substring(s1.length()-15, s1.length());
+			String s2= s1.substring(s1.length()-16, s1.length());
 			
 		String cbuCuenta;
 		//cbuCuenta = request.getParameter("cbuCuenta");

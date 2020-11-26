@@ -92,7 +92,7 @@ public class Servlet_Prestamo_Cliente extends HttpServlet {
 			String cbu = request.getParameter("cbu_prestamo");
 			
 			Double importe = Double.parseDouble(request.getParameter("pagoxmes_prestamo"));
-			Double DeudaFinal = Double.parseDouble(request.getParameter("MontoActual"));
+			//Double DeudaFinal = Double.parseDouble(request.getParameter("MontoActual"));
 			int id_prestamo = Integer.parseInt(request.getParameter("id_prestamo"));
 			
 			cuenta = n_cuentaNegocio.Obtener_cuenta(cbu);
@@ -105,7 +105,7 @@ public class Servlet_Prestamo_Cliente extends HttpServlet {
 			request.setAttribute("pagoxmes_prestamo", importe);
 			request.setAttribute("id_prestamo", id_prestamo);
 			
-			request.setAttribute("DeudaFinal", e_prestamo.getMonto_actual()*e_prestamo.getCuotas_a_pagar());  
+			//request.setAttribute("DeudaFinal", e_prestamo.getMonto_actual());  
 			
 			
 			RequestDispatcher rd = request.getRequestDispatcher("/Prestamo_cliente_pagar.jsp");   
@@ -121,10 +121,11 @@ public class Servlet_Prestamo_Cliente extends HttpServlet {
 			String cbuPrestamo = request.getParameter("cbu_prestamo");
 			
 			Double importe = Double.parseDouble(request.getParameter("pagoxmes_prestamo"));
-			Double DeudaFinal = Double.parseDouble(request.getParameter("DeudaFinal"));
+			//Double DeudaFinal = Double.parseDouble(request.getParameter("DeudaFinal"));
 			int id_prestamo = Integer.parseInt(request.getParameter("id_prestamo"));
 			
 			cuenta = n_cuentaNegocio.Obtener_cuenta(cbuPrestamo);
+			e_prestamo = n_prestamo.Obtener_Prestamo(id_prestamo);
 
 			String ddl = request.getParameter("ddlCuenta");
 			cuentaDDL = n_cuentaNegocio.Obtener_cuenta(ddl);
@@ -136,18 +137,17 @@ public class Servlet_Prestamo_Cliente extends HttpServlet {
 			request.setAttribute("pagoxmes_prestamo", importe);
 			request.setAttribute("id_prestamo", id_prestamo);
 			
-			request.setAttribute("DeudaFinal", DeudaFinal);
+			//request.setAttribute("DeudaFinal", e_prestamo.getMonto_actual());
 
 			
 			if (cuentaDDL.getSaldo()>=importe) {				
-					
-			e_prestamo = n_prestamo.Obtener_Prestamo(id_prestamo);
+				if (e_prestamo.getCuotas_a_pagar()!= 0) 	{
 			//String cbu = request.getParameter("cbu_prestamo");
 			e_movimiento.setCbu_cuenta(cuentaDDL.getCbu_cuenta());
 			e_movimiento.setTipo_movimiento("Prest");
 			
 			int cuota = (e_prestamo.getCantidad_cuotas()-e_prestamo.getCuotas_a_pagar())+1;
-			e_movimiento.setDetalles("Prestamo cuota " +cuota+"/"+e_prestamo.getCantidad_cuotas());
+			e_movimiento.setDetalles("PrestamoNº"+e_prestamo.getId_prestamo()+" cuota " +cuota+"/"+e_prestamo.getCantidad_cuotas());
 			//Double importe = Double.parseDouble(request.getParameter("pagoxmes_prestamo"));
 			e_movimiento.setImporte(importe*-1);
 			n_movimiento.SPAltaMovimiento(e_movimiento, new SimpleDateFormat("yyyy-MM-dd").format(myDate));		
@@ -178,8 +178,11 @@ public class Servlet_Prestamo_Cliente extends HttpServlet {
 			n_cuentaNegocio.SPModificarCuenta(cuenta);
 			
 			if(aux <= 0) n_prestamo.SPEliminar_Prestamo(id_prestamo);	
+			}
 			
-			request.setAttribute("MensajeConfirmacion","Pago Exitoso");
+			if (e_prestamo.getCuotas_a_pagar()== 0)	request.setAttribute("MensajeConfirmacion","Prestamo al dia");
+				
+			else request.setAttribute("MensajeConfirmacion","Pago Exitoso");
        
 			}
 			 

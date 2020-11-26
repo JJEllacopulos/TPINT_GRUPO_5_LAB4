@@ -19,6 +19,11 @@ public class Negocio_Prestamo {
 		return lista;
 	}
 	
+	public ArrayList<Prestamo> Listar_todos_prestamos() {
+		ArrayList<Prestamo> lista = dao_prestamo.Listar_todos_prestamos();
+		return lista;
+	}
+	
 	public void SPEliminar_Prestamo(int id_prestamo) {
 		dao_prestamo.SPEliminarPrestamo(id_prestamo);
 	}

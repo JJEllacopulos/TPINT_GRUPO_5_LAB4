@@ -503,30 +503,30 @@ CALL PRO_ingresar_tipo_cuenta
 
 
 CALL PRO_ingresar_cuenta 
-(
-    '582461493628608',
+(    
+    '5762860873528745',
     'JoseHernandes',
     'CC',
     '2020-11-12',
     1000.00,
-    'Labado de dinero'
+    'LabadoNuevo'
     
 );
 
 CALL PRO_ingresar_cuenta 
 (
-    '248917267180968',
+    '2489172689021657',
     'JoseHernandes',
     'CA',
     '2020-11-12',
     1000.00,
-    'Operacion para mi hijo'
+    'Operacion'
     
 );
 
 CALL PRO_ingresar_cuenta 
 (
-    '8612772756330675',
+    '8612772713095643',
     'Adrianabanana',
     'CC',
     '2020-11-12',
@@ -537,29 +537,29 @@ CALL PRO_ingresar_cuenta
 
 CALL PRO_ingresar_cuenta 
 (
-    '720716748347099',
+    '7207167426349654',
     'Adrianabanana',
     'CA',
     '2020-11-12',
     1000.00,
-    'KKK'
+    'kilo'
     
 );
 
 CALL PRO_ingresar_cuenta 
 (
-    '549218310983198',
+    '5492183117342683',
     'Tomaska',
     'CC',
     '2020-11-12',
     1000.00,
-    'mauske herramienta'
+    'herramienta'
     
 );
 
 CALL PRO_ingresar_cuenta 
 (
-    '417214834307091',
+    '4172148373513786',
     'Tomaska',
     'CA',
     '2020-11-12',
@@ -570,7 +570,7 @@ CALL PRO_ingresar_cuenta
 
 CALL PRO_ingresar_cuenta 
 (
-    '417214834307092',
+    '4172148301290876',
     'xxMaxiconsumoxx',
     'CC',
     '2020-11-12',
@@ -581,7 +581,7 @@ CALL PRO_ingresar_cuenta
 
 CALL PRO_ingresar_cuenta 
 (
-    '417214834307093',
+    '4172148334712312',
     'xxMaxiconsumoxx',
     'CA',
     '2020-11-16',
@@ -592,40 +592,40 @@ CALL PRO_ingresar_cuenta
 
 CALL PRO_ingresar_cuenta 
 (
-    '417214834307094',
+    '4172148309867895',
     'narcicismo',
     'CC',
     '2020-11-16',
     1000.00,
-    'Half life 3'
+    'Half life'
     
 );
 
 CALL PRO_ingresar_cuenta 
 (
-    '417214834307095',
+    '4172148378456634',
     'narcicismo',
     'CA',
     '2020-11-16',
     1000.00,
-    'Oro nazi'
+    'OroPlata'
     
 );
 
 CALL PRO_ingresar_cuenta 
 (
-    '417214834307096',
+    '4172148333785534',
     'Lauret_mas',
     'CC',
     '2020-11-16',
     1000.00,
-    'Nuevo orden mundial'
+    'Nuevoasd'
     
 );
 
 CALL PRO_ingresar_cuenta 
 (
-    '417214834307097',
+    '4172148334125534',
     'Lauret_mas',
     'CA',
     '2020-11-16',
@@ -636,7 +636,7 @@ CALL PRO_ingresar_cuenta
 
 CALL PRO_ingresar_cuenta 
 (
-    '417214834307098',
+    '4172148300957356',
     'Gabriel',
     'CC',
     '2020-11-16',
@@ -647,7 +647,7 @@ CALL PRO_ingresar_cuenta
 
 CALL PRO_ingresar_cuenta 
 (
-    '417214834307099',
+    '4172148329184256',
     'Gabriel',
     'CA',
     '2020-11-16',
@@ -658,7 +658,7 @@ CALL PRO_ingresar_cuenta
 
 CALL PRO_ingresar_cuenta 
 (
-    '417214834307100',
+    '4172148309442167',
     'Ariel',
     'CC',
     '2020-11-16',
@@ -669,7 +669,7 @@ CALL PRO_ingresar_cuenta
 
 CALL PRO_ingresar_cuenta 
 (
-    '417214834307101',
+    '4172148322375634',
     'Ariel',
     'CA',
     '2020-11-16',
@@ -680,18 +680,18 @@ CALL PRO_ingresar_cuenta
 
 CALL PRO_ingresar_cuenta 
 (
-    '417215834307102',
+    '4172158399457234',
     'Salagal',
     'CC',
     '2020-11-16',
     1000.00,
-    'Cocaina'
+    'Cocina'
     
 );
 
 CALL PRO_ingresar_cuenta 
 (
-    '417214834307103',
+    '4172148311237894',
     'Salagal',
     'CA',
     '2020-11-16',
@@ -702,7 +702,7 @@ CALL PRO_ingresar_cuenta
 
 CALL PRO_ingresar_cuenta 
 (
-    '417224834307103',
+    '4172248322743267',
     'Desam',
     'CC',
     '2020-11-16',
@@ -713,7 +713,7 @@ CALL PRO_ingresar_cuenta
 
 CALL PRO_ingresar_cuenta 
 (
-    '417214834307104',
+    '4172148385358845',
     'Desam',
     'CA',
     '2020-11-16',
@@ -726,7 +726,7 @@ CALL PRO_ingresar_cuenta
 
 CALL PRO_ingresar_prestamo 
 (
-    '582461493628608',
+    '5762860873528745',
     1000.00,
     12500.00,
     '2020-11-16',
