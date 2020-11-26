@@ -1,4 +1,8 @@
 <%@page import="Entidad.Usuario"%>
+<%@page import="Entidad.Localidad"%>
+<%@page import="Entidad.Provincias"%>
+<%@page import="Negocio.NegocioUsuario"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="javax.servlet.http.HttpSession"%>
 <%@page import="javax.servlet.RequestDispatcher"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -101,10 +105,25 @@ usuario = (Usuario)request.getAttribute("usuario");
       </div>
                 <div class="form-row mt-4">
     <div class="col-4">
-    <input type="text" class="form-control" value="<%=usuario.getDireccion().getPais()%>" name="txtPais" placeholder="Pais" title="Ingrese un pais valido" pattern="[a-zA-Záéíóú,. '-]{2,49}" required>
+    <input type="text" class="form-control" value="Argentina" name="txtPais" placeholder="Pais" title="Ingrese un pais valido" pattern="[a-zA-Záéíóú,. '-]{2,49}" readonly="true" required>
     </div>
     <div class="col-4">
-      <input type="text" class="form-control" value="<%=usuario.getDireccion().getProvincia()%>" name="txtProvincia" placeholder="Provincia" title="Ingrese una provincia valida" pattern="[a-zA-Záéíóú,. '-]{2,49}" required>
+           <select  class="form-control" name="ddlProvincia">
+<option value="<%=usuario.getDireccion().getPais()%>" selected><%=usuario.getDireccion().getPais()%></option>
+	 <%
+	 NegocioUsuario usuarioNegocio = new NegocioUsuario();
+		 	ArrayList<Provincias> listaProvincias =  usuarioNegocio.Listar_Provincias();
+			
+		
+		 if(listaProvincias!=null)
+		 for(Provincias e : listaProvincias)
+		{		
+	%>	
+	<option value="<%=e.getNombreProvincia()%>"><%=e.getNombreProvincia()%></option>
+		<%  } %>
+		
+		
+		</select>
     </div>
        <div class="col-4">
       <input type="text" class="form-control" value="<%=usuario.getDireccion().getLocalidad()%>" name="txtLocalidad" placeholder="Localidad" title="Ingrese una localidad valida" required>

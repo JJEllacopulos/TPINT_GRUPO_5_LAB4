@@ -104,7 +104,7 @@ public class servletsCliente extends HttpServlet {
 	        direccion.setNombre_usuario(usuario.getNombre_usuario());
 	        direccion.setPais(request.getParameter("txtPais"));
 	        
-	        direccion.setProvincia(request.getParameter("txtProvincia"));
+	        direccion.setProvincia(request.getParameter("ddlProvincia"));
 	        int filas = 0;
 	        
 	       filas = usuarioNegocio.SPModificarUsuario(usuario,fecha);
